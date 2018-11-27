@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Registration</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-129442662-1');
+        </script>
+    </h:head>
+    <h:body>
+        <f:view>
+            <h:form>
+                <h1><h:outputText value="Create/Edit"/></h1>
+                <h:panelGrid columns="3" >
+                    <h:outputLabel value="Name: " for="name" />
+                    <h:inputText autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name" style="width: 300px;"
+                                 required="true" requiredMessage="Name is required."/>
+                    <h:message for="name" style="color: red;"/>
+                    <h:outputLabel value="Email: " for="email" />
+                    <h:inputText validatorMessage="Email format should be e.g. email@test.com" autocomplete="off" id="email" value="#{userauthController.selected.email}" title="Email" style="width: 300px;"
+                                 required="true" requiredMessage="Email is required.">
+                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                    </h:inputText>
+                    <h:message for="email" style="color: red;"/>
+                    <h:outputLabel value="Password: " for="password" />
+                    <h:inputSecret id="password" value="#{userauthController.selected.password}" title="Password" style="width: 300px;"
+                                   required="true" requiredMessage="Password is required."/>
+                    <h:message for="password" style="color: red;"/>
+                    <h:outputLabel value="PhoneNo: +974" for="phone" />
+                    <h:inputText autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" style="width: 300px;"
+                                 required="true" requiredMessage="Phone no. is required."/>
+                    <h:message for="phone" style="color: red;"/>
+                    <h:commandLink action="#{userauthController.create()}" value="Save"/>
+                    <h:commandLink action="#{userauthController.backToCurrentPage()}" immediate="true" value="Back"/>
+                </h:panelGrid>
+            </h:form>
+        </f:view>
+
+    </h:body>
+</html>
+

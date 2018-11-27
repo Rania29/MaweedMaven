@@ -1,0 +1,113 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 19, 2018, 8:33:21 PM
+    Author     : Nooshi
+*/
+
+.head{
+    clear: both;
+    display: block ;
+    margin: 0 auto;
+    text-align: center;
+    width: 50%;
+    padding: 5px 0px;
+}
+
+.heading_div{ 
+    display: inline-block;  
+    height: inherit;
+    width: auto;
+    line-height: 25px;
+}
+.heading_div h2{
+    font-size: 16px;
+    color: #013069;
+}
+
+.contact_form {
+    height: inherit;
+    width: 100%;
+    display: inline-block;
+    text-align: left;
+    border: 1px solid #013069;
+    padding: 5px;
+    line-height: 40px;
+}
+
+.contact_form input[type=text], select, textarea {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+    resize: vertical;
+    font-size: 14px;
+}
+.check_box{
+    float: left;
+    line-height: 20px;
+}
+
+.contact_form label{
+    color: #013069;
+}
+
+.app_button{
+    width: 20px;
+    height: inherit;
+    padding: 12px;
+    text-decoration: none;
+    background-color: #55A6D7;
+    border-radius: 5px;
+    color: white;
+    margin: 8px;
+}
+.cancle_button{
+    background-color: #00cc66;
+}
+div.cntr_btn{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/**Media Queries*/
+/* Smartphones (portrait and landscape) --------------------------------- */
+@media screen and (min-width: 320px) and (max-width: 480px){
+
+    .head{
+        clear: both;
+        width: 95%;
+    }
+    .contact_form{
+        border: none;
+    }
+
+    .contact_form input[type=text], select, textarea {
+        width: 100%;
+        
+    }
+}
+@media screen and (min-width: 481px) and (max-width: 599px) {
+    .head{
+        clear: both;
+        width: 90%;
+    }
+
+}
+
+/**Tablet, Ipad (Landscape) and (portrait)**/
+
+@media screen and (min-width: 600px) and (max-width: 1000px){
+
+    .head{
+        clear: both;
+        width: 70%;
+    }
+}

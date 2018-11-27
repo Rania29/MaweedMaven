@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+    <h:head>
+        <title>Clinics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/clinic-css.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/javascript/hamburger_menu.js" type="text/javascript"></script>
+        <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-129442662-1');
+        </script>
+
+    </h:head>
+    <h:body>
+        <div>
+            <div class="top-div">
+                <div class="left-div">
+                    <a href="clinics_ar.xhtml">عربي</a>
+                    <a id="separator">|</a>
+                    <a href="index.xhtml">English</a>
+                </div>
+                <div class="right-div">
+                    <a href="signin.xhtml">SignIn</a> 
+                    <a id="separator">|</a>
+                    <a href="registration.xhtml">Register</a>
+                </div>
+
+            </div>
+            <header class="header-top">
+                <div class="logo">
+                    <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+                </div> 
+                <!--Hamburger button and menu-->
+                <div class="container" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+
+                <nav id="myDropdown" class="menu">
+                    <a href="index_ar.xhtml" class="item_menu">الرئيسية</a>
+                    <a href="about_ar.html" class="item_menu">عن موعد</a>
+                    <a href="contact_ar.xhtml" class="item_menu">تواصل معنا</a>
+                    <a href="help_ar.xhtml" class="item_menu">مساعدة</a>
+                </nav>
+
+                <div class="search-box">
+                    <div class="center-search">
+                        <h:form class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_area}" >
+                                <f:selectItem itemLabel="Area" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
+                                               itemLabel="#{n}" 
+                                               itemValue="#{n}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="Search by name" id="search"/>
+                            <h:link value="Search" class="hidden-link1" outcome="search"/>
+                            <h:link class="hidden-link" outcome="search" >
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                            </h:link>
+                        </h:form>
+
+                    </div>
+                </div>
+            </header><!--Header End-->
+
+            <nav class="navbar">
+                <ul>
+                    <li><a  href="index.xhtml">Home</a></li>
+                    <li><a href="#" style="color: #445268">Categories</a>
+                        <ul>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
+                                                       value="#{c.name}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                    <li><a  href="About.xhtml">About Us</a></li>
+                    <li><a  href="contact.xhtml">Contact</a></li>
+                    <li><a  href="help.xhtml">Help</a></li>
+                </ul>
+            </nav><!--Navigation bar End-->
+            <div>
+                <h1 class="clinic-name">
+                    #{appointmentController.hospital.name}
+                </h1>
+            </div>
+            <div class="item">
+                <div class="clnk-container">
+                    <div class="clnk-widget">
+                        <div class="icon">
+                            <img src="resources/interface/home32.png" alt=""/>
+                        </div>
+                        <div class="clnk-info">
+                            <p>Visit Our Location</p>
+                            <span>#{appointmentController.hospital.area.getName()}</span>
+                        </div>
+                    </div>
+                    <div class="clnk-widget">
+                        <div class="icon">
+                            <img src="resources/interface/call.png" alt=""/>
+                        </div>
+                        <div class="clnk-info">
+                            <p>Give Us a Call</p>
+                            <span>#{appointmentController.hospital.phoneNo}</span>
+                        </div>
+                    </div>
+                    <div class="clnk-widget">
+                        <div class="icon">
+                            <img class="centered" src="resources/interface/phone.png" alt=""/>
+                        </div>
+                        <div class="clnk-info">
+                            <p>Send Us a Message</p>
+                            <span>#{appointmentController.hospital.email}</span>
+                        </div>
+                    </div>
+                    <div class="clnk-widget">
+                        <div class="icon">
+                            <img class="centered" src="resources/interface/hours.png" alt=""/>
+                        </div>
+                        <div class="clnk-info">
+                            <p>Opening Hours</p>
+                            <span>#{appointmentController.hospital.workingDaysHours}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="appoinment-btn">
+                            <h:form>
+                                <h:commandButton action="#{appointmentController.toAppointment()}" value="Request Appointment"/>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-div">
+                <div class="clnk-container">
+                    <div class="clnk-widget">
+                        <div class="icon">
+                            <img src="resources/interface/home32.png" alt=""/>
+                        </div>
+                        <div class="clnk-info">
+                            <p>Visit Our Location</p>
+                            <span>#{appointmentController.hospital.area.getName()}</span>
+                        </div>
+                    </div>
+                    <div class="clnk-widget">
+                        <div class="icon">
+                            <img src="resources/interface/call.png" alt=""/>
+                        </div>
+                        <div class="clnk-info">
+                            <p>Give Us a Call</p>
+                            <a href="#{appointmentController.hospital.phoneNo}">#{appointmentController.hospital.phoneNo}</a>
+                        </div>
+                    </div>
+                    <div class="clnk-widget">
+                        <div class="icon">
+                            <img class="centered" src="resources/interface/phone.png" alt=""/>
+                        </div>
+                        <div class="clnk-info">
+                            <p>Send Us a Message</p>
+                            <a href="mailto:#{appointmentController.hospital.email}">#{appointmentController.hospital.email}</a>
+                        </div>
+                    </div>
+                    <div class="clnk-widget">
+                        <div class="icon">
+                            <img class="centered" src="resources/interface/hours.png" alt=""/>
+                        </div>
+                        <div class="clnk-info">
+                            <p>Opening Hours</p>
+                            <span>#{appointmentController.hospital.workingDaysHours}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="appoinment-btn">
+                            <form action="appointment.xhtml">
+                                <input type="submit" value="Request Appointment" name="req-apointmnt" action="#{appointmentController.toAppointment()}"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Slide show section-->
+            <div class="slides_container" >
+                <a href="#">
+                    <img class="mySlides" src="resources/interface/img1.jpg" style="height: 100%;width: 100%;"/>
+                </a>
+                <a href="#">
+                    <img class="mySlides" src="resources/interface/img2.jpg" style="height: 100%;width: 100%;"/>
+                </a>
+                <a href="#">
+                    <img class="mySlides" src="resources/interface/img3.jpg" style="height: 100%;width: 100%;"/>
+                </a>
+                <a href="#">
+                    <img class="mySlides" src="resources/interface/img4.jpg" style="height: 100%;width: 100%;"/>
+                </a>
+                <div class="indecator_container" style="width:100%">
+                    <!--<div class="fl-left" onclick="plusDivs(-1)">
+                        <img src="resources/interface/left-arrow32white.png" alt=""/>
+                    </div>
+                    <div class="fl-right" onclick="plusDivs(-1)">
+                        <img src="resources/interface/right-arrow32white.png" alt=""/>
+                    </div>-->
+                    <span class="indecator demo" onclick="currentDiv(1)"></span>
+                    <span class="indecator demo" onclick="currentDiv(2)"></span>
+                    <span class="indecator demo" onclick="currentDiv(3)"></span>
+                    <span class="indecator demo" onclick="currentDiv(4)"></span>
+                </div>
+            </div>
+            <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
+        </div>
+
+
+        <div>
+            <h1>Our Clinics</h1>
+        </div>
+        <div class="clinic">
+            <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
+                <div class="clinic-item">
+                    <a href="clinic-services.xhtml">
+                        <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
+                        <span>#{i.category}</span>
+                    </a>
+                </div>
+            </c:forEach>
+        </div>
+
+        <div>
+            <h1>Here We Are</h1>
+        </div>
+        <div id="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7216.836919856423!2d51.52038563231429!3d25.256504983868613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45cffa1b772ce9%3A0xdf5b1302a9cea18a!2sGulf+Dental+Center+Al+Hilal!5e0!3m2!1sen!2sqa!4v1526729286634" width="600" height="450" frameborder="0" style="width:100%;height:400px;background:yellow" ></iframe></div>
+        <hr />
+        <div>
+            <h1>We Accept</h1>
+        </div>
+        <div class="insurance">
+            <ul>
+                <c:forEach items="#{appointmentController.hospital.insurances}" var="i">
+                    <li><img src="#{fn:substringAfter(i.image, '/')}" alt=""/></li>
+                </c:forEach>
+            </ul>
+        </div>
+        <div>
+            <h1>Rating and Comments</h1>
+        </div>
+
+        <footer>
+            <div class="upper-footer">
+                <div class="footer-list">
+                    <ul class="footer-ul">
+                        <li>
+                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                        </li>
+                        <li>
+                            <a href="uesr_agreement.xhtml">User Agreement</a>
+                        </li>
+                        <li>
+                            <a href="help.xhtml">Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lower-footer">
+                <h2>Maweed</h2>
+                <h6>Copyright 2018 | All rights reserved.</h6>
+            </div>
+        </footer>
+    </h:body>
+</html>

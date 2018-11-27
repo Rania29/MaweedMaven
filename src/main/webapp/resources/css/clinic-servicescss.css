@@ -1,0 +1,36 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 12, 2018, 1:41:06 PM
+    Author     : Nooshi
+*/
+div.service-pic{
+    width: 100%;
+    height: auto;
+}
+.service-pic ul{
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.service-pic img{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2px;
+}
+ 
+.service-pic ul li{
+    display: inline-block;
+    margin-right: 2px;
+    margin-left: 2px;
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+    line-height: 22px;
+    border: 1px solid #D7D0CC;
+}
+

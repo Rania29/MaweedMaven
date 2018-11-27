@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Request Appointment</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/appointment-css.css" rel="stylesheet" type="text/css"/>
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-129442662-1');
+        </script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            $(function () {
+                $(".datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+            });
+        </script>
+    </h:head>
+    <h:body>
+        <div>
+            <div class="top-div">
+                <div class="left-div">
+                    <a href="appointment_ar.xhtml">عربي</a>
+                    <a class="separator">|</a>
+                    <a href="index.xhtml">English</a>
+                </div>
+                <div class="right-div">
+                    <a href="signin.xhtml">Signin</a>
+                    <a class="separator">|</a>
+                    <a href="registration.xhtml">Register</a>
+                </div>
+            </div>
+
+            <header class="header-top">
+                <div class="logo">
+                    <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+                </div> 
+
+                <!--Hamburger button and menu-->
+                <div class="container" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+
+                <nav id="myDropdown" class="menu">
+                    <a href="index.xhtml" class="item_menu">home</a>
+                    <a href="about.xhtml" class="item_menu">about</a>
+                    <a href="contact.xhtml" class="item_menu">Contact Us</a>
+                    <a href="help.xhtml" class="item_menu">Help</a>
+                </nav>
+
+                <div class="search-box">
+                    <div class="center-search">
+                        <h:form class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="Area" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
+                                               itemLabel="#{n}" 
+                                               itemValue="#{n}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="Search by name" id="search"/>
+                            <h:link value="Search" class="hidden-link1" outcome="search"/>
+                            <h:link class="hidden-link" outcome="search" >
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                            </h:link>
+                        </h:form>
+
+                    </div>
+                </div>
+            </header><!--Header End-->
+
+            <div class="head">
+                <div class="contact_form">
+                    <div class="heading_div">
+                        <h2>Please fill this form, we will call you back as soon as Possible (during working hours) </h2>
+                    </div>
+
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:outputLabel value="Name: " for="name" />
+                            <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.CreateAppointmentTitle_name}" />
+                            <h:outputLabel value="#{bundle.CreateAppointmentLabel_phone}" for="phone" />
+                            <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="#{bundle.CreateAppointmentTitle_phone}" />
+                            <h:outputLabel value="#{bundle.CreateAppointmentLabel_email}" for="email" />
+                            <h:inputText id="email" value="#{appointmentController.selected.email}" title="#{bundle.CreateAppointmentTitle_email}" />
+                            <h:outputLabel value="Date of Birth: " for="DOB" />
+                            <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="#{bundle.CreateAppointmentTitle_DOB}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:inputText>
+                            <h:outputLabel value="Preferred Days: " for="days" />
+                            <h:panelGroup layout="block" class="check_box">
+                                <h:selectManyCheckbox layout="pageDirection"  id="days" value="#{appointmentController.days}" >
+                                    <f:selectItems value="#{daysOfWeekController.days}" 
+                                                   var="c"
+                                                   itemLabel="#{c.name}" 
+                                                   itemValue="#{c.id}"/>
+                                </h:selectManyCheckbox >
+                            </h:panelGroup>
+                            <h:outputLabel value="Hospital: " for="hospital" />
+                            <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="#{bundle.CreateAppointmentTitle_hospital}" >
+                                <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Gender: " for="gender" />
+                            <h:selectOneRadio id="gender" value="#{appointmentController.selected.gender}" title="#{bundle.CreateAppointmentTitle_gender}" >
+                                <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
+                            </h:selectOneRadio>
+                            <h:outputLabel value="Preferred Timing: " for="morningOrEvening" />
+                            <h:selectOneRadio id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="#{bundle.CreateAppointmentTitle_morningOrEvening}" >
+                                <f:selectItems value="#{shiftController.itemsAvailableSelectMany}"/>
+                            </h:selectOneRadio>
+                            <h:outputLabel value="Preferred Doctor gender: " for="doctorGender" />
+                            <h:selectOneRadio id="doctorGender" value="#{appointmentController.selected.doctorGender}" title="#{bundle.CreateAppointmentTitle_doctorGender}" >
+                                <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
+                            </h:selectOneRadio>
+                            <h:outputLabel value="#{bundle.CreateAppointmentLabel_description}" for="description" />
+                            <h:inputTextarea id="description" value="#{appointmentController.selected.description}" title="#{bundle.CreateAppointmentTitle_description}" />
+                        </h:panelGrid>
+                        <div class="cntr_btn">
+                            <h:commandLink action="#{appointmentController.create}" value="Request Appointment" class="app_button"/>
+                            <h:link outcome="clinics" value="Back" class="app_button cancle_button"/>
+                        </div>
+                    </h:form>
+                </div>
+
+            </div>
+            <footer>
+                <div class="upper-footer">
+                    <ul class="footer-ul">
+                        <li>
+                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                            <a class="separator">|</a>
+                        </li>
+                        <li>
+                            <a href="uesr_agreement.xhtml">Privacy Policy</a>
+                            <a class="separator">|</a>
+                        </li>
+                        <li>
+                            <a href="help.xhtml">Help</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lower-footer">
+                    <h2>Maweed</h2>
+                    <h6>Copyright 2018 | All rights reserved.</h6>
+                </div>
+            </footer>
+        </div>
+    </h:body>
+</html>
