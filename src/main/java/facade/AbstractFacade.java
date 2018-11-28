@@ -1,9 +1,9 @@
 package facade;
 
+import entity.domain.Area;
 import entity.domain.Category;
 import entity.domain.Clinic;
 import entity.domain.Hospital;
-import entity.domain.HospitalImage;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -39,6 +39,13 @@ public abstract class AbstractFacade<T> {
     
     public List<String> hospitalAutocompleteArabic() {
         return getEntityManager().createNamedQuery("Hospital.findHospitalNamesArabic").getResultList();
+    }
+    
+    public List<T> findHospitalsByNameAreas(String area, String name) {
+        return getEntityManager().createNamedQuery("Hospital.findByAreaAndName")
+                .setParameter("area", "%" + area)
+                .setParameter("name", "%" + name)
+                .getResultList();
     }
 
     public Object findFirstImage(Hospital hospital) {

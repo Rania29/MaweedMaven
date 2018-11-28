@@ -5,7 +5,6 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.HospitalFacade;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -29,6 +28,7 @@ public class HospitalController implements Serializable {
     private facade.HospitalFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private List<Hospital> hospitals;
 
     public HospitalController() {
     }
@@ -43,6 +43,12 @@ public class HospitalController implements Serializable {
 
     private HospitalFacade getFacade() {
         return ejbFacade;
+    }
+
+    public String findHospitalsByAreaAndName() {
+        hospitals = ejbFacade.findHospitalsByNameAreas(current.getArea().getName(), current.getName());
+        System.out.println("findHospitalsByNameAreas........................... " + hospitals);
+        return "search";
     }
 
     public String autocomplete(String lang) {
