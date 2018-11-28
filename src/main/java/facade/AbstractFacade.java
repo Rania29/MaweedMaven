@@ -33,8 +33,12 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().find(entityClass, id);
     }
 
-    public List<String> hospitalJquery() {
+    public List<String> hospitalAutocomplete() {
         return getEntityManager().createNamedQuery("Hospital.findHospitalNames").getResultList();
+    }
+    
+    public List<String> hospitalAutocompleteArabic() {
+        return getEntityManager().createNamedQuery("Hospital.findHospitalNamesArabic").getResultList();
     }
 
     public Object findFirstImage(Hospital hospital) {

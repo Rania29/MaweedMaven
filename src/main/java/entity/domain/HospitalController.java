@@ -45,9 +45,14 @@ public class HospitalController implements Serializable {
         return ejbFacade;
     }
 
-    public String findList() {
-        List<String> foo = ejbFacade.hospitalJquery();
-        String json = new Gson().toJson(foo);
+    public String autocomplete(String lang) {
+        List<String> hospitalNames;
+        if (lang.equals("english")) {
+            hospitalNames = ejbFacade.hospitalAutocomplete();
+        } else {
+            hospitalNames = ejbFacade.hospitalAutocompleteArabic();
+        }
+        String json = new Gson().toJson(hospitalNames);
         return json;
     }
 

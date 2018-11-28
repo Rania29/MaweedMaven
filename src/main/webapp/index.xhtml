@@ -28,7 +28,7 @@
             gtag('js', new Date());
 
             gtag('config', 'UA-129442662-1');
-            var availableTags = #{hospitalController.findList()};
+            var availableTags = #{hospitalController.autocomplete("english")};
             $(function () {
                 $("#search-form\\:search").autocomplete({
                     source: availableTags

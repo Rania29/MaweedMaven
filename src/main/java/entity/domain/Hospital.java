@@ -20,7 +20,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Hospital.findAll", query = "SELECT h FROM Hospital h")
-    , @NamedQuery(name = "Hospital.findHospitalNames", query = "SELECT h.name FROM Hospital h order by h.name")})
+    , @NamedQuery(name = "Hospital.findHospitalNames", query = "SELECT h.name FROM Hospital h order by h.name")
+    ,@NamedQuery(name = "Hospital.findHospitalNamesArabic", query = "SELECT h.inArabic FROM Hospital h order by h.inArabic")})
 public class Hospital implements Serializable {
 
     @Id
