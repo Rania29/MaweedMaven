@@ -107,15 +107,6 @@
                             <h:link outcome="#{appointmentController.toClinic (h)}"><span class="clnk-name">#{h.name}</span></h:link>
                             <span class="clnk-location">#{h.area.name}</span>
                             <span class="clnk-star-rating">Star rating goes here</span>
-
-<!--<div outcome="#{appointmentController.toClinic (h)}">
-
-    <a><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/></a>
-    <a><span class="clnk-name">#{h.name}</span></a>
-    <span class="clnk-location">#{h.area.name}</span>
-    <span class="clnk-star-rating">Star rating goes here</span>
-
-</div>-->
                         </div>
                     </c:forEach>
 

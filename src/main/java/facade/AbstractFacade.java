@@ -41,10 +41,9 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().createNamedQuery("Hospital.findHospitalNamesArabic").getResultList();
     }
     
-    public List<T> findHospitalsByNameAreas(String area, String name) {
-        return getEntityManager().createNamedQuery("Hospital.findByAreaAndName")
-                .setParameter("area", "%" + area)
-                .setParameter("name", "%" + name)
+    public List<T> findHospitalsByName(String name) {
+        return getEntityManager().createNamedQuery("Hospital.findByName")
+                .setParameter("name", name)
                 .getResultList();
     }
 

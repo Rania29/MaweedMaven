@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Maweed</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -41,40 +42,40 @@
                 <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
             </div> 
             <!--Hamburger button and menu-->
-                <div class="container" onclick="myFunction(this)">
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
-                </div>
-                
-                <nav id="myDropdown" class="menu">
-                    <a href="index.xhtml" class="item_menu">home</a>
-                    <a href="about.xhtml" class="item_menu">about</a>
-                    <a href="contact.xhtml" class="item_menu">Contact Us</a>
-                    <a href="help.xhtml" class="item_menu">Help</a>
-                </nav>
+            <div class="container" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+
+            <nav id="myDropdown" class="menu">
+                <a href="index.xhtml" class="item_menu">home</a>
+                <a href="about.xhtml" class="item_menu">about</a>
+                <a href="contact.xhtml" class="item_menu">Contact Us</a>
+                <a href="help.xhtml" class="item_menu">Help</a>
+            </nav>
 
 
             <div class="search-box">
-                    <div class="center-search">
-                        <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                               itemLabel="#{n}" 
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name" id="search"/>
-                            <h:link value="Search" class="hidden-link1" outcome="search"/>
-                            <h:link class="hidden-link" outcome="search" >
-                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:link>
-                        </h:form>
+                <div class="center-search">
+                    <h:form class="form-style">
+                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="Area" itemValue=""/>
+                            <f:selectItems value="#{areaController.findAreas()}" var="n"
+                                           itemLabel="#{n}" 
+                                           itemValue="#{n}"/>
+                        </h:selectOneMenu>
+                        <h:inputText a:placeholder="Search by name" id="search"/>
+                        <h:link value="Search" class="hidden-link1" outcome="search"/>
+                        <h:link class="hidden-link" outcome="search" >
+                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                        </h:link>
+                    </h:form>
 
-                    </div>
                 </div>
+            </div>
         </header><!--Header End-->
-        
+
         <nav class="navbar">
             <ul>
                 <li><a  href="index.xhtml">Home</a></li>
@@ -93,22 +94,14 @@
             <h5>Showing results in ......(we write here what user wrote in search box)</h5>
             <div class="result">
                 <div class="result_items">
-                    <div class="clnk-div">
-                        <a href="#">
-                            <img src="resources/interface/gulf.jpg" alt=""/><br />
-                            <span class="clnk-name">Gulf Dental Center</span><br />
-                            <span class="clnk-location">Al-Hilal</span><br />
+                    <c:forEach items="#{appointmentController.hospitals}" var="h">
+                        <div class="clnk-div">
+                            <h:link outcome="#{appointmentController.toClinic (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/></h:link>
+                            <h:link outcome="#{appointmentController.toClinic (h)}"><span class="clnk-name">#{h.name}</span></h:link>
+                            <span class="clnk-location">#{h.area.name}</span>
                             <span class="clnk-star-rating">Star rating goes here</span>
-                        </a>
-                    </div>
-                    <div class="clnk-div">
-                        <a href="#">
-                            <img src="resources/interface/gulf.jpg" alt=""/><br />
-                            <span class="clnk-name">Name</span><br />
-                            <span class="clnk-location">Location</span><br />
-                            <span class="clnk-star-rating">Star rating goes here</span>
-                        </a>
-                    </div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

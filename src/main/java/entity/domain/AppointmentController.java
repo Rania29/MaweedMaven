@@ -1,10 +1,12 @@
 package entity.domain;
 
+import static entity.domain.Area_.hospitals;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import entity.domain.util.SendMail;
 import facade.AppointmentFacade;
 import facade.DaysOfWeekFacade;
+import facade.HospitalFacade;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,8 +36,10 @@ public class AppointmentController implements Serializable {
     private Hospital hospital;
     @EJB
     private DaysOfWeekFacade daysOfWeekFacade;
-
+    @EJB
+    private HospitalFacade hospitalFacade;
     private List<String> days;
+    private List<Hospital> hospitals;
     private Appointment current;
     private DataModel items = null;
     @EJB
@@ -50,11 +54,23 @@ public class AppointmentController implements Serializable {
         days = new ArrayList<>();
     }
 
+    public List<Hospital> getHospitals() {
+//        hospitals = hospitalFacade.findAll();
+        return hospitals;
+    }
+
+    public String findHospitalsByName() {
+        System.out.println("findHospitalsByNameAreas........................... " + hospital);
+        hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
+        System.out.println("findHospitalsByNameAreas........................... " + hospitals);
+        return "search";
+    }
+
     public String toClinic(Hospital hospital) {
         this.hospital = hospital;
         return "clinics";
     }
-    
+
     public Hospital getHospital() {
         return hospital;
     }
