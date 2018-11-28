@@ -60,9 +60,7 @@ public class AppointmentController implements Serializable {
     }
 
     public String findHospitalsByName() {
-        System.out.println("findHospitalsByNameAreas........................... " + hospital);
         hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
-        System.out.println("findHospitalsByNameAreas........................... " + hospitals);
         return "search";
     }
 
