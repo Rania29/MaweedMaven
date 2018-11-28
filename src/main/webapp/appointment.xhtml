@@ -66,7 +66,7 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="Area" >
                                 <f:selectItem itemLabel="Area" itemValue=""/>
                                 <f:selectItems value="#{areaController.findAreas()}" var="n"
                                                itemLabel="#{n}" 
@@ -92,13 +92,13 @@
                     <h:form>
                         <h:panelGrid columns="2">
                             <h:outputLabel value="Name: " for="name" />
-                            <h:inputText id="name" value="#{appointmentController.selected.name}" title="#{bundle.CreateAppointmentTitle_name}" />
-                            <h:outputLabel value="#{bundle.CreateAppointmentLabel_phone}" for="phone" />
-                            <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="#{bundle.CreateAppointmentTitle_phone}" />
-                            <h:outputLabel value="#{bundle.CreateAppointmentLabel_email}" for="email" />
-                            <h:inputText id="email" value="#{appointmentController.selected.email}" title="#{bundle.CreateAppointmentTitle_email}" />
+                            <h:inputText id="name" value="#{appointmentController.selected.name}" title="Name" />
+                            <h:outputLabel value="Phone: " for="phone" />
+                            <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="Phone" />
+                            <h:outputLabel value="Email: " for="email" />
+                            <h:inputText id="email" value="#{appointmentController.selected.email}" title="Email" />
                             <h:outputLabel value="Date of Birth: " for="DOB" />
-                            <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="#{bundle.CreateAppointmentTitle_DOB}">
+                            <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="Date of Birth">
                                 <f:convertDateTime pattern="dd/MM/yyyy"/>
                             </h:inputText>
                             <h:outputLabel value="Preferred Days: " for="days" />
@@ -111,23 +111,23 @@
                                 </h:selectManyCheckbox >
                             </h:panelGroup>
                             <h:outputLabel value="Hospital: " for="hospital" />
-                            <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="#{bundle.CreateAppointmentTitle_hospital}" >
+                            <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="Hospital" >
                                 <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
                             </h:selectOneMenu>
                             <h:outputLabel value="Gender: " for="gender" />
-                            <h:selectOneRadio id="gender" value="#{appointmentController.selected.gender}" title="#{bundle.CreateAppointmentTitle_gender}" >
+                            <h:selectOneRadio id="gender" value="#{appointmentController.selected.gender}" title="Gender" >
                                 <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Preferred Timing: " for="morningOrEvening" />
-                            <h:selectOneRadio id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="#{bundle.CreateAppointmentTitle_morningOrEvening}" >
+                            <h:selectOneRadio id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="Preferred time Morning/Evening}" >
                                 <f:selectItems value="#{shiftController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Preferred Doctor gender: " for="doctorGender" />
-                            <h:selectOneRadio id="doctorGender" value="#{appointmentController.selected.doctorGender}" title="#{bundle.CreateAppointmentTitle_doctorGender}" >
+                            <h:selectOneRadio id="doctorGender" value="#{appointmentController.selected.doctorGender}" title="Preferred Doctor Gender" >
                                 <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
-                            <h:outputLabel value="#{bundle.CreateAppointmentLabel_description}" for="description" />
-                            <h:inputTextarea id="description" value="#{appointmentController.selected.description}" title="#{bundle.CreateAppointmentTitle_description}" />
+                            <h:outputLabel value="Description" for="description" />
+                            <h:inputTextarea id="description" value="#{appointmentController.selected.description}" title="Description" />
                         </h:panelGrid>
                         <div class="cntr_btn">
                             <h:commandLink action="#{appointmentController.create}" value="Request Appointment" class="app_button"/>

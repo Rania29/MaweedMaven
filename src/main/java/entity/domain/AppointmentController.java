@@ -1,6 +1,5 @@
 package entity.domain;
 
-import static entity.domain.Area_.hospitals;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import entity.domain.util.SendMail;
@@ -12,11 +11,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -66,6 +65,8 @@ public class AppointmentController implements Serializable {
 
     public String toClinic(Hospital hospital) {
         this.hospital = hospital;
+        prepareCreate();
+        current.setHospital(hospital);
         return "clinics";
     }
 
@@ -148,7 +149,7 @@ public class AppointmentController implements Serializable {
             current.setId(null);
             current.setHospital(hospital);
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentCreated"));
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("We will get back to you at the soonest " + current.getName()));
             String msg = "Name: " + current.getName() + "\n"
                     + "Email: " + current.getEmail() + "\n"
                     + "Phone: " + current.getPhone() + "\n"
@@ -161,7 +162,7 @@ public class AppointmentController implements Serializable {
             SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, "rania.rabie29@gmail.com");
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+//            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -188,10 +189,10 @@ public class AppointmentController implements Serializable {
         }
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentUpdated"));
+//            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+//            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -221,9 +222,9 @@ public class AppointmentController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentDeleted"));
+//            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+//            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
         }
     }
 
