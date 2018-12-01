@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Help</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -20,83 +21,117 @@
         </script>
     </h:head>
     <h:body>
-        <div class="top-div">
+        <div class="wrap">
+            <div class="top-div">
                 <div class="left-div">
-                    <a href="arabic.html">عربي</a>
+                    <a href="help_ar.xhtml">عربي</a>
                     <a id="separator">|</a>
-                    <a href="index.html">English</a>
+                    <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="singIn.html">SignIn</a> 
+                    <a href="singin.xhtml">SignIn</a> 
                     <a id="separator">|</a>
-                    <a href="register.html">Register</a>
+                    <a href="registration.xhtml">Register</a>
                 </div>
 
             </div>
-       <header class="header-top">
-                <div class="menu-icon">
-                    <a href="index.html"><img src="resources/interface/menu.png"  alt=""/></a>
-                </div>
+            <header class="header-top">
                 <div class="logo">
-                    <a href="index.html"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+                    <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
                 </div> 
 
-                <div class="search-box">
-                    <div class="center-search">
-                        <form class="form-style">
-                            <select class="select-style">
-                                <option value="">All Areas</option>
-                                <option value="">Old Rayyan</option>
-                                <option value="">Doha</option>
-                                <option value="">Al Sadd</option>
-                            </select>
-                            <input type="text" placeholder="Search by name or service" name="search"/>
-                            <input type="submit" value="Search" class="dropbtn"/>
-                        </form>
+            </header><!--Header End-->
+            <main class="main-part">
+                <h2 class="header">Hi, How can we help you? </h2>
+                <div class="help-div">
+                    <div class="first-div">
+                        <h2>FAQ</h2>
+                        <a href="#F1">1- Why should I use Maweed?</a>
+                        <a href="#F2">2- Is my personal information protected?</a>
+                        <a href="#F3">3- How to contact Maweed support?</a>
+                        <a href="#F4">4- why should I register for a personal account?</a>
+                    </div>
+                    <div class="second-div">
+                        <h2>USAGE GUIDE</h2>
+                        <p>1-How to Find ....</p>
+                        <ul class="list_style">
+                            <li><a href="#U1-a">a hospital by name? </a></li>
+                            <li><a href="#U1-b">a specific (pediatric) clinic in certain area (old airport)?</a></li>
+                        </ul>
+                        <a href="#U2">2- How to browse for a specific category?</a>
+                        <a href="#U3">3- How to request an appointment?</a>
+                        <a href="#U4">4- how to rate a hospital?</a>
+                        <a href="#U5">5- How to report issue with hospital?</a>
+                        <a href="#U6">6- How to contact Maweed support team?</a>
+                        <!--<a href="#U7">7- How to create personal account?</a>-->
+
                     </div>
                 </div>
-            </header><!--Header End-->
-        <nav class="navbar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#">Categories</a>
-                    <ul>
-                        <li><a href="categories-html/medical-care.html">Medical Care</a></li>
-                        <li><a href="categories-html/heart.html">Heart</a></li>
-                        <li><a href="categories-html/Obstetrics.html">Obstetrics</a></li>
-                        <li><a href="categories-html/Pediatrics.html">Pediatrics</a></li>
-                        <li><a href="categories-html/beauty.html">Beauty Centers</a></li>
-                        <li><a href="categories-html/dentist.html">Dentist</a></li>
-                        <li><a href="categories-html/dermatology.html">Dermatology</a></li>
-                        <li><a href="categories-html/Opthalmology.html">Opthalmology</a></li>
-                        <li><a href="categories-html/massage.html">Massage Center</a></li>
-                        <li><a href="categories-html/Physiotherapy.html">Physiotherapy</a></li>
-                        <li><a href="categories-html/weight-loss.html">Weight Loss</a></li>
-                        <li><a href="categories-html/Special-Needs">Special Needs</a></li>
-                        <li><a href="categories-html/Veterinary.html">Veterinary</a></li>
-                    </ul>
-                </li>
-                <li><a  href="About.html">About Us</a></li>
-                <li><a  href="contact.html">Contact</a></li>
-                <li><a  href="help.html">Help</a></li>
-            </ul>
-        </nav><!--Navigation bar End-->
-        <main class="main-part">
-            <h2>Hi, How can we help you? </h2>
-            <div class="help-div">
-                <div class="first-div">
-                    <h3>How to search</h3>
-                    <a href="#">For a Clinic</a>
-                    <a href="#">By City</a>
-                    <a href="#">By Service</a>
-                </div>
-                <div class="second-div">
-                    <h3>Booking</h3>
-                    <a href="#">Booking an appoinment</a>
+            </main>
+            <div class="lower-section">
+                <h2>FAQ</h2>
+                <h3 id="F1">1-Why should I use Maweed?</h3>
+                <p>Maweed offers you the opportunity to check all choices of hospitals, their clinics, their locations, doctors they have, services they offer, prices and special offers and discounts if any, so you can choose what suits you best. </p>
+                <h3 id="F2">2- Is my personal information protected?</h3>
+                <p>we are doing our best to make sure that all personal information is protected.</p>
+                <h3 id="F3">3-How to contact Maweed support?</h3>
+                <p>-Please go to contact us page, fill requested fields and we will contact you back as soon as possible.</p>
+                <h3 id="F4">4- why should I register for a personal account?</h3>
+                <p>The benefits of having a personal account are:</p>
+                <ul class="list_style">
+                    <li>Reducing the amount of filed you must fill when requesting an appointment, because when having a personal account all your data will automatically fill in the Request appointment form.</li>
+                    <li>You will get emails about offers and discounts offered by hospitals, so you will be up to date.  </li>
+                </ul>
+
+                <h2>USAGE GUIDE</h2>
+                <h3>1- How to find ....</h3>
+                <ul class="list_style">
+                    <li id="U1-a" style="color: #013069; text-decoration: underline;">a hospital by name? </li>
+                    <ol class="list_style">
+                        <li>go to search box.</li>
+                        <li>write hospital name.</li>
+                        <li>press search, you will get results of your search.</li>
+                    </ol>
+                    <li id="U1-b" style="color: #013069; text-decoration: underline;">a specific (pediatric) clinic in certain area (old airport)?</li>
+                    <ol class="list_style">
+                        <li>go to area drop down list.</li>
+                        <li>choose which area you want.</li>
+                        <li>press Search, you will get results of all hospitals with pediatric clinic in old airport area.</li>
+
+                    </ol>
+                </ul>
+                <h3 id="U2">2- How to browse for a specific category?</h3>
+                <p>go to the category section in the navigation bar or you can choose witch category you need from categories section down in the Home page, your choice will give you all available hospitals with the clinic type you have chosen.</p>
+                <h3 id="U3">3- how to request an appointment?</h3>
+                <ol class="list_style">
+                    <li>browse and choose which hospital suits your requirements. </li>
+                    <li>in the hospital page, you will find (Request appointment) button, press it.</li>
+                    <li>fill requested information, all are important, so you can have the best appointment time and doctor suits your request.</li>
+                    <li>You will get a confirmation email for your request.</li>
+                    <li>The hospital will call you back during working hours/days to confirm your appointment.</li>
+                </ol>
+                <h3 id="U4">4- how to rate a hospital?</h3>
+                <ol class="list_style">
+                    <li>go to hospital page by searching its name in the search box.</li>
+                    <li>go down in the page you will find rating and comments section.</li>
+                    <li>choose how many stars and write your comment.</li>
+                    <li>you can write about specific doctor or service you like/dislike, or generally about hospital services.</li>
+                    <li>please do not write any abuse words.</li>
+                    <li>no commercials of any kind.</li>
+                    <li>if you violated our conditions, your account will be removed.</li>
+                    <li>your rating will appear in their page after admins approval.</li>
+                </ol>
+                <h3 id="U5">5- How to report issue with hospital?</h3>
+                <ol class="list_style">
+                    <li>Go to contact us page.</li>
+                    <li>Fill the form and write your issue with hospital or whatever issue you have and send it.</li>
+                    <li>A member of our support team will contact you as soon as possible during working days/hours.</li>
+                </ol>
+                <div class="back-btn">
+                    <a href="index.xhtml">Back to Home page</a>
                 </div>
             </div>
-        </main>
-        <footer>
+            <footer>
                 <div class="upper-footer">
                     <div class="footer-list">
                         <ul class="footer-ul">
@@ -117,6 +152,7 @@
                     <h6>Copyright 2018 | All rights reserved.</h6>
                 </div>
             </footer>
+        </div>
     </h:body>
 </html>
 

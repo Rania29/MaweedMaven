@@ -4,12 +4,13 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Aug 18, 2018, 10:26:36 PM
+    Created on : Dec 1, 2018, 10:00:57 PM
     Author     : Nooshi
 */
 html, page{
     line-height: 30px;
     box-sizing: border-box;
+    direction: rtl;
 }
 
 
@@ -69,7 +70,7 @@ ul.list_style{
     width: 50%;
     height: 100%;
     padding: 5px;
-    float: left;
+    float: right;
 }
 .second-div{
     border-radius: 0 5px 5px 0;
@@ -77,13 +78,13 @@ ul.list_style{
     width: 50%;
     height: 100%;
     padding: 5px;
-    float: right;
+    float: left;
 }
 div.lower-section{
     width: 100%;
     height: auto;
     padding: 0px 10px ;
-    text-align: left; 
+    text-align: right; 
     line-height: 30px;
 }
 div.back-btn{

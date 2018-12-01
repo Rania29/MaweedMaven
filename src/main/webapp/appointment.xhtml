@@ -48,39 +48,6 @@
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
                 </div> 
-
-                <!--Hamburger button and menu-->
-                <div class="container" onclick="myFunction(this)">
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
-                </div>
-
-                <nav id="myDropdown" class="menu">
-                    <a href="index.xhtml" class="item_menu">home</a>
-                    <a href="about.xhtml" class="item_menu">about</a>
-                    <a href="contact.xhtml" class="item_menu">Contact Us</a>
-                    <a href="help.xhtml" class="item_menu">Help</a>
-                </nav>
-
-                <div class="search-box">
-                    <div class="center-search">
-                        <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="Area" >
-                                <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                               itemLabel="#{n}" 
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name" id="search"/>
-                            <h:link value="Search" class="hidden-link1" outcome="search"/>
-                            <h:link class="hidden-link" outcome="search" >
-                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:link>
-                        </h:form>
-
-                    </div>
-                </div>
             </header><!--Header End-->
 
             <div class="head">
@@ -88,7 +55,6 @@
                     <div class="heading_div">
                         <h2>Please fill this form, we will call you back as soon as Possible (during working hours) </h2>
                     </div>
-
                     <h:form>
                         <h:panelGrid columns="2">
                             <h:outputLabel value="Name: " for="name" />
