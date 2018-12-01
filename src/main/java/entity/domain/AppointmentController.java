@@ -65,7 +65,9 @@ public class AppointmentController implements Serializable {
 
     public String toClinic(Hospital hospital) {
         this.hospital = hospital;
-        prepareCreate();
+        if (current == null) {
+            prepareCreate();
+        }
         current.setHospital(hospital);
         return "clinics";
     }

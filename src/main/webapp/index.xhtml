@@ -81,9 +81,9 @@
                             </h:selectOneMenu>
                             <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
                             <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
-                            <h:link class="hidden-link" outcome="#{appointmentController.findHospitalsByName()}" >
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:link>
+                            </h:commandLink>
                         </h:form>
 
                     </div>
