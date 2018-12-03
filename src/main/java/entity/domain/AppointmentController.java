@@ -63,6 +63,11 @@ public class AppointmentController implements Serializable {
         return "search";
     }
 
+    public String findHospitalsByInArabicName() {
+        hospitals = hospitalFacade.findHospitalsByName(hospital.getInArabic());
+        return "search_ar";
+    }
+
     public String toClinic(Hospital hospital) {
         this.hospital = hospital;
         if (current == null) {
@@ -70,6 +75,15 @@ public class AppointmentController implements Serializable {
         }
         current.setHospital(hospital);
         return "clinics";
+    }
+
+    public String toClinicArabic(Hospital hospital) {
+        this.hospital = hospital;
+        if (current == null) {
+            prepareCreate();
+        }
+        current.setHospital(hospital);
+        return "clinics_ar";
     }
 
     public Hospital getHospital() {
@@ -169,8 +183,11 @@ public class AppointmentController implements Serializable {
         }
     }
 
-    public String toAppointment() {
-        return "appointment.xhtml";
+    public String toAppointment(String appoint) {
+        if (appoint.equals("english")) {
+            return "appointment.xhtml";
+        }
+        return "appointment_ar.xhtml";
     }
 
     public String prepareEdit() {

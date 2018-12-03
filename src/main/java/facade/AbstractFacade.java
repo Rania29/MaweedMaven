@@ -46,6 +46,12 @@ public abstract class AbstractFacade<T> {
                 .setParameter("name", name)
                 .getResultList();
     }
+    
+    public List<T> findHospitalsByInArabic(String name) {
+        return getEntityManager().createNamedQuery("Hospital.findByInArabicName")
+                .setParameter("name", name)
+                .getResultList();
+    }
 
     public Object findFirstImage(Hospital hospital) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
