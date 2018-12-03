@@ -4,49 +4,47 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Nov 19, 2018, 8:33:21 PM
+    Created on : Nov 29, 2018, 6:56:54 PM
     Author     : Nooshi
 */
-.header-top{
-    margin: 0 auto;
-    text-align: center;
-}
+
+
 div.logo{
     width: 100%;
+    height: auto;
     display: block;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
+
 .head{
     clear: both;
     display: block ;
     margin: 0 auto;
     text-align: center;
-    width: 50%;
-    padding: 5px 0px;
+    width: 450px;
+}
+.heading{
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+
 }
 
-.heading_div{ 
-    display: inline-block;  
+.reg_form {
     height: inherit;
-    width: auto;
-    line-height: 25px;
-}
-.heading_div h2{
-    font-size: 16px;
-    color: #013069;
-}
-
-.contact_form {
-    height: inherit;
-    width: 100%;
+    width: fit-content;
     display: inline-block;
     text-align: left;
     border: 1px solid #013069;
+    border-radius: 5px;
     padding: 5px;
-    line-height: 40px;
+    line-height: 45px;
 }
 
-.contact_form input[type=text], select, textarea {
-    width: 300px;
+.reg_form input[type=text], input[type=password] {
+    
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -54,20 +52,27 @@ div.logo{
     margin-bottom: 2px;
     resize: vertical;
     font-size: 14px;
-}
-.check_box{
-    float: left;
-    line-height: 20px;
+    float: right;
 }
 
-.contact_form label{
-    color: #013069;
+.fix{
+    overflow-wrap: break-word;
+    font-size: 14px;
+    font-weight: normal;
+    color: black;
 }
-
+.lnk{
+    font-size: 14px;
+    text-decoration: none;
+    color: #55A6D7;
+}
+.lnk:hover{
+    text-decoration: underline;
+    color: #cc0033;
+}
 .app_button{
-    width: 20px;
     height: inherit;
-    padding: 12px;
+    padding: 12px 30px;
     text-decoration: none;
     background-color: #55A6D7;
     border-radius: 5px;
@@ -83,36 +88,66 @@ div.cntr_btn{
     margin: 0 auto;
     text-align: center;
 }
+div.line{
+    width: auto;
+    line-height: 20px;
+}
+
+
 
 /**Media Queries*/
 /* Smartphones (portrait and landscape) --------------------------------- */
 @media screen and (min-width: 320px) and (max-width: 480px){
 
+    div.logo{
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
     .head{
         clear: both;
+        width: 100%;
+    }
+    .reg_form{
         width: 95%;
     }
-  
-
-    .contact_form input[type=text], select, textarea {
+    .reg_form input[type=text]{
         width: 100%;
-        
+    }
+    .reg_form output{
+        font-size: 14px;
+    }
+    footer{
+        position: inherit;
     }
 }
 @media screen and (min-width: 481px) and (max-width: 599px) {
+
+    div.logo{
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
     .head{
         clear: both;
         width: 90%;
     }
-
+    footer{
+        position: inherit;
+    }
 }
 
 /**Tablet, Ipad (Landscape) and (portrait)**/
 
 @media screen and (min-width: 600px) and (max-width: 1000px){
 
+    div.logo{
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
     .head{
         clear: both;
-        width: 70%;
+        width: 60%;
+    }
+    footer{
+        position: inherit;
     }
 }
