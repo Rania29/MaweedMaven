@@ -37,7 +37,7 @@ h5{
     font-size: 12px;
 }
 .clnk-star-rating{
-     color: orange;
+    color: orange;
 }
 .clnk-div{
     display: inline-block;
@@ -49,6 +49,9 @@ h5{
     border-radius: 5px;
     line-height: 25px;
 }
+.clnk-div a{
+    text-decoration: none;
+}
 
 .clnk-div img{
     width: 150px;
@@ -56,11 +59,4 @@ h5{
     float: right;
     background-color: #FFFFFF;
 }
-/**.clnk-div span{
-    color: #FFFFFF;
-    font-size: 18px;
-    line-height:5px;
-}**/
-.clnk-div a{
-    text-decoration: none;
-}
+
