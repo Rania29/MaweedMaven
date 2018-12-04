@@ -60,7 +60,7 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area.inArabic}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="المنطقه" itemValue=""/>
                                 <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
                                                itemLabel="#{n}" 
@@ -100,7 +100,7 @@
 
             <div>
                 <h1 class="clinic-name">
-                    مركز الخليج للأسنان
+                      #{appointmentController.hospital.inArabic}
                 </h1>
             </div>
             <div class="item">
@@ -111,7 +111,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>زورو موقعنا</p>
-                            <span>المطار القديم</span>
+                            <span>#{appointmentController.hospital.area.inArabic}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -120,7 +120,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>للإتصال بنا</p>
-                            <span>44258892</span>
+                            <span>#{appointmentController.hospital.phoneNo}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -129,7 +129,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>لإرسال رسالة</p>
-                            <span>gulfdental@hotmail.com</span>
+                            <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -138,15 +138,15 @@
                         </div>
                         <div class="clnk-info">
                             <p>ساعات العمل</p>
-                            <span>السبت-الخميس: 8صباحا- 10مساء</span>
+                            <span>#{appointmentController.hospital.workingDaysHoursArabic}</span>
                         </div>
                     </div>
 
                     <div>
                         <div class="appoinment-btn">
-                            <form action="appointment.xhtml">
-                                <input type="submit" value="طلب موعد" name="req-apointmnt"/>
-                            </form>
+                            <h:form>
+                                <h:commandButton action="#{appointmentController.toAppointment()}" value="طلب موعد"/>
+                            </h:form>
                         </div>
                     </div>
 
@@ -160,7 +160,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>زورو موقعنا</p>
-                            <span>المطار القديم</span>
+                            <span>#{appointmentController.hospital.area.inArabic}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -169,7 +169,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>للإتصال بنا</p>
-                            <span>44258892</span>
+                            <span>#{appointmentController.hospital.phoneNo}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -178,7 +178,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>لإرسال رسالة</p>
-                            <span>gulfdental@hotmail.com</span>
+                            <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -186,15 +186,15 @@
                             <img class="centered" src="resources/interface/hours.png" alt=""/>
                         </div>
                         <div class="clnk-info">
-                            <p>ساعات العمل</p>
-                            <span>السبت-الخميس:8 صباحا- 10 مساء</span>
+                            <p>#{appointmentController.hospital.workingDaysHoursArabic}</p>
+                            <span></span>
                         </div>
                     </div>
                     <div>
                         <div class="appoinment-btn">
-                            <form action="appointment.xhtml">
-                                <input type="submit" value="طلب موعد" name="req-apointmnt"/>
-                            </form>
+                            <h:form>
+                                <h:commandButton action="#{appointmentController.toAppointment()}" value="طلب موعد"/>
+                            </h:form>
                         </div>
                     </div>
                 </div>

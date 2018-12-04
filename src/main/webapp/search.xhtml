@@ -78,19 +78,26 @@
         </header><!--Header End-->
 
         <nav class="navbar">
-            <ul>
-                <li><a  href="index.xhtml">Home</a></li>
-                <li><a href="#" style="color: #445268">Categories</a>
-                    <ul>
-                        <li><a href="categories-xhtml/heart.xhtml">Heart</a></li>
-                    </ul>
-                </li>
-                <li><a  href="about.xhtml">About Us</a></li>
-                <li><a  href="contact.xhtml">Contact</a></li>
-                <li><a  href="help.xhtml">Help</a></li>
-            </ul>
-        </nav><!--Navigation bar End-->
-
+                <ul>
+                    <li><a  href="index.xhtml">Home</a></li>
+                    <li><a href="#" class="dropcat">Categories</a>
+                        <ul>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
+                                                       value="#{c.name}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                    <li><a  href="about.xhtml">About Us</a></li>
+                    <li><a  href="contact.xhtml">Contact</a></li>
+                    <li><a  href="help.xhtml">Help</a></li>
+                </ul>
+            </nav><!--Navigation bar End-->
+            
         <div class="main_div">
             <h5>Search Result......</h5>
             <div class="result">
