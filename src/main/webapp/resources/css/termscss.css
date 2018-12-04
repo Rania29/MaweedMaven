@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 3, 2018, 2:15:18 PM
+    Author     : Nooshi
+*/
+
+html, page{
+    box-sizing: border-box;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+div.terms-container{
+    line-height: 25px;
+}
+h1{
+    font-size: 30px;
+    padding:10px 0px;
+}
+/**logo image**/
+div.logo{
+    width: 100%;
+    height: inherit;
+    margin: 0 auto;
+    text-align: center;
+}
+.logo img{
+    /*margin: 0px 40px;*/
+    width: 220px; 
+    height: 69px;
+    vertical-align: middle;
+    margin-bottom: 10px;
+}
+ul{
+    list-style-type: square;
+}
+div.back-btn{
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+.back-btn a{
+    background-color: #55A6D7;
+    padding: 14px 16px;
+    border: none;
+    border-radius: 5px;
+    color: whitesmoke;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media screen and (min-width: 481px) and (max-width: 599px) {
+
+    .help-div{
+        width: 100%;
+        height: auto;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+}

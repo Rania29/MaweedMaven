@@ -19,6 +19,9 @@ div.logo-div{
     margin: 0 auto;
     text-align: center;
 }
+p, ul li{
+    font-size: 20px;
+}
 .logo-div img{
     width: 220px;
     height: 69px;
@@ -42,9 +45,7 @@ div.header h1{
     padding-top: 5px;
     padding-bottom:  5px;
 }
-.h3{
-    color: red;
-}
+
 div.back-btn{
     margin: 0 auto;
     text-align: center;
