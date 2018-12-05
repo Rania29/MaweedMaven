@@ -146,7 +146,7 @@
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
-                                <h:commandButton action="#{appointmentController.toAppointment()}" value="Request Appointment"/>
+                                <h:commandButton action="#{appointmentController.toAppointment('english')}" value="Request Appointment"/>
                             </h:form>
                         </div>
                     </div>
@@ -193,9 +193,9 @@
                     </div>
                     <div>
                         <div class="appoinment-btn">
-                            <form action="appointment.xhtml">
-                                <input type="submit" value="Request Appointment" name="req-apointmnt" action="#{appointmentController.toAppointment()}"/>
-                            </form>
+                            <h:form>
+                                <h:commandButton action="#{appointmentController.toAppointment('english')}" value="Request Appointment"/>
+                            </h:form>
                         </div>
                     </div>
                 </div>

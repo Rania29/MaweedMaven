@@ -88,7 +88,7 @@ public class CategoryController implements Serializable {
             }
         }
         current = (Category) ejbFacade.findCatByName(name);
-        return "category_arabic";
+        return "category_ar";
     }
 
 //    public String toCategoryArabic(Object obj) {
