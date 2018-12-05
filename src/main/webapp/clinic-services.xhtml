@@ -23,7 +23,7 @@
 
             gtag('config', 'UA-129442662-1');
         </script>
-        
+
     </h:head>
     <h:body>
         <div>
@@ -34,9 +34,9 @@
                     <a href="clinic-services.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="signin.xhtml">SignIn</a> 
-                    <a id="separator">|</a>
-                    <a href="registration.xhtml">Register</a>
+                    <h:link outcome="/signin" value="Sign In"/>
+                    <a class="separator">|</a>
+                    <h:link outcome="#{userauthController.findCurrentPage('/registration')}" value="Register"/>
                 </div>
 
             </div>
@@ -61,18 +61,18 @@
 
                 <div class="search-box">
                     <div class="center-search">
-                        <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                        <h:form id="search-form" class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreaName()}" var="n"
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
                                                itemLabel="#{n}" 
                                                itemValue="#{n}"/>
                             </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name" id="search"/>
-                            <h:link value="Search" class="hidden-link1" outcome="search"/>
-                            <h:link class="hidden-link" outcome="search" >
+                            <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:link>
+                            </h:commandLink>
                         </h:form>
 
                     </div>
@@ -100,7 +100,7 @@
             </nav><!--Navigation bar End-->
             <div>
                 <h1 class="clinic-name">
-                    Al-Gulf Dental Center
+                    #{appointmentController.hospital.name}
                 </h1>
             </div>
             <div class="item">
@@ -111,7 +111,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Visit Our Location</p>
-                            <span>Old Airport</span>
+                            <span>#{appointmentController.hospital.area.getName()}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -120,7 +120,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Give Us a Call</p>
-                            <span>44258892</span>
+                            <span>#{appointmentController.hospital.phoneNo}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -129,7 +129,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Send Us a Message</p>
-                            <span>gulfdental@hotmail.com</span>
+                            <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -138,18 +138,16 @@
                         </div>
                         <div class="clnk-info">
                             <p>Opening Hours</p>
-                            <span>sat-to-thur: 8Am-to-10PM</span>
+                            <span>#{appointmentController.hospital.workingDaysHours}</span>
                         </div>
                     </div>
-
                     <div>
                         <div class="appoinment-btn">
-                            <form action="appointment.xhtml">
-                                <input type="submit" value="Request Appointment" name="req-apointmnt"/>
-                            </form>
+                            <h:form>
+                                <h:commandButton action="#{appointmentController.toAppointment()}" value="Request Appointment"/>
+                            </h:form>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -161,7 +159,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Visit Our Location</p>
-                            <span>Old Airport</span>
+                            <span>#{appointmentController.hospital.area.getName()}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -170,7 +168,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Give Us a Call</p>
-                            <span>44258892</span>
+                            <span>#{appointmentController.hospital.phoneNo}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -179,7 +177,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>Send Us a Message</p>
-                            <span>gulfdental@hotmail.com</span>
+                            <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -188,14 +186,14 @@
                         </div>
                         <div class="clnk-info">
                             <p>Opening Hours</p>
-                            <span>sat-to-thur: 8Am-to-10PM</span>
+                            <span>#{appointmentController.hospital.workingDaysHours}</span>
                         </div>
                     </div>
                     <div>
                         <div class="appoinment-btn">
-                            <form action="appointment.xhtml">
-                                <input type="submit" value="Request Appointment" name="req-apointmnt"/>
-                            </form>
+                            <h:form>
+                                <h:commandButton action="#{appointmentController.toAppointment()}" value="Request Appointment"/>
+                            </h:form>
                         </div>
                     </div>
                 </div>
@@ -207,31 +205,26 @@
             <div class="service-pic">
                 <ul>
                     <li>
-                        <img src="resources/interface/molar-and-roots.png" alt=""/>
-                        <span><br />Root Canal</span>
-                        <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />discount</span>
-                    </li>
-                                        <li>
-                        <img src="resources/interface/molar-and-roots.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
                         <span style="color: #00cc99;"><br />discount</span>
                     </li>
                     <li>
-                        <img src="resources/interface/molar-and-roots.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
                         <span style="color: #00cc99;"><br />discount</span>
                     </li>
                     <li>
-                        <img src="resources/interface/molar-and-roots.png" alt=""/>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
                         <span style="color: #00cc99;"><br />discount</span>
                     </li>
                     <li>
-                        <img src="resources/interface/molar-crown.png" alt=""/>
+                        <span><br />Root Canal</span>
+                        <span><br />250QR</span>
+                        <span style="color: #00cc99;"><br />discount</span>
+                    </li>
+                    <li>
                         <span><br />Root Canal</span>
                         <span><br />250QR</span>
                         <span style="color: #00cc99;"><br />discount</span>
@@ -262,26 +255,25 @@
 
             <footer>
                 <div class="upper-footer">
-                    <div class="footer-list">
-                        <ul class="footer-ul">
-                            <li>
-                                <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
-                            </li>
-                            <li>
-                                <a href="uesr_agreement.xhtml">User Agreement</a>
-                            </li>
-                            <li>
-                                <a href="help.xhtml">Help</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <ul class="footer-ul">
+                        <li>
+                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                            <a class="separator">|</a>
+                        </li>
+                        <li>
+                            <a href="privacy-policy.xhtml">Privacy Policy</a>
+                            <a class="separator">|</a>
+                        </li>
+                        <li>
+                            <a href="help.xhtml">Help</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="lower-footer">
                     <h2>Maweed</h2>
                     <h6>Copyright 2018 | All rights reserved.</h6>
                 </div>
             </footer>
-
         </div>
     </h:body>
 </html>

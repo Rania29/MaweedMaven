@@ -16,13 +16,6 @@ div.service-pic{
     margin-left: 2px;
 }
 
-.service-pic img{
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    padding: 2px;
-}
- 
 .service-pic ul li{
     display: inline-block;
     margin-right: 2px;
