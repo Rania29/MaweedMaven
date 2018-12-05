@@ -61,7 +61,9 @@ public class CategoryController implements Serializable {
     }
 
     public List<Category> findCategories() {
-        return ejbFacade.findCategoriesSorted();
+        List<Category> cats = ejbFacade.findCategoriesSorted();
+//        System.out.println("findCategories.................... " + cats);
+        return cats;
     }
 
     public String toCategory(Category category) {
@@ -73,11 +75,10 @@ public class CategoryController implements Serializable {
                 hospitals.add(o.getHospital());
             }
         }
-//        System.out.println("toCategory.................... ");
         current = (Category) ejbFacade.findCatByName(name);
         return "category?faces-redirect=true";
     }
-    
+
     public String toCategoryArabic(Category category) {
         String name = category.getName();
         List<Clinic> clinics = clinicFacade.findClinicByCat(category);
@@ -90,12 +91,6 @@ public class CategoryController implements Serializable {
         current = (Category) ejbFacade.findCatByName(name);
         return "category_ar";
     }
-
-//    public String toCategoryArabic(Object obj) {
-//        String name = ((Category) obj).getName();
-//        current = (Category) ejbFacade.findCatByName(name);
-//        return "category_arabic?faces-config=true";
-//    }
 
     public PaginationHelper getPagination() {
         if (pagination == null) {

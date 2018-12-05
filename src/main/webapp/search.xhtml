@@ -95,14 +95,20 @@
             <h5>Search Result......</h5>
             <div class="result">
                 <div class="result_items">
-                    <c:forEach items="#{appointmentController.hospitals}" var="h">
-                        <div class="clnk-div">
-                            <h:link outcome="#{appointmentController.toClinic (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/></h:link>
-                            <h:link outcome="#{appointmentController.toClinic (h)}"><span class="clnk-name">#{h.name}</span></h:link>
-                            <span class="clnk-location">#{h.area.name}</span>
-                            <span class="clnk-star-rating">Star rating goes here</span>
-                        </div>
-                    </c:forEach>
+                    <h:form>
+                        <c:forEach items="#{appointmentController.hospitals}" var="h">
+                            <div class="clnk-div">
+                                <h:commandLink action="#{appointmentController.toClinic (h)}">
+                                    <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/>
+                                </h:commandLink >
+                                <h:commandLink action="#{appointmentController.toClinic (h)}">
+                                    <span class="clnk-name">#{h.name}</span>
+                                </h:commandLink >
+                                <span class="clnk-location">#{h.area.name}</span>
+                                <span class="clnk-star-rating">Star rating goes here</span>
+                            </div>
+                        </c:forEach>
+                    </h:form>
                 </div>
             </div>
         </div>

@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>نتائج البحث</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -58,7 +59,7 @@
             <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="المنطقه" itemValue=""/>
                                 <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
                                                itemLabel="#{n}" 
@@ -100,22 +101,20 @@
             <h5>عرض نتائج البحث  </h5>
             <div class="result">
                 <div class="result_items">
-                    <div class="clnk-div">
-                        <a href="clinics_ar.xhtml">
-                            <img src="resources/interface/gulf.jpg" alt=""/><br />
-                            <span class="clnk-name">مركز الخليج للأسناان</span><br />
-                            <span class="clnk-location">الهلال</span><br />
-                            <span class="clnk-star-rating">تقييم النجوم يوضع هنا</span>
-                        </a>
-                    </div>
-                    <div class="clnk-div">
-                        <a href="#">
-                            <img src="resources/interface/gulf.jpg" alt=""/><br />
-                            <span class="clnk-name">الإسم</span><br />
-                            <span class="clnk-location">الموقع</span><br />
-                            <span class="clnk-star-rating">تقييم النجوم</span>
-                        </a>
-                    </div>
+                    <h:form>
+                        <c:forEach items="#{appointmentController.hospitals}" var="h">
+                            <div class="clnk-div">
+                                <h:commandLink action="#{appointmentController.toClinicArabic(h)}">
+                                    <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/>
+                                </h:commandLink >
+                                <h:commandLink action="#{appointmentController.toClinicArabic(h)}">
+                                    <span class="clnk-name">#{h.inArabic}</span>
+                                </h:commandLink >
+                                <span class="clnk-location">#{h.area.inArabic}</span>
+                                <span class="clnk-star-rating">Star rating goes here</span>
+                            </div>
+                        </c:forEach>
+                    </h:form>
                 </div>
             </div>
         </div>

@@ -69,23 +69,23 @@ public class UserauthController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "List?faces-redirect=true";
     }
 
     public String prepareView() {
         current = (UserAuth) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "View?faces-redirect=true";
     }
 
     public String prepareCreate() {
         current = new UserAuth();
         selectedItemIndex = -1;
-        return "/registration";
+        return "/registration?faces-redirect=true";
     }
 
     public String findCurrentPage(String page) {
-        currentPage = FacesContext.getCurrentInstance().getViewRoot().getViewId();
+        currentPage = FacesContext.getCurrentInstance().getViewRoot().getViewId() + "?faces-redirect=true";
         return page;
     }
 

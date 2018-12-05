@@ -78,7 +78,13 @@ public class HospitalimageController implements Serializable {
     }
 
     public String findFirstImage(Hospital hospital) {
-        return ((HospitalImage) (ejbFacade.findFirstImage(hospital))).getImage();
+        String image;
+        try {
+            image = ((HospitalImage) (ejbFacade.findFirstImage(hospital))).getImage();
+        } catch (NullPointerException e) {
+            return "resources/interface/ambulance32.png";
+        }
+        return image;
     }
 
     public String create() {

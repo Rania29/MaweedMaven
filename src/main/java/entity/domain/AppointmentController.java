@@ -54,18 +54,19 @@ public class AppointmentController implements Serializable {
     }
 
     public List<Hospital> getHospitals() {
-//        hospitals = hospitalFacade.findAll();
         return hospitals;
     }
 
     public String findHospitalsByName() {
+        System.out.println("findHospitalsByName................................... " + hospital.getName());
         hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
-        return "search";
+        System.out.println("findHospitalsByName................................... " + hospitals);
+        return "search?faces-redirect=true";
     }
 
     public String findHospitalsByInArabicName() {
         hospitals = hospitalFacade.findHospitalsByName(hospital.getInArabic());
-        return "search_ar";
+        return "search_ar?faces-redirect=true";
     }
 
     public String toClinic(Hospital hospital) {
@@ -74,7 +75,7 @@ public class AppointmentController implements Serializable {
             prepareCreate();
         }
         current.setHospital(hospital);
-        return "clinics";
+        return "clinics?faces-redirect=true";
     }
 
     public String toClinicArabic(Hospital hospital) {
@@ -83,7 +84,7 @@ public class AppointmentController implements Serializable {
             prepareCreate();
         }
         current.setHospital(hospital);
-        return "clinics_ar";
+        return "clinics_ar?faces-redirect=true";
     }
 
     public Hospital getHospital() {
@@ -137,19 +138,19 @@ public class AppointmentController implements Serializable {
 
     public String prepareList() {
         recreateModel();
-        return "List";
+        return "List?faces-redirect=true";
     }
 
     public String prepareView() {
         current = (Appointment) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
-        return "View";
+        return "View?faces-redirect=true";
     }
 
     public String prepareCreate() {
         current = new Appointment();
         selectedItemIndex = -1;
-        return "appointment";
+        return "appointment?faces-redirect=true";
     }
 
     public String create() {
@@ -185,9 +186,9 @@ public class AppointmentController implements Serializable {
 
     public String toAppointment(String appoint) {
         if (appoint.equals("english")) {
-            return "appointment.xhtml";
+            return "appointment.xhtml?faces-redirect=true";
         }
-        return "appointment_ar.xhtml";
+        return "appointment_ar.xhtml?faces-redirect=true";
     }
 
     public String prepareEdit() {
@@ -209,7 +210,7 @@ public class AppointmentController implements Serializable {
         try {
             getFacade().edit(current);
 //            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("AppointmentUpdated"));
-            return "View";
+            return "View?faces-redirect=true";
         } catch (Exception e) {
 //            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
@@ -230,11 +231,11 @@ public class AppointmentController implements Serializable {
         recreateModel();
         updateCurrentItem();
         if (selectedItemIndex >= 0) {
-            return "View";
+            return "View?faces-redirect=true";
         } else {
             // all items were removed - go back to list
             recreateModel();
-            return "List";
+            return "List?faces-redirect=true";
         }
     }
 

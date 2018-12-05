@@ -1,6 +1,5 @@
 package facade;
 
-import entity.domain.Area;
 import entity.domain.Category;
 import entity.domain.Clinic;
 import entity.domain.Hospital;
@@ -34,20 +33,26 @@ public abstract class AbstractFacade<T> {
     }
 
     public List<String> hospitalAutocomplete() {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findHospitalNames").getResultList();
     }
-    
+
     public List<String> hospitalAutocompleteArabic() {
-        return getEntityManager().createNamedQuery("Hospital.findHospitalNamesArabic").getResultList();
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
+        return getEntityManager()
+                .createNamedQuery("Hospital.findHospitalNamesArabic")
+                .getResultList();
     }
-    
+
     public List<T> findHospitalsByName(String name) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findByName")
                 .setParameter("name", name)
                 .getResultList();
     }
-    
+
     public List<T> findHospitalsByInArabic(String name) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findByInArabicName")
                 .setParameter("name", name)
                 .getResultList();
@@ -55,10 +60,16 @@ public abstract class AbstractFacade<T> {
 
     public Object findFirstImage(Hospital hospital) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
-        return getEntityManager()
-                .createNamedQuery("HospitalImage.findByHospital")
-                .setParameter("hospital", hospital)
-                .getResultList().get(0);
+        Object o;
+        try {
+            o = getEntityManager()
+                    .createNamedQuery("HospitalImage.findByHospital")
+                    .setParameter("hospital", hospital)
+                    .getResultList().get(0);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return null;
+        }
+        return o;
     }
 
     public Object findCatByName(String name) {
