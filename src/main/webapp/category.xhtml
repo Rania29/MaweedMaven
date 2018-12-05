@@ -56,25 +56,25 @@
                 <a href="help.xhtml" class="item_menu">Help</a>
             </nav>
 
-            <!--Search Div-->
-            <div class="search-box">
-                <div class="center-search">
-                    <h:form class="form-style">
-                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="Area" itemValue=""/>
-                            <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                           itemLabel="#{n}" 
-                                           itemValue="#{n}"/>
-                        </h:selectOneMenu>
-                        <h:inputText a:placeholder="Search by name" id="search"/>
-                        <h:link value="Search" class="hidden-link1" outcome="search"/>
-                        <h:link class="hidden-link" outcome="search" >
-                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                        </h:link>
-                    </h:form>
+           <!--Search box section-->
+                <div class="search-box">
+                    <div class="center-search">
+                        <h:form id="search-form" class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="Area" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
+                                               itemLabel="#{n}" 
+                                               itemValue="#{n}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                            </h:commandLink>
+                        </h:form>
 
+                    </div>
                 </div>
-            </div>
         </header><!--Header End-->
 
         <nav class="navbar">

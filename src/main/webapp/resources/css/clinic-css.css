@@ -151,36 +151,6 @@ div.clnk-container{
     background-color: #bde0f5;
 }
 
-
-/*
-.clinic-pic ul li a{
-    text-decoration: none;
-    text-align: center;
-}
-
-.clinic-pic ul li{
-    height: auto;
-    width: 125px;
-    display:inline-block;
-    padding: 5px;
-    margin: 0 2px;
-    font-size: 15px;
-    line-height: normal;
-    border: 1px solid #55A6D7;
-    border-radius: 3px;
-}
-.clinic-pic ul li img{
-    vertical-align: middle;
-    border-radius: 10px;
-}
-.clinic-pic ul li span{
-    color: #445268;
-}
-.clinic-pic ul li a:hover span{
-    color: #55A6D7;
-    text-decoration: underline;
-}*/
-
 /**Map*/
 #map{
     width:100%;

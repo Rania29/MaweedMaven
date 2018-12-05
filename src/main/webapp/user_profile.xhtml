@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Personal Page | Maweed</title>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/registercss.css" rel="stylesheet" type="text/css"/>
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-129442662-1');
+        </script>
+    </h:head>
+    <h:body>
+        <div>
+            <div class="top-div">
+                <div class="left-div">
+                    <a href="index_ar.xhtml">عربي</a>
+                    <a class="separator">|</a>
+                    <a href="index.xhtml">English</a>
+                </div>
+                <div class="right-div">
+                    <h3>#{userauthController.selected}</h3>
+                </div>
+            </div>
+            <div class="logo">
+                <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+            </div> 
+            <div class="profile_div">
+                <h3>Profile Details</h3>
+                <h4>User account information</h4>
+                <form class="profile">
+                    <label>First name</label>
+                    <input type="text" name="first name" value="" /><br />
+                    <lable>Last Name</lable>
+                    <input type="text" name="last name" value="" /><br />
+                    <label>Email</label>
+                    <input type="text" name="email" value="" /><br />
+                    <lable>Password</lable>
+                    <input type="password" name="password" value="" /><br />
+                    <lable>Confirm Password</lable>
+                    <input type="password" name="confirm password" value="" /><br />
+                    <lable>Gender</lable>
+                    <input type="radio" name="gender" value="Male"/>Male 
+                    <input type="radio" name="gender" value="Female"/>Female
+                    <input type="radio" name="gender" value="Other"/>Others<br />
+                    <lable>Birthday</lable>
+                    <input type="text" name="birthday" value="" /><br />
+                    <lable>Phone number</lable>
+                    <input type="text" name="phone no" value="" /><br />
+                    <div class="cntr_btn">
+                        <a href="#" class="app_button">Update</a>
+                        <a href="index.xhtml" class="app_button cancle_button">Cancle</a>
+                        <a href="#" class="app_button" style="background-color: #cc3300;">Logout</a>
+                    </div>
+                </form>
+
+            </div>
+            <footer>
+                <div class="upper-footer">
+                    <ul class="footer-ul">
+                        <li>
+                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                            <a class="separator">|</a>
+                        </li>
+                        <li>
+                            <a href="privacy-policy.xhtml">Privacy Policy</a>
+                            <a class="separator">|</a>
+                        </li>
+                        <li>
+                            <a href="help.xhtml">Help</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lower-footer">
+                    <h2>Maweed</h2>
+                    <h6>Copyright 2018 | All rights reserved.</h6>
+                </div>
+            </footer>
+        </div><!--Main div end-->
+
+    </h:body>
+</html>
+
