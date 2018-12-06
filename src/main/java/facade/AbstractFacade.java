@@ -49,7 +49,7 @@ public abstract class AbstractFacade<T> {
     
     public List<T> findHospitalsByInArabic(String name) {
         return getEntityManager().createNamedQuery("Hospital.findByInArabicName")
-                .setParameter("name", name)
+                .setParameter("inArabic", name)
                 .getResultList();
     }
 
