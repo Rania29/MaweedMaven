@@ -105,10 +105,9 @@
                     <h:form>
                         <c:forEach items="#{categoryController.hospitals}" var="h">
                             <div class="clnk-div">
-                                <h:commandLink action="#{appointmentController.toClinic (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/></h:commandLink>
+                                <h:commandLink action="#{appointmentController.toClinic (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/></h:commandLink>
                                 <h:commandLink action="#{appointmentController.toClinic (h)}"><span class="clnk-name">#{h.name}</span></h:commandLink>
                                 <span class="clnk-location">#{h.area.name}</span>
-                                <span class="clnk-star-rating">Star rating goes here</span>
                             </div>
                         </c:forEach>
                     </h:form>

@@ -30,13 +30,13 @@ h5{
     display: block;
     text-decoration: none;
     color: #55A6D7;
-    font-size: 16px;
+    font-size: 14px;
     overflow-wrap: break-word;
 }
 .clnk-location{
     display: block;
     color: #013069;
-    font-size: 15px;
+    font-size: 12px;
 }
 .clnk-star-rating{
     display: block;
