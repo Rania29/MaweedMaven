@@ -65,7 +65,7 @@ public class AppointmentController implements Serializable {
     }
 
     public String findHospitalsByInArabicName() {
-        hospitals = hospitalFacade.findHospitalsByName(hospital.getInArabic());
+        hospitals = hospitalFacade.findHospitalsByInArabic(hospital.getInArabic());
         return "search_ar?faces-redirect=true";
     }
 
