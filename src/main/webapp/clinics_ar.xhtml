@@ -62,7 +62,7 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area.inArabic}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="المنطقه" itemValue=""/>
                                 <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
                                                itemLabel="#{n}" 

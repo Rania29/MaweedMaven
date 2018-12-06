@@ -55,52 +55,65 @@
                 <a href="contact.xhtml" class="item_menu">Contact Us</a>
                 <a href="help.xhtml" class="item_menu">Help</a>
             </nav>
-            <div class="search-box">
-                <div class="center-search">
-                    <h:form class="form-style">
-                        <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="Area" itemValue=""/>
-                            <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                           itemLabel="#{n}" 
-                                           itemValue="#{n}"/>
-                        </h:selectOneMenu>
-                        <h:inputText a:placeholder="Search by name" id="search"/>
-                        <h:link value="Search" class="hidden-link1" outcome="search"/>
-                        <h:link class="hidden-link" outcome="search" >
-                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                        </h:link>
-                    </h:form>
-
+            <!--Search box section-->
+                <div class="search-box">
+                    <div class="center-search">
+                        <h:form id="search-form" class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="Area" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
+                                               itemLabel="#{n}" 
+                                               itemValue="#{n}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                            </h:commandLink>
+                        </h:form>
+                    </div>
                 </div>
-            </div>
         </header><!--Header End-->
 
         <nav class="navbar">
-            <ul>
-                <li><a  href="index.xhtml">Home</a></li>
-                <li><a href="#" style="color: #445268">Categories</a>
-                    <ul>
-                        <li><a href="categories-xhtml/heart.xhtml">Heart</a></li>
-                    </ul>
-                </li>
-                <li><a  href="about.xhtml">About Us</a></li>
-                <li><a  href="contact.xhtml">Contact</a></li>
-                <li><a  href="help.xhtml">Help</a></li>
-            </ul>
-        </nav><!--Navigation bar End-->
-
+                <ul>
+                    <li><a  href="index.xhtml">Home</a></li>
+                    <li><a href="#" class="dropcat">Categories</a>
+                        <ul>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
+                                                       value="#{c.name}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                    <li><a  href="about.xhtml">About Us</a></li>
+                    <li><a  href="contact.xhtml">Contact</a></li>
+                    <li><a  href="help.xhtml">Help</a></li>
+                </ul>
+            </nav><!--Navigation bar End-->
+            
         <div class="main_div">
             <h5>Search Result......</h5>
             <div class="result">
                 <div class="result_items">
-                    <c:forEach items="#{appointmentController.hospitals}" var="h">
-                        <div class="clnk-div">
-                            <h:link outcome="#{appointmentController.toClinic (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/></h:link>
-                            <h:link outcome="#{appointmentController.toClinic (h)}"><span class="clnk-name">#{h.name}</span></h:link>
-                            <span class="clnk-location">#{h.area.name}</span>
-                            <span class="clnk-star-rating">Star rating goes here</span>
-                        </div>
-                    </c:forEach>
+                    <h:form>
+                        <c:forEach items="#{appointmentController.hospitals}" var="h">
+                            <div class="clnk-div">
+                                <h:commandLink action="#{appointmentController.toClinic (h)}">
+                                    <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/>
+                                </h:commandLink >
+                                <h:commandLink action="#{appointmentController.toClinic (h)}">
+                                    <span class="clnk-name">#{h.name}</span>
+                                </h:commandLink >
+                                <span class="clnk-location">#{h.area.name}</span>
+                                <span class="clnk-star-rating">Star rating goes here</span>
+                            </div>
+                        </c:forEach>
+                    </h:form>
                 </div>
             </div>
         </div>

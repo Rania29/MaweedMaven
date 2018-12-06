@@ -54,7 +54,9 @@ h5{
     width: 150px;
     height: auto;
 }
-
+.clnk-div a{
+    text-decoration: none;
+}
 
 .clnk-div img{
     width: 130px;

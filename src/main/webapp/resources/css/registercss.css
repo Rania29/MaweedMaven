@@ -93,6 +93,44 @@ div.line{
     line-height: 20px;
 }
 
+/**---------------------User Profile page style------------------*/
+.right-div h3{
+    color: #F2F3F7;
+    font-size: 16px;
+    margin: 0 auto;
+    vertical-align: middle;
+}
+.profile_div{
+    clear: both;
+    display: block ;
+    margin: 0 auto;
+    text-align: center;
+    width: 450px;
+    line-height: 30px;
+}
+
+.profile {
+    height: inherit;
+    width: fit-content;
+    display: inline-block;
+    text-align: left;
+    border: 1px solid #013069;
+    border-radius: 5px;
+    padding: 5px;
+    line-height: 45px;
+}
+.profile input[type=text], input[type=password] {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 2px;
+    resize: vertical;
+    font-size: 14px;
+    float: right;
+}
+
 
 
 /**Media Queries*/

@@ -19,6 +19,9 @@ div.logo-div{
     margin: 0 auto;
     text-align: center;
 }
+div.terms-container{
+    line-height: 25px;
+}
 p, ul li{
     font-size: 20px;
 }
