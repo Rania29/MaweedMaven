@@ -8,7 +8,7 @@
         <title>طلب موعد</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/appointment-css.css" rel="stylesheet" type="text/css"/>
         <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
         <script>
@@ -20,12 +20,22 @@
 
             gtag('config', 'UA-129442662-1');
         </script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <h:outputStylesheet library="css" name="dtpicker.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"/>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css"/>
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
         <script>
             $(function () {
-                $(".datepicker").datepicker({dateFormat: 'dd/mm/yy'});
+                $('.datepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    orientation: "left bottom",
+                    forceParse: false,
+                    autoclose: true,
+                    todayHighlight: true,
+                    toggleActive: true
+                });
             });
         </script>
     </h:head>
@@ -33,30 +43,75 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="index.xhtml">عربي</a>
-                    <a id="separator">|</a>
+                    <a href="appointment_ar.xhtml">عربي</a>
+                    <a class="separator">|</a>
                     <a href="appointment.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="signin_ar.xhtml">دخول</a>
-                    <a id="separator">|</a>
-                    <a href="registration_ar.xhtml">تسجيل</a>
+                    <a href="signin.xhtml">Signin</a>
+                    <a class="separator">|</a>
+                    <a href="registration.xhtml">Register</a>
                 </div>
-
             </div>
 
             <header class="header-top">
                 <div class="logo">
-                    <a href="index_ar.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+                    <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
                 </div> 
             </header><!--Header End-->
 
             <div class="head">
+
                 <div class="contact_form">
                     <div class="heading_div">
+                        <h3 style="color: #00cc99; font-size: 30px; text-align: center;">#{appointmentController.hospital.inArabic}</h3>
                         <h2>قم بتعبئة نموذج طلب الموعد، وسوف نقوم بالرد عليك خلال أيام وساعات العمل </h2>
                     </div>
-                    
+                    <h:form>
+                        <h:panelGrid columns="2">
+                            <h:inputText id="name" value="#{appointmentController.selected.name}" title="Name" />
+                            <h:outputLabel value=" :الاسم" for="name" />
+                            <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="Phone" />
+                            <h:outputLabel value=" :التلفون" for="phone" />
+                            <h:inputText id="email" value="#{appointmentController.selected.email}" title="Email" />
+                            <h:outputLabel value=" :الايميل" for="email" />
+                            <h:inputText autocomplete="off" class="datepicker" id="DOB" value="#{appointmentController.selected.DOB}" title="Date of Birth">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:inputText>
+                            <h:outputLabel value=" :تاريخ الميلاد" for="DOB" />
+                            <h:panelGroup layout="block" class="check_box">
+                                <h:selectManyCheckbox layout="pageDirection"  id="days" value="#{appointmentController.days}" >
+                                    <f:selectItems value="#{daysOfWeekController.days}" 
+                                                   var="c"
+                                                   itemLabel="#{c.inArabic}" 
+                                                   itemValue="#{c.id}"/>
+                                </h:selectManyCheckbox >
+                            </h:panelGroup>
+                            <h:outputLabel value=" :الايام المفضله" for="days" />
+                            <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="Hospital" >
+                                <f:selectItems value="#{hospitalController.itemsAvailableSelectOneAr}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value=" :المستشفى" for="hospital" />
+                            <h:selectOneRadio id="gender" value="#{appointmentController.selected.gender}" title="Gender" >
+                                <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
+                            </h:selectOneRadio>
+                            <h:outputLabel value=" :النوع" for="gender" />
+                            <h:selectOneRadio id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="Preferred time Morning/Evening}" >
+                                <f:selectItems value="#{shiftController.itemsAvailableSelectMany}"/>
+                            </h:selectOneRadio>
+                            <h:outputLabel value=" :افضلية المواعيد" for="morningOrEvening" />
+                            <h:selectOneRadio id="doctorGender" value="#{appointmentController.selected.doctorGender}" title="Preferred Doctor Gender" >
+                                <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
+                            </h:selectOneRadio>
+                            <h:outputLabel value=" :نوع الطبيب" for="doctorGender" />
+                            <h:inputTextarea id="description" value="#{appointmentController.selected.description}" title="Description" />
+                            <h:outputLabel value=" :المشكله" for="description" />
+                        </h:panelGrid>
+                        <div class="cntr_btn">
+                            <h:commandLink action="#{appointmentController.create}" value="اطلب موعد" class="app_button"/>
+                            <h:link outcome="clinics" value="عوده" class="app_button cancle_button"/>
+                        </div>
+                    </h:form>
                 </div>
 
             </div>
@@ -84,4 +139,3 @@
         </div>
     </h:body>
 </html>
-
