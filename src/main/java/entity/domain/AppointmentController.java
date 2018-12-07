@@ -297,7 +297,7 @@ public class AppointmentController implements Serializable {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
-
+    
     public Appointment getAppointment(java.lang.Long id) {
         return ejbFacade.find(id);
     }
