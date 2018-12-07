@@ -97,7 +97,7 @@
             </nav><!--Navigation bar End-->
             
         <div class="main_div">
-            <h5>Search Result......</h5>
+            <h5>Search Result for #{appointmentController.hospitals}</h5>
             <div class="result">
                 <div class="result_items">
                     <h:form>
@@ -110,7 +110,6 @@
                                     <span class="clnk-name">#{h.name}</span>
                                 </h:commandLink >
                                 <span class="clnk-location">#{h.area.name}</span>
-                                <span class="clnk-star-rating">Star rating goes here</span>
                             </div>
                         </c:forEach>
                     </h:form>

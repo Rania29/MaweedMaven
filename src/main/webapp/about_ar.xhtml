@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>عن موعد</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -47,13 +48,21 @@
 
             <nav class="navbar">
                 <ul>
-                    <li><a href="index_ar.xhtml">الرئيسية</a></li>
-                    <li><a href="#">الأقسام</a>
+                    <li><a  href="index.xhtml">الرئيسية</a></li>
+                    <li><a href="#" style="color: #445268" class="dropcat">الأقسام</a>
                         <ul>
-                            <li><a href="categories-html/medical-care.xhtml">أطفال</a></li>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" 
+                                                       value="#{c.inArabic}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+
                         </ul>
                     </li>
-                    <li><a  href="about_ar.xhtml">عن موعد</a></li>
+                    <li><a  href="about_ar.xhtml">عن الموقع</a></li>
                     <li><a  href="contact_ar.xhtml">التواصل</a></li>
                     <li><a  href="help_ar.xhtml">مساعدة</a></li>
                 </ul>
@@ -74,7 +83,7 @@
                 <div class="about-me">
                     <div class="self-img">
                         <div class="center-img">
-                            <img src="resources/images/2013-09-11 07.39.00.png" alt=""/>
+                            <!--<img src="resources/images/2013-09-11 07.39.00.png" alt=""/>-->
                         </div>
                     </div>
                     <div class="self-info">

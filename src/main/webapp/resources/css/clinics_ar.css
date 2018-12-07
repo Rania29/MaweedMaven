@@ -95,6 +95,33 @@ div.clnk-container{
 
 }
 /*-------Clinics Div------*/
+.clinic{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5px;   
+}
+.clinic-item {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 8px 0px;
+    text-align: center;
+    width: 122px;
+    border: 2px solid #bde0f5;
+    border-radius: 3px;
+    line-height: normal;
+}
+
+.clinic-item a{
+    text-decoration: none;
+    color: #013069; 
+    font-size: 15px;
+    font-weight: bold;   
+}
+.clinic-item:hover {
+    background-color: #bde0f5;
+}
 
 .clinic-pic ul li a{
     text-decoration: none;

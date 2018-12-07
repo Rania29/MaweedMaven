@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Contact Us</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -80,7 +81,14 @@
                     <li><a  href="index.xhtml">Home</a></li>
                     <li><a href="#" class="dropcat">Categories</a>
                         <ul>
-                            <li><a href="categories-xhtml/heart.xhtml">Heart</a></li>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
+                                                       value="#{c.name}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </li>
                     <li><a  href="about.xhtml">About Us</a></li>
@@ -88,6 +96,7 @@
                     <li><a  href="help.xhtml">Help</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
+            
             <div class="head">                 
                     <div class="contact_form">
                         <div class="heading_div">
