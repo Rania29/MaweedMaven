@@ -219,7 +219,7 @@ div.center-search{
 
 /**drop down un ordered list*/
 .navbar ul li ul {
-    display: none;
+    display: block;
     position: absolute;
     background-color: #55A6D7;
     border-top: none;
