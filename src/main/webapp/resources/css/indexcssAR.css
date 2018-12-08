@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : Nooshi
 */
 /**Body*/
+
+
 *, *::before, *::after{
     box-sizing: border-box;;
 }
@@ -202,7 +204,7 @@ div.center-search{
 /**anchor in navbar*/
 .navbar ul li a{
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
     height: 50px;
     margin: 0 auto;
     vertical-align: middle;
@@ -236,9 +238,9 @@ div.center-search{
 /**style drop down list elemnts*/
 
 .navbar ul li ul li {
-    width: 150px;
+    width: 180px;
     height: auto;
-    padding-right: 5px;
+    padding: 3px 0px;
     
 }
 .dropcat{

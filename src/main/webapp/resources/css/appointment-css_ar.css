@@ -4,9 +4,12 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Nov 19, 2018, 8:33:21 PM
+    Created on : Dec 8, 2018, 12:33:56 PM
     Author     : Nooshi
 */
+body, html{
+    direction: rtl;
+}
 .header-top{
     margin: 0 auto;
     text-align: center;
@@ -44,13 +47,13 @@ div.contact_form{
     height: inherit;
     width: 100%;
     display: inline-block;
-    text-align: left;
+    text-align: right;
     border: 1px solid #013069;
     line-height: 35px;
     padding: 8px;
 }
 
-.contact_form input[type="text"], select, textarea {
+.contact_form input[type="text"], select, textarea{
     width: 300px;
     height: 30px;
     padding: 8px;
@@ -63,10 +66,14 @@ div.contact_form{
 }
 .contact_form textarea{
     height: auto;
+    line-height: 20px;
 }
 .check_box{
-    float: left;
+    float: right;
     line-height: 20px;
+}
+.contact_form input[type="checkbox"]{
+    margin: 0 0 0 5px;
 }
 .contact_form input[type="radio"]{
    margin: 0 5px 0 5px;
@@ -74,7 +81,7 @@ div.contact_form{
 
 .contact_form label{
     color: #013069;
-    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .app_button{
@@ -111,7 +118,7 @@ div.cntr_btn{
     }
   
 
-    .contact_form input[type=text], select, textarea {
+    .contact_form input[type="text"], select, textarea {
         width: 100%;
         
     }
