@@ -8,6 +8,8 @@
         <title>Request Appointment</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <h:outputStylesheet library="css" name="dtpicker.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/appointment-css.css" rel="stylesheet" type="text/css"/>
         <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
@@ -20,8 +22,7 @@
 
             gtag('config', 'UA-129442662-1');
         </script>
-        <h:outputStylesheet library="css" name="dtpicker.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"/>
+        <!--Bootstrap javascripts-->
         <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css"/>
@@ -48,7 +49,7 @@
                     <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="signin.xhtml">Signin</a>
+                    <a href="signin.xhtml">Sign in</a>
                     <a class="separator">|</a>
                     <a href="registration.xhtml">Register</a>
                 </div>
@@ -61,7 +62,7 @@
             </header><!--Header End-->
 
             <div class="head">
-                
+
                 <div class="contact_form">
                     <div class="heading_div">
                         <h3 style="color: #00cc99; font-size: 30px; text-align: center;">#{appointmentController.hospital.name}</h3>
