@@ -145,7 +145,7 @@
                     <c:forEach items="#{categoryController.findCategories()}" var="c">
                         <div class="cat-item">
                             <h:form>
-                                <h:commandLink action="#{categoryController.toCategory(c)}"> 
+                                <h:commandLink action="#{categoryController.toCategoryArabic(c)}"> 
                                     <img src="#{fn:substringAfter(c.image, '/')}" alt=""/><br />
                                     <span>#{c.inArabic}</span>
                                 </h:commandLink>

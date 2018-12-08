@@ -27,16 +27,15 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="contact_ar.xhtml">عربي</a>
+                    <a href="index_ar.xhtml">عربي</a>
                     <a id="separator">|</a>
                     <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="singin_ar.xhtml">دخول</a> 
-                    <a id="separator">|</a>
-                    <a href="registeration_ar.xhtml">تسجيل</a>
+                    <h:link outcome="/signin_ar" value="دخول"/>
+                    <a class="separator">|</a>
+                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل"/>
                 </div>
-
             </div>
             <header class="header-top">
                 <div class="logo">

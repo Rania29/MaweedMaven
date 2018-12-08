@@ -54,12 +54,20 @@ div.back-btn{
     text-decoration: none;
 }
 
+/* Smartphones (portrait and landscape) --------------------------------- */
+@media screen and (min-width: 320px) and (max-width: 480px){
+    div.logo{
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+}
 /* 
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
   ##Screen = B/w 481px to 767px
 */
 @media screen and (min-width: 481px) and (max-width: 599px) {
-
+ 
     .help-div{
         width: 100%;
         height: auto;
