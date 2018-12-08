@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : Nooshi
 */
 /**Body*/
+
+
 *, *::before, *::after{
     box-sizing: border-box;;
 }
@@ -202,7 +204,8 @@ div.center-search{
 /**anchor in navbar*/
 .navbar ul li a{
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
+
     height: 50px;
     margin: 0 auto;
     vertical-align: middle;
