@@ -29,12 +29,12 @@ h5{
 }
 .clnk-name{
     color: #55A6D7;
-    font-size: 14px;
+    font-size: 16px;
 
 }
 .clnk-location{
     color: #013069;
-    font-size: 12px;
+    font-size: 14px;
 }
 .clnk-star-rating{
     color: orange;
@@ -52,7 +52,9 @@ h5{
 .clnk-div a{
     text-decoration: none;
 }
-
+.clnk-div:hover .clnk-name{
+    text-decoration: underline;
+}
 .clnk-div img{
     width: 150px;
     height: 100px;

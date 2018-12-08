@@ -106,12 +106,11 @@
                             <div class="clnk-div">
                                 <h:commandLink action="#{appointmentController.toClinicArabic(h)}">
                                     <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/>
-                                </h:commandLink >
+                                </h:commandLink ><br />
                                 <h:commandLink action="#{appointmentController.toClinicArabic(h)}">
                                     <span class="clnk-name">#{h.inArabic}</span>
-                                </h:commandLink >
+                                </h:commandLink ><br />
                                 <span class="clnk-location">#{h.area.inArabic}</span>
-                                <span class="clnk-star-rating">Star rating goes here</span>
                             </div>
                         </c:forEach>
                     </h:form>

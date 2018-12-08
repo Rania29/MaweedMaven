@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>تواصل معنا </title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -74,17 +75,26 @@
             </header><!--Header End-->
             <nav class="navbar">
                 <ul>
-                    <li><a  href="index_ar.xhtml">الرئيسية</a></li>
-                    <li><a href="#" class="dropcat">الأقسام</a>
+                    <li><a  href="index.xhtml">الرئيسية</a></li>
+                    <li><a href="#" style="color: #445268" class="dropcat">الأقسام</a>
                         <ul>
-                            <li><a href="categories-xhtml/heart.xhtml">Heart</a></li>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" 
+                                                       value="#{c.inArabic}"/> 
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+
                         </ul>
                     </li>
-                    <li><a  href="about_ar.xhtml">عن موعد</a></li>
+                    <li><a  href="about_ar.xhtml">عن الموقع</a></li>
                     <li><a  href="contact_ar.xhtml">التواصل</a></li>
                     <li><a  href="help_ar.xhtml">مساعدة</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
+            
             <div class="head">
                 <div>                 
                     <div class="contact_form">
