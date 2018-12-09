@@ -99,12 +99,12 @@
                             </h:selectOneRadio>
                             <h:outputLabel value="Preferred Timing: " for="morningOrEvening" />
                             <h:selectOneRadio id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="Preferred time Morning/Evening}" >
-                                <f:selectItem itemLabel="Any" itemValue="" />
+                                <f:selectItem itemLabel="Any" itemValue=""/>
                                 <f:selectItems value="#{shiftController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Preferred Doctor gender: " for="doctorGender" />
                             <h:selectOneRadio id="doctorGender" value="#{appointmentController.selected.doctorGender}" title="Preferred Doctor Gender" >
-                                <f:selectItem itemLabel="Any" itemValue="" />
+                                <f:selectItem itemLabel="Any" itemValue=""/>
                                 <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Description" for="description" />

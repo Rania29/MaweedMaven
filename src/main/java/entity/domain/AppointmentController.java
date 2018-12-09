@@ -11,6 +11,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -163,16 +164,17 @@ public class AppointmentController implements Serializable {
         }
         try {
             current.getDaysOfWeeks().forEach(p -> item += p.getName() + ", ");
-            current.setId(null);
-            current.setHospital(hospital);
             getFacade().create(current);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("We will get back to you at the soonest " + current.getName()));
+            String doctorGender = current.getDoctorGender() == null ? "Any" : current.getDoctorGender().getName();
+            String shift = current.getMorningOrEvening() == null ? "Any" : current.getMorningOrEvening().getName();
             String msg = "Name: " + current.getName() + "\n"
                     + "Email: " + current.getEmail() + "\n"
                     + "Phone: " + current.getPhone() + "\n"
                     + "Date of Birth: " + dob + " (dd/mm/yyyy)" + "\n"
-                    + "Preferred Doctor: " + current.getDoctorGender().getName() + "\n"
-                    + "Gender: " + current.getGender().getName() + "\n"
+                    + "Gender: " + current.getGender() + "\n"
+                    + "Preferred Doctor: " + doctorGender + "\n"
+                    + "Preferred timing: " + shift + "\n"
                     + "Preferred Days: " + item + "\n"
                     + "Problem: : " + current.getDescription();
             SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, current.getHospital().getEmail());
@@ -297,7 +299,7 @@ public class AppointmentController implements Serializable {
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
-    
+
     public Appointment getAppointment(java.lang.Long id) {
         return ejbFacade.find(id);
     }
