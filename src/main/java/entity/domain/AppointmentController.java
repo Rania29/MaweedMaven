@@ -11,7 +11,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -57,11 +56,11 @@ public class AppointmentController implements Serializable {
     public List<Hospital> getHospitals() {
         return hospitals;
     }
-
+   
     public String findHospitalsByName() {
-        System.out.println("findHospitalsByName................................... " + hospital.getName());
+//        System.out.println("findHospitalsByName................................... " + hospital.getName());
         hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
-        System.out.println("findHospitalsByName................................... " + hospitals);
+//        System.out.println("findHospitalsByName................................... " + hospitals);
         return "search?faces-redirect=true";
     }
 
@@ -149,6 +148,7 @@ public class AppointmentController implements Serializable {
     }
 
     public String prepareCreate() {
+        days.clear();
         current = new Appointment();
         selectedItemIndex = -1;
         return "appointment?faces-redirect=true";
@@ -173,12 +173,13 @@ public class AppointmentController implements Serializable {
                     + "Phone: " + current.getPhone() + "\n"
                     + "Date of Birth: " + dob + " (dd/mm/yyyy)" + "\n"
                     + "Gender: " + current.getGender() + "\n"
+                    + "Clinic: " + current.getClinic() + "\n"
                     + "Preferred Doctor: " + doctorGender + "\n"
                     + "Preferred timing: " + shift + "\n"
                     + "Preferred Days: " + item + "\n"
                     + "Problem: : " + current.getDescription();
             SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, current.getHospital().getEmail());
-            SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, "rania.rabie29@gmail.com");
+//            SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, "rania.rabie29@gmail.com");
             return prepareCreate();
         } catch (Exception e) {
 //            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
