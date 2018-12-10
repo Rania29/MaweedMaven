@@ -31,8 +31,8 @@
                     <a href="registration.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <h:link outcome="/signin_ar" value="دخول"/>
-                    <a class="separator">|</a>
+                    <h:link outcome="/signin_ar" value="دخول "/>
+                    <a class="separator"> | </a>
                     <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل"/>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                                     </h:inputText>
                                     <h:message for="email" style="color: red;"/><br />
                                     <!--<h:outputLabel value="*كلمة السر:" for="password" />-->
-                                    <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{userauthController.selected.password}" title="Password" style="float: right;"
+                                    <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{userauthController.selected.password}" title="Password" style="float: right; width: 300px;"
                                                    required="true" requiredMessage="كلمة السر مطلوبة"/>
                                     <h:message for="password" style="color: red;"/><br />
                                     <!--<h:outputLabel value="*رقم الجوال +974:" for="phone" />-->

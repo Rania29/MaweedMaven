@@ -107,7 +107,7 @@
                                 <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
                             <h:outputLabel value="المشكلة:" for="description" />
-                            <h:inputTextarea id="description" value="#{appointmentController.selected.description}" title="Description" />
+                            <h:inputTextarea rows="3" id="description" value="#{appointmentController.selected.description}" title="Description" />
                         </h:panelGrid>
                         <div class="cntr_btn">
                             <h:commandLink action="#{appointmentController.create}" value="اطلب موعد" class="app_button"/>
