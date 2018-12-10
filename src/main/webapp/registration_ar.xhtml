@@ -1,10 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//AR" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>التسجيل في موقع موعد</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/registercss_ar.css" rel="stylesheet" type="text/css"/>
         <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -17,8 +22,89 @@
         </script>
     </h:head>
     <h:body>
-        <h1>مرحبا بك في موعد</h1>
-        <h2>قم بتسجيل حساب جديد</h2>
+        <div>
+            <header>
+                <div class="top-div">
+                <div class="left-div">
+                    <a href="index_ar.xhtml">عربي</a>
+                    <a id="separator">|</a>
+                    <a href="registration.xhtml">English</a>
+                </div>
+                <div class="right-div">
+                    <h:link outcome="/signin_ar" value="دخول"/>
+                    <a class="separator">|</a>
+                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل"/>
+                </div>
+            </div>
+                <div class="logo">
+                    <a href="index_ar.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                </div> 
+            </header><!--Header End-->
+            <div class="head">
+                <div class='reg_form'>
+                    <f:view>
+                        <h:form>
+                            <h:outputText class='heading' value="تسجيل حساب جديد"/>
+                            <h:panelGrid columns="3" >
+                                <h:panelGroup>
+                                    <!--<h:outputLabel value="*الإسم:" for="name" />-->
+                                    <h:inputText a:placeholder="*الإسم" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
+                                                 required="true" requiredMessage="يجب كتابة الإسم "/>
+                                    <h:message for="name" style="color: red;"/><br />
+                                    <!--<h:outputLabel value="*البريد الإلكتروني:" for="email" />-->
+                                    <h:inputText a:placeholder="*البريد الإلكتروني" validatorMessage="تحقق من صحة صيغة البريد الإلكتروني" autocomplete="off" id="email" value="#{userauthController.selected.email}" title="Email"
+                                                 required="true" requiredMessage="البريد الإلكتروني مطلوب">
+                                        <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                                    </h:inputText>
+                                    <h:message for="email" style="color: red;"/><br />
+                                    <!--<h:outputLabel value="*كلمة السر:" for="password" />-->
+                                    <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{userauthController.selected.password}" title="Password" style="float: right;"
+                                                   required="true" requiredMessage="كلمة السر مطلوبة"/>
+                                    <h:message for="password" style="color: red;"/><br />
+                                    <!--<h:outputLabel value="*رقم الجوال +974:" for="phone" />-->
+                                    <h:inputText a:placeholder="*رقم الهاتف" autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" 
+                                                 required="false" requiredMessage="يجب تعبئة هذا الحقل"/>
+                                    <h:message for="phone" style="color: red;"/><br />
+                                    <div class="cntr_btn">
+                                        <h:commandLink action="#{userauthController.create()}" value="تسجيل" class="app_button"/>
+                                        <h:link outcome="/index" value="إلغاء" class="app_button cancle_button"/><br />
+                                    </div>
+                                    <div class="line">
+                                        <h:outputText class="fix" value="عند تسجيلك، فأنت تقوم بالموافقه على "/> 
+                                        <h:link class='lnk' outcome="/terms-and-conditions-ar" value="الشروط والأحكام "/>
+                                        <h:outputText class='fix' value=" الخاصة بموقع موعد، وكذلك "/>
+                                        <h:link class='lnk' outcome="/privacy-policy-ar" value="سياسة الخصوصية."/>
+                                    </div>
+                                    <h:outputText class="fix" value="تمتلك حساب ؟ "/>
+                                    <h:link class='lnk' outcome="/signin_ar" value="تسجيل دخول"/>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </h:form>
+                    </f:view>
+                </div>
+            </div>
+            <footer>
+                <div class="upper-footer">
+                    <ul class="footer-ul">
+                        <li>
+                            <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>
+                            <a class="separator">|</a>
+                        </li>
+                        <li>
+                            <a href="privacy-policy-ar.xhtml">سياسة الخصوصية</a>
+                            <a class="separator">|</a>
+                        </li>
+                        <li>
+                            <a href="help_ar.xhtml">المساعدة</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lower-footer">
+                    <h2>موعد</h2>
+                    <h6>جميع الحقوق محفوظة | حقوق الطبع 2018.</h6>
+                </div>
+            </footer>
+        </div>
     </h:body>
 </html>
 

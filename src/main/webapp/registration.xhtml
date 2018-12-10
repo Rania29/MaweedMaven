@@ -24,6 +24,18 @@
     <h:body>
         <div>
             <header>
+                <div class="top-div">
+                    <div class="left-div">
+                        <a href="registration_ar.xhtml">عربي</a>
+                        <a class="separator">|</a>
+                        <a href="index.xhtml">English</a>
+                    </div>
+                    <div class="right-div">
+                        <h:link outcome="/signin" value="Sign In"/>
+                        <a class="separator">|</a>
+                        <h:link outcome="#{userauthController.findCurrentPage('/registration')}" value="Register"/>
+                    </div>
+                </div>
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div> 
@@ -35,23 +47,23 @@
                             <h:outputText class='heading' value="ًCreate account"/>
                             <h:panelGrid columns="3" >
                                 <h:panelGroup>
-                                    <h:outputLabel value="*Name: " for="name" />
-                                    <h:inputText autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name" style="width: 300px;"
-                                                 required="true" requiredMessage="Name is required."/>
+                                    <!--<h:outputLabel value="*Name: " for="name" />-->
+                                    <h:inputText a:placeholder="*Name" a:escape="true" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
+                                                 required="true"  requiredMessage=" Name is required." />
                                     <h:message for="name" style="color: red;"/><br />
-                                    <h:outputLabel value="*Email: " for="email" />
-                                    <h:inputText validatorMessage="Email format should be e.g. email@test.com" autocomplete="off" id="email" value="#{userauthController.selected.email}" title="Email" style="width: 300px;"
+                                    <!--<h:outputLabel value="*Email: " for="email" />-->
+                                    <h:inputText a:placeholder="*Email" validatorMessage="Email format should be e.g. email@test.com" autocomplete="off" id="email" value="#{userauthController.selected.email}" title="Email" 
                                                  required="true" requiredMessage="Email is required.">
                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                                     </h:inputText>
                                     <h:message for="email" style="color: red;"/><br />
-                                    <h:outputLabel value="*Password: " for="password" />
-                                    <h:inputSecret id="password" value="#{userauthController.selected.password}" title="Password" style="width: 300px;"
+                                   <!-- <h:outputLabel value="*Password: " for="password" />-->
+                                   <h:inputSecret a:placeholder="*Password" id="password" value="#{userauthController.selected.password}" title="Password" style="float: left;" 
                                                    required="true" requiredMessage="Password is required."/>
-                                    <h:message for="password" style="color: red;"/><br />
-                                    <h:outputLabel value="*PhoneNo: +974" for="phone" />
-                                    <h:inputText autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" style="width: 300px;"
-                                                 required="true" requiredMessage="Phone no. is required."/>
+                                    <h:message  for="password" style="color: red;"/><br />
+                                    <!--<h:outputLabel value="*PhoneNo: +974" for="phone" />-->
+                                    <h:inputText a:placeholder="*Phone no" autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" 
+                                                 required="falce" requiredMessage="Phone no. is required."/>
                                     <h:message for="phone" style="color: red;"/><br />
                                     <div class="cntr_btn">
                                         <h:commandLink action="#{userauthController.create()}" value="Register me" class="app_button"/>

@@ -146,9 +146,15 @@ div.center-search{
     width: 320px;
 }
 .select-style{
+   /* -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;*/
+    text-indent: 0.01px;
     width: 100px;
     height: 40px;
     font-size: 14px;
+    outline: 0;
+    border: 1px solid #445268;
     border-radius: 5px 0 0 5px ;
 }
 .form-style > input, command, select{
@@ -219,7 +225,7 @@ div.center-search{
 
 /**drop down un ordered list*/
 .navbar ul li ul {
-    display: block;
+    display: none;
     position: absolute;
     background-color: #55A6D7;
     border-top: none;
@@ -253,7 +259,7 @@ div.center-search{
 .navbar ul li ul li:hover{
     /*background-color: #5796c8;*/
     background-color: #445268;
-    
+
 }
 
 .navbar ul li ul li:hover a{
@@ -379,6 +385,7 @@ footer{
     height: 50px;
     border-bottom: 1px solid #F2F3F7;
     margin: 0 auto;
+    display: inline-block;
     text-align: center;
 }
 
