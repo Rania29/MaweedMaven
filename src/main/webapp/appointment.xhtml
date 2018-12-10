@@ -93,16 +93,25 @@
                             <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="Hospital" >
                                 <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
                             </h:selectOneMenu>
+                            <h:outputLabel value="Clinic: " for="clinic" />
+                            <h:selectOneMenu id="clinic" value="#{appointmentController.selected.clinic}" title="Hospital" >
+                                <f:selectItems value="#{appointmentController.selected.hospital.clinics}" 
+                                               var="cl"
+                                               itemLabel="#{cl.category.name}" 
+                                               itemValue="#{cl.category.name}"/>
+                            </h:selectOneMenu>
                             <h:outputLabel value="Gender: " for="gender" />
                             <h:selectOneRadio id="gender" value="#{appointmentController.selected.gender}" title="Gender" >
                                 <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Preferred Timing: " for="morningOrEvening" />
                             <h:selectOneRadio id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="Preferred time Morning/Evening}" >
+                                <f:selectItem itemLabel="Any" itemValue=""/>
                                 <f:selectItems value="#{shiftController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Preferred Doctor gender: " for="doctorGender" />
                             <h:selectOneRadio id="doctorGender" value="#{appointmentController.selected.doctorGender}" title="Preferred Doctor Gender" >
+                                <f:selectItem itemLabel="Any" itemValue=""/>
                                 <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Description" for="description" />
