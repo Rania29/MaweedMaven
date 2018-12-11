@@ -106,16 +106,16 @@
                             </h:selectOneRadio>
                             <h:outputLabel value="Preferred Timing: " for="morningOrEvening" />
                             <h:selectOneRadio id="morningOrEvening" value="#{appointmentController.selected.morningOrEvening}" title="Preferred time Morning/Evening}" >
-                                <f:selectItem itemLabel="Any" itemValue=""/>
                                 <f:selectItems value="#{shiftController.itemsAvailableSelectMany}"/>
+                                <f:selectItem itemLabel="Any" itemValue=""/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Preferred Doctor gender: " for="doctorGender" />
                             <h:selectOneRadio id="doctorGender" value="#{appointmentController.selected.doctorGender}" title="Preferred Doctor Gender" >
-                                <f:selectItem itemLabel="Any" itemValue=""/>
                                 <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
+                                <f:selectItem itemLabel="Any" itemValue=""/>
                             </h:selectOneRadio>
                             <h:outputLabel value="Description" for="description" />
-                            <h:inputTextarea id="description" value="#{appointmentController.selected.description}" title="Description" />
+                            <h:inputTextarea rows="3" id="description" value="#{appointmentController.selected.description}" title="Description" />
                         </h:panelGrid>
                         <div class="cntr_btn">
                             <h:commandLink action="#{appointmentController.create}" value="Request Appointment" class="app_button"/>

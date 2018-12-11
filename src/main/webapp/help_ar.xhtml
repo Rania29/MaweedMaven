@@ -28,18 +28,17 @@
                 <div class="left-div">
                     <a href="index_ar.xhtml">عربي</a>
                     <a id="separator">|</a>
-                    <a href="help.xhtml">English</a>
+                    <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="signin_ar.xhtml">دخول</a>
-                    <a id="separator">|</a>
-                    <a href="registration_ar.xhtml">تسجيل</a>
+                    <h:link outcome="/signin_ar" value="دخول"/>
+                    <a class="separator">|</a>
+                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل"/>
                 </div>
-
             </div>
             <header class="header-top">
                 <div class="logo">
-                    <a href="index_ar.html"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+                    <a href="index_ar.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
                 </div> 
 
 
@@ -148,7 +147,7 @@
                             <a class="separator">|</a>
                         </li>
                         <li>
-                            <a href="help.xhtml">المساعدة</a>
+                            <a href="help_ar.xhtml">المساعدة</a>
                         </li>
                     </ul>
                 </div>

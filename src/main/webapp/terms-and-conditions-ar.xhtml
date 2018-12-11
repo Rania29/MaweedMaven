@@ -5,6 +5,8 @@
     <h:head>
         <title>الشروط والأحكام</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/terms_ar_css.css" rel="stylesheet" type="text/css"/>
         <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
         <script>
@@ -23,14 +25,13 @@
                 <div class="left-div">
                     <a href="index_ar.xhtml">عربي</a>
                     <a id="separator">|</a>
-                    <a href="terms_and_conditions.xhtml">English</a>
+                    <a href="privacy-policy.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="signin_ar.xhtml">دخول</a>
-                    <a id="separator">|</a>
-                    <a href="registration_ar.xhtml">تسجيل</a>
+                    <h:link outcome="/signin_ar" value="دخول"/>
+                    <a class="separator">| </a>
+                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل "/>
                 </div>
-
             </div>
             <div  class="logo-div">
                 <a href="index_ar.xhtml">
