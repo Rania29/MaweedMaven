@@ -96,12 +96,13 @@ public class AppointmentController implements Serializable {
         current.setHospital(hospital);
         return "clinics?faces-redirect=true";
     }
-    
+
     public String toServices(Clinic clinic) {
         this.clinic = clinic;
         if (current == null) {
             prepareCreate();
         }
+//        clinicServices.clear();
         clinicServices = clinic.getClinicServices();
         return "clinic-services?faces-redirect=true";
     }
@@ -217,6 +218,8 @@ public class AppointmentController implements Serializable {
     }
 
     public String toAppointment(String appoint) {
+        System.out.println("toAppointment........................ " + clinic.getCategory().getName());
+        System.out.println("toAppointment........................ " + clinic.getClinicServices());
         if (appoint.equals("english")) {
             return "appointment.xhtml?faces-redirect=true";
         }

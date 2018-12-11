@@ -98,6 +98,7 @@
                             </h:selectOneMenu>
                             <h:outputLabel value="Services: " for="services" />
                             <h:selectOneMenu id="services" value="#{appointmentController.selected.clinicservice}" title="services" >
+                                <f:selectItem itemValue="" itemLabel="---"/>
                                 <f:selectItems value="#{appointmentController.clinicServices}" 
                                                var="s"
                                                itemLabel="#{s.serviceList} #{s.price}" 
