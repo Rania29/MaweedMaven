@@ -43,6 +43,9 @@ public class Appointment implements Serializable {
     
     @Basic
     private String clinic;
+    
+    @Basic
+    private String clinicservice;
 
     @Basic
     @Temporal(TemporalType.DATE)
@@ -71,6 +74,14 @@ public class Appointment implements Serializable {
 
     public Long getId() {
         return this.id;
+    }
+
+    public String getClinicservice() {
+        return clinicservice;
+    }
+
+    public void setClinicservice(String clinicservice) {
+        this.clinicservice = clinicservice;
     }
 
     public String getClinic() {

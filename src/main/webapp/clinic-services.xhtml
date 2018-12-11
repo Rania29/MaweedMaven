@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>Clinic Services</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -144,7 +145,7 @@
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
-                                <h:commandButton action="#{appointmentController.toAppointment()}" value="Request Appointment"/>
+                                <h:commandButton action="#{appointmentController.toAppointment('english')}" value="Request Appointment"/>
                             </h:form>
                         </div>
                     </div>
@@ -192,7 +193,7 @@
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
-                                <h:commandButton action="#{appointmentController.toAppointment()}" value="Request Appointment"/>
+                                <h:commandButton action="#{appointmentController.toAppointment('english')}" value="Request Appointment"/>
                             </h:form>
                         </div>
                     </div>
@@ -204,37 +205,13 @@
             </div>
             <div class="service-pic">
                 <ul>
-                    <li>
-                        <span><br />Root Canal</span>
-                        <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />discount</span>
-                    </li>
-                    <li>
-                        <span><br />Root Canal</span>
-                        <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />discount</span>
-                    </li>
-                    <li>
-                        <span><br />Root Canal</span>
-                        <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />discount</span>
-                    </li>
-                    <li>
-                        <span><br />Root Canal</span>
-                        <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />discount</span>
-                    </li>
-                    <li>
-                        <span><br />Root Canal</span>
-                        <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />discount</span>
-                    </li>
-                    <li>
-                        <img src="resources/interface/molar-and-roots.png" alt=""/>
-                        <span><br />Root Canal</span>
-                        <span><br />250QR</span>
-                        <span style="color: #00cc99;"><br />discount</span>
-                    </li>
+                    <c:forEach items="#{appointmentController.clinicServices}" var="s">
+                        <li>
+                            <span><br />#{s.serviceList}</span>
+                            <span><br />#{s.price}</span>
+                            <span style="color: #00cc99;"><br />#{s.discount}</span>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
             <div>
@@ -242,14 +219,13 @@
             </div>
             <div class="doctor-pic">
                 <ul>
-                    <li>
-                        <img src="resources/interface/diseno-de-fondo-de-doctora_1270-62.jpg" alt="doctor-img"/>
-                        <span><br />Dr.Mona<br />Dentist</span>
-                    </li>
-                    <li>
-                        <img src="resources/interface/diseno-de-fondo-de-doctora_1270-62.jpg" alt="doctor-img"/>
-                        <span><br />Doc name<br />Speciality</span>
-                    </li>
+                    <c:forEach items="#{appointmentController.clinic.doctors}" var="d">
+                        <li>
+                            <span><img src="#{fn:substringAfter(d.image, '/')}" alt=""/></span><br />
+                            <span>#{d.name}</span><br />
+                            <span>#{d.qualifications}</span>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
 

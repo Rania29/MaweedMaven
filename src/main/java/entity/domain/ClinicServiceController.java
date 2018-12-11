@@ -5,6 +5,7 @@ import entity.domain.util.PaginationHelper;
 import facade.ClinicServiceFacade;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -59,6 +60,10 @@ public class ClinicServiceController implements Serializable {
             };
         }
         return pagination;
+    }
+
+    public List<ClinicService> findAll() {
+        return ejbFacade.findAll();
     }
 
     public String prepareList() {

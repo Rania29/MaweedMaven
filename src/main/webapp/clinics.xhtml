@@ -46,7 +46,7 @@
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
                 </div> 
-                
+
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
                     <div class="bar1"></div>
@@ -60,7 +60,7 @@
                     <a href="contact.xhtml" class="item_menu">Contact Us</a>
                     <a href="help.xhtml" class="item_menu">Help</a>
                 </nav>
-                
+
                 <!--Search box section-->
                 <div class="search-box">
                     <div class="center-search">
@@ -165,7 +165,7 @@
                             <span>#{appointmentController.hospital.area.getName()}</span>
                         </div>
                     </div>
-                    
+
                     <div class="clnk-widget">
                         <div class="icon">
                             <img src="resources/interface/call.png" alt=""/>
@@ -234,10 +234,12 @@
         <div class="clinic">
             <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
                 <div class="clinic-item">
-                    <a href="clinic-services.xhtml">
-                        <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
-                        <span>#{i.category}</span>
-                    </a>
+                    <h:form>
+                        <h:commandLink action="#{appointmentController.toServices(i)}">
+                            <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
+                            <span>#{i.category}</span>
+                        </h:commandLink>
+                    </h:form>
                 </div>
             </c:forEach>
         </div>
@@ -260,25 +262,25 @@
         </div>
 
         <footer>
-                <div class="upper-footer">
-                    <ul class="footer-ul">
-                        <li>
-                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
-                            <a class="separator">|</a>
-                        </li>
-                        <li>
-                            <a href="privacy-policy.xhtml">Privacy Policy</a>
-                            <a class="separator">|</a>
-                        </li>
-                        <li>
-                            <a href="help.xhtml">Help</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="lower-footer">
-                    <h2>Maweed</h2>
-                    <h6>Copyright 2018 | All rights reserved.</h6>
-                </div>
-            </footer>
+            <div class="upper-footer">
+                <ul class="footer-ul">
+                    <li>
+                        <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                        <a class="separator">|</a>
+                    </li>
+                    <li>
+                        <a href="privacy-policy.xhtml">Privacy Policy</a>
+                        <a class="separator">|</a>
+                    </li>
+                    <li>
+                        <a href="help.xhtml">Help</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="lower-footer">
+                <h2>Maweed</h2>
+                <h6>Copyright 2018 | All rights reserved.</h6>
+            </div>
+        </footer>
     </h:body>
 </html>

@@ -89,16 +89,19 @@
                                                    itemValue="#{c.id}"/>
                                 </h:selectManyCheckbox >
                             </h:panelGroup>
-                            <h:outputLabel value="Hospital: " for="hospital" />
-                            <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="Hospital" >
-                                <f:selectItems value="#{hospitalController.itemsAvailableSelectOne}"/>
-                            </h:selectOneMenu>
                             <h:outputLabel value="Clinic: " for="clinic" />
-                            <h:selectOneMenu id="clinic" value="#{appointmentController.selected.clinic}" title="Hospital" >
+                            <h:selectOneMenu id="clinic" value="#{appointmentController.selected.clinic}" title="clinic" >
                                 <f:selectItems value="#{appointmentController.selected.hospital.clinics}" 
                                                var="cl"
                                                itemLabel="#{cl.category.name}" 
                                                itemValue="#{cl.category.name}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel value="Services: " for="services" />
+                            <h:selectOneMenu id="services" value="#{appointmentController.selected.clinicservice}" title="services" >
+                                <f:selectItems value="#{appointmentController.clinicServices}" 
+                                               var="s"
+                                               itemLabel="#{s.serviceList} #{s.price}" 
+                                               itemValue="#{s.serviceList.name}"/>
                             </h:selectOneMenu>
                             <h:outputLabel value="Gender: " for="gender" />
                             <h:selectOneRadio id="gender" value="#{appointmentController.selected.gender}" title="Gender" >

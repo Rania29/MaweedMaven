@@ -20,10 +20,10 @@ public class ClinicService implements Serializable {
     private Long id;
 
     @Basic
-    private String price;
+    private Double price;
 
     @Basic
-    private String discount;
+    private Double discount;
 
     @ManyToOne
     private Clinic clinic;
@@ -67,19 +67,19 @@ public class ClinicService implements Serializable {
         this.id = id;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return this.price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getDiscount() {
+    public Double getDiscount() {
         return this.discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(Double discount) {
         this.discount = discount;
     }
 

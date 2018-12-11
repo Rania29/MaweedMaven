@@ -33,12 +33,15 @@ public class AppointmentController implements Serializable {
     private Guest guest;
     @Inject
     private Hospital hospital;
+    @Inject
+    private Clinic clinic;
     @EJB
     private DaysOfWeekFacade daysOfWeekFacade;
     @EJB
     private HospitalFacade hospitalFacade;
     private List<String> days;
     private List<Hospital> hospitals;
+    private List<ClinicService> clinicServices;
     private Appointment current;
     private DataModel items = null;
     @EJB
@@ -55,6 +58,22 @@ public class AppointmentController implements Serializable {
 
     public List<Hospital> getHospitals() {
         return hospitals;
+    }
+
+    public List<ClinicService> getClinicServices() {
+        return clinicServices;
+    }
+
+    public void setClinicServices(List<ClinicService> clinicServices) {
+        this.clinicServices = clinicServices;
+    }
+
+    public Clinic getClinic() {
+        return clinic;
+    }
+
+    public void setClinic(Clinic clinic) {
+        this.clinic = clinic;
     }
 
     public String findHospitalsByName() {
@@ -76,6 +95,15 @@ public class AppointmentController implements Serializable {
         }
         current.setHospital(hospital);
         return "clinics?faces-redirect=true";
+    }
+    
+    public String toServices(Clinic clinic) {
+        this.clinic = clinic;
+        if (current == null) {
+            prepareCreate();
+        }
+        clinicServices = clinic.getClinicServices();
+        return "clinic-services?faces-redirect=true";
     }
 
     public String toClinicArabic(Hospital hospital) {
@@ -174,10 +202,11 @@ public class AppointmentController implements Serializable {
                     + "Date of Birth: " + dob + " (dd/mm/yyyy)" + "\n"
                     + "Gender: " + current.getGender() + "\n"
                     + "Clinic: " + current.getClinic() + "\n"
+                    + "Service: " + current.getClinicservice() + "\n"
                     + "Preferred Doctor: " + doctorGender + "\n"
                     + "Preferred timing: " + shift + "\n"
                     + "Preferred Days: " + item + "\n"
-                    + "Problem: : " + current.getDescription();
+                    + "Problem: " + current.getDescription();
             SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, current.getHospital().getEmail());
             SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, "rania.rabie29@gmail.com");
             return prepareCreate();
