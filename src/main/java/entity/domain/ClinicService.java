@@ -8,11 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author sawad
  */
 @Entity
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "ClinicService.findAll", query = "SELECT c FROM ClinicService c")
+    , @NamedQuery(name = "ClinicService.findById", query = "SELECT c FROM ClinicService c WHERE c.id = :id")
+    , @NamedQuery(name = "ClinicService.findServicesByClinic", query = "SELECT c FROM ClinicService c WHERE c.clinic = :clinic")})
 public class ClinicService implements Serializable {
 
     @Id

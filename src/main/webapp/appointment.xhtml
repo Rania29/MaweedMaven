@@ -90,7 +90,7 @@
                                 </h:selectManyCheckbox >
                             </h:panelGroup>
                             <h:outputLabel value="Clinic: " for="clinic" />
-                            <h:selectOneMenu id="clinic" value="#{appointmentController.selected.clinic}" title="clinic" >
+                            <h:selectOneMenu onchange="submit()" valueChangeListener="#{appointmentController.clinicChange}" id="clinic" value="#{appointmentController.selected.clinic}" title="clinic" >
                                 <f:selectItems value="#{appointmentController.selected.hospital.clinics}" 
                                                var="cl"
                                                itemLabel="#{cl.category.name}" 
@@ -123,7 +123,7 @@
                         </h:panelGrid>
                         <div class="cntr_btn">
                             <h:commandLink action="#{appointmentController.create}" value="Request Appointment" class="app_button"/>
-                            <h:link outcome="clinics" value="Back" class="app_button cancle_button"/>
+                            <h:link outcome="clinic-services" value="Back" class="app_button cancle_button"/>
                         </div>
                     </h:form>
                 </div>

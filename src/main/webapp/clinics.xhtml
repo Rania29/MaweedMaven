@@ -243,7 +243,7 @@
             <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
                 <div class="clinic-item">
                     <h:form>
-                        <h:commandLink action="#{appointmentController.toServices(i)}">
+                        <h:commandLink action="#{appointmentController.toServices(i, 'english')}">
                             <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
                             <span>#{i.category}</span>
                         </h:commandLink>
