@@ -59,14 +59,13 @@ public abstract class AbstractFacade<T> {
                 .getResultList();
     }
 
-//    public Object findClinicByHospital(Hospital hospital) {
-//        return getEntityManager().createNamedQuery("Clinic.findClinicByHospital").setParameter("hospital", hospital).getSingleResult();
-//    }
+    public List<T> findClinicByHospital(Hospital hospital) {
+        return getEntityManager().createNamedQuery("Clinic.findClinicByHospital").setParameter("hospital", hospital).getResultList();
+    }
 
 //    public List<T> findServicesByClinic(Clinic clinic) {
 //        return getEntityManager().createNamedQuery("ClinicService.findServicesByClinic").setParameter("clinic", clinic).getResultList();
 //    }
-
     public List<T> findHospitalsByInArabic(String name) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findByInArabicName")
