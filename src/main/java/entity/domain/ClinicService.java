@@ -8,11 +8,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * @author sawad
  */
 @Entity
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "ClinicService.findAll", query = "SELECT c FROM ClinicService c")
+    , @NamedQuery(name = "ClinicService.findById", query = "SELECT c FROM ClinicService c WHERE c.id = :id")
+    , @NamedQuery(name = "ClinicService.findServicesByClinic", query = "SELECT c FROM ClinicService c WHERE c.clinic = :clinic")})
 public class ClinicService implements Serializable {
 
     @Id
@@ -20,10 +28,10 @@ public class ClinicService implements Serializable {
     private Long id;
 
     @Basic
-    private String price;
+    private Double price;
 
     @Basic
-    private String discount;
+    private Double discount;
 
     @ManyToOne
     private Clinic clinic;
@@ -67,19 +75,19 @@ public class ClinicService implements Serializable {
         this.id = id;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return this.price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getDiscount() {
+    public Double getDiscount() {
         return this.discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(Double discount) {
         this.discount = discount;
     }
 

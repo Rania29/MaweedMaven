@@ -4,8 +4,10 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import entity.domain.util.SendMail;
 import facade.AppointmentFacade;
+import facade.ClinicServiceFacade;
 import facade.DaysOfWeekFacade;
 import facade.HospitalFacade;
+import facade.ServiceClinicHospitalVFacade;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -20,6 +22,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
@@ -33,12 +36,19 @@ public class AppointmentController implements Serializable {
     private Guest guest;
     @Inject
     private Hospital hospital;
+    @Inject
+    private Clinic clinic;
     @EJB
     private DaysOfWeekFacade daysOfWeekFacade;
     @EJB
     private HospitalFacade hospitalFacade;
+    @EJB
+    private ClinicServiceFacade clinicServiceFacade;
+    @EJB
+    private ServiceClinicHospitalVFacade serviceClinicHospitalVFacade;
     private List<String> days;
     private List<Hospital> hospitals;
+    private List<ClinicService> clinicServices;
     private Appointment current;
     private DataModel items = null;
     @EJB
@@ -57,10 +67,24 @@ public class AppointmentController implements Serializable {
         return hospitals;
     }
 
+    public List<ClinicService> getClinicServices() {
+        return clinicServices;
+    }
+
+    public void setClinicServices(List<ClinicService> clinicServices) {
+        this.clinicServices = clinicServices;
+    }
+
+    public Clinic getClinic() {
+        return clinic;
+    }
+
+    public void setClinic(Clinic clinic) {
+        this.clinic = clinic;
+    }
+
     public String findHospitalsByName() {
-//        System.out.println("findHospitalsByName................................... " + hospital.getName());
         hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
-//        System.out.println("findHospitalsByName................................... " + hospitals);
         return "search?faces-redirect=true";
     }
 
@@ -76,6 +100,34 @@ public class AppointmentController implements Serializable {
         }
         current.setHospital(hospital);
         return "clinics?faces-redirect=true";
+    }
+
+    public void clinicChange(ValueChangeEvent e) {
+        if (clinicServices != null) {
+            clinicServices.clear();
+        } else {
+            clinicServices = new ArrayList<>();
+        }
+        if (e.getNewValue() == null) {
+            clinicServices.clear();
+        } else {
+            for (ServiceClinicHospitalV ser : serviceClinicHospitalVFacade.findServicesByClinicHospital(e.getNewValue().toString(), hospital.getName())) {
+                clinicServices.add(clinicServiceFacade.find(ser.getId().longValue()));
+            }
+        }
+    }
+
+    public String toServices(Clinic clinic, String language) {
+        this.clinic = clinic;
+        if (current == null) {
+            prepareCreate();
+        }
+        clinicServices = clinic.getClinicServices();
+        if (language.equals("english")) {
+            return "clinic-services?faces-redirect=true";
+        } else {
+            return "clinic-services_ar?faces-redirect=true";
+        }
     }
 
     public String toClinicArabic(Hospital hospital) {
@@ -168,16 +220,40 @@ public class AppointmentController implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("We will get back to you at the soonest " + current.getName()));
             String doctorGender = current.getDoctorGender() == null ? "Any" : current.getDoctorGender().getName();
             String shift = current.getMorningOrEvening() == null ? "Any" : current.getMorningOrEvening().getName();
-            String msg = "Name: " + current.getName() + "\n"
-                    + "Email: " + current.getEmail() + "\n"
-                    + "Phone: " + current.getPhone() + "\n"
-                    + "Date of Birth: " + dob + " (dd/mm/yyyy)" + "\n"
-                    + "Gender: " + current.getGender() + "\n"
-                    + "Clinic: " + current.getClinic() + "\n"
-                    + "Preferred Doctor: " + doctorGender + "\n"
-                    + "Preferred timing: " + shift + "\n"
-                    + "Preferred Days: " + item + "\n"
-                    + "Problem: : " + current.getDescription();
+            String msg = "<table border='1'>"
+                    + "<tr>"
+                    + "<th>Name</th><td>" + current.getName() + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Email</th><td>" + current.getEmail() + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Phone</th><td>" + current.getPhone() + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Date of Birth (dd/mm/yyyy)</th><td>" + dob + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Gender</th><td>" + current.getGender() + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Clinic</th><td>" + current.getClinic() + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Service</th><td>" + current.getClinicservice() + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Preferred Doctor</th><td>" + doctorGender + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Preferred timing</th><td>" + shift + "</td>"
+                    + "<tr>"
+                    + "<th>Preferred Days</th><td>" + item + "</td>"
+                    + "</tr>"
+                    + "<tr>"
+                    + "<th>Problem</th><td>" + current.getDescription() + "</td>"
+                    + "</tr>"
+                    + "</table>";
             SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, current.getHospital().getEmail());
             SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Appointment Request - " + current.getEmail(), msg, "rania.rabie29@gmail.com");
             return prepareCreate();
@@ -188,6 +264,9 @@ public class AppointmentController implements Serializable {
     }
 
     public String toAppointment(String appoint) {
+        if (clinic.getCategory() != null) {
+            current.setClinic(clinic.getCategory().getName());
+        }
         if (appoint.equals("english")) {
             return "appointment.xhtml?faces-redirect=true";
         }

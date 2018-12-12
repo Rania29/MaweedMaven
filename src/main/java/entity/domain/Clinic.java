@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Clinic.findAll", query = "SELECT c FROM Clinic c")
     , @NamedQuery(name = "Clinic.findById", query = "SELECT c FROM Clinic c WHERE c.id = :id")
     , @NamedQuery(name = "Clinic.findByWorkingdayshours", query = "SELECT c FROM Clinic c WHERE c.workingDaysHours = :workingDaysHours")
+    , @NamedQuery(name = "Clinic.findClinicByHospital", query = "SELECT c FROM Clinic c WHERE c.hospital = :hospital")
     , @NamedQuery(name = "Clinic.workingDaysHoursArabic", query = "SELECT c FROM Clinic c WHERE c.workingDaysHoursArabic = :workingDaysHoursArabic")
     , @NamedQuery(name = "Clinic.findClinicByCat", query = "SELECT c FROM Clinic c WHERE c.category = :category")})
 public class Clinic implements Serializable {

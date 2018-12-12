@@ -235,14 +235,16 @@
                 <h1>عياداتنا</h1>
             </div>
             <div class="clinic">
-                <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
-                    <div class="clinic-item">
-                        <a href="clinic-services.xhtml">
-                            <img src="#{fn:substringAfter(i.category.image, '/')}" alt="صورة العيادة"/><br />
-                            <span>#{i.category.getInArabic()}</span>
-                        </a>
-                    </div>
-                </c:forEach>
+            <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
+                <div class="clinic-item">
+                    <h:form>
+                        <h:commandLink action="#{appointmentController.toServices(i, 'arabic')}">
+                            <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
+                            <span>#{i.category}</span>
+                        </h:commandLink>
+                    </h:form>
+                </div>
+            </c:forEach>
             </div>
 
             <div>

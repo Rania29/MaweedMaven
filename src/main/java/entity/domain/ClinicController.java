@@ -27,6 +27,7 @@ public class ClinicController implements Serializable {
     private facade.ClinicFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private Hospital hospital;
 
     public ClinicController() {
     }

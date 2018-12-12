@@ -3,11 +3,14 @@ package entity.domain.util;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
 public class SendMail {
 
@@ -34,7 +37,12 @@ public class SendMail {
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(receiverEmail));
             message.setSubject(title);
-            message.setContent(content, "text/plain; charset=UTF-8");
+            Multipart mp = new MimeMultipart();
+            MimeBodyPart htmlPart = new MimeBodyPart();
+            htmlPart.setContent(content, "text/html");
+            mp.addBodyPart(htmlPart);
+            message.setContent(mp);
+//            message.setContent(content, "text/plain; charset=UTF-8");
 //            message.setText(content);
 
             Transport.send(message);
