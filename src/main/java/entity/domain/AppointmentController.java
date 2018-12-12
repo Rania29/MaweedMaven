@@ -4,7 +4,6 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import entity.domain.util.SendMail;
 import facade.AppointmentFacade;
-import facade.ClinicFacade;
 import facade.ClinicServiceFacade;
 import facade.DaysOfWeekFacade;
 import facade.HospitalFacade;
@@ -47,8 +46,6 @@ public class AppointmentController implements Serializable {
     private ClinicServiceFacade clinicServiceFacade;
     @EJB
     private ServiceClinicHospitalVFacade serviceClinicHospitalVFacade;
-    @EJB
-    private ClinicFacade clinicFacade;
     private List<String> days;
     private List<Hospital> hospitals;
     private List<ClinicService> clinicServices;
@@ -87,9 +84,7 @@ public class AppointmentController implements Serializable {
     }
 
     public String findHospitalsByName() {
-//        System.out.println("findHospitalsByName................................... " + hospital.getName());
         hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
-//        System.out.println("findHospitalsByName................................... " + hospitals);
         return "search?faces-redirect=true";
     }
 
@@ -108,13 +103,18 @@ public class AppointmentController implements Serializable {
     }
 
     public void clinicChange(ValueChangeEvent e) {
-        clinicServices.clear();
-        for (ServiceClinicHospitalV ser : serviceClinicHospitalVFacade.findServicesByClinicHospital(e.getNewValue().toString(), hospital.getName())) {
-            clinicServices.add(clinicServiceFacade.find(ser.getId().longValue()));
+        if (clinicServices != null) {
+            clinicServices.clear();
+        } else {
+            clinicServices = new ArrayList<>();
         }
-        System.out.println("clinicChange.................. " + e.getNewValue().toString());
-        System.out.println("clinicChange.................. " + clinicServices);
-
+        if (e.getNewValue() == null) {
+            clinicServices.clear();
+        } else {
+            for (ServiceClinicHospitalV ser : serviceClinicHospitalVFacade.findServicesByClinicHospital(e.getNewValue().toString(), hospital.getName())) {
+                clinicServices.add(clinicServiceFacade.find(ser.getId().longValue()));
+            }
+        }
     }
 
     public String toServices(Clinic clinic, String language) {
@@ -122,7 +122,6 @@ public class AppointmentController implements Serializable {
         if (current == null) {
             prepareCreate();
         }
-//        clinicServices.clear();
         clinicServices = clinic.getClinicServices();
         if (language.equals("english")) {
             return "clinic-services?faces-redirect=true";
@@ -242,9 +241,9 @@ public class AppointmentController implements Serializable {
     }
 
     public String toAppointment(String appoint) {
-        System.out.println("toAppointment........................ " + clinic.getCategory().getName());
-        System.out.println("toAppointment........................ " + clinic.getClinicServices());
-        current.setClinic(clinic.getCategory().getName());
+        if (clinic.getCategory() != null) {
+            current.setClinic(clinic.getCategory().getName());
+        }
         if (appoint.equals("english")) {
             return "appointment.xhtml?faces-redirect=true";
         }

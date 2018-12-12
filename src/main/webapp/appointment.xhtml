@@ -91,6 +91,7 @@
                             </h:panelGroup>
                             <h:outputLabel value="Clinic: " for="clinic" />
                             <h:selectOneMenu onchange="submit()" valueChangeListener="#{appointmentController.clinicChange}" id="clinic" value="#{appointmentController.selected.clinic}" title="clinic" >
+                                <f:selectItem itemValue="" itemLabel="---"/>
                                 <f:selectItems value="#{appointmentController.selected.hospital.clinics}" 
                                                var="cl"
                                                itemLabel="#{cl.category.name}" 
