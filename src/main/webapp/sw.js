@@ -5,7 +5,7 @@
  */
 /*self.addEventListener('fetch', (event) => {});*/
 
-importScripts('/cache-polyfill.js');
+/*importScripts('/cache-polyfill.js');
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
@@ -18,10 +18,10 @@ self.addEventListener('install', function(e) {
        '/resources/indexcss.css',
        /*'/javascript/main.min.js',*/
       /* '/sounds/airhorn.mp3'*/
-     ]);
-   })
- );
-});
+    /* ]);*/
+  /* })*/
+/* );*/
+/*});*/
 
 self.addEventListener('fetch', function(event) {
  console.log(event.request.url);
