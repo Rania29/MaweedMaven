@@ -39,7 +39,7 @@ public class SendMail {
             message.setSubject(title);
             Multipart mp = new MimeMultipart();
             MimeBodyPart htmlPart = new MimeBodyPart();
-            htmlPart.setContent(content, "text/html");
+            htmlPart.setContent(content, "text/html; charset=UTF-8");
             mp.addBodyPart(htmlPart);
             message.setContent(mp);
 //            message.setContent(content, "text/plain; charset=UTF-8");

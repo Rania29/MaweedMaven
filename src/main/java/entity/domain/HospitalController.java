@@ -191,6 +191,8 @@ public class HospitalController implements Serializable {
         return "List";
     }
 
+//    public void findFirst
+    
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
