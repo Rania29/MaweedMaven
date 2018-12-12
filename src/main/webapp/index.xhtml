@@ -9,16 +9,12 @@
        xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>Maweed</title>
-        <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi"  /> 
+        <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
         <meta name="mobile-web-app-capable" content="yes"/>
-        <!--<link rel="shortcut icon" sizes="192x192" href="/android-chrome-192x192.png"/>-->
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
         <link rel="manifest" href="/site.webmanifest"/>
-        <!--<link rel="manifest" href="manifest.json"/>-->
-        <meta name="apple-mobile-web-app-title" content="Maweed"/>
-        <meta name="application-name" content="Maweed"/>
         <meta name="msapplication-TileColor" content="#fafafa"/>
         <meta name="theme-color" content="#ffffff"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
@@ -44,16 +40,13 @@
                 });
             });
         </script>
-        <link rel="manifest" href="/manifest.json"/>
-        <script type="text/javascript">
+        <script>
             if ('serviceWorker' in navigator) {
-                console.log("Will the service worker register?");
-                navigator.serviceWorker.register('sw.js')
-                        .then(function (reg) {
-                            console.log("Yes, it did.");
-                        }).catch(function (err) {
-                    console.log("No it didn't. This happened:", err)
-                });
+                navigator.serviceWorker
+                        .register('/sw.js')
+                        .then(function () {
+                            console.log("Service Worker Registered");
+                        });
             }
         </script>
     </h:head>
