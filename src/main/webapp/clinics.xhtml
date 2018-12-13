@@ -213,6 +213,16 @@
 
             <!--Slide show section-->
             <div class="slides_container" >
+                <c:forEach items="#{categoryController.findCategories()}" var="c">
+                    <div class="cat-item">
+                        <h:form>
+                            <h:commandLink action="#{categoryController.toCategory(c)}"> 
+                                <img class="mySlides" src="#{fn:substringAfter(c.image, '/')}" style="height: 100%;width: 100%;"/>
+                            </h:commandLink>
+                        </h:form>
+                    </div>
+                </c:forEach>
+
                 <a href="#">
                     <img class="mySlides" src="resources/interface/img1.jpg" style="height: 100%;width: 100%;"/>
                 </a>
