@@ -51,6 +51,11 @@ public abstract class AbstractFacade<T> {
                 .getResultList();
     }
 
+    public Object findHospitalByName(String name) {
+        System.out.println("findHospitalByName.......................................... " + name);
+        return getEntityManager().createNamedQuery("Hospital.findByName").setParameter("name", name).getSingleResult();
+    }
+    
     public List<T> findServicesByClinicHospital(String clinic, String hospital) {
         return getEntityManager()
                 .createNamedQuery("ServiceClinicHospitalV.findServicesByClinicHospital")

@@ -4,6 +4,7 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.HospitalImageFacade;
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -24,6 +25,8 @@ public class HospitalimageController implements Serializable {
     private DataModel items = null;
     @EJB
     private facade.HospitalImageFacade ejbFacade;
+    @EJB
+    private facade.HospitalFacade hospitalFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -75,6 +78,18 @@ public class HospitalimageController implements Serializable {
         current = new HospitalImage();
         selectedItemIndex = -1;
         return "Create";
+    }
+
+    public List<HospitalImage> getImages(String hospital) {
+        Hospital h = (Hospital) hospitalFacade.findHospitalByName(hospital);
+        System.out.println("getImages getHospitalImages.......................................... " + h.getHospitalImages().size());
+        List<HospitalImage> hospitalImages = h.getHospitalImages();
+//        for (HospitalImage hImage : hospitalImages) {
+//            if (!hImage.getImageType().equals("slideshow")) {
+//                hospitalImages.remove(hImage);
+//            }
+//        }
+        return hospitalImages;
     }
 
     public String findFirstImage(Hospital hospital) {
