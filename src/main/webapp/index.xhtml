@@ -136,18 +136,11 @@
 
             <!--Slide show section-->
             <div class="slides_container" >
-                <a href="#">
-                    <img class="mySlides" src="resources/interface/img1.jpg" style="height: 100%;width: 100%;"/>
-                </a>
-                <a href="#">
-                    <img class="mySlides" src="resources/interface/img2.jpg" style="height: 100%;width: 100%;"/>
-                </a>
-                <a href="#">
-                    <img class="mySlides" src="resources/interface/img3.jpg" style="height: 100%;width: 100%;"/>
-                </a>
-                <a href="#">
-                    <img class="mySlides" src="resources/interface/img4.jpg" style="height: 100%;width: 100%;"/>
-                </a>
+                <c:forEach items="#{hospitalimageController.getIndexImages()}" var="i">
+                    <a href="#">
+                        <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style="height: 100%;width: 100%;"/>
+                    </a>
+                </c:forEach>
                 <div class="indecator_container" style="width:100%">
                     <div class="fl-left" onclick="plusDivs(-1)">
                         <img src="resources/interface/left-arrow32white.png" alt=""/>

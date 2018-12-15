@@ -214,10 +214,8 @@
             <!--Slide show section-->
             <div class="slides_container" >
                 <c:forEach items="#{hospitalimageController.getImages(appointmentController.hospital.name)}" var="i">
-                <a href="#">
                     <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style="height: 100%;width: 100%;"/>
-                </a>
-            </c:forEach>
+                </c:forEach>
                 <div class="indecator_container" style="width:100%">
                     <span class="indecator demo" onclick="currentDiv(1)"></span>
                     <span class="indecator demo" onclick="currentDiv(2)"></span>

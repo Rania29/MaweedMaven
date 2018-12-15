@@ -4,6 +4,7 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.HospitalImageFacade;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
@@ -80,15 +81,33 @@ public class HospitalimageController implements Serializable {
         return "Create";
     }
 
+    public List<HospitalImage> getIndexImages() {
+        List<Hospital> hospitals = hospitalFacade.findHospitalsByMembership("premium");
+                        System.out.println("getIndexImages findHospitalsByMembership....................................... " + hospitals);
+        List<HospitalImage> hospitalImages = new ArrayList<>();
+        if (hospitals.size() > 0) {
+            for (Hospital hosp : hospitals) {
+                System.out.println("getIndexImages hosp.getHospitalImages....................................... " + hosp.getHospitalImages());
+                if (!hosp.getHospitalImages().isEmpty()) {
+                    for (HospitalImage hospitalImage : hosp.getHospitalImages()) {
+                        if (hospitalImage.getImageType().equals("paid")) {
+                            hospitalImages.add(hospitalImage);
+                        }
+                    }
+                }
+            }
+        }
+        return hospitalImages;
+    }
+
     public List<HospitalImage> getImages(String hospital) {
         Hospital h = (Hospital) hospitalFacade.findHospitalByName(hospital);
-        System.out.println("getImages getHospitalImages.......................................... " + h.getHospitalImages().size());
         List<HospitalImage> hospitalImages = h.getHospitalImages();
-//        for (HospitalImage hImage : hospitalImages) {
-//            if (!hImage.getImageType().equals("slideshow")) {
-//                hospitalImages.remove(hImage);
-//            }
-//        }
+        for (HospitalImage hImage : hospitalImages) {
+            if (!hImage.getImageType().equals("slideshow")) {
+                hospitalImages.remove(hImage);
+            }
+        }
         return hospitalImages;
     }
 
