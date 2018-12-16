@@ -52,17 +52,17 @@ public abstract class AbstractFacade<T> {
     }
 
     public Object findHospitalByName(String name) {
-        System.out.println("findHospitalByName.......................................... " + name);
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findByName").setParameter("name", name).getSingleResult();
     }
-    
+
     public List<T> findHospitalsByMembership(String membership) {
         return getEntityManager()
                 .createNamedQuery("Hospital.findHospitalsByMembership")
                 .setParameter("membership", membership)
                 .getResultList();
     }
-    
+
     public List<T> findServicesByClinicHospital(String clinic, String hospital) {
         return getEntityManager()
                 .createNamedQuery("ServiceClinicHospitalV.findServicesByClinicHospital")

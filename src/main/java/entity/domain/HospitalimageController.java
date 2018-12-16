@@ -30,8 +30,10 @@ public class HospitalimageController implements Serializable {
     private facade.HospitalFacade hospitalFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String defaultImage;
 
     public HospitalimageController() {
+        defaultImage = "resources/interface/ambulance32.png";
     }
 
     public HospitalImage getSelected() {
@@ -83,32 +85,27 @@ public class HospitalimageController implements Serializable {
 
     public List<HospitalImage> getIndexImages() {
         List<Hospital> hospitals = hospitalFacade.findHospitalsByMembership("premium");
-                        System.out.println("getIndexImages findHospitalsByMembership....................................... " + hospitals);
-        List<HospitalImage> hospitalImages = new ArrayList<>();
-        if (hospitals.size() > 0) {
-            for (Hospital hosp : hospitals) {
-                System.out.println("getIndexImages hosp.getHospitalImages....................................... " + hosp.getHospitalImages());
-                if (!hosp.getHospitalImages().isEmpty()) {
-                    for (HospitalImage hospitalImage : hosp.getHospitalImages()) {
-                        if (hospitalImage.getImageType().equals("paid")) {
-                            hospitalImages.add(hospitalImage);
-                        }
-                    }
+        List<HospitalImage> paid = new ArrayList<>();
+        for(Hospital hospital: hospitals) {
+            for (HospitalImage hospitalImage: hospital.getHospitalImages()) {
+                if(hospitalImage.getImageType().equals("paid")) {
+                    paid.add(hospitalImage);
                 }
             }
         }
-        return hospitalImages;
+        return paid;
     }
 
     public List<HospitalImage> getImages(String hospital) {
         Hospital h = (Hospital) hospitalFacade.findHospitalByName(hospital);
         List<HospitalImage> hospitalImages = h.getHospitalImages();
+        List<HospitalImage> slideshow = new ArrayList<>();
         for (HospitalImage hImage : hospitalImages) {
-            if (!hImage.getImageType().equals("slideshow")) {
-                hospitalImages.remove(hImage);
+            if (hImage.getImageType().equals("slideshow")) {
+                slideshow.add(hImage);
             }
         }
-        return hospitalImages;
+        return slideshow;
     }
 
     public String findFirstImage(Hospital hospital) {
@@ -116,7 +113,7 @@ public class HospitalimageController implements Serializable {
         try {
             image = ((HospitalImage) (ejbFacade.findFirstImage(hospital))).getImage();
         } catch (NullPointerException e) {
-            return "resources/interface/ambulance32.png";
+            return defaultImage;
         }
         return image;
     }

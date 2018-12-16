@@ -101,6 +101,15 @@ public class AppointmentController implements Serializable {
         current.setHospital(hospital);
         return "clinics?faces-redirect=true";
     }
+    
+    public String toClinic(HospitalImage hospitalImage) {
+        this.hospital = hospitalImage.getHospital();
+        if (current == null) {
+            prepareCreate();
+        }
+        current.setHospital(hospital);
+        return "clinics?faces-redirect=true";
+    }
 
     public void clinicChange(ValueChangeEvent e) {
         if (clinicServices != null) {
