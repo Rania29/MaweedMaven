@@ -93,7 +93,7 @@ public class AppointmentController implements Serializable {
         return "search_ar?faces-redirect=true";
     }
 
-    public String toClinic(Hospital hospital) {
+    public String toClinicHospital(Hospital hospital) {
         this.hospital = hospital;
         if (current == null) {
             prepareCreate();
@@ -102,7 +102,7 @@ public class AppointmentController implements Serializable {
         return "clinics?faces-redirect=true";
     }
     
-    public String toClinic(HospitalImage hospitalImage) {
+    public String toClinicImage(HospitalImage hospitalImage) {
         this.hospital = hospitalImage.getHospital();
         if (current == null) {
             prepareCreate();

@@ -138,7 +138,7 @@
             <div class="slides_container" >
                 <c:forEach items="#{hospitalimageController.getIndexImages()}" var="i">
                     <h:form>
-                        <h:commandLink action="#{appointmentController.toClinic(i)}">
+                        <h:commandLink action="#{appointmentController.toClinicImage(i)}">
                             <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style="height: 100%;width: 100%;"/>
                         </h:commandLink>
                     </h:form>
