@@ -33,6 +33,7 @@ public class UserauthController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private String currentPage;
+    private String message;
 
     public UserauthController() {
     }
@@ -43,6 +44,14 @@ public class UserauthController implements Serializable {
             selectedItemIndex = -1;
         }
         return current;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     private UserAuthFacade getFacade() {
@@ -106,14 +115,17 @@ public class UserauthController implements Serializable {
             StringWriter sw = new StringWriter();
             e.printStackTrace(new PrintWriter(sw));
             String s = sw.toString();
-//            for(String line: s.split("\n")) {
-            if (s.contains("duplicate key value violates unique constraint")) {
+            for (String line : s.split("\n")) {
+                if (line.contains("duplicate key value violates unique constraint \"userauth_email_uniq\"")) {
 //                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("NonUniqueEmail"));
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "This email is already in use", null));
+//                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, s, null));
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email already exists.. please use another one", "title"));
+                    FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("globalMessage");
+                    return null;
+                }
             }
-//            }
-            return null;
         }
+        return null;
     }
 
     public String prepareEdit() {
