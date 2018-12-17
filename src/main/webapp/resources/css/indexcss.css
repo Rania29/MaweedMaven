@@ -146,9 +146,9 @@ div.center-search{
     width: 320px;
 }
 .select-style{
-   /* -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;*/
+    /* -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;*/
     text-indent: 0.01px;
     width: 100px;
     height: 40px;
@@ -463,10 +463,10 @@ div.lower-footer h2{
     div.logo{
         float: right;
         display: flex;
+        justify-content: flex-end;
         width: 80%;
         height: inherit;
-        text-align: center;
-
+        text-align: center;    
     }
     /**Logo image*/
     .logo img{
