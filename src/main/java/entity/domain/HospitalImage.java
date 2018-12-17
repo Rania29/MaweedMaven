@@ -26,6 +26,9 @@ public class HospitalImage implements Serializable {
     @Basic
     private String image;
 
+    @Basic
+    private String imageType;
+
     @ManyToOne
     private Hospital hospital;
 
@@ -38,6 +41,14 @@ public class HospitalImage implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
     }
 
     public String getImage() {

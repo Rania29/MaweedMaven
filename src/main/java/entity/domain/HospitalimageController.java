@@ -4,6 +4,8 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.HospitalImageFacade;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -24,10 +26,14 @@ public class HospitalimageController implements Serializable {
     private DataModel items = null;
     @EJB
     private facade.HospitalImageFacade ejbFacade;
+    @EJB
+    private facade.HospitalFacade hospitalFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String defaultImage;
 
     public HospitalimageController() {
+        defaultImage = "resources/interface/ambulance32.png";
     }
 
     public HospitalImage getSelected() {
@@ -77,12 +83,37 @@ public class HospitalimageController implements Serializable {
         return "Create";
     }
 
+    public List<HospitalImage> getIndexImages() {
+        List<Hospital> hospitals = hospitalFacade.findHospitalsByMembership("premium");
+        List<HospitalImage> paid = new ArrayList<>();
+        for(Hospital hospital: hospitals) {
+            for (HospitalImage hospitalImage: hospital.getHospitalImages()) {
+                if(hospitalImage.getImageType().equals("paid")) {
+                    paid.add(hospitalImage);
+                }
+            }
+        }
+        return paid;
+    }
+
+    public List<HospitalImage> getImages(String hospital) {
+        Hospital h = (Hospital) hospitalFacade.findHospitalByName(hospital);
+        List<HospitalImage> hospitalImages = h.getHospitalImages();
+        List<HospitalImage> slideshow = new ArrayList<>();
+        for (HospitalImage hImage : hospitalImages) {
+            if (hImage.getImageType().equals("slideshow")) {
+                slideshow.add(hImage);
+            }
+        }
+        return slideshow;
+    }
+
     public String findFirstImage(Hospital hospital) {
         String image;
         try {
             image = ((HospitalImage) (ejbFacade.findFirstImage(hospital))).getImage();
         } catch (NullPointerException e) {
-            return "resources/interface/ambulance32.png";
+            return defaultImage;
         }
         return image;
     }

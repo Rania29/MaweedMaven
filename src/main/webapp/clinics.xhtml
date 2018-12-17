@@ -213,28 +213,9 @@
 
             <!--Slide show section-->
             <div class="slides_container" >
-                <c:forEach items="#{categoryController.findCategories()}" var="c">
-                    <div class="cat-item">
-                        <h:form>
-                            <h:commandLink action="#{categoryController.toCategory(c)}"> 
-                                <img class="mySlides" src="#{fn:substringAfter(c.image, '/')}" style="height: 100%;width: 100%;"/>
-                            </h:commandLink>
-                        </h:form>
-                    </div>
+                <c:forEach items="#{hospitalimageController.getImages(appointmentController.hospital.name)}" var="i">
+                    <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style="height: 100%;width: 100%;"/>
                 </c:forEach>
-
-                <a href="#">
-                    <img class="mySlides" src="resources/interface/img1.jpg" style="height: 100%;width: 100%;"/>
-                </a>
-                <a href="#">
-                    <img class="mySlides" src="resources/interface/img2.jpg" style="height: 100%;width: 100%;"/>
-                </a>
-                <a href="#">
-                    <img class="mySlides" src="resources/interface/img3.jpg" style="height: 100%;width: 100%;"/>
-                </a>
-                <a href="#">
-                    <img class="mySlides" src="resources/interface/img4.jpg" style="height: 100%;width: 100%;"/>
-                </a>
                 <div class="indecator_container" style="width:100%">
                     <span class="indecator demo" onclick="currentDiv(1)"></span>
                     <span class="indecator demo" onclick="currentDiv(2)"></span>
