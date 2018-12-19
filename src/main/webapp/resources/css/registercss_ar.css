@@ -36,7 +36,7 @@ div.logo{
     width: fit-content;
     display: inline-block;
     text-align: right;
-    border: 1px solid #013069;
+    /*border: 1px solid #013069;*/
     border-radius: 5px;
     padding: 5px;
     line-height: 45px;
