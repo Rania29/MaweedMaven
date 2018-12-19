@@ -19,6 +19,7 @@ div.main_div{
 }
 div.result{
     display: inline-block;
+    width: 100%;
 }
 h5{
     padding-left: 20px;
@@ -28,11 +29,14 @@ h5{
     text-align: center;
 }
 .clnk-name{
+    display: block;
+    text-decoration: none;
     color: #55A6D7;
-    font-size: 16px;
-
+    font-size: 14px;
+    overflow-wrap: break-word;
 }
 .clnk-location{
+    display: block;
     color: #013069;
     font-size: 14px;
 }
@@ -41,13 +45,14 @@ h5{
 }
 .clnk-div{
     display: inline-block;
-    width: auto;
     border: 1px solid #cccccc;
     background-color: #e8eaf2;
-    margin: 10px;
-    padding: 5px;
     border-radius: 5px;
-    line-height: 25px;
+    padding: 5px;
+    margin: 5px;
+    line-height: 20px;
+    width: 150px;
+    height: auto;
 }
 .clnk-div a{
     text-decoration: none;
@@ -56,9 +61,11 @@ h5{
     text-decoration: underline;
 }
 .clnk-div img{
-    width: 150px;
-    height: 100px;
-    float: right;
+    width: 130px;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
     background-color: #FFFFFF;
+    margin-bottom: 2px;
 }
 

@@ -226,8 +226,7 @@ div.clnk-container{
         justify-content: flex-end;
         width: 80%;
         height: inherit;
-        text-align: center;
-
+        text-align: center;    
     }
     /**Logo image*/
     .logo img{
@@ -365,7 +364,7 @@ div.clnk-container{
         width: 80%;
         height: inherit;
         text-align: center;
-
+        
     }
     /**Logo image*/
     .logo img{
