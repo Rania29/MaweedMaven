@@ -128,24 +128,16 @@
             </nav>
 
             <!--Navigation bar End-->
-
-
             <!--Slide show section-->
-            <div class="slides_container" >
+            <div class="slides_container">
                 <c:forEach items="#{hospitalimageController.getIndexImages()}" var="i">
-                    <h:form>
-                        <h:commandLink action="#{appointmentController.toClinicImage(i)}">
-                            <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style="height: 100%;width: 100%;"/>
-                        </h:commandLink>
-                    </h:form>
+                        <h:form>
+                            <h:commandLink action="#{appointmentController.toClinicImage(i)}">
+                                <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style="height: 100%; width: 100%;"/>
+                            </h:commandLink>
+                        </h:form>
                 </c:forEach>
                 <div class="indecator_container" style="width:100%">
-                    <div class="fl-left" onclick="plusDivs(-1)">
-                        <img src="resources/interface/left-arrow32white.png" alt=""/>
-                    </div>
-                    <div class="fl-right" onclick="plusDivs(-1)">
-                        <img src="resources/interface/right-arrow32white.png" alt=""/>
-                    </div>
                     <span class="indecator demo" onclick="currentDiv(1)"></span>
                     <span class="indecator demo" onclick="currentDiv(2)"></span>
                     <span class="indecator demo" onclick="currentDiv(3)"></span>

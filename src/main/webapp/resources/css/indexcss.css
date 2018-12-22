@@ -288,10 +288,12 @@ div.center-search{
     position: relative;
 }
 
+
 .mySlides {
     display:none;
     max-height: 100%;
     max-width: 100%;
+    background-color: black;
 }
 
 .indecator_container{
