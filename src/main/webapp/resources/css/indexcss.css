@@ -287,14 +287,19 @@ div.center-search{
     margin-bottom: 15px;
     position: relative;
 }
-
-
 .mySlides {
-    display:none;
+    display: none;
     max-height: 100%;
     max-width: 100%;
-    background-color: black;
+    background-color: red;   
 }
+.slides_img img{
+    background-color: purple;
+    box-sizing: border-box;
+    max-height: 100%;
+    max-width: 100%;
+}
+
 
 .indecator_container{
     cursor:pointer;
