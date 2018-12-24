@@ -42,7 +42,7 @@
             });
         </script>
         <script>
-            <!--Service Worker Registration-->
+<!--Service Worker Registration-->
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('./sw.js', {scope: '/'}).then(function (registration) {
                     console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -129,23 +129,19 @@
                     <li><a  href="help.xhtml">Help</a></li>
                 </ul>
             </nav>
-
             <!--Navigation bar End-->
+
             <!--Slide show section-->
             <div class="slides_container">
-                <c:forEach items="#{hospitalimageController.getIndexImages()}" var="i">
-                    <div class="slides_img">
-                        <h:form>
-                            <h:commandLink action="#{appointmentController.toClinicImage(i)}">
-                                <h:graphicImage  value="#{fn:substringAfter(i.image, '/')}" style="height: 100%; width: 100%;"/>
-                            </h:commandLink>
-                        </h:form>
-                    </div>
-                            <!--<h:commandLink action="#{appointmentController.toClinicImage(i)}">
-                                <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style="height: 100%; width: 100%;"/>
-                                
-                            </h:commandLink>-->
-                </c:forEach>
+                <h:form>
+                    <c:forEach items="#{hospitalimageController.getIndexImages()}" var="i">
+                        <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style=" height: 100%; width: 100%; "/>
+                        <h:commandLink action="#{appointmentController.toClinicImage(i)}" value="Visit....">
+                            <div >Visit this link</div>
+                        </h:commandLink>
+                    </c:forEach>
+                </h:form>
+
 
                 <div class="indecator_container" style="width:100%">
                     <span class="indecator demo" onclick="currentDiv(1)"></span>
@@ -173,6 +169,7 @@
                     </c:forEach>
                 </div>
             </main>
+            <!--Footer section-->
             <footer>
                 <div class="upper-footer">
                     <ul class="footer-ul">

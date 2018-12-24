@@ -35,10 +35,8 @@ self.addEventListener('push', function (event) {
 
 
 /*Gitting Permission*/
-/*navigator.serviceWorker.ready
-        .then(registration => registration.pushManager.subscribe())
-        .then(subscription => fetch('/api/save-endpoint', {
+/*navigator.serviceWorker.ready.then(registration => registration.pushManager.subscribe()).then(subscription => fetch('/api/save-endpoint', {
             method: 'POST',
             headers: { 'Content-Type: application/json' },
-            body: JSON.stringify(subscription);
-}));*/
+            body: JSON.stringify(subscription)
+})).then(res => );*/
