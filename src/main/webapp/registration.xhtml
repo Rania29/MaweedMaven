@@ -47,17 +47,21 @@
                             <h:outputText class='heading' value="ًCreate account"/>
                             <h:panelGrid columns="1" >
                                 <h:panelGroup>
-                                    <h:inputText a:placeholder="*Name" a:escape="true" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
-                                                 required="true"  requiredMessage=" Name is required." />
+                                    <h:inputText a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
+                                                 required="true"  requiredMessage=" Name is required." /><br />
+                                    <span><h:message for="name" style="color: red; font-size: 14px;"/></span>
                                     <h:inputText a:placeholder="*Email" validatorMessage="Email format should be e.g. email@test.com" autocomplete="off" 
                                                  id="email" value="#{userauthController.selected.email}" title="Email" 
                                                  required="true" requiredMessage="Email is required.">
                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
-                                    </h:inputText>
-                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{userauthController.selected.password}" title="Password" style="float: left; width: 300px;" 
-                                                   required="true" requiredMessage="Password is required."/>
-                                    <h:inputText a:placeholder="*Phone no" autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" 
+                                    </h:inputText><br />
+                                    <span><h:message for="email" style="color: red; font-size: 14px;"/></span>
+                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{userauthController.selected.password}" title="Password" style="float: left;" 
+                                                   required="true" requiredMessage="Password is required." styleClass="pword"/><br />
+                                    <span><h:message  for="password" style="color: red; font-size: 14px;"/></span>
+                                    <h:inputText a:placeholder="Phone no" autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" 
                                                  required="falce" requiredMessage="Phone no. is required."/>
+                                    <br />
                                     <div class="cntr_btn">
                                         <h:commandLink action="#{userauthController.create()}" value="Register me" class="app_button"/>
                                         <h:link outcome="/index" value="Cancel" class="app_button cancle_button"/><br />
@@ -73,11 +77,9 @@
                                 </h:panelGroup>
                             </h:panelGrid>
                         </h:form>
-                        <h:message for="name" style="color: red;"/><br />
-                        <h:message for="email" style="color: red;"/><br />
-                        <h:message  for="password" style="color: red;"/><br />
-                        <h:message for="phone" style="color: red;"/><br />
-                        <h:messages id="globalMessage" style="color: red;"/>
+
+                        <!--<h:message for="phone" style="color: red;"/><br />
+                        <h:messages id="globalMessage" style="color: red;"/>-->
                     </f:view>
                 </div>
             </div>
