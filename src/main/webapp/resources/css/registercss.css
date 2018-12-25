@@ -46,7 +46,7 @@ div.logo{
 .reg_form input[type=text], input[type=password] {
 
     padding: 8px;
-    width: 300px;
+    width: 400px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -54,6 +54,9 @@ div.logo{
     resize: vertical;
     font-size: 14px;
     float: left;
+}
+.pword{
+    width: 400px;
 }
 
 .fix{
@@ -145,10 +148,13 @@ div.line{
         width: 100%;
     }
     .reg_form{
+        width: inherit;
+    }
+    .reg_form input[type="text"]{
         width: 95%;
     }
-    .reg_form input[type=text]{
-        width: 100%;
+    #password{
+        width: 95%;
     }
     .reg_form output{
         font-size: 14px;

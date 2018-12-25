@@ -105,8 +105,6 @@ div.logo{
     height: 69px;
     vertical-align: middle;
     margin: 12px 40px;
-    /**margin-top: 12px;
-    margin-left: 40px;**/
 }
 
 /**search form div**/
@@ -124,7 +122,7 @@ div.logo{
 }
 div.center-search{
     height: available;
-    display: inline-block;
+    display: inline-block; 
     padding-top: 30px;
     padding-bottom: 20px;
     padding-left: 5px;
@@ -286,13 +284,20 @@ div.center-search{
     text-align: center;
     margin-bottom: 15px;
     position: relative;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden; 
 }
-
 .mySlides {
-    display:none;
+    display: none;
+    min-height: 500px !important;
     max-height: 100%;
     max-width: 100%;
+    background-color: red; 
 }
+
+
+
 
 .indecator_container{
     cursor:pointer;
@@ -555,6 +560,7 @@ div.lower-footer h2{
         text-align: center;
         margin-bottom: 5px;
         position: relative;
+        
     }
 }
 
