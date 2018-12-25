@@ -135,20 +135,17 @@
             <div class="slides_container">
                 <h:form>
                     <c:forEach items="#{hospitalimageController.getIndexImages()}" var="i">
-                        <img class="mySlides" src="#{fn:substringAfter(i.image, '/')}" style=" height: 100%; width: 100%; "/>
-                        <h:commandLink action="#{appointmentController.toClinicImage(i)}" value="Visit....">
-                            <div >Visit this link</div>
+                        <h:commandLink action="#{appointmentController.toClinicImage(i)}">
+                            <h:graphicImage class="mySlides" value="#{fn:substringAfter(i.image, '/')}" style=" height: 200; width: 100%; "/>
                         </h:commandLink>
+                        <div class="indecator_container" style="width:100%">
+                            <span class="indecator demo" onclick="currentDiv(i)"></span>
+                        </div>
                     </c:forEach>
                 </h:form>
 
 
-                <div class="indecator_container" style="width:100%">
-                    <span class="indecator demo" onclick="currentDiv(1)"></span>
-                    <span class="indecator demo" onclick="currentDiv(2)"></span>
-                    <span class="indecator demo" onclick="currentDiv(3)"></span>
-                    <span class="indecator demo" onclick="currentDiv(4)"></span>
-                </div>
+
             </div>
             <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
 

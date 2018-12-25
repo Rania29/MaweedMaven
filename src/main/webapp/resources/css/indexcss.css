@@ -293,11 +293,8 @@ div.center-search{
     min-height: 500px !important;
     max-height: 100%;
     max-width: 100%;
-    background-color: red; 
+    background-color: inherit; 
 }
-
-
-
 
 .indecator_container{
     cursor:pointer;

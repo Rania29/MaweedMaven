@@ -250,6 +250,7 @@ div.self-img{
     float: left;
     margin: auto;
     display: flex;
+    background-color: gray;
 
 }
 div.center-img{
@@ -258,6 +259,7 @@ div.center-img{
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+    
 }
 .center-img img{
     max-width: 100%;

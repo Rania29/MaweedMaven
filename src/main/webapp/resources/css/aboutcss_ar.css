@@ -224,6 +224,7 @@ div.center-img{
     margin-left: auto;
     margin-right: auto;
     justify-content: center;
+    background-color: gray;
 }
 .center-img img{
     max-width: 100%;
