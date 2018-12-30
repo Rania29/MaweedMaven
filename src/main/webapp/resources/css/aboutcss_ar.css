@@ -20,6 +20,35 @@ body, html{
     line-height: 45px;
     direction: rtl;
 }
+.top-div{
+    height: 45px;
+    width: 100%;
+    background-color: #445268;
+}
+.top-left-div{
+    float: left;
+    width: 50%;
+    padding-left: 50px;
+    text-align: left;
+}
+.separator{
+    color: #F2F3F7;
+}
+
+.top-right-div{
+    float: right;
+    width: 50%;
+    padding-right: 50px;
+    text-align: right;
+}
+.top-div a{
+    text-decoration: none;
+    color: #F2F3F7;
+    font-size: 16px;
+}
+.top-div a:hover{
+    text-decoration: underline;
+}
 /**----------------Hamburger menu and button-------------------**/
 
 .container {
