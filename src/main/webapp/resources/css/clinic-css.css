@@ -159,22 +159,30 @@ div.clnk-container{
 }
 /**Doctor div*/
 .doctor-pic{
-    margin-bottom: 15px;
+    margin-bottom: 15px;  
 }
 .doctor-pic ul li{
     height: auto;
     display:inline-block;
     padding: 8px;
-    margin: 0 8px;
-    font-size: 17px;
-    line-height: 30px;
+    margin: 0 2px;
+    font-size: 15px;
+    line-height: 25px;
+    overflow-wrap: break-word;
+}
+div.doctor-info{
+    max-width: 120px;
+}
+.doctor-info:hover{
+     box-shadow: 3px 3px 5px #50A2C9;
 }
 .doctor-pic ul li img{
-    width: 110px;
+    max-width: 110px;
     height: 110px;
     border-radius: 5px;
-    vertical-align: middle;
+    vertical-align: middle;   
 }
+
 
 /**Insurance div*/
 .insurance{
@@ -188,8 +196,8 @@ div.clnk-container{
 }
 /**Insurance Images*/
 .insurance ul li img{
-    max-width: 100px ;
-    height: 40px ;
+    max-width: 120px ;
+    height: 60px ;
 }
 
 /*******************Star rating *****************************/

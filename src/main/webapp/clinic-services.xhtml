@@ -223,6 +223,26 @@
                     </c:forEach>
                 </ul>
             </div>
+            <br />
+            <div>
+            <h1>Our Advantages</h1>
+        </div>
+        <div class="advant-section">
+            <ul>
+                <li>
+                    <div class="advant-items">
+                        <p>Pediatrics and Educational Psychology</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="advant-items">
+                        <p>Daily program for learning difficulties</p>
+                    </div>
+                    
+                </li>
+            </ul>
+        </div>
+        <br />
             <div>
                 <h1>Meet Our Team</h1>   
             </div>
@@ -230,9 +250,11 @@
                 <ul>
                     <c:forEach items="#{appointmentController.clinic.doctors}" var="d">
                         <li>
-                            <span><img src="#{fn:substringAfter(d.image, '/')}" alt=""/></span><br />
-                            <span>#{d.name}</span><br />
-                            <span>#{d.qualifications}</span>
+                            <div class="doctor-info">
+                                <span><img src="#{fn:substringAfter(d.image, '/')}" alt=""/></span><br />
+                                <span style="color: #55A6D7;">#{d.name}</span><br />
+                                <span>#{d.qualifications}</span>
+                            </div>
                         </li>
                     </c:forEach>
                 </ul>

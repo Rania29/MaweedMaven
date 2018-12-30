@@ -26,4 +26,37 @@ div.service-pic{
     line-height: 22px;
     border: 1px solid #D7D0CC;
 }
+/*-----------------Our Advanteges-------------*/
+.advant-section ul li {
+    display: inline-block;
+    
+}
+.advant-items {
+    border: 1px solid #50A2C9;
+    border-radius: 3px;
+    text-align: center;
+    color: #013069;
+    width: 360px;
+    height: auto;
+    margin-bottom: 5px;
+}
+.advant-items:hover{
+    box-shadow: 3px 3px 5px #50A2C9;
+}
 
+
+/**Media Queries*/
+/* Smartphones (portrait and landscape) --------------------------------- */
+@media screen and (min-width: 320px) and (max-width: 480px){
+    .advant-section {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    
+}
+    .advant-items{
+        max-width: 98%;
+        height: auto;
+        
+    }
+}
