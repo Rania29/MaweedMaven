@@ -8,6 +8,7 @@ import facade.ClinicServiceFacade;
 import facade.DaysOfWeekFacade;
 import facade.HospitalFacade;
 import facade.ServiceClinicHospitalVFacade;
+import facade.UserAuthFacade;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -32,8 +33,10 @@ import javax.inject.Inject;
 @SessionScoped
 public class AppointmentController implements Serializable {
 
+    @EJB
+    private UserAuthFacade userAuthFacade;
     @Inject
-    private Guest guest;
+    private UserAuth userAuth;
     @Inject
     private Hospital hospital;
     @Inject
@@ -101,7 +104,7 @@ public class AppointmentController implements Serializable {
         current.setHospital(hospital);
         return "clinics?faces-redirect=true";
     }
-    
+
     public String toClinicImage(HospitalImage hospitalImage) {
         this.hospital = hospitalImage.getHospital();
         if (current == null) {
@@ -272,7 +275,13 @@ public class AppointmentController implements Serializable {
         }
     }
 
-    public String toAppointment(String appoint) {
+    public String toAppointment(String appoint, String email) {
+        if (!email.equals("")) {
+            UserAuth u = ((UserAuth) userAuthFacade.findUserByEmail(email));
+            current.setEmail(u.getEmail());
+            current.setName(u.getName());
+            current.setPhone(u.getPhoneNo());
+        }
         if (clinic.getCategory() != null) {
             current.setClinic(clinic.getCategory().getName());
         }
