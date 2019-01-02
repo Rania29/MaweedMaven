@@ -106,9 +106,9 @@ public class UserauthController implements Serializable {
         return "/registration?faces-redirect=true";
     }
 
-    public String findCurrentPage(String page) {
-        currentPage = FacesContext.getCurrentInstance().getViewRoot().getViewId() + "?faces-redirect=true";
-        return page;
+    public String saveCurrentPage(String fromPage, String toPage) {
+        currentPage = fromPage;
+        return toPage;
     }
 
     public String backToCurrentPage() {
@@ -116,13 +116,11 @@ public class UserauthController implements Serializable {
     }
 
     public void logout() {
-        System.out.println("logout................................. " + httpSession);
         httpSession.invalidate();
         httpSession = null;
     }
 
     public boolean isValid() {
-        System.out.println("isvalid.......................... " + httpSession);
         return (httpSession == null);
     }
 
@@ -130,18 +128,17 @@ public class UserauthController implements Serializable {
         return httpSession;
     }
 
-    public void authenticate() throws NoSuchAlgorithmException {
+    public String authenticate() throws NoSuchAlgorithmException {
         for (UserauthGroupauthV u : userauthGroupauthVFacade.findAll()) {
             if (u.getEmail().equals(getUserauthGroupauthV().getEmail()) && u.getPassword().equals(new EncryptPassword().encrypt("MD5", getUserauthGroupauthV().getPassword()))) {
-                System.out.println("authenticate u.getEmail............ " + u.getEmail());
-                System.out.println("authenticate getUserauthGroupauthV().getEmail()............ " + getUserauthGroupauthV().getEmail());
                 httpSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
                 httpSession.setAttribute("email", u.getEmail());
-                break;
+                return currentPage;
             } else {
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed to log in!"));
             }
         }
+        return null;
     }
 
     public String create() throws NoSuchAlgorithmException {

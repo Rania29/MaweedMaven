@@ -66,9 +66,11 @@
                 </div>
                 <div class="right-div">
                         <c:if test="#{userauthController.valid}">
-                            <h:link outcome="/signin" value="Sign In"/>
-                            <a class="separator">|</a>
-                            <h:link outcome="#{userauthController.findCurrentPage('/registration')}" value="Register"/>
+                            <h:form>
+                                <h:commandLink action="#{userauthController.saveCurrentPage('/index', '/signin')}" value="Sign In"/>
+                                <a class="separator">|</a>
+                                <h:commandLink action="#{userauthController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                            </h:form>
                         </c:if>
                         <c:if test="#{!userauthController.valid}">
                             <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>

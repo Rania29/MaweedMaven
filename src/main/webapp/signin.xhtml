@@ -30,11 +30,6 @@
                         <a class="separator">|</a>
                         <a href="index.xhtml">English</a>
                     </div>
-                    <div class="right-div">
-                        <h:link outcome="/signin" value="Sign In"/>
-                        <a class="separator">|</a>
-                        <h:link outcome="#{userauthController.findCurrentPage('/registration')}" value="Register"/>
-                    </div>
                 </div>
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
@@ -47,10 +42,10 @@
                     <c:if test="#{userauthController.valid}">
                         <h:form>
                             <h:panelGrid columns="1">
-                                <h:inputText a:placeholder="*Email" value="#{userauthController.userauthGroupauthV.email}" required="true"/><br />
-                                <h:inputSecret a:placeholder="*Password" value="#{userauthController.userauthGroupauthV.password}" required="true"/><br />
+                                <h:inputText a:placeholder="*Email" value="#{userauthController.userauthGroupauthV.email}" required="true"/>
+                                <h:inputSecret a:placeholder="*Password" value="#{userauthController.userauthGroupauthV.password}" required="true"/>
                                 <div class="cntr_btn">
-                                    <h:commandButton value="Login" action="#{userauthController.authenticate()}" class="app_button"/><br />
+                                    <h:commandButton value="Login" action="#{userauthController.authenticate()}" class="app_button"/>
                                 </div>
                                 <h:outputText class="fix" value="Don't have an account? "/>
                                 <h:link class='lnk' outcome="/registration" value="Register"/>
