@@ -5,6 +5,7 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import entity.domain.util.SendMail;
 import facade.UserAuthFacade;
+import facade.UserauthGroupauthVFacade;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.StringWriter;
@@ -21,21 +22,33 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+import org.eclipse.persistence.internal.xr.Util;
 
 @Named("userauthController")
 @SessionScoped
 public class UserauthController implements Serializable {
 
+    @Inject
+    private UserauthGroupauthV userauthGroupauthV;
     private UserAuth current;
     private DataModel items = null;
+    private HttpSession httpSession;
     @EJB
     private facade.UserAuthFacade ejbFacade;
+    @EJB
+    private UserauthGroupauthVFacade userauthGroupauthVFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private String currentPage;
     private String message;
 
     public UserauthController() {
+    }
+
+    public UserauthGroupauthV getUserauthGroupauthV() {
+        return userauthGroupauthV;
     }
 
     public UserAuth getSelected() {
@@ -100,6 +113,35 @@ public class UserauthController implements Serializable {
 
     public String backToCurrentPage() {
         return currentPage;
+    }
+
+    public void logout() {
+        System.out.println("logout................................. " + httpSession);
+        httpSession.invalidate();
+        httpSession = null;
+    }
+
+    public boolean isValid() {
+        System.out.println("isvalid.......................... " + httpSession);
+        return (httpSession == null);
+    }
+
+    public HttpSession getHttpSession() {
+        return httpSession;
+    }
+
+    public void authenticate() throws NoSuchAlgorithmException {
+        for (UserauthGroupauthV u : userauthGroupauthVFacade.findAll()) {
+            if (u.getEmail().equals(getUserauthGroupauthV().getEmail()) && u.getPassword().equals(new EncryptPassword().encrypt("MD5", getUserauthGroupauthV().getPassword()))) {
+                System.out.println("authenticate u.getEmail............ " + u.getEmail());
+                System.out.println("authenticate getUserauthGroupauthV().getEmail()............ " + getUserauthGroupauthV().getEmail());
+                httpSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+                httpSession.setAttribute("email", u.getEmail());
+                break;
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed to log in!"));
+            }
+        }
     }
 
     public String create() throws NoSuchAlgorithmException {

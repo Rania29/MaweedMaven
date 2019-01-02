@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Sign in or Register | Maweed</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -41,21 +43,29 @@
 
             <div class="head">
                 <div class="reg_form">
-                    <form action="j_security_check">
-                        <h:outputText class='heading' value="ًSignin"/>
-                        <h:panelGrid columns="1">
-                            <input type="text" name="j_username" placeholder="*Name"/><br />
-                            <input type="password" name="j_password" placeholder="*Password"/><br />
-                            <div class="cntr_btn">
-                                <input  type="submit" value="Login" class="app_button"/><br />
-                            </div>
-                            <h:outputText class="fix" value="Don't have an account? "/>
-                            <h:link class='lnk' outcome="/registration" value="Register"/>
-                        </h:panelGrid>
-                    </form>
+                    <h:outputText class='heading' value="ًSignin"/>
+                    <c:if test="#{userauthController.valid}">
+                        <h:form>
+                            <h:panelGrid columns="1">
+                                <h:inputText a:placeholder="*Email" value="#{userauthController.userauthGroupauthV.email}" required="true"/><br />
+                                <h:inputSecret a:placeholder="*Password" value="#{userauthController.userauthGroupauthV.password}" required="true"/><br />
+                                <div class="cntr_btn">
+                                    <h:commandButton value="Login" action="#{userauthController.authenticate()}" class="app_button"/><br />
+                                </div>
+                                <h:outputText class="fix" value="Don't have an account? "/>
+                                <h:link class='lnk' outcome="/registration" value="Register"/>
+                            </h:panelGrid> 
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{!userauthController.valid}">
+                        <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>
+                        <h:form>
+                            <h:commandLink action="#{userauthController.logout()}" value="Log out"/>
+                        </h:form>
+                    </c:if>
                 </div>
             </div>
-            <br />
+            <br /> 
             <footer>
                 <div class="upper-footer">
                     <ul class="footer-ul">
