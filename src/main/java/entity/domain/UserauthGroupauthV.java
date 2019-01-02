@@ -15,13 +15,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-<<<<<<< HEAD
-/**
- *
- * @author Samir
- */
-=======
->>>>>>> 12a852bc2d0b5b5eae1bb8923890dc37105b12bb
 @Entity
 @Table(name = "userauth_groupauth_v")
 @XmlRootElement
