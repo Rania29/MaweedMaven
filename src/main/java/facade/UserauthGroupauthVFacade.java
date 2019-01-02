@@ -12,7 +12,11 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
+<<<<<<< HEAD
  * @author Samir
+=======
+ * @author sawad
+>>>>>>> 12a852bc2d0b5b5eae1bb8923890dc37105b12bb
  */
 @Stateless
 public class UserauthGroupauthVFacade extends AbstractFacade<UserauthGroupauthV> {
