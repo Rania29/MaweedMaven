@@ -239,16 +239,16 @@
                 <h1>عياداتنا</h1>
             </div>
             <div class="clinic">
-            <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
-                <div class="clinic-item">
-                    <h:form>
-                        <h:commandLink action="#{appointmentController.toServices(i, 'arabic')}">
-                            <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
-                            <span>#{i.category}</span>
-                        </h:commandLink>
-                    </h:form>
-                </div>
-            </c:forEach>
+                <c:forEach items="#{appointmentController.hospital.clinics}" var="i">
+                    <div class="clinic-item">
+                        <h:form>
+                            <h:commandLink action="#{appointmentController.toServices(i, 'arabic')}">
+                                <img src="#{fn:substringAfter(i.category.image, '/')}" alt="clinic-img"/><br />
+                                <span>#{i.category}</span>
+                            </h:commandLink>
+                        </h:form>
+                    </div>
+                </c:forEach>
             </div>
 
             <div>
@@ -256,6 +256,25 @@
             </div>
             <div id="map">
                 <iframe src="#{appointmentController.hospital.locationMap}" width="600" height="450" frameborder="0" style="width:100%;height:400px;background:yellow" ></iframe>
+            </div>
+            <br />
+            <div>
+                <h1>ما يميزنا</h1>
+            </div>
+            <div class="advant-section">
+                <ul>
+                    <li>
+                        <div class="advant-items">
+                            <p>طب الأطفال وعلم النفس التربوي</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="advant-items">
+                            <p>البرنامج اليومي لصعوبات التعلم</p>
+                        </div>
+
+                    </li>
+                </ul>
             </div>
             <br />
             <div>

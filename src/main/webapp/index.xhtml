@@ -9,7 +9,7 @@
        xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>Maweed</title>
-        <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+        <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="mobile-web-app-capable" content="yes"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
@@ -81,7 +81,7 @@
             <header class="header-top">
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
-                </div> 
+                </div>
 
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
@@ -104,7 +104,7 @@
                             <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="Area" itemValue=""/>
                                 <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                               itemLabel="#{n}" 
+                                               itemLabel="#{n}"
                                                itemValue="#{n}"/>
                             </h:selectOneMenu>
                             <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
@@ -126,7 +126,7 @@
                             <c:forEach items="#{categoryController.findCategories()}" var="c">
                                 <li>
                                     <h:form>
-                                        <h:commandLink action="#{categoryController.toCategory(c)}" value="#{c.name}"/> 
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" value="#{c.name}"/>
                                     </h:form>
                                 </li>
                             </c:forEach>
@@ -151,7 +151,7 @@
                                             height="498">
                             </h:graphicImage>
                         </h:commandLink>
-                    </h:form>           
+                    </h:form>
                 </c:forEach>
                 <div class="indecator_container" style="width:100%">
                     <div class="fl-left" onclick="plusDivs(-1)">
@@ -172,7 +172,7 @@
                     <c:forEach items="#{categoryController.findCategories()}" var="c">
                         <div class="cat-item">
                             <h:form>
-                                <h:commandLink action="#{categoryController.toCategory(c)}"> 
+                                <h:commandLink action="#{categoryController.toCategory(c)}">
                                     <img src="#{fn:substringAfter(c.image, '/')}" alt="category img"/><br />
                                     <span>#{c.name}</span>
                                 </h:commandLink>

@@ -26,4 +26,35 @@ div.service-pic{
     line-height: 22px;
     border: 1px solid #D7D0CC;
 }
+/**Doctor div*/
+.doctor-pic{
+    margin-bottom: 15px;  
+}
+.doctor-pic ul li{
+    height: auto;
+    display:inline-block;
+    padding: 8px;
+    margin: 0 2px;
+    font-size: 15px;
+    line-height: 25px;
+    overflow-wrap: break-word;
+}
+div.doctor-info{
+    max-width: 120px;
+}
+.doctor-info:hover{
+     box-shadow: 3px 3px 5px #50A2C9;
+}
+.doctor-pic ul li img{
+    max-width: 110px;
+    height: 110px;
+    border-radius: 5px;
+    vertical-align: middle;   
+}
 
+
+/**Media Queries*/
+/* Smartphones (portrait and landscape) --------------------------------- */
+@media screen and (min-width: 320px) and (max-width: 480px){
+   
+}

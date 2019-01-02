@@ -157,24 +157,25 @@ div.clnk-container{
     height:400px;
     background:yellow;
 }
-/**Doctor div*/
-.doctor-pic{
-    margin-bottom: 15px;
+
+/*-----------------Our Advanteges-------------*/
+.advant-section ul li {
+    display: inline-block;
+    
 }
-.doctor-pic ul li{
+.advant-items {
+    border: 1px solid #50A2C9;
+    border-radius: 3px;
+    text-align: center;
+    color: #013069;
+    width: 360px;
     height: auto;
-    display:inline-block;
-    padding: 8px;
-    margin: 0 8px;
-    font-size: 17px;
-    line-height: 30px;
+    margin-bottom: 5px;
 }
-.doctor-pic ul li img{
-    width: 110px;
-    height: 110px;
-    border-radius: 5px;
-    vertical-align: middle;
+.advant-items:hover{
+    box-shadow: 3px 3px 5px #50A2C9;
 }
+
 
 /**Insurance div*/
 .insurance{
@@ -188,8 +189,11 @@ div.clnk-container{
 }
 /**Insurance Images*/
 .insurance ul li img{
-    max-width: 100px ;
-    height: 40px ;
+    max-width: 120px ;
+    height: 60px ;
+}
+.insurance ul li img:hover{
+    box-shadow: 3px 3px 5px #50A2C9;
 }
 
 /*******************Star rating *****************************/
@@ -331,6 +335,17 @@ div.clnk-container{
     div.clinic-pic{
         display: flex;
         justify-content: flex-start;
+    }
+     .advant-section {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    
+}
+    .advant-items{
+        max-width: 98%;
+        height: auto;
+        
     }
 
 }
