@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Sign in or Register | Maweed</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -31,10 +32,21 @@
                         <a href="index.xhtml">English</a>
                     </div>
                     <div class="right-div">
-                        <h:link outcome="/signin" value="Sign In"/>
-                        <a class="separator">|</a>
-                        <h:link outcome="#{userauthController.findCurrentPage('/registration')}" value="Register"/>
+                        <c:if test="#{guestController.valid}">
+                            <h:form>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Sign In"/>
+                                <a class="separator">|</a>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                            </h:form>
+                        </c:if>
+                        <c:if test="#{!guestController.valid}">
+                            <h:outputLabel value="Welcome #{guestController.httpSession.getAttribute('email')}"/>
+                            <h:form>
+                                <h:commandButton action="#{guestController.logout()}" value="Log out"/>
+                            </h:form>
+                        </c:if>
                     </div>
+
                 </div>
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
@@ -47,20 +59,20 @@
                             <h:outputText class='heading' value="ًCreate account"/>
                             <h:panelGrid columns="1" >
                                 <h:panelGroup>
-                                    <h:inputText a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
+                                    <h:inputText a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{guestController.selected.name}" title="Name"
                                                  required="true"  requiredMessage=" Name is required." /><br />
                                     <h:inputText a:placeholder="*Email" validatorMessage="Email format should be e.g. email@test.com" autocomplete="off" 
-                                                 id="email" value="#{userauthController.selected.email}" title="Email" 
+                                                 id="email" value="#{guestController.selected.email}" title="Email" 
                                                  required="true" requiredMessage="Email is required.">
                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                                     </h:inputText><br />
-                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{userauthController.selected.password}" title="Password" style="float: left;" 
+                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{guestController.selected.password}" title="Password" style="float: left;" 
                                                    required="true" requiredMessage="Password is required." styleClass="pword"/><br />
-                                    <h:inputText a:placeholder="Phone no" autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" 
+                                    <h:inputText a:placeholder="Phone no" autocomplete="off" id="phone" value="#{guestController.selected.phone}" title="phone" 
                                                  required="falce" requiredMessage="Phone no. is required."/>
                                     <br />
                                     <div class="cntr_btn">
-                                        <h:commandLink action="#{userauthController.create()}" value="Register me" class="app_button">
+                                        <h:commandLink action="#{guestController.create()}" value="Register me" class="app_button">
                                             <f:ajax execute="@form" render=":globalMessage" />
                                         </h:commandLink>
                                         <h:link outcome="/index" value="Cancel" class="app_button cancle_button"/><br />

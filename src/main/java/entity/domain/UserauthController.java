@@ -35,7 +35,7 @@ public class UserauthController implements Serializable {
     private UserauthGroupauthV userauthGroupauthV;
     private UserAuth current;
     private DataModel items = null;
-    private HttpSession httpSession;
+//    private HttpSession httpSession;
     @EJB
     private facade.UserAuthFacade ejbFacade;
     private PaginationHelper pagination;
@@ -105,36 +105,36 @@ public class UserauthController implements Serializable {
         return "/registration?faces-redirect=true";
     }
 
-    public String saveCurrentPage(String fromPage, String toPage) {
-        currentPage = fromPage;
-        return toPage;
-    }
+//    public String saveCurrentPage(String fromPage, String toPage) {
+//        currentPage = fromPage;
+//        return toPage;
+//    }
 
-    public String authenticate() throws NoSuchAlgorithmException {
-        for (UserauthGroupauthV u : userauthGroupauthVFacade.findAll()) {
-            if (u.getEmail().equals(getUserauthGroupauthV().getEmail()) && u.getPassword().equals(new EncryptPassword().encrypt("MD5", getUserauthGroupauthV().getPassword()))) {
-                httpSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-                httpSession.setAttribute("email", u.getEmail());
-                return currentPage;
-            } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed to log in!"));
-            }
-        }
-        return null;
-    }
+//    public String authenticate() throws NoSuchAlgorithmException {
+//        for (UserauthGroupauthV u : userauthGroupauthVFacade.findAll()) {
+//            if (u.getEmail().equals(getUserauthGroupauthV().getEmail()) && u.getPassword().equals(new EncryptPassword().encrypt("MD5", getUserauthGroupauthV().getPassword()))) {
+//                httpSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+//                httpSession.setAttribute("email", u.getEmail());
+//                return currentPage;
+//            } else {
+//                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed to log in!"));
+//            }
+//        }
+//        return null;
+//    }
 
-    public void logout() {
-        httpSession.invalidate();
-        httpSession = null;
-    }
+//    public void logout() {
+//        httpSession.invalidate();
+//        httpSession = null;
+//    }
 
-    public boolean isValid() {
-        return (httpSession == null);
-    }
-
-    public HttpSession getHttpSession() {
-        return httpSession;
-    }
+//    public boolean isValid() {
+//        return (httpSession == null);
+//    }
+//
+//    public HttpSession getHttpSession() {
+//        return httpSession;
+//    }
 
     public String create() throws NoSuchAlgorithmException {
         try {

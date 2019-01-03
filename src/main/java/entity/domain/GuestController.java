@@ -1,14 +1,20 @@
 package entity.domain;
 
+import entity.domain.util.EncryptPassword;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
+import entity.domain.util.SendMail;
 import facade.GuestFacade;
+import java.io.PrintWriter;
 
 import java.io.Serializable;
+import java.io.StringWriter;
+import java.security.NoSuchAlgorithmException;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -16,17 +22,20 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.servlet.http.HttpSession;
 
 @Named("guestController")
 @SessionScoped
 public class GuestController implements Serializable {
 
+    private HttpSession httpSession;
     private Guest current;
     private DataModel items = null;
     @EJB
     private facade.GuestFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String currentPage;
 
     public GuestController() {
     }
@@ -41,6 +50,10 @@ public class GuestController implements Serializable {
 
     private GuestFacade getFacade() {
         return ejbFacade;
+    }
+
+    public HttpSession getHttpSession() {
+        return httpSession;
     }
 
     public PaginationHelper getPagination() {
@@ -78,15 +91,62 @@ public class GuestController implements Serializable {
         return "Create";
     }
 
+    public String back() {
+        return currentPage + "?faces-redirect=true";
+    }
+
+    public String authenticate() throws NoSuchAlgorithmException {
+        for (Guest g : ejbFacade.findAll()) {
+            if (g.getEmail().equals(current.getEmail()) && g.getPassword().equalsIgnoreCase(new EncryptPassword().encrypt("MD5", current.getPassword()))) {
+                current = g;
+                httpSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+                httpSession.setAttribute("email", g.getEmail());
+                return currentPage;
+            } else {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed to log in!"));
+            }
+        }
+        return null;
+    }
+
+    public String saveCurrentPage(String fromPage, String toPage) {
+        currentPage = fromPage;
+        return toPage;
+    }
+
+    public void logout() {
+        httpSession.invalidate();
+        httpSession = null;
+    }
+
+    public boolean isValid() {
+        return (httpSession == null);
+    }
+
     public String create() {
         try {
+            String body = "Nice to have you " + current.getName() + ",\n\nYour Password is: " + current.getPassword() + "\n\nThanks\nMaweed";
+            current.setId(null);
+            current.setPassword(new EncryptPassword().encrypt("MD5", current.getPassword()));
             getFacade().create(current);
+            SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Maweed Password - " + current.getName(), body, current.getEmail());
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("GuestCreated"));
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+            StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            String s = sw.toString();
+            for (String line : s.split("\n")) {
+                if (line.contains("duplicate key value violates unique constraint \"userauth_email_uniq\"")) {
+//                JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("NonUniqueEmail"));
+//                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, s, null));
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Email already exists.. please use another one", "title"));
+//                    FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("globalMessage");
+                    return null;
+                }
+            }
         }
+        return null;
     }
 
     public String prepareEdit() {
@@ -95,14 +155,15 @@ public class GuestController implements Serializable {
         return "Edit";
     }
 
-    public String update() {
+    public void update() {
         try {
+            current.setPassword(new EncryptPassword().encrypt("MD5", current.getPassword()));
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("GuestUpdated"));
-            return "View";
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Profile is updated"));
+//            return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
-            return null;
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed to update profile"));
+//            return null;
         }
     }
 
