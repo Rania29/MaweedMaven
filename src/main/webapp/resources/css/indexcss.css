@@ -66,17 +66,23 @@ body, html{
 }
 .left-div{
     float: left;
-    width: 50%;
+    width: 30%;
     padding-left: 50px;
     text-align: left;
 }
 .separator{
     color: #F2F3F7;
 }
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+}
 
 .right-div{
     float: right;
-    width: 50%;
+    width: 70%;
     padding-right: 50px;
     text-align: right;
 }
@@ -87,6 +93,56 @@ body, html{
 .top-div a:hover{
     text-decoration: underline;
 }
+.tooltip a:hover{
+    color: #55A6D7;
+    text-decoration: none;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #55A6D7;
+    width: 120px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    opacity: 0.8;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #55A6D7 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.log_out{
+    background: none;
+    border: 1px solid #F2F3F7;
+    color: #F2F3F7;
+}
+.log_out:hover{
+    color: white;
+    border: 1px solid #cc0033;
+    background-color: #cc0033;
+}
+
 /**header div**/
 .header-top{
     width: 100%;
@@ -174,7 +230,9 @@ div.center-search{
     background-color: #55A6D7;
     border-radius: 5px;
     color: white;
-
+}
+.hidden-link1:hover{
+    background-color: #285e8e;
 }
 
 /**nav bar style*/
@@ -426,11 +484,11 @@ div.lower-footer h2{
         margin-bottom: 1px;
     }
     .left-div{
-        padding-left: 20px;
+        padding-left: 10px;
     }
 
     .right-div{
-        padding-right: 20px;
+        padding-right: 10px;
     }
 
     div.container {
@@ -534,7 +592,7 @@ div.lower-footer h2{
         height: 40px;
     }
     .search-icon{
-        padding: 5px;
+        padding: 3px;
     }
 
 
@@ -557,7 +615,7 @@ div.lower-footer h2{
         text-align: center;
         margin-bottom: 5px;
         position: relative;
-        
+
     }
 }
 

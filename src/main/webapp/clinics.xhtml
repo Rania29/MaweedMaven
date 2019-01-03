@@ -45,20 +45,25 @@
                     <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <c:if test="#{guestController.valid}">
-                        <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/clinics', '/signin')}" value="Sign In"/>
-                            <a class="separator">|</a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/clinics', '/registration')}" value="Register"/>
-                        </h:form>
-                    </c:if>
-                    <c:if test="#{!guestController.valid}">
-                        <h:link value="Welcome #{guestController.selected.name}" 
-                                outcome="#{guestController.saveCurrentPage('/clinics', '/user_profile')}"/>
-                        <h:form>
-                            <h:commandButton action="#{guestController.logout()}" value="Log out"/>
-                        </h:form>
-                    </c:if>
+                        <c:if test="#{guestController.valid}">
+                            <h:form>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
+                                <a class="separator">|</a>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                            </h:form>
+                        </c:if>
+                        <c:if test="#{!guestController.valid}">
+                            <h:outputText title="Welcome" style="color: white;"/>
+                            <div class="tooltip">
+                                <h:link  value="#{guestController.selected.name}"
+                                         outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                                <span class="tooltiptext">User Profile</span>
+                            </div>
+                            <a class="separator">| </a>
+                            <h:form style="display: inline-block;">
+                                <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
+                            </h:form>
+                        </c:if>
                 </div>
 
             </div>

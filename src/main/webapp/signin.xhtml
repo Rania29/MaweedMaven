@@ -39,8 +39,9 @@
             <div class="head">
                 <h2 style="font-size:35px;">Hello</h2>
                 <div class="reg_form">
-                    <h:outputText class='heading' value="ًSignin"/>
+                    
                     <c:if test="#{guestController.valid}">
+                        <h:outputText class='heading' value="ًSignin"/>
                         <h:form>
                             <h:panelGroup>
                                 <h:panelGrid columns="1">
@@ -52,27 +53,24 @@
                                     <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
                                     <div class="cntr_btn">
                                         <h:commandLink value="Login" action="#{guestController.authenticate()}" class="app_button"/>
-                                        <h:commandLink value="cancle"  class="app_button cancle_button"/>
+                                        <h:link value="cancle" outcome="/index"  class="app_button cancle_button"/>
                                     </div>
-                                    <div class="line">
-                                        <h:outputText class="fix" value="Don't have an account? "/>
-                                        <h:link class="lnk" outcome="/registration" value="Register"/>
-                                    </div>
+
                                 </h:panelGrid>
+                                <div class="line">
+                                    <h:outputText class="fix" value="Don't have an account? "/>
+                                    <h:link class="lnk" outcome="/registration" value="Register"/>
+                                </div>
                             </h:panelGroup>
-                          </h:form>
-                      </c:if>
-                      <c:if test="#{!guestController.valid}">
-                          <h:outputLabel value="Welcome #{guestController.httpSession.getAttribute('email')}"/>
-                          <h:form>
-                              <h:commandLink action="#{guestController.logout()}" value="Log out"/>
                         </h:form>
+
                     </c:if>
                 </div>
-                <c:if test="#{!userauthController.valid}">
-                    <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>
+
+                <c:if test="#{!guestController.valid}">
+                    <h:outputLabel value="Welcome #{guestController.httpSession.getAttribute('email')}"/>
                     <h:form>
-                        <h:commandLink action="#{userauthController.logout()}" value="Log out"/>
+                        <h:commandLink action="#{guestController.logout()}" value="Log out"/>
                     </h:form>
                 </c:if>
 
