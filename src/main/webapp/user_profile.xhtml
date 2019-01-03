@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Personal Page | Maweed</title>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
@@ -9,6 +10,12 @@
         <link href="resources/css/registercss.css" rel="stylesheet" type="text/css"/>
         <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <!--Bootstrap javascripts-->
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css"/>
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+        <h:outputStylesheet library="css" name="dtpicker.css"/>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
@@ -17,6 +24,18 @@
             gtag('js', new Date());
 
             gtag('config', 'UA-129442662-1');
+        </script>
+        <script>
+            $(function () {
+                $('.datepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    orientation: "left bottom",
+                    forceParse: false,
+                    autoclose: true,
+                    todayHighlight: true,
+                    toggleActive: true
+                });
+            });
         </script>
     </h:head>
     <h:body>
@@ -28,7 +47,7 @@
                     <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <h3>#{userauthController.selected}</h3>
+                    <h3>#{guestController.selected.name}</h3>
                 </div>
             </div>
             <div class="logo">
@@ -37,32 +56,34 @@
             <div class="profile_div">
                 <h3>Profile Details</h3>
                 <h4>User account information</h4>
-                <form class="profile">
-                    <label>First name</label>
-                    <input type="text" name="first name" value="" /><br />
-                    <lable>Last Name</lable>
-                    <input type="text" name="last name" value="" /><br />
-                    <label>Email</label>
-                    <input type="text" name="email" value="" /><br />
-                    <lable>Password</lable>
-                    <input type="password" name="password" value="" /><br />
-                    <lable>Confirm Password</lable>
-                    <input type="password" name="confirm password" value="" /><br />
-                    <lable>Gender</lable>
-                    <input type="radio" name="gender" value="Male"/>Male 
-                    <input type="radio" name="gender" value="Female"/>Female
-                    <input type="radio" name="gender" value="Other"/>Others<br />
-                    <lable>Birthday</lable>
-                    <input type="text" name="birthday" value="" /><br />
-                    <lable>Phone number</lable>
-                    <input type="text" name="phone no" value="" /><br />
-                    <div class="cntr_btn">
-                        <a href="#" class="app_button">Update</a>
-                        <a href="index.xhtml" class="app_button cancle_button">Cancle</a>
-                        <a href="#" class="app_button" style="background-color: #cc3300;">Logout</a>
-                    </div>
-                </form>
-
+                <h:form class="profile">
+                    <h1><h:outputText value="Edit"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Id:" for="id" />
+                        <h:inputText readonly="true" id="id" value="#{guestController.selected.id}" title="Id" />
+                        <h:outputLabel value="Name:" for="name" />
+                        <h:inputText id="name" value="#{guestController.selected.name}" title="Name" />
+                        <h:outputLabel value="Name(Arabic):" for="inArabic" />
+                        <h:inputText id="inArabic" value="#{guestController.selected.inArabic}" title="InArabic" />
+                        <h:outputLabel value="Password:" for="password" />
+                        <h:inputSecret id="password" value="#{guestController.selected.password}" title="Password" />
+                        <h:outputLabel value="Phone:" for="phone" />
+                        <h:inputText id="phone" value="#{guestController.selected.phone}" title="Phone" />
+                        <h:outputLabel value="Email:" for="email" />
+                        <h:inputText id="email" value="#{guestController.selected.email}" title="Email" />
+                        <h:outputLabel value="Gender:" for="gender" />
+                        <h:selectOneRadio id="gender" value="#{guestController.selected.gender}" title="Gender" >
+                            <f:selectItems value="#{genderController.itemsAvailableSelectMany}"/>
+                        </h:selectOneRadio>
+                        <h:outputLabel value="DOB:" for="DOB" />
+                        <h:inputText class="datepicker" id="DOB" value="#{guestController.selected.DOB}" title="DOB" >
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:inputText>
+                        <h:commandLink class="app_button" value="Update" action="#{guestController.update()}"/>
+                        <h:commandLink class="app_button cancle_button" value="Cancel" action="#{guestController.create()}"/>
+                        <h:commandLink action="#{guestController.logout()}" style="background-color: #cc3300;" class="app_button" value="Logout"/>
+                    </h:panelGrid>
+                </h:form>
             </div>
             <footer>
                 <div class="upper-footer">

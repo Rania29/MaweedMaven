@@ -281,7 +281,6 @@ public class AppointmentController implements Serializable {
             current.setEmail(g.getEmail());
             current.setName(g.getName());
             current.setPhone(g.getPhone());
-            System.out.println("toAppointment........................ " + g.getDOB().toString());
             current.setDOB(g.getDOB());
             current.setGender(g.getGender());
         }

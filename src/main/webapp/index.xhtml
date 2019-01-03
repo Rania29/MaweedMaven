@@ -66,17 +66,18 @@
                     <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                        <c:if test="#{userauthController.valid}">
+                        <c:if test="#{guestController.valid}">
                             <h:form>
                                 <h:commandLink action="#{userauthController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
                                 <a class="separator">|</a>
-                                <h:commandLink action="#{userauthController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
                             </h:form>
                         </c:if>
-                        <c:if test="#{!userauthController.valid}">
-                            <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>
+                        <c:if test="#{!guestController.valid}">
+                            <h:link value="Welcome #{guestController.selected.name}"
+                                    outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}"/>
                             <h:form>
-                                <h:commandButton action="#{userauthController.logout()}" value="Log out"/>
+                                <h:commandButton action="#{guestController.logout()}" value="Log out"/>
                             </h:form>
                         </c:if>
                 </div>

@@ -3,8 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Sign in or Register | Maweed</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -32,31 +32,32 @@
                         <a href="index.xhtml" class="isDisabled">English</a>
                     </div>
                     <div class="right-div">
-                        <c:if test="#{userauthController.valid}">
+                        <c:if test="#{guestController.valid}">
                             <h:form>
-                                <h:commandLink action="#{userauthController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Sign In"/>
                                 <a class="separator">|</a>
-                                <h:commandLink action="#{userauthController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
                             </h:form>
                         </c:if>
-                        <c:if test="#{!userauthController.valid}">
-                            <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>
+                        <c:if test="#{!guestController.valid}">
+                            <h:outputLabel value="Welcome #{guestController.httpSession.getAttribute('email')}"/>
                             <h:form>
-                                <h:commandButton action="#{userauthController.logout()}" value="Log out"/>
+                                <h:commandButton action="#{guestController.logout()}" value="Log out"/>
                             </h:form>
                         </c:if>
                     </div>
+
                 </div>
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
-                </div> 
+                </div>
             </header><!--Header End-->
 
             <div class="head">
                 <div class="reg_form">
                     <f:view>
                         <h:form>
-                            
+
                             <br />
                             <h:outputText class="heading" value="Create account"/>
                             <h:panelGrid columns="1" >
@@ -64,27 +65,27 @@
                                     <h:inputText  a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
                                                   required="true" accesskey="fname"  requiredMessage=" Please enter full name." />
                                     <h:message for="name" style="color: #cc0033; font-size: 12px;"/><br />
-                                    <h:inputText a:placeholder="*Email" validatorMessage="Email format should be e.g. email@test.com" autocomplete="off" 
-                                                 id="email" value="#{userauthController.selected.email}" title="Email" 
+                                    <h:inputText a:placeholder="*Email" validatorMessage="Email format should be e.g. email@test.com" autocomplete="off"
+                                                 id="email" value="#{guestController.selected.email}" title="Email" 
                                                  required="true" requiredMessage="Email is required.">
                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                                     </h:inputText>
                                     <h:message for="email" style="color: #cc0033; font-size: 12px;"/><br />
-                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{userauthController.selected.password}" title="Password" style="float: left; width: 100%;"
+                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{guestController.selected.password}" title="Password" style="float: left; width: 100%;"
                                                    required="true" requiredMessage="Password is required."/><br />
                                     <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
-                                    <h:inputText a:placeholder="Phone no" autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" 
+                                    <h:inputText a:placeholder="Phone no" autocomplete="off" id="phone" value="#{guestController.selected.phone}" title="phone"
                                                  required="falce" requiredMessage="Please enter phone number."/>
                                     <h:message for="phone" style="color: #cc0033; font-size: 12px;"/>
                                     <br /><br />
                                     <div class="cntr_btn">
-                                        <h:commandLink action="#{userauthController.create()}" value="Register me" class="app_button">
+                                        <h:commandLink action="#{guestController.create()}" value="Register me" class="app_button">
                                             <!--<f:ajax execute="@form" render=":globalMessage" />-->
                                         </h:commandLink>
                                         <h:link outcome="/index" value="Cancel" class="app_button cancle_button"/><br />
                                     </div>
                                     <div class="line">
-                                        <h:outputText class="fix" value="By Registering, you agree to Maweed's "/> 
+                                        <h:outputText class="fix" value="By Registering, you agree to Maweed's "/>
                                         <h:link class='lnk' outcome="/terms_and_conditions" value="Terms and Conditions"/>
                                         <h:outputText class='fix' value=" and "/>
                                         <h:link class='lnk' outcome="/privacy-policy" value="Privacy Policy ."/>
@@ -127,4 +128,3 @@
 
     </h:body>
 </html>
-

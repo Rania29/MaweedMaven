@@ -45,17 +45,18 @@
                     <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <c:if test="#{userauthController.valid}">
+                    <c:if test="#{guestController.valid}">
                         <h:form>
-                            <h:commandLink action="#{userauthController.saveCurrentPage('/clinics', '/signin')}" value="Sign In"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/clinics', '/signin')}" value="Sign In"/>
                             <a class="separator">|</a>
-                            <h:commandLink action="#{userauthController.saveCurrentPage('/clinics', '/registration')}" value="Register"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/clinics', '/registration')}" value="Register"/>
                         </h:form>
                     </c:if>
-                    <c:if test="#{!userauthController.valid}">
-                        <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>
+                    <c:if test="#{!guestController.valid}">
+                        <h:link value="Welcome #{guestController.selected.name}" 
+                                outcome="#{guestController.saveCurrentPage('/clinics', '/user_profile')}"/>
                         <h:form>
-                            <h:commandButton action="#{userauthController.logout()}" value="Log out"/>
+                            <h:commandButton action="#{guestController.logout()}" value="Log out"/>
                         </h:form>
                     </c:if>
                 </div>
@@ -166,7 +167,7 @@
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
-                                <h:commandButton action="#{appointmentController.toAppointment('english', userauthController.userauthGroupauthV.email)}" value="Request Appointment"/>
+                                <h:commandButton action="#{appointmentController.toAppointment('english', guestController.selected.email)}" value="Request Appointment"/>
                             </h:form>
                         </div>
                     </div>
