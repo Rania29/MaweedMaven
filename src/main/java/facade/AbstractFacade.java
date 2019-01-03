@@ -37,6 +37,10 @@ public abstract class AbstractFacade<T> {
         return getEntityManager().createNamedQuery("Hospital.findHospitalNames").getResultList();
     }
 
+    public Object findGuestByEmail(String email) {
+        return getEntityManager().createNamedQuery("Guest.findGuestByEmail").setParameter("email", email).getSingleResult();
+    }
+
     public List<String> hospitalAutocompleteArabic() {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager()

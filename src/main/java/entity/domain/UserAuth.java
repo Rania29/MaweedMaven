@@ -12,8 +12,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "UserAuth.findAll", query = "SELECT c FROM UserAuth c")
+    , @NamedQuery(name = "UserAuth.findUserByEmail", query = "SELECT c FROM UserAuth c WHERE c.email = :email")})
 public class UserAuth implements Serializable {
 
     @Id
