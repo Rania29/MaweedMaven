@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Sign in or Register | Maweed</title>
@@ -28,40 +29,57 @@
                     <div class="left-div">
                         <a href="registration_ar.xhtml">عربي</a>
                         <a class="separator">|</a>
-                        <a href="index.xhtml">English</a>
+                        <a href="index.xhtml" class="isDisabled">English</a>
                     </div>
                     <div class="right-div">
-                        <h:link outcome="/signin" value="Sign In"/>
-                        <a class="separator">|</a>
-                        <h:link outcome="#{userauthController.findCurrentPage('/registration')}" value="Register"/>
+                        <c:if test="#{userauthController.valid}">
+                            <h:form>
+                                <h:commandLink action="#{userauthController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
+                                <a class="separator">|</a>
+                                <h:commandLink action="#{userauthController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                            </h:form>
+                        </c:if>
+                        <c:if test="#{!userauthController.valid}">
+                            <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>
+                            <h:form>
+                                <h:commandButton action="#{userauthController.logout()}" value="Log out"/>
+                            </h:form>
+                        </c:if>
                     </div>
                 </div>
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div> 
             </header><!--Header End-->
+
             <div class="head">
-                <div class='reg_form'>
+                <div class="reg_form">
                     <f:view>
                         <h:form>
-                            <h:outputText class='heading' value="ًCreate account"/>
+                            
+                            <br />
+                            <h:outputText class="heading" value="Create account"/>
                             <h:panelGrid columns="1" >
                                 <h:panelGroup>
-                                    <h:inputText a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
-                                                 required="true"  requiredMessage=" Name is required." /><br />
+                                    <h:inputText  a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
+                                                  required="true" accesskey="fname"  requiredMessage=" Please enter full name." />
+                                    <h:message for="name" style="color: #cc0033; font-size: 12px;"/><br />
                                     <h:inputText a:placeholder="*Email" validatorMessage="Email format should be e.g. email@test.com" autocomplete="off" 
                                                  id="email" value="#{userauthController.selected.email}" title="Email" 
                                                  required="true" requiredMessage="Email is required.">
                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
-                                    </h:inputText><br />
-                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{userauthController.selected.password}" title="Password" style="float: left;" 
-                                                   required="true" requiredMessage="Password is required." styleClass="pword"/><br />
+                                    </h:inputText>
+                                    <h:message for="email" style="color: #cc0033; font-size: 12px;"/><br />
+                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{userauthController.selected.password}" title="Password" style="float: left; width: 100%;"
+                                                   required="true" requiredMessage="Password is required."/><br />
+                                    <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
                                     <h:inputText a:placeholder="Phone no" autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" 
-                                                 required="falce" requiredMessage="Phone no. is required."/>
-                                    <br />
+                                                 required="falce" requiredMessage="Please enter phone number."/>
+                                    <h:message for="phone" style="color: #cc0033; font-size: 12px;"/>
+                                    <br /><br />
                                     <div class="cntr_btn">
                                         <h:commandLink action="#{userauthController.create()}" value="Register me" class="app_button">
-                                            <f:ajax execute="@form" render=":globalMessage" />
+                                            <!--<f:ajax execute="@form" render=":globalMessage" />-->
                                         </h:commandLink>
                                         <h:link outcome="/index" value="Cancel" class="app_button cancle_button"/><br />
                                     </div>
@@ -76,12 +94,14 @@
                                 </h:panelGroup>
                             </h:panelGrid>
                         </h:form>
-
-                        <h:message for="phone" style="color: red;"/><br />
-                        <h:messages id="globalMessage" style="color: red;"/>
+                        <!--<div style="width: auto; line-height: 20px;">
+                            <h:message for="phone" style="color: #cc0033;"/>
+                            <h:messages id="globalMessage" style="color: #cc0033;"/>
+                        </div>-->
                     </f:view>
                 </div>
             </div>
+            <br />
             <footer>
                 <div class="upper-footer">
                     <ul class="footer-ul">

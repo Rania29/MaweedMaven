@@ -26,9 +26,9 @@
             <header>
                 <div class="top-div">
                     <div class="left-div">
-                        <a href="sign_ar.xhtml">عربي</a>
+                        <a href="signin_ar.xhtml">عربي</a>
                         <a class="separator">|</a>
-                        <a href="index.xhtml">English</a>
+                        <a href="index.xhtml" class="isDisabled" >English</a>
                     </div>
                 </div>
                 <div class="logo">
@@ -37,28 +37,40 @@
             </header><!--Header End-->
 
             <div class="head">
+                <h2 style="font-size:35px;">Hello</h2>
                 <div class="reg_form">
                     <h:outputText class='heading' value="ًSignin"/>
                     <c:if test="#{userauthController.valid}">
                         <h:form>
-                            <h:panelGrid columns="1">
-                                <h:inputText a:placeholder="*Email" value="#{userauthController.userauthGroupauthV.email}" required="true"/>
-                                <h:inputSecret a:placeholder="*Password" value="#{userauthController.userauthGroupauthV.password}" required="true"/>
-                                <div class="cntr_btn">
-                                    <h:commandButton value="Login" action="#{userauthController.authenticate()}" class="app_button"/>
-                                </div>
-                                <h:outputText class="fix" value="Don't have an account? "/>
-                                <h:link class='lnk' outcome="/registration" value="Register"/>
-                            </h:panelGrid> 
-                        </h:form>
-                    </c:if>
-                    <c:if test="#{!userauthController.valid}">
-                        <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>
-                        <h:form>
-                            <h:commandLink action="#{userauthController.logout()}" value="Log out"/>
+                            <h:panelGroup>
+                                <h:panelGrid columns="1">
+                                    <h:inputText a:placeholder="*Email" id="email" value="#{userauthController.userauthGroupauthV.email}" 
+                                                 required="true" requiredMessage="Email is required."/>
+                                    <h:message for="email" style="color: #cc0033; font-size: 12px;"/>
+                                    <h:inputSecret a:placeholder="*Password" id="password" value="#{userauthController.userauthGroupauthV.password}" 
+                                                   required="true" requiredMessage="Password is required."  style="float: left;"/>
+                                    <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
+                                    <div class="cntr_btn">
+                                        <h:commandLink value="Login" action="#{userauthController.authenticate()}" class="app_button"/>
+                                        <h:commandLink value="cancle"  class="app_button cancle_button"/>
+                                    </div>
+                                    <div class="line">
+                                        <h:outputText class="fix" value="Don't have an account? "/>
+                                        <h:link class="lnk" outcome="/registration" value="Register"/>
+                                    </div>
+
+                                </h:panelGrid> 
+                            </h:panelGroup>
                         </h:form>
                     </c:if>
                 </div>
+                <c:if test="#{!userauthController.valid}">
+                    <h:outputLabel value="Welcome #{userauthController.httpSession.getAttribute('email')}"/>
+                    <h:form>
+                        <h:commandLink action="#{userauthController.logout()}" value="Log out"/>
+                    </h:form>
+                </c:if>
+
             </div>
             <br /> 
             <footer>

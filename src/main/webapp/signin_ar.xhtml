@@ -1,10 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>الدخول لموقع موعد</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/registercss_ar.css" rel="stylesheet" type="text/css"/>
         <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -17,8 +22,48 @@
         </script>
     </h:head>
     <h:body>
-        <h1>مرحبا بك في موقع موعد</h1>
-        <h1>قم بتسحيل الدخول هنا</h1>
+        <div>
+            <header>
+                <div class="top-div">
+                    <div class="left-div">
+                        <a href="signin_ar.xhtml" class="isDisabled">عربي</a>
+                        <a class="separator">|</a>
+                        <a href="index.xhtml" >English</a>
+                    </div>
+                </div>
+                <div class="logo">
+                    <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                </div> 
+            </header><!--Header End-->
+            <div class="head">
+                <h2 style="font-size:35px;">مرحبا</h2>
+                <div class="reg_form">
+                    <h:outputText class='heading' value="تسجيل دخول"/>
+                    <c:if test="#{userauthController.valid}">
+                        <h:form>
+                            <h:panelGrid columns="1">
+                                <h:inputText a:placeholder="*البريد الإلكتروني" value="#{userauthController.userauthGroupauthV.email}" required="true"/>
+                                <h:inputSecret a:placeholder="*كلمة السر" value="#{userauthController.userauthGroupauthV.password}" required="true" styleClass="pword"/>
+                                <div class="cntr_btn">
+                                    <h:commandLink value="دخول" action="#{userauthController.authenticate()}" class="app_button"/>
+                                </div>
+                                <div style="display: inline-block; line-height: 20px; ">
+                                    <h:outputText class="fix" value="لاتمتلك حساب؟"/>
+                                    <h:link class='lnk' outcome="/registration_ar" value="تسجيل"/>
+                                </div>
+                            </h:panelGrid> 
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{!userauthController.valid}">
+                        <h:outputLabel value="مرحبا #{userauthController.httpSession.getAttribute('email')}"/>
+                        <h:form>
+                            <h:commandLink action="#{userauthController.logout()}" value="تسجيل خروج"/>
+                        </h:form>
+                    </c:if>
+                </div>
+            </div>
+            <br /> 
+        </div>
     </h:body>
 </html>
 

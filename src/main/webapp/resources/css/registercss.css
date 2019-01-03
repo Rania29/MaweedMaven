@@ -31,6 +31,12 @@ div.logo{
     text-align: center;
 
 }
+.isDisabled {
+  color: currentColor;
+  cursor: not-allowed;
+  opacity: 0.5;
+  text-decoration: none;
+}
 
 .reg_form {
     height: inherit;
@@ -40,13 +46,13 @@ div.logo{
     border: 1px solid #013069;
     border-radius: 5px;
     padding: 5px;
-    line-height: 45px;
+    line-height: 35px;
 }
 
 .reg_form input[type=text], input[type=password] {
 
     padding: 8px;
-    width: 400px;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -55,8 +61,8 @@ div.logo{
     font-size: 14px;
     float: left;
 }
-.pword{
-    width: 400px;
+.reg_form input:focus{
+    box-shadow: 3px 3px 5px #55A6D7;
 }
 
 .fix{
@@ -83,14 +89,25 @@ div.logo{
     color: white;
     margin: 8px;
 }
+.app_button:hover{
+    background-color: #285e8e;
+    color: white;
+}
 .cancle_button{
     background-color: #00cc66;
+}
+.cancle_button:hover{
+    background-color: #009966;
+    color: white;
 }
 div.cntr_btn{
     width: 100%;
     height: auto;
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 12px;
+    margin-top: 12px;
+    
 }
 div.line{
     width: auto;
@@ -149,12 +166,7 @@ div.line{
     }
     .reg_form{
         width: inherit;
-    }
-    .reg_form input[type="text"]{
-        width: 95%;
-    }
-    #password{
-        width: 95%;
+        border: none;
     }
     .reg_form output{
         font-size: 14px;
