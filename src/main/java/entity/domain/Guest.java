@@ -4,15 +4,23 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Guest.findAll", query = "SELECT c FROM Guest c")
+    , @NamedQuery(name = "Guest.findGuestByEmail", query = "SELECT c FROM Guest c WHERE c.email = :email")})
 public class Guest implements Serializable {
 
     @Id
@@ -29,6 +37,7 @@ public class Guest implements Serializable {
     private String phone;
 
     @Basic
+    @Column(unique = true)
     private String email;
 
     @Basic

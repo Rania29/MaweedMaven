@@ -6,9 +6,9 @@ import entity.domain.util.SendMail;
 import facade.AppointmentFacade;
 import facade.ClinicServiceFacade;
 import facade.DaysOfWeekFacade;
+import facade.GuestFacade;
 import facade.HospitalFacade;
 import facade.ServiceClinicHospitalVFacade;
-import facade.UserAuthFacade;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -34,9 +34,9 @@ import javax.inject.Inject;
 public class AppointmentController implements Serializable {
 
     @EJB
-    private UserAuthFacade userAuthFacade;
+    private GuestFacade guestFacade;
     @Inject
-    private UserAuth userAuth;
+    private Guest guest;
     @Inject
     private Hospital hospital;
     @Inject
@@ -277,10 +277,13 @@ public class AppointmentController implements Serializable {
 
     public String toAppointment(String appoint, String email) {
         if (!email.equals("")) {
-            UserAuth u = ((UserAuth) userAuthFacade.findUserByEmail(email));
-            current.setEmail(u.getEmail());
-            current.setName(u.getName());
-            current.setPhone(u.getPhoneNo());
+            Guest g = ((Guest) guestFacade.findGuestByEmail(email));
+            current.setEmail(g.getEmail());
+            current.setName(g.getName());
+            current.setPhone(g.getPhone());
+            System.out.println("toAppointment........................ " + g.getDOB().toString());
+            current.setDOB(g.getDOB());
+            current.setGender(g.getGender());
         }
         if (clinic.getCategory() != null) {
             current.setClinic(clinic.getCategory().getName());
