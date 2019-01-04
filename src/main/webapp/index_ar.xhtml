@@ -54,7 +54,7 @@
                     <c:if test="#{!guestController.valid}">
                         <h:outputText title="مرحبا" style="color: white;"/>
                         <div class="tooltip">
-                            <h:link  value="#{guestController.selected.name}"
+                            <h:link  value="#{guestController.selected.inArabic}"
                                      outcome="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
                             <span class="tooltiptext">بروفايل المستخدم</span>
                         </div>

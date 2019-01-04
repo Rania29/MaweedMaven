@@ -89,6 +89,8 @@
                         <h:panelGrid columns="2">
                             <h:outputLabel value="الإسم:" for="name" />
                             <h:inputText id="name" value="#{appointmentController.selected.name}" title="Name" />
+                            <h:outputLabel value="الإسم:" for="inarabic" />
+                            <h:inputText id="inarabic" value="#{appointmentController.selected.inArabic}" title="Name" />
                             <h:outputLabel value=" الجوال:" for="phone" />
                             <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="Phone" />
                             <h:outputLabel value=" البريد الإلكتروني:" for="email" />
@@ -107,8 +109,12 @@
                                 </h:selectManyCheckbox >
                             </h:panelGroup>
                             <h:outputLabel value=" العيادة" for="hospital" />
-                            <h:selectOneMenu id="hospital" value="#{appointmentController.selected.hospital}" title="Hospital" >
-                                <f:selectItems value="#{hospitalController.itemsAvailableSelectOneAr}"/>
+                            <h:selectOneMenu onchange="submit()" valueChangeListener="#{appointmentController.clinicChange}" id="clinic" value="#{appointmentController.selected.clinic}" title="clinic" >
+                                <f:selectItem itemValue="" itemLabel="---"/>
+                                <f:selectItems value="#{appointmentController.selected.hospital.clinics}" 
+                                               var="cl"
+                                               itemLabel="#{cl.category.inArabic}" 
+                                               itemValue="#{cl.category.name}"/>
                             </h:selectOneMenu>
                             <h:outputLabel value="الخدمه العلاجيه " for="services" />
                             <h:selectOneMenu id="services" value="#{appointmentController.selected.clinicservice}" title="services" >

@@ -28,7 +28,7 @@
                     <div class="left-div">
                         <a href="signin_ar.xhtml" class="isDisabled">عربي</a>
                         <a class="separator">|</a>
-                        <a href="index.xhtml" >English</a>
+                        <a href="signin.xhtml" >English</a>
                     </div>
                 </div>
                 <div class="logo">
@@ -61,10 +61,15 @@
                                 </div>
                             </h:panelGroup>
                         </h:form>
-
                     </c:if>
-
                 </div>
+                <c:if test="#{!guestController.valid}">
+                    <h:outputLabel value="#{guestController.selected.inArabic} مرحبا"/>
+                    <h:form>
+                        <h:commandLink action="#{guestController.logout()}" value="Log out"/>
+                    </h:form>
+                </c:if>
+
             </div>
             <br /> 
         </div>

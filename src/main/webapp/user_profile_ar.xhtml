@@ -5,9 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>الصفحة الشخصية</title>
-        <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/registercss_ar.css" rel="stylesheet" type="text/css"/>
-                <h:outputStylesheet library="css" name="dtpicker.css"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <h:outputStylesheet library="css" name="dtpicker.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/registercss.css" rel="stylesheet" type="text/css"/>
@@ -22,6 +21,11 @@
 
             gtag('config', 'UA-129442662-1');
         </script>
+        <!--Bootstrap javascripts-->
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css"/>
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
         <script>
             $(function () {
                 $('.datepicker').datepicker({
@@ -32,12 +36,11 @@
                     todayHighlight: true,
                     toggleActive: true
                 });
-                
             });
         </script>
     </h:head>
     <h:body>
-       <div>
+        <div>
             <div class="top-div">
                 <div class="left-div">
                     <a href="index_ar.xhtml">عربي</a>
@@ -53,31 +56,30 @@
             </div> 
             <div class="profile_div">
                 <h3>الملف الشخصى</h3>
-                <h4>الملف الشخصى</h4>
+                <h4>معلومات حساب المستخدم</h4>
                 <h:form class="profile">
                     <h1><h:outputText value="Edit"/></h1>
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="الرقم" for="id" />
                         <h:inputText readonly="true" id="id" value="#{guestController.selected.id}" title="Id" />
-                        <h:outputLabel value="الاسم" for="name" />
+                        <h:outputLabel value="الرقم" for="id" />
                         <h:inputText id="name" value="#{guestController.selected.name}" title="Name" />
-                        <h:outputLabel value="الاسم بالعربي:" for="inArabic" />
+                        <h:outputLabel value="الاسم" for="name" />
                         <h:inputText id="inArabic" value="#{guestController.selected.inArabic}" title="InArabic" />
-                        <h:outputLabel value="كلمة السر" for="password" />
+                        <h:outputLabel value="الاسم بالعربي" for="inArabic" />
                         <h:inputSecret id="password" value="#{guestController.selected.password}" title="Password" />
-
-                        <h:outputLabel value="التلفون" for="phone" />
+                        <h:outputLabel value="كلمة السر" for="password" />
                         <h:inputText id="phone" value="#{guestController.selected.phone}" title="Phone" />
-                        <h:outputLabel value="البريد الالكترونى" for="email" />
+                        <h:outputLabel value="التلفون" for="phone" />
                         <h:inputText id="email" value="#{guestController.selected.email}" title="Email" />
-                        <h:outputLabel value="النوع" for="gender" />
+                        <h:outputLabel value="البريد الالكترونى" for="email" />
                         <h:selectOneRadio id="gender" value="#{guestController.selected.gender}" title="Gender" >
                             <f:selectItems value="#{genderController.itemsAvailableSelectManyGenderAr}"/>
                         </h:selectOneRadio>
-                        <h:outputLabel value="تاريخ الميلاد" for="DOB" />
+                        <h:outputLabel value="النوع" for="gender" />
                         <h:inputText class="datepicker" id="DOB" value="#{guestController.selected.DOB}" title="DOB" >
                             <f:convertDateTime pattern="dd/MM/yyyy"/>
                         </h:inputText>
+                        <h:outputLabel value="تاريخ الميلاد" for="DOB" />
                     </h:panelGrid>
                     <div class="cntr_btn">
                         <h:commandLink class="app_button" value="Update" action="#{guestController.update()}"/>

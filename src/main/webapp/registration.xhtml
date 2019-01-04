@@ -62,7 +62,7 @@
                             <h:outputText class="heading" value="Create account"/>
                             <h:panelGrid columns="1" >
                                 <h:panelGroup>
-                                    <h:inputText  a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
+                                    <h:inputText  a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{guestController.selected.name}" title="Name"
                                                   required="true" accesskey="fname"  requiredMessage=" Please enter full name." />
                                     <h:message for="name" style="color: #cc0033; font-size: 12px;"/><br />
                                     <h:inputText a:placeholder="*Email" validatorMessage="Email format should be e.g. email@test.com" autocomplete="off"
