@@ -44,9 +44,25 @@
                     <a href="index.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <h:link outcome="/signin_ar" value="دخول"/>
-                    <a class="separator">|</a>
-                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل"/>
+                    <c:if test="#{guestController.valid}">
+                        <h:form>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
+                            <a class="separator">|</a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{!guestController.valid}">
+                        <h:outputText title="مرحبا" style="color: white;"/>
+                        <div class="tooltip">
+                            <h:link  value="#{guestController.selected.inArabic}"
+                                     outcome="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
+                            <span class="tooltiptext">بروفايل المستخدم</span>
+                        </div>
+                        <a class="separator">| </a>
+                        <h:form style="display: inline-block;">
+                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
+                        </h:form>
+                    </c:if>
                 </div>
             </div>
             <header class="header-top">

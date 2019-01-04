@@ -33,7 +33,7 @@
                 <div class="right-div">
                     <h:link outcome="/signin_ar" value="دخول "/>
                     <a class="separator"> | </a>
-                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل"/>
+                    <h:link outcome="#{guestController.saveCurrentPage('/index_ar', '/user_profile_ar')}" value="تسجيل"/>
                 </div>
             </div>
                 <div class="logo">
@@ -47,7 +47,7 @@
                             <h:outputText class='heading' value="تسجيل حساب جديد"/>
                             <h:panelGrid columns="1" >
                                 <h:panelGroup>
-                                    <h:inputText a:placeholder="*الإسم" autocomplete="off" id="name" value="#{userauthController.selected.name}" title="Name"
+                                    <h:inputText a:placeholder="*الإسم" autocomplete="off" id="name" value="#{guestController.selected.inArabic}" title="Name"
                                                  required="true" requiredMessage="يجب كتابة الإسم "/>
                                     <h:message for="name" style="color: #cc0033; font-size: 12px;"/><br />
                                     <h:inputText a:placeholder="*البريد الإلكتروني" validatorMessage="تحقق من صحة صيغة البريد الإلكتروني" autocomplete="off" id="email" value="#{userauthController.selected.email}" title="Email"
@@ -55,15 +55,15 @@
                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                                     </h:inputText>
                                     <h:message for="email" style="color: #cc0033; font-size: 12px;"/><br />
-                                    <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{userauthController.selected.password}" title="Password" style="float: right; width: 100%;"
+                                    <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{guestController.selected.password}" title="Password" style="float: right; width: 100%;"
                                                    required="true" requiredMessage="كلمة السر مطلوبة"/>
                                     <h:message for="password" style="color: #cc0033; font-size: 12px;"/><br />
-                                    <h:inputText a:placeholder="*رقم الهاتف" autocomplete="off" id="phone" value="#{userauthController.selected.phoneNo}" title="phone" 
+                                    <h:inputText a:placeholder="*رقم الهاتف" autocomplete="off" id="phone" value="#{guestController.selected.phone}" title="phone" 
                                                  required="false" requiredMessage="يجب تعبئة هذا الحقل"/>
                                     <h:message for="phone" style="color: #cc0033; font-size: 12px;"/><br />
                                     <div class="cntr_btn">
-                                        <h:commandLink action="#{userauthController.create()}" value="تسجيل" class="app_button"/>
-                                        <h:link outcome="/index" value="إلغاء" class="app_button cancle_button"/><br />
+                                        <h:commandLink action="#{guestController.create()}" value="تسجيل" class="app_button"/>
+                                        <h:link outcome="/index_ar" value="إلغاء" class="app_button cancle_button"/><br />
                                     </div>
                                     <div class="line">
                                         <h:outputText class="fix" value="عند تسجيلك، فأنت تقوم بالموافقه على "/> 

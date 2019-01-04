@@ -1,14 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>الصفحة الشخصية</title>
-        <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/registercss_ar.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <h:outputStylesheet library="css" name="dtpicker.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"/>
+        <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/registercss.css" rel="stylesheet" type="text/css"/>
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
+        <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-129442662-1');
+        </script>
+        <!--Bootstrap javascripts-->
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css"/>
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+        <script>
+            $(function () {
+                $('.datepicker').datepicker({
+                    format: 'dd/mm/yyyy',
+                    orientation: "left top",
+                    forceParse: false,
+                    autoclose: true,
+                    todayHighlight: true,
+                    toggleActive: true
+                });
+            });
+        </script>
     </h:head>
     <h:body>
-       <div>
+        <div>
             <div class="top-div">
                 <div class="left-div">
                     <a href="index_ar.xhtml">عربي</a>
@@ -16,41 +48,46 @@
                     <a href="user_profile.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <h3>#{userauthController.selected}</h3>
+                    <h3>#{guestController.selected.inArabic}</h3>
                 </div>
             </div>
             <div class="logo">
                 <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
             </div> 
             <div class="profile_div">
-                <h3>الملف الشخصية</h3>
+                <h3>الملف الشخصى</h3>
                 <h4>معلومات حساب المستخدم</h4>
-                <form class="profile">
-                    <label>الإسم الأول</label>
-                    <input type="text" name="first name" value="" /><br />
-                    <lable>الإسم الأخير</lable>
-                    <input type="text" name="last name" value="" /><br />
-                    <label>البريد الإلكتروني</label>
-                    <input type="text" name="email" value="" /><br />
-                    <lable>كلمة السر</lable>
-                    <input type="password" name="password" value="" /><br />
-                    <lable>تأكيد كلمة السر</lable>
-                    <input type="password" name="confirm password" value="" /><br />
-                    <lable>النوع</lable>
-                    <input type="radio" name="gender" value="Male"/>ذكر 
-                    <input type="radio" name="gender" value="Female"/>أنثى
-                    <input type="radio" name="gender" value="Other"/>أخرى<br />
-                    <lable>تاريخ الميلاد</lable>
-                    <input type="text" name="birthday" value="" /><br />
-                    <lable>الجوال</lable>
-                    <input type="text" name="phone no" value="" /><br />
+                <h:form class="profile">
+                    <h1><h:outputText value="Edit"/></h1>
+                    <h:panelGrid columns="2">
+                        <h:inputText readonly="true" id="id" value="#{guestController.selected.id}" title="Id" />
+                        <h:outputLabel value="الرقم" for="id" />
+                        <h:inputText id="name" value="#{guestController.selected.name}" title="Name" />
+                        <h:outputLabel value="الاسم" for="name" />
+                        <h:inputText id="inArabic" value="#{guestController.selected.inArabic}" title="InArabic" />
+                        <h:outputLabel value="الاسم بالعربي" for="inArabic" />
+                        <h:inputSecret id="password" value="#{guestController.selected.password}" title="Password" />
+                        <h:outputLabel value="كلمة السر" for="password" />
+                        <h:inputText id="phone" value="#{guestController.selected.phone}" title="Phone" />
+                        <h:outputLabel value="التلفون" for="phone" />
+                        <h:inputText id="email" value="#{guestController.selected.email}" title="Email" />
+                        <h:outputLabel value="البريد الالكترونى" for="email" />
+                        <h:selectOneRadio id="gender" value="#{guestController.selected.gender}" title="Gender" >
+                            <f:selectItems value="#{genderController.itemsAvailableSelectManyGenderAr}"/>
+                        </h:selectOneRadio>
+                        <h:outputLabel value="النوع" for="gender" />
+                        <h:inputText class="datepicker" id="DOB" value="#{guestController.selected.DOB}" title="DOB" >
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:inputText>
+                        <h:outputLabel value="تاريخ الميلاد" for="DOB" />
+                    </h:panelGrid>
                     <div class="cntr_btn">
-                        <a href="#" class="app_button">تحديث</a>
-                        <a href="index.xhtml" class="app_button cancle_button">إلغاء</a>
-                        <a href="#" class="app_button" style="background-color: #cc3300;">خروج</a>
+                        <h:commandLink class="app_button" value="Update" action="#{guestController.update()}"/>
+                        <h:commandLink class="app_button cancle_button" value="Back" action="/index"/>
+                        <h:commandLink class="app_button logout_button" value="Logout" action="#{guestController.logout()}" />
                     </div>
-                </form>
 
+                </h:form>
             </div>
             <footer>
                 <div class="upper-footer">

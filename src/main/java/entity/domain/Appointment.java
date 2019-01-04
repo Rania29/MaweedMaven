@@ -36,14 +36,17 @@ public class Appointment implements Serializable {
     private String name;
 
     @Basic
+    private String inArabic;
+
+    @Basic
     private String phone;
 
     @Basic
     private String email;
-    
+
     @Basic
     private String clinic;
-    
+
     @Basic
     private String clinicservice;
 
@@ -70,6 +73,14 @@ public class Appointment implements Serializable {
     private List<DaysOfWeek> daysOfWeeks;
 
     public Appointment() {
+    }
+
+    public String getInArabic() {
+        return inArabic;
+    }
+
+    public void setInArabic(String inArabic) {
+        this.inArabic = inArabic;
     }
 
     public Long getId() {
