@@ -33,7 +33,7 @@
                 <div class="right-div">
                     <h:link outcome="/signin_ar" value="دخول "/>
                     <a class="separator"> | </a>
-                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل"/>
+                    <h:link outcome="#{guestController.saveCurrentPage('/index_ar', '/user_profile_ar')}" value="تسجيل"/>
                 </div>
             </div>
                 <div class="logo">
@@ -63,7 +63,7 @@
                                     <h:message for="phone" style="color: #cc0033; font-size: 12px;"/><br />
                                     <div class="cntr_btn">
                                         <h:commandLink action="#{userauthController.create()}" value="تسجيل" class="app_button"/>
-                                        <h:link outcome="/index" value="إلغاء" class="app_button cancle_button"/><br />
+                                        <h:link outcome="/index_ar" value="إلغاء" class="app_button cancle_button"/><br />
                                     </div>
                                     <div class="line">
                                         <h:outputText class="fix" value="عند تسجيلك، فأنت تقوم بالموافقه على "/> 

@@ -182,6 +182,10 @@ public class GenderController implements Serializable {
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
+    
+    public SelectItem[] getItemsAvailableSelectManyGenderAr() {
+        return JsfUtil.getSelectItemsGenderAr(ejbFacade.findAll(), false);
+    }
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);

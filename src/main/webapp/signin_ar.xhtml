@@ -38,28 +38,32 @@
             <div class="head">
                 <h2 style="font-size:35px;">مرحبا</h2>
                 <div class="reg_form">
-                    <h:outputText class='heading' value="تسجيل دخول"/>
-                    <c:if test="#{userauthController.valid}">
+                    <c:if test="#{guestController.valid}">
+                        <h:outputText class='heading' value="تسجيل دخول"/>
                         <h:form>
-                            <h:panelGrid columns="1">
-                                <h:inputText a:placeholder="*البريد الإلكتروني" value="#{userauthController.userauthGroupauthV.email}" required="true"/>
-                                <h:inputSecret a:placeholder="*كلمة السر" value="#{userauthController.userauthGroupauthV.password}" required="true" styleClass="pword"/>
-                                <div class="cntr_btn">
-                                    <h:commandLink value="دخول" action="#{userauthController.authenticate()}" class="app_button"/>
-                                </div>
-                                <div style="display: inline-block; line-height: 20px; ">
+                            <h:panelGroup>
+                                <h:panelGrid columns="1">
+                                    <h:inputText a:placeholder="*البريد الإلكتروني" id="email" value="#{guestController.selected.email}"
+                                                 required="true" requiredMessage="Email is required."/>
+                                    <h:message for="email" style="color: #cc0033; font-size: 12px;"/>
+                                    <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{guestController.selected.password}"
+                                                   required="true" requiredMessage="Password is required."  style="float: left;"/>
+                                    <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
+                                    <div class="cntr_btn">
+                                        <h:commandLink value="دخول" action="#{guestController.authenticate()}" class="app_button"/>
+                                        <h:link value="الغاء" outcome="/index_ar"  class="app_button cancle_button"/>
+                                    </div>
+
+                                </h:panelGrid>
+                                <div class="line">
                                     <h:outputText class="fix" value="لاتمتلك حساب؟"/>
-                                    <h:link class='lnk' outcome="/registration_ar" value="تسجيل"/>
+                                    <h:link class="lnk" outcome="/registration_ar" value="تسجيل"/>
                                 </div>
-                            </h:panelGrid> 
+                            </h:panelGroup>
                         </h:form>
+
                     </c:if>
-                    <c:if test="#{!userauthController.valid}">
-                        <h:outputLabel value="مرحبا #{userauthController.httpSession.getAttribute('email')}"/>
-                        <h:form>
-                            <h:commandLink action="#{userauthController.logout()}" value="تسجيل خروج"/>
-                        </h:form>
-                    </c:if>
+
                 </div>
             </div>
             <br /> 

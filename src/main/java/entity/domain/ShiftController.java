@@ -182,6 +182,10 @@ public class ShiftController implements Serializable {
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
     }
+    
+    public SelectItem[] getItemsAvailableSelectManyShiftAr() {
+        return JsfUtil.getSelectItemsShiftAr(ejbFacade.findAll(), false);
+    }
 
     public SelectItem[] getItemsAvailableSelectOne() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
