@@ -85,14 +85,14 @@
                 <div class="center-search">
                     <h:form id="search-form" class="form-style">
                         <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="Area" itemValue=""/>
-                            <f:selectItems value="#{areaController.findAreas()}" var="n"
+                            <f:selectItem itemLabel="المنطقه" itemValue=""/>
+                            <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
                                            itemLabel="#{n}" 
                                            itemValue="#{n}"/>
                         </h:selectOneMenu>
-                        <h:inputText a:placeholder="بحث بالاسم" id="search" value="#{appointmentController.hospital.name}"/>
-                        <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
-                        <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
+                        <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
+                        <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByInArabicName()}"/>
+                        <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}" >
                             <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                         </h:commandLink>
                     </h:form>
@@ -122,7 +122,7 @@
         </nav><!--Navigation bar End-->
 
         <div class="main_div">
-            <h2 class="cat-name">#{categoryController.current.name}</h2>
+            <h2 class="cat-name">#{categoryController.current.inArabic}</h2>
             <div class="result">
                 <div class="result_items">
                     <h:form>

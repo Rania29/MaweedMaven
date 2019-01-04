@@ -26,7 +26,7 @@
             gtag('js', new Date());
 
             gtag('config', 'UA-129442662-1');
-            var availableTags = #{hospitalController.autocomplete("english")};
+            var availableTags = #{hospitalController.autocomplete("arabic")};
             $(function () {
                 $("#search-form\\:search").autocomplete({
                     source: availableTags
@@ -85,24 +85,24 @@
                     <a href="help_ar.xhtml" class="item_menu">مساعدة</a>
                 </nav>
 
-                <div class="search-box">
-                    <div class="center-search">
-                        <h:form id="search-form" class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="المنطقه" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
-                                               itemLabel="#{n}" 
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
-                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
-                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
-                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:commandLink>
-                        </h:form>
+            <div class="search-box">
+                <div class="center-search">
+                    <h:form id="search-form" class="form-style">
+                        <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="المنطقه" itemValue=""/>
+                            <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
+                                           itemLabel="#{n}" 
+                                           itemValue="#{n}"/>
+                        </h:selectOneMenu>
+                        <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
+                        <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByInArabicName()}"/>
+                        <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}" >
+                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                        </h:commandLink>
+                    </h:form>
 
-                    </div>
                 </div>
+            </div>
             </header><!--Header End-->
 
             <nav class="navbar">
