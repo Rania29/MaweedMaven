@@ -8,7 +8,6 @@ and open the template in the editor.
     Author     : Nooshi
 */
 
-
 div.logo{
     width: 100%;
     height: auto;
@@ -31,6 +30,12 @@ div.logo{
     text-align: center;
 
 }
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+}
 
 .reg_form {
     height: inherit;
@@ -40,13 +45,13 @@ div.logo{
     border: 1px solid #013069;
     border-radius: 5px;
     padding: 5px;
-    line-height: 45px;
+    line-height: 35px;
 }
 
 .reg_form input[type=text], input[type=password] {
 
     padding: 8px;
-    width: 400px;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -55,8 +60,11 @@ div.logo{
     font-size: 14px;
     float: left;
 }
-.pword{
-    width: 400px;
+.reg_form input:hover{
+    border: 1.5px solid #55A6D7;
+}
+.reg_form input:focus{
+    box-shadow: 3px 3px 5px #55A6D7;
 }
 
 .fix{
@@ -83,14 +91,32 @@ div.logo{
     color: white;
     margin: 8px;
 }
+.app_button:hover{
+    background-color: #285e8e;
+    color: white;
+}
 .cancle_button{
     background-color: #00cc66;
+}
+.cancle_button:hover{
+    background-color: #009966;
+    color: white;
+}
+.logout_button{
+    background-color: #cc3300;
+}
+.logout_button:hover{
+    background-color: #f53300;
+    color: white;
 }
 div.cntr_btn{
     width: 100%;
     height: auto;
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 12px;
+    margin-top: 12px;
+
 }
 div.line{
     width: auto;
@@ -121,10 +147,11 @@ div.line{
     border: 1px solid #013069;
     border-radius: 5px;
     padding: 5px;
-    line-height: 45px;
+    line-height: 35px;
 }
 .profile input[type=text], input[type=password] {
     width: 300px;
+    height: 30px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -133,6 +160,12 @@ div.line{
     resize: vertical;
     font-size: 14px;
     float: right;
+}
+.profile input:hover{
+    border: 1.5px solid #55A6D7;
+}
+.profile input:focus{
+    box-shadow: 3px 3px 5px #55A6D7;
 }
 
 /**Media Queries*/
@@ -149,18 +182,19 @@ div.line{
     }
     .reg_form{
         width: inherit;
-    }
-    .reg_form input[type="text"]{
-        width: 95%;
-    }
-    #password{
-        width: 95%;
+        border: none;
     }
     .reg_form output{
         font-size: 14px;
     }
     .profile_div{
-        width: 98%;
+        width: 100%;
+    }
+    .profile{
+        border: none;
+    }
+    .profile h1{
+        border-radius: 3px;
     }
     .profile input[type=text], input[type=password] {
         width: 250px;

@@ -7,7 +7,9 @@
        xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
        xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
-        <title>Maweed</title>
+        <title>Maweed | موعد</title>
+        <meta name="description" content="Directory to Qatar Hospitals, it shows their location, doctors, services and if any offers, also you can request an appointment  so you can choose the best hospital and treatment that suits you. "/>
+        <meta name="keywords" content="Qatar, hospital, hospitals, clinic, clinics, doctor, doctors, offers, request, appointment"/>
         <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="mobile-web-app-capable" content="yes"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
@@ -61,21 +63,26 @@
                 <div class="left-div">
                     <a href="index_ar.xhtml">عربي</a>
                     <a class="separator">|</a>
-                    <a href="index.xhtml">English</a>
+                    <a href="index.xhtml" class="isDisabled">English</a>
                 </div>
                 <div class="right-div">
                         <c:if test="#{guestController.valid}">
                             <h:form>
-                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Sign In"/>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
                                 <a class="separator">|</a>
                                 <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
                             </h:form>
                         </c:if>
                         <c:if test="#{!guestController.valid}">
-                            <h:link value="Welcome #{guestController.selected.name}" 
-                                    outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}"/>
-                            <h:form>
-                                <h:commandButton action="#{guestController.logout()}" value="Log out"/>
+                            <h:outputText title="Welcome" style="color: white;"/>
+                            <div class="tooltip">
+                                <h:link  value="#{guestController.selected.name}"
+                                         outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                                <span class="tooltiptext">User Profile</span>
+                            </div>
+                            <a class="separator">| </a>
+                            <h:form style="display: inline-block;">
+                                <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
                             </h:form>
                         </c:if>
                 </div>
