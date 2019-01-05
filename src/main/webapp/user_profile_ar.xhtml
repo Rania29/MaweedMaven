@@ -9,7 +9,7 @@
         <h:outputStylesheet library="css" name="dtpicker.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
-        <link href="resources/css/registercss.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/registercss_ar.css" rel="stylesheet" type="text/css"/>
         <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
         <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
         <script>
@@ -43,27 +43,29 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="index_ar.xhtml">عربي</a>
+                    <a href="index_ar.xhtml" class="isDisabled">عربي</a>
                     <a id="separator">|</a>
                     <a href="user_profile.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <h3>#{guestController.selected.inArabic}</h3>
+                    <h:link  value="#{guestController.selected.inArabic}"
+                                     outcome="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
+                   
                 </div>
             </div>
             <div class="logo">
-                <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                <a href="index_ar.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
             </div> 
             <div class="profile_div">
                 <h3>الملف الشخصى</h3>
                 <h4>معلومات حساب المستخدم</h4>
                 <h:form class="profile">
-                    <h1><h:outputText value="Edit"/></h1>
+                    <h1><h:outputText value="تعديل"/></h1>
                     <h:panelGrid columns="2">
                         <h:inputText readonly="true" id="id" value="#{guestController.selected.id}" title="Id" />
                         <h:outputLabel value="الرقم" for="id" />
                         <h:inputText id="name" value="#{guestController.selected.name}" title="Name" />
-                        <h:outputLabel value="الاسم" for="name" />
+                        <h:outputLabel value="الإسم الأول والأخير" for="name" />
                         <h:inputText id="inArabic" value="#{guestController.selected.inArabic}" title="InArabic" />
                         <h:outputLabel value="الاسم بالعربي" for="inArabic" />
                         <h:inputSecret id="password" value="#{guestController.selected.password}" title="Password" />
@@ -82,9 +84,9 @@
                         <h:outputLabel value="تاريخ الميلاد" for="DOB" />
                     </h:panelGrid>
                     <div class="cntr_btn">
-                        <h:commandLink class="app_button" value="Update" action="#{guestController.update()}"/>
-                        <h:commandLink class="app_button cancle_button" value="Back" action="/index"/>
-                        <h:commandLink class="app_button logout_button" value="Logout" action="#{guestController.logout()}" />
+                        <h:commandLink class="app_button" value="تعديل" action="#{guestController.update()}"/>
+                        <h:commandLink class="app_button cancle_button" value="العودة" action="/index"/>
+                        <h:commandLink class="app_button logout_button" value="خروج" action="#{guestController.logout()}" />
                     </div>
 
                 </h:form>

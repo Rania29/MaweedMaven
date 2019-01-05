@@ -69,7 +69,7 @@ body, html{
 
 .left-div{
     float: left;
-    width: 50%;
+    width: 30%;
     padding-left: 50px;
     text-align: left;
 
@@ -77,10 +77,16 @@ body, html{
 #separator{
     color: #F2F3F7;
 }
+.isDisabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+}
 
 .right-div{
     float: right;
-    width: 50%;
+    width: 70%;
     padding-right: 50px;
     text-align: right;
 }
@@ -90,6 +96,56 @@ body, html{
 }
 .top-div a:hover{
     text-decoration: underline;
+}
+/*---------Tool Tip--------------------*/
+.tooltip a:hover{
+    color: #55A6D7;
+    text-decoration: none;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #55A6D7;
+    width: 120px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    opacity: 0.8;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #55A6D7 transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+.log_out{
+    background: none;
+    border: 1px solid #F2F3F7;
+    color: #F2F3F7;
+}
+.log_out:hover{
+    color: white;
+    border: 1px solid #cc0033;
+    background-color: #cc0033;
 }
 /**header div**/
 .header-top{
@@ -156,6 +212,24 @@ div.center-search{
 .form-style > input, command, select{
     display: inline-block;
     vertical-align: middle;
+}
+.advansed-link{
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-right: 2px;
+    background-color: #445268;
+    border-radius: 0 5px 5px 0 ;
+    height: inherit;
+    width: 30px;
+    /*padding: 10px 2px;*/
+    overflow-wrap: break-word;
+    white-space: normal;
+    height: inherit;
+    opacity: 0.9;
+}
+.advansed-link:hover{
+    text-decoration: underline;
 }
 
 .hidden-link1 {
@@ -381,15 +455,28 @@ footer{
     text-align: center;
 }
 
-.footer-ul  li{
+/**--------------------------footer-----------------------**/
+footer{
+    width: 100%;
+    height: 150px;
+    background-color: #445268;
+    font-size: 18px;
+    color: #e9eaea;
+}
+.upper-footer{
+     width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #F2F3F7;
     display: inline-block;
+    margin: 0 auto;
+    text-align: center;
 }
-.footer-ul li a{
+.upper-footer a{
     text-decoration: none;
-    color: #FFFFFF;
-    font-size:  15px;
+    color: white;
+    font-size: 16px;
 }
-.footer-ul li a:hover{
+.upper-footer a:hover{
     text-decoration: underline;
 }
 .lower-footer{
@@ -417,11 +504,11 @@ div.lower-footer h2{
         margin-bottom: 1px;
     }
     .left-div{
-        padding-left: 20px;
+        padding-left: 5px;
     }
 
     .right-div{
-        padding-right: 20px;
+        padding-right: 5px;
     }
 
     div.container {

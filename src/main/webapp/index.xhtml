@@ -74,7 +74,7 @@
                             </h:form>
                         </c:if>
                         <c:if test="#{!guestController.valid}">
-                            <h:outputText title="Welcome" style="color: white;"/>
+                            <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
                             <div class="tooltip">
                                 <h:link  value="#{guestController.selected.name}"
                                          outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
@@ -110,7 +110,7 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form id="search-form" class="form-style">
-                            <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
+                            <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
                             <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
@@ -171,7 +171,7 @@
             <div>
                 <h1>Categories</h1>
             </div>
-            <main >
+            <main style="margin-bottom: 10px;">
                 <div class="cat">
                     <c:forEach items="#{categoryController.findCategories()}" var="c">
                         <div class="cat-item">
@@ -188,19 +188,11 @@
             <!--Footer section-->
             <footer>
                 <div class="upper-footer">
-                    <ul class="footer-ul">
-                        <li>
                             <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
                             <a class="separator">|</a>
-                        </li>
-                        <li>
                             <a href="privacy-policy.xhtml">Privacy Policy</a>
                             <a class="separator">|</a>
-                        </li>
-                        <li>
                             <a href="help.xhtml">Help</a>
-                        </li>
-                    </ul>
                 </div>
                 <div class="lower-footer">
                     <h2>Maweed</h2>

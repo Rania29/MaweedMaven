@@ -94,11 +94,24 @@ div.logo{
 .cancle_button{
     background-color: #00cc66;
 }
+.cancle_button:hover{
+    background-color: #009966;
+    color: white;
+}
+.logout_button{
+    background-color: #cc3300;
+}
+.logout_button:hover{
+    background-color: #f53300;
+    color: white;
+}
 div.cntr_btn{
     width: 100%;
     height: auto;
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 12px;
+    margin-top: 12px;
 }
 div.line{
     width: auto;
@@ -119,6 +132,7 @@ div.line{
     text-align: center;
     width: 450px;
     line-height: 30px;
+    margin-bottom: 10px;
 }
 
 .profile {
@@ -129,10 +143,11 @@ div.line{
     border: 1px solid #013069;
     border-radius: 5px;
     padding: 5px;
-    line-height: 45px;
+    line-height: 35px;
 }
 .profile input[type=text], input[type=password] {
     width: 300px;
+    height: 30px;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -140,7 +155,18 @@ div.line{
     margin-bottom: 2px;
     resize: vertical;
     font-size: 14px;
-    float: left;
+    float: right;
+    text-align: right;
+}
+.contact_form input[type="radio"]{
+    float: right;
+   margin: 0 5px 0 5px;
+}
+.profile input:hover{
+    border: 1.5px solid #55A6D7;
+}
+.profile input:focus{
+    box-shadow: 3px 3px 5px #55A6D7;
 }
 
 /**Media Queries*/

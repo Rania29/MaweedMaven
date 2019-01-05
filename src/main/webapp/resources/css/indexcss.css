@@ -66,7 +66,7 @@ body, html{
 }
 .left-div{
     float: left;
-    width: 30%;
+    width: 28%;
     padding-left: 50px;
     text-align: left;
 }
@@ -82,7 +82,7 @@ body, html{
 
 .right-div{
     float: right;
-    width: 70%;
+    width: 72%;
     padding-right: 50px;
     text-align: right;
 }
@@ -93,6 +93,8 @@ body, html{
 .top-div a:hover{
     text-decoration: underline;
 }
+
+/*---------Tool Tip--------------------*/
 .tooltip a:hover{
     color: #55A6D7;
     text-decoration: none;
@@ -208,7 +210,7 @@ div.center-search{
     border-radius: 5px 0 0 5px ;
 }*/
 
-.form-style > input, command, select, link, button{
+.form-style > input, command, select, link, button, .hidden-link1{
     display: inline-block;
     vertical-align: middle;
 }
@@ -217,10 +219,9 @@ div.center-search{
     display: inline-block;
     margin:  auto;
     position: relative;
-    padding: 0 10px;
+    padding: 2px 8px;
     height: inherit;
-    margin-left: 2px;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
     background-color: #55A6D7;
     color: white;
@@ -230,6 +231,7 @@ div.center-search{
     text-decoration: underline;
 }
 .advansed-link{
+    position: relative;
     color: white;
     text-decoration: none;
     font-size: 14px;
@@ -238,7 +240,7 @@ div.center-search{
     border-radius: 0 5px 5px 0 ;
     height: inherit;
     width: 30px;
-    /*padding: 10px 2px;*/
+    padding: 12px 2px;
     overflow-wrap: break-word;
     white-space: normal;
     height: inherit;
@@ -454,23 +456,19 @@ footer{
     color: #e9eaea;
 }
 .upper-footer{
-    width: 100%;
+     width: 100%;
     height: 50px;
     border-bottom: 1px solid #F2F3F7;
-    margin: 0 auto;
     display: inline-block;
+    margin: 0 auto;
     text-align: center;
 }
-
-.footer-ul  li{
-    display: inline-block;
-}
-.footer-ul li a{
+.upper-footer a{
     text-decoration: none;
-    color: #FFFFFF;
-    font-size:  15px;
+    color: white;
+    font-size: 15px;
 }
-.footer-ul li a:hover{
+.upper-footer a:hover{
     text-decoration: underline;
 }
 .lower-footer{
@@ -497,11 +495,11 @@ div.lower-footer h2{
         margin-bottom: 1px;
     }
     .left-div{
-        padding-left: 10px;
+        padding-left: 5px;
     }
 
     .right-div{
-        padding-right: 10px;
+        padding-right: 5px;
     }
 
     div.container {
@@ -586,10 +584,10 @@ div.lower-footer h2{
     .select-style{
         width: 80px;   
     }
-    input, command{
-        display: inline-block;
-        vertical-align: middle;
-    }
+    .form-style > input, command, link, .hidden-link{
+    display: inline-block;
+    vertical-align: middle;
+}
     .hidden-link1{
         display: none;
     }
