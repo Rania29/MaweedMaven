@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Maweed Advanced Search</title>
+        <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/advanced_search.css" rel="stylesheet" type="text/css"/>
+        <script src="resources/javascript/hamburger_menu.js" type="text/javascript"></script>
+        <script async="async" src="https://www.googletagmanager.com/gtag/js?id=UA-129442662-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-129442662-1');
+            var availableTags = #{hospitalController.autocomplete("english")};
+            $(function () {
+                $("#search-form\\:search").autocomplete({
+                    source: availableTags
+                });
+            });
+        </script>
+    </h:head>
+    <h:body>
+        <div class="top-div">
+            <div class="left-div">
+                <a href="search_ar.xhtml">عربي</a>
+                <a class="separator">|</a>
+                <a href="search.xhtml" class="isDisabled">English</a>
+            </div>
+
+        </div>
+        <header class="header-top">
+            <div class="logo">
+                <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+            </div> 
+            <!--Hamburger button and menu-->
+            <div class="container" onclick="myFunction(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+
+            <nav id="myDropdown" class="menu">
+                <a href="index.xhtml" class="item_menu">home</a>
+                <a href="about.xhtml" class="item_menu">about</a>
+                <a href="contact.xhtml" class="item_menu">Contact Us</a>
+                <a href="help.xhtml" class="item_menu">Help</a>
+            </nav>
+
+        </header><!--Header End-->
+
+        <nav class="navbar">
+            <ul>
+                <li><a  href="index.xhtml">Home</a></li>
+                <li><a href="#" class="dropcat">Categories</a>
+                    <ul>
+                        <c:forEach items="#{categoryController.findCategories()}" var="c">
+                            <li>
+                                <h:form>
+                                    <h:commandLink action="#{categoryController.toCategory(c)}" 
+                                                   value="#{c.name}"/> 
+                                </h:form>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </li>
+                <li><a  href="about.xhtml">About Us</a></li>
+                <li><a  href="contact.xhtml">Contact</a></li>
+                <li><a  href="help.xhtml">Help</a></li>
+            </ul>
+        </nav><!--Navigation bar End-->
+
+
+        <div class="main_div">
+            <h2>Advanced Search Page</h2>
+
+            <!--Search box section-->
+            <div class="search-area">
+                <div class="center-search1">
+                    <h:form id="search-form1" class="form-style">
+                        <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="Area" itemValue=""/>
+                            <f:selectItems value="#{areaController.findAreas()}" var="n"
+                                           itemLabel="#{n}" 
+                                           itemValue="#{n}"/>
+                        </h:selectOneMenu>
+                        <h:selectOneMenu class="select-menu2" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="Category" itemValue=""/>
+                            <f:selectItems value="#{areaController.findAreas()}" var="n"
+                                           itemLabel="#{n}" 
+                                           itemValue="#{n}"/>
+                        </h:selectOneMenu>
+                        <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
+                        <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
+                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                        </h:commandLink>
+                    </h:form>
+                </div>
+            </div>
+
+
+            <!--Search Results section-->
+            <div class="result">
+                <h3>Your Search Results....</h3>
+                <div class="result_items">
+                    <h:form>
+                        <c:forEach items="#{appointmentController.hospitals}" var="h">
+                            <div class="clnk-div">
+                                <h:commandLink action="#{appointmentController.toClinic (h)}">
+                                    <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/>
+                                </h:commandLink >
+                                <h:commandLink action="#{appointmentController.toClinic (h)}">
+                                    <span class="clnk-name">#{h.name}</span>
+                                </h:commandLink >
+                                <span class="clnk-location">#{h.area.name}</span>
+                            </div>
+                        </c:forEach>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="upper-footer">
+                <ul class="footer-ul">
+                    <li>
+                        <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                        <a class="separator">|</a>
+                    </li>
+                    <li>
+                        <a href="uesr_agreement.xhtml">Privacy Policy</a>
+                        <a class="separator">|</a>
+                    </li>
+                    <li>
+                        <a href="help.xhtml">Help</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="lower-footer">
+                <h2>Maweed</h2>
+                <h6>Copyright 2018 | All rights reserved.</h6>
+            </div>
+        </footer>
+    </h:body>
+</html>
+

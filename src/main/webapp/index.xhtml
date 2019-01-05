@@ -66,25 +66,25 @@
                     <a href="index.xhtml" class="isDisabled">English</a>
                 </div>
                 <div class="right-div">
-                    <c:if test="#{guestController.valid}">
-                        <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
-                            <a class="separator">|</a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
-                        </h:form>
-                    </c:if>
-                    <c:if test="#{!guestController.valid}">
-                        <h:outputText title="Welcome" style="color: white;"/>
-                        <div class="tooltip">
-                            <h:link  value="#{guestController.selected.name}"
-                                     outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
-                            <span class="tooltiptext">User Profile</span>
-                        </div>
-                        <a class="separator">| </a>
-                        <h:form style="display: inline-block;">
-                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
-                        </h:form>
-                    </c:if>
+                        <c:if test="#{guestController.valid}">
+                            <h:form>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
+                                <a class="separator">|</a>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                            </h:form>
+                        </c:if>
+                        <c:if test="#{!guestController.valid}">
+                            <h:outputText title="Welcome" style="color: white;"/>
+                            <div class="tooltip">
+                                <h:link  value="#{guestController.selected.name}"
+                                         outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                                <span class="tooltiptext">User Profile</span>
+                            </div>
+                            <a class="separator">| </a>
+                            <h:form style="display: inline-block;">
+                                <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
+                            </h:form>
+                        </c:if>
                 </div>
             </div>
             <header class="header-top">
@@ -106,21 +106,16 @@
                     <a href="help.xhtml" class="item_menu">Help</a>
                 </nav>
 
-                <!--Search box section-->
+                <!--Search section-->
                 <div class="search-box">
                     <div class="center-search">
                         <h:form id="search-form" class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                               itemLabel="#{n}"
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
                             <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
                             <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
+                            <h:commandLink value="Advanced Search" action="/advanced_search" class="advansed-link" style="white-space: normal;"/>
                         </h:form>
                     </div>
                 </div>

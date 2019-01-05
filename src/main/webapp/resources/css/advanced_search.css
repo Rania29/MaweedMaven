@@ -1,0 +1,85 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 5, 2019, 6:27:48 PM
+    Author     : Nooshi
+*/
+.navbar{
+    clear: both;
+}
+.main_div{
+    clear: both;
+}
+h2{
+    clear: both;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/**------------------- search area------------------**/
+.search-area{
+    clear: both;
+    width: 100%;
+    position: relative;
+    height: 60px;
+    margin-bottom: 10px;
+}
+.hidden-link{
+    display: none;
+}
+
+div.center-search1{
+    height: inherit;
+    width: fit-content;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+
+}
+.form-style1{
+    margin: 0 auto;
+    text-align: center;
+}
+.form-style1 > input, command, select, link, button{
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+/*----------Select menu--------------*/
+.select-menu1{
+    text-indent: 0.01px;
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    outline: 0;
+    border: 1px solid #445268;
+}
+.select-menu2{
+    text-indent: 0.01px;
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    outline: 0;
+    border: 1px solid #445268;
+}
+
+.hidden-link1 {
+    display: inline-block;
+    margin:  auto;
+    position: relative;
+    padding: 0 10px;
+    height: inherit;
+    margin-left: 2px;
+    font-size: 18px;
+    text-decoration: none;
+    background-color: #55A6D7;
+    color: white;
+}
+.hidden-link1:hover{
+    color: #445268;
+    text-decoration: underline;
+}
