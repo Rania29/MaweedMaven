@@ -280,6 +280,7 @@ public class AppointmentController implements Serializable {
             Guest g = ((Guest) guestFacade.findGuestByEmail(email));
             current.setEmail(g.getEmail());
             current.setName(g.getName());
+            current.setInArabic(g.getInArabic());
             current.setPhone(g.getPhone());
             current.setDOB(g.getDOB());
             current.setGender(g.getGender());

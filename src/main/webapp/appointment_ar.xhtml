@@ -89,7 +89,7 @@
                         <h:panelGrid columns="2">
                             <h:outputLabel value="الإسم:" for="name" />
                             <h:inputText id="name" value="#{appointmentController.selected.name}" title="Name" />
-                            <h:outputLabel value="الإسم:" for="inarabic" />
+                            <h:outputLabel value="الاسم بالعربي" for="inarabic" />
                             <h:inputText id="inarabic" value="#{appointmentController.selected.inArabic}" title="Name" />
                             <h:outputLabel value=" الجوال:" for="phone" />
                             <h:inputText id="phone" value="#{appointmentController.selected.phone}" title="Phone" />
@@ -141,7 +141,7 @@
                         </h:panelGrid>
                         <div class="cntr_btn">
                             <h:commandLink action="#{appointmentController.create}" value="اطلب موعد" class="app_button"/>
-                            <h:link outcome="clinics" value="عوده" class="app_button cancle_button"/>
+                            <h:link outcome="clinics_ar" value="عوده" class="app_button cancle_button"/>
                         </div>
                     </h:form>
                 </div>
