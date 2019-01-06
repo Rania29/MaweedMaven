@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>Maweed Advanced Search</title>
         <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -87,19 +88,15 @@
                 <div class="center-search1">
                     <h:form id="search-form1" class="form-style">
                         <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="Area" itemValue=""/>
-                            <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                           itemLabel="#{n}" 
-                                           itemValue="#{n}"/>
+                            <f:selectItem itemLabel="--Area--" itemValue=""/>
+                            <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
                         </h:selectOneMenu>
-                        <h:selectOneMenu class="select-menu2" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="Category" itemValue=""/>
-                            <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                           itemLabel="#{n}" 
-                                           itemValue="#{n}"/>
+                        <h:selectOneMenu class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="--Category--" itemValue=""/>
+                            <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
                         </h:selectOneMenu>
-                        <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
-                        <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
+                        <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findSearchResults('english')}"/>
+                        <h:commandLink class="hidden-link" action="#{appointmentController.findSearchResults('english')}" >
                             <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                         </h:commandLink>
                     </h:form>
@@ -114,12 +111,8 @@
                     <h:form>
                         <c:forEach items="#{appointmentController.hospitals}" var="h">
                             <div class="clnk-div">
-                                <h:commandLink action="#{appointmentController.toClinic (h)}">
-                                    <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/>
-                                </h:commandLink >
-                                <h:commandLink action="#{appointmentController.toClinic (h)}">
-                                    <span class="clnk-name">#{h.name}</span>
-                                </h:commandLink >
+                                <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/></h:commandLink>
+                                <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><span class="clnk-name">#{h.name}</span></h:commandLink>
                                 <span class="clnk-location">#{h.area.name}</span>
                             </div>
                         </c:forEach>

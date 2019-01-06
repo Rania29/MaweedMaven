@@ -3,7 +3,11 @@ package entity.domain;
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import entity.domain.util.SendMail;
+import facade.AdvancedSearchFacade;
 import facade.AppointmentFacade;
+import facade.AreaFacade;
+import facade.CategoryFacade;
+import facade.ClinicFacade;
 import facade.ClinicServiceFacade;
 import facade.DaysOfWeekFacade;
 import facade.GuestFacade;
@@ -34,15 +38,30 @@ import javax.inject.Inject;
 public class AppointmentController implements Serializable {
 
     @EJB
+    private ClinicFacade clinicFacade;
+    @EJB
     private GuestFacade guestFacade;
+    @EJB
+    private AdvancedSearchFacade advancedSearchFacade;
     @Inject
     private Guest guest;
     @Inject
+    private Clinic clinic;
+    @Inject
+    private AdvancedSearch advancedSearch;
+    private List<AdvancedSearch> advancedSearchList;
+    @Inject
     private Hospital hospital;
     @Inject
-    private Clinic clinic;
+    private Area area;
+    @Inject
+    private Category category;
+    @EJB
+    private CategoryFacade categoryFacade;
     @EJB
     private DaysOfWeekFacade daysOfWeekFacade;
+    @EJB
+    private AreaFacade areaFacade;
     @EJB
     private HospitalFacade hospitalFacade;
     @EJB
@@ -51,6 +70,7 @@ public class AppointmentController implements Serializable {
     private ServiceClinicHospitalVFacade serviceClinicHospitalVFacade;
     private List<String> days;
     private List<Hospital> hospitals;
+    private List<Clinic> clinics;
     private List<ClinicService> clinicServices;
     private Appointment current;
     private DataModel items = null;
@@ -70,6 +90,10 @@ public class AppointmentController implements Serializable {
         return hospitals;
     }
 
+    public AdvancedSearch getAdvancedSearch() {
+        return advancedSearch;
+    }
+
     public List<ClinicService> getClinicServices() {
         return clinicServices;
     }
@@ -82,8 +106,40 @@ public class AppointmentController implements Serializable {
         return clinic;
     }
 
+    public List<AdvancedSearch> getAdvancedSearchList() {
+        return advancedSearchList;
+    }
+
     public void setClinic(Clinic clinic) {
         this.clinic = clinic;
+    }
+
+    public void findSearchResults(String lang) {
+        if (hospitals == null) {
+            hospitals = new ArrayList<>();
+        }
+        hospitals.clear();
+        if (lang.equals("english")) {
+            System.out.println("findSearchResults clinic.............. " + clinic);
+            if (clinic == null) {
+                clinics = clinicFacade.findAll();
+            } else {
+                clinics = clinicFacade.findClinicByCat(clinic.getCategory());
+            }
+            System.out.println("clinics........... " + clinics);
+            for (Clinic c : clinics) {
+                if (c.getHospital().getArea().getName().equals(hospital.getArea().getName())) {
+                    hospitals.add(c.getHospital());
+                }
+            }
+        } else {
+            clinics = clinicFacade.findClinicByCat(clinic.getCategory());
+            for (Clinic c : clinics) {
+                if (c.getHospital().getArea().getInArabic().equals(hospital.getArea().getInArabic())) {
+                    hospitals.add(c.getHospital());
+                }
+            }
+        }
     }
 
     public String findHospitalsByName() {
