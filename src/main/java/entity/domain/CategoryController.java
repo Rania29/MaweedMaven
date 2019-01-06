@@ -62,7 +62,6 @@ public class CategoryController implements Serializable {
 
     public List<Category> findCategories() {
         List<Category> cats = ejbFacade.findCategoriesSorted();
-//        System.out.println("findCategories.................... " + cats);
         return cats;
     }
 
@@ -229,7 +228,11 @@ public class CategoryController implements Serializable {
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
-        return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
+        return JsfUtil.getSelectItemsCateg(ejbFacade.findAll(), false);
+    }
+    
+    public SelectItem[] getItemsAvailableSelectManyAr() {
+        return JsfUtil.getSelectItemsCategAr(ejbFacade.findAll(), false);
     }
 
     public SelectItem[] getItemsAvailableSelectOne() {

@@ -128,6 +128,11 @@ public abstract class AbstractFacade<T> {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Area.findNameSorted").getResultList();
     }
+    
+    public Object findAreaByName(String area) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
+        return getEntityManager().createNamedQuery("Area.findByName").getSingleResult();
+    }
 
     public List<T> findArabicAreas() {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
@@ -137,6 +142,20 @@ public abstract class AbstractFacade<T> {
     public List<T> findCategoriesSorted() {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Category.findAllSorted").getResultList();
+    }
+
+    public List<T> findResultsByCatAndArea(String categName, String areaName) {
+        return getEntityManager().createNamedQuery("AdvancedSearch.findByCategAndArea")
+                .setParameter("categName", categName)
+                .setParameter("areaName", areaName)
+                .getResultList();
+    }
+    
+    public List<T> findResultsByCatAndAreaAr(String categName, String areaName) {
+        return getEntityManager().createNamedQuery("AdvancedSearch.findByCategArAndAreaAr")
+                .setParameter("categArabic", categName)
+                .setParameter("areaArabic", areaName)
+                .getResultList();
     }
 
     public List<T> findRange(int[] range) {

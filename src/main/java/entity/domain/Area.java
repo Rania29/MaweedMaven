@@ -110,9 +110,9 @@ public class Area implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+//    @Override
+//    public String toString() {
+//        return name;
+//    }
 
 }

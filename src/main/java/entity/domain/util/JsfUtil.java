@@ -1,5 +1,7 @@
 package entity.domain.util;
 
+import entity.domain.Area;
+import entity.domain.Category;
 import entity.domain.Gender;
 import entity.domain.Hospital;
 import entity.domain.Shift;
@@ -63,6 +65,61 @@ public class JsfUtil {
         }
         for (Object x : entities) {
             items[i++] = new SelectItem(x, ((Shift)x).getInArabic());
+        }
+        return items;
+    }
+    
+    public static SelectItem[] getSelectItemsAreaAr(List<?> entities, boolean selectOne) {
+        int size = selectOne ? entities.size() + 1 : entities.size();
+        SelectItem[] items = new SelectItem[size];
+        int i = 0;
+        if (selectOne) {
+            items[0] = new SelectItem("", "---");
+            i++;
+        }
+        for (Object x : entities) {
+            items[i++] = new SelectItem(x, ((Area)x).getInArabic());
+        }
+        return items;
+    }
+    
+    public static SelectItem[] getSelectItemsArea(List<?> entities, boolean selectOne) {
+        int size = selectOne ? entities.size() + 1 : entities.size();
+        SelectItem[] items = new SelectItem[size];
+        int i = 0;
+        if (selectOne) {
+            items[0] = new SelectItem("", "---");
+            i++;
+        }
+        for (Object x : entities) {
+            items[i++] = new SelectItem(x, ((Area)x).getName());
+        }
+        return items;
+    }
+    public static SelectItem[] getSelectItemsCategAr(List<?> entities, boolean selectOne) {
+        int size = selectOne ? entities.size() + 1 : entities.size();
+        SelectItem[] items = new SelectItem[size];
+        int i = 0;
+        if (selectOne) {
+            items[0] = new SelectItem("", "---");
+            i++;
+        }
+        for (Object x : entities) {
+            items[i++] = new SelectItem(x, ((Category)x).getInArabic());
+        }
+        return items;
+    }
+    
+    public static SelectItem[] getSelectItemsCateg(List<?> entities, boolean selectOne) {
+        int size = selectOne ? entities.size() + 1 : entities.size();
+        SelectItem[] items = new SelectItem[size];
+        int i = 0;
+        if (selectOne) {
+            items[0] = new SelectItem("", "---");
+            i++;
+        }
+        for (Object x : entities) {
+            items[i++] = new SelectItem(x, ((Category)x).getName());
         }
         return items;
     }
