@@ -32,6 +32,10 @@ h5{
     color: #55A6D7;
     font-size: 14px;
     overflow-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 .clnk-location{
     display: block;

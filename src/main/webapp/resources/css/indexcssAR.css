@@ -89,6 +89,7 @@ body, html{
     width: 70%;
     padding-right: 50px;
     text-align: right;
+    
 }
 .top-div a{
     text-decoration: none;
@@ -137,6 +138,7 @@ body, html{
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+/*---------tool tip ends----------------*/
 .log_out{
     background: none;
     border: 1px solid #F2F3F7;

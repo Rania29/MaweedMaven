@@ -63,6 +63,7 @@ body, html{
     height: 45px;
     width: 100%;
     background-color: #445268;
+    font-size: 15px;
 }
 .left-div{
     float: left;
@@ -219,7 +220,8 @@ div.center-search{
     display: inline-block;
     margin:  auto;
     position: relative;
-    padding: 2px 8px;
+    padding: 0px 4px;
+    margin-left: 2px;
     height: inherit;
     font-size: 16px;
     text-decoration: none;
@@ -239,12 +241,15 @@ div.center-search{
     background-color: #445268;
     border-radius: 0 5px 5px 0 ;
     height: inherit;
-    width: 30px;
-    padding: 12px 2px;
+    padding: 11px 2px;
     overflow-wrap: break-word;
-    white-space: normal;
-    height: inherit;
-    opacity: 0.9;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 .advansed-link:hover{
     text-decoration: underline;
