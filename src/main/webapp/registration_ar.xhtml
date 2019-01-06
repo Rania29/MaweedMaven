@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//AR" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ar" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -25,17 +25,17 @@
         <div>
             <header>
                 <div class="top-div">
-                <div class="left-div">
-                    <a href="index_ar.xhtml">عربي</a>
-                    <a id="separator">|</a>
-                    <a href="registration.xhtml">English</a>
+                    <div class="left-div">
+                        <a href="index_ar.xhtml" class="isDisabled">عربي</a>
+                        <a id="separator">|</a>
+                        <a href="registration.xhtml">English</a>
+                    </div>
+                    <div class="right-div">
+                        <h:link outcome="/signin_ar" value="دخول "/>
+                        <a class="separator"> | </a>
+                        <h:link outcome="#{guestController.saveCurrentPage('/index_ar', '/user_profile_ar')}" value="تسجيل"/>
+                    </div>
                 </div>
-                <div class="right-div">
-                    <h:link outcome="/signin_ar" value="دخول "/>
-                    <a class="separator"> | </a>
-                    <h:link outcome="#{guestController.saveCurrentPage('/index_ar', '/user_profile_ar')}" value="تسجيل"/>
-                </div>
-            </div>
                 <div class="logo">
                     <a href="index_ar.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div> 

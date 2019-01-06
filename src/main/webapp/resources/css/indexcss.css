@@ -65,6 +65,7 @@ body, html{
     background-color: #445268;
     font-size: 15px;
 }
+
 .left-div{
     float: left;
     width: 28%;
@@ -158,6 +159,7 @@ div.logo{
     float: left;
     width: 40%;
     height: inherit;
+    
 }
 .logo img{
     width: 220px; 
@@ -604,18 +606,15 @@ div.lower-footer h2{
         position: relative;
         cursor: pointer;
         background-color: #55A6D7;
-        border-radius: 5px;
+        border-radius: 0 5px 5px 0;
         height: 40px;
     }
     .search-icon{
         padding: 3px;
     }
-
-
     .dropbtn{
         border: 1px solid #cccccc;
     }
-
     .navbar{
         display: none;
     }

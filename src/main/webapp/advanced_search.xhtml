@@ -30,109 +30,133 @@
         </script>
     </h:head>
     <h:body>
-        <div class="top-div">
-            <div class="left-div">
-                <a href="search_ar.xhtml">عربي</a>
-                <a class="separator">|</a>
-                <a href="search.xhtml" class="isDisabled">English</a>
-            </div>
+        <div>
+            <div class="top-div">
+                <div class="left-div">
+                    <a href="search_ar.xhtml">عربي</a>
+                    <a class="separator">|</a>
+                    <a href="search.xhtml" class="isDisabled">English</a>
+                </div>
+                <div class="right-div" >
+                    <c:if test="#{guestController.valid}">
+                        <h:form>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
+                            <a class="separator">|</a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{!guestController.valid}">
+                        <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
+                        <div class="tooltip">
+                            <h:link  value="#{guestController.selected.name}"
+                                     outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                            <span class="tooltiptext">User Profile</span>
+                        </div>
+                        <a class="separator">| </a>
+                        <h:form style="display: inline-block;">
+                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
+                        </h:form>
+                    </c:if>
+                </div>
 
-        </div>
-        <header class="header-top">
-            <div class="logo">
-                <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
-            </div> 
-            <!--Hamburger button and menu-->
-            <div class="container" onclick="myFunction(this)">
-                <div class="bar1"></div>
-                <div class="bar2"></div>
-                <div class="bar3"></div>
             </div>
+            <header class="header-top">
+                <div class="logo">
+                    <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+                </div> 
+                <!--Hamburger button and menu-->
+                <div class="container" onclick="myFunction(this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
 
-            <nav id="myDropdown" class="menu">
-                <a href="index.xhtml" class="item_menu">home</a>
-                <a href="about.xhtml" class="item_menu">about</a>
-                <a href="contact.xhtml" class="item_menu">Contact Us</a>
-                <a href="help.xhtml" class="item_menu">Help</a>
+                <nav id="myDropdown" class="menu">
+                    <a href="index.xhtml" class="item_menu">home</a>
+                    <a href="about.xhtml" class="item_menu">about</a>
+                    <a href="contact.xhtml" class="item_menu">Contact Us</a>
+                    <a href="help.xhtml" class="item_menu">Help</a>
+                </nav>
+
+            </header><!--Header End-->
+
+            <nav class="navbar">
+
+                <ul>
+                    <li><a  href="index.xhtml">Home</a></li>
+                    <li><a href="#" class="dropcat">Categories</a>
+                        <ul>
+                            <c:forEach items="#{categoryController.findCategories()}" var="c">
+                                <li>
+                                    <h:form>
+                                        <h:commandLink action="#{categoryController.toCategory(c)}" value="#{c.name}"/>
+                                    </h:form>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                    <li><a  href="about.xhtml">About Us</a></li>
+                    <li><a  href="contact.xhtml">Contact</a></li>
+                    <li><a  href="help.xhtml">Help</a></li>
+                </ul>
             </nav>
 
-        </header><!--Header End-->
 
-        <nav class="navbar">
-            <ul>
-                <li><a  href="index.xhtml">Home</a></li>
-                <li><a href="#" class="dropcat">Categories</a>
-                    <ul>
-                        <c:forEach items="#{categoryController.findCategories()}" var="c">
-                            <li>
-                                <h:form>
-                                    <h:commandLink action="#{categoryController.toCategory(c)}" 
-                                                   value="#{c.name}"/> 
-                                </h:form>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </li>
-                <li><a  href="about.xhtml">About Us</a></li>
-                <li><a  href="contact.xhtml">Contact</a></li>
-                <li><a  href="help.xhtml">Help</a></li>
-            </ul>
-        </nav><!--Navigation bar End-->
+            <div class="main_div">
+                <h2>Advanced Search Page</h2>
+
+                <!--Search box section-->
+                <div class="search-area">
+                    <div class="center-search1">
+                        <h:form id="search-form1" class="form-style">
+                            <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="--Area--" itemValue=""/>
+                                <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
+                            </h:selectOneMenu>
+                            <h:selectOneMenu class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="--Category--" itemValue=""/>
+                                <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
+                            </h:selectOneMenu>
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findSearchResults('english')}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findSearchResults('english')}" >
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                            </h:commandLink>
+                        </h:form>
+                    </div>
+                </div>
 
 
-        <div class="main_div">
-            <h2>Advanced Search Page</h2>
-
-            <!--Search box section-->
-            <div class="search-area">
-                <div class="center-search1">
-                    <h:form id="search-form1" class="form-style">
-                        <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="--Area--" itemValue=""/>
-                            <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
-                        </h:selectOneMenu>
-                        <h:selectOneMenu class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="--Category--" itemValue=""/>
-                            <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
-                        </h:selectOneMenu>
-                        <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findSearchResults('english')}"/>
-                        <h:commandLink class="hidden-link" action="#{appointmentController.findSearchResults('english')}" >
-                            <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                        </h:commandLink>
-                    </h:form>
+                <!--Search Results section-->
+                <div class="result">
+                    <h3>Your Search Results....</h3>
+                    <div class="result_items">
+                        <h:form>
+                            <c:forEach items="#{appointmentController.hospitals}" var="h">
+                                <div class="clnk-div">
+                                    <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/></h:commandLink>
+                                    <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><span class="clnk-name">#{h.name}</span></h:commandLink>
+                                    <span class="clnk-location">#{h.area.name}</span>
+                                </div>
+                            </c:forEach>
+                        </h:form>
+                    </div>
                 </div>
             </div>
-
-
-            <!--Search Results section-->
-            <div class="result">
-                <h3>Your Search Results....</h3>
-                <div class="result_items">
-                    <h:form>
-                        <c:forEach items="#{appointmentController.hospitals}" var="h">
-                            <div class="clnk-div">
-                                <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/></h:commandLink>
-                                <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><span class="clnk-name">#{h.name}</span></h:commandLink>
-                                <span class="clnk-location">#{h.area.name}</span>
-                            </div>
-                        </c:forEach>
-                    </h:form>
-                </div>
-            </div>
-        </div>
-        <footer>
+            <!--Footer section-->
+            <footer>
                 <div class="upper-footer">
-                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
-                            <a class="separator">|</a>
-                            <a href="privacy-policy.xhtml">Privacy Policy</a>
-                            <a class="separator">|</a>
-                            <a href="help.xhtml">Help</a>
+                    <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                    <a class="separator">|</a>
+                    <a href="privacy-policy.xhtml">Privacy Policy</a>
+                    <a class="separator">|</a>
+                    <a href="help.xhtml">Help</a>
                 </div>
                 <div class="lower-footer">
                     <h2>Maweed</h2>
                     <h6>Copyright 2018 | All rights reserved.</h6>
                 </div>
             </footer>
+        </div>
     </h:body>
 </html>
 

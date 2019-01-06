@@ -16,6 +16,9 @@ div.logo{
     margin-bottom: 10px;
     margin-top: 30px;
 }
+.left-div{
+    padding-left: 20px;
+}
 
 .head{
     clear: both;
@@ -23,12 +26,18 @@ div.logo{
     margin: 0 auto;
     text-align: center;
     width: 450px;
+    line-height: 35px;
+}
+.head h2{
+     font-size:35px;
+     color: #013069;
+     line-height: 30px;
 }
 .heading{
     font-size: 22px;
     font-weight: bold;
     text-align: center;
-
+    color: #013069;
 }
 .isDisabled {
     color: currentColor;
@@ -36,7 +45,7 @@ div.logo{
     opacity: 0.5;
     text-decoration: none;
 }
-
+/*------registraton form----------*/
 .reg_form {
     height: inherit;
     width: fit-content;
@@ -45,7 +54,7 @@ div.logo{
     border: 1px solid #013069;
     border-radius: 5px;
     padding: 5px;
-    line-height: 35px;
+    line-height: 40px;
 }
 
 .reg_form input[type=text], input[type=password] {
@@ -71,7 +80,7 @@ div.logo{
     overflow-wrap: break-word;
     font-size: 14px;
     font-weight: normal;
-    color: black;
+    color: #013069;
 }
 .lnk{
     font-size: 14px;
@@ -115,9 +124,10 @@ div.cntr_btn{
     margin: 0 auto;
     text-align: center;
     margin-bottom: 12px;
-    margin-top: 12px;
-
+    margin-top: 15px;
 }
+
+
 div.line{
     width: auto;
     line-height: 20px;
@@ -187,6 +197,7 @@ div.line{
     .reg_form output{
         font-size: 14px;
     }
+
     .profile_div{
         width: 100%;
     }

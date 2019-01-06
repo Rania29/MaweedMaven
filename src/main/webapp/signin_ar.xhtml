@@ -36,33 +36,35 @@
                 </div> 
             </header><!--Header End-->
             <div class="head">
-                <h2 style="font-size:35px;">مرحبا</h2>
-                <div class="reg_form">
-                    <c:if test="#{guestController.valid}">
-                        <h:outputText class='heading' value="تسجيل دخول"/>
+                <h2>مرحبا</h2>
+                <c:if test="#{guestController.valid}">
+                    <div class="reg_form signin_extra">
                         <h:form>
-                            <h:panelGroup>
-                                <h:panelGrid columns="1">
+                            <h:outputText class='heading' value="تسجيل دخول"/>
+                            <h:panelGrid columns="1">
+                                <h:panelGroup>
                                     <h:inputText a:placeholder="*البريد الإلكتروني" id="email" value="#{guestController.selected.email}"
-                                                 required="true" requiredMessage="Email is required."/>
+                                                 required="true" requiredMessage="يجب إدخال البريد الإلكتروني"/>
                                     <h:message for="email" style="color: #cc0033; font-size: 12px;"/>
                                     <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{guestController.selected.password}"
-                                                   required="true" requiredMessage="Password is required."  style="float: left;"/>
+                                                   required="true" requiredMessage="يجب كتابة كلمة السر"  style="float: left; width: 100%;"/>
                                     <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
+                                    <br />
                                     <div class="cntr_btn">
+                                        
                                         <h:commandLink value="دخول" action="#{guestController.authenticate()}" class="app_button"/>
                                         <h:link value="الغاء" outcome="/index_ar"  class="app_button cancle_button"/>
                                     </div>
+                                    <div class="line">
+                                        <h:outputText class="fix" value="لاتمتلك حساب؟  "/>
+                                        <h:link class="lnk" outcome="/registration_ar" value="إنشاء حساب جديد"/>
+                                    </div>
+                                </h:panelGroup>
+                            </h:panelGrid>
 
-                                </h:panelGrid>
-                                <div class="line">
-                                    <h:outputText class="fix" value="لاتمتلك حساب؟"/>
-                                    <h:link class="lnk" outcome="/registration_ar" value="تسجيل"/>
-                                </div>
-                            </h:panelGroup>
                         </h:form>
-                    </c:if>
-                </div>
+                    </div>
+                </c:if>
                 <c:if test="#{!guestController.valid}">
                     <h:outputLabel value="#{guestController.selected.inArabic} مرحبا"/>
                     <h:form>
@@ -74,18 +76,18 @@
             <br /> 
         </div>
         <footer>
-                <div class="upper-footer">
-                    <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>
-                    <a class="separator">|</a>
-                    <a href="privacy-policy-ar.xhtml">سياسة الخصوصية</a>
-                    <a class="separator">|</a>
-                    <a href="help_ar.xhtml">المساعدة</a>
-                </div>
-                <div class="lower-footer">
-                    <h2>موعد</h2>
-                    <h6>جميع الحقوق محفوظة | حقوق الطبع 2018.</h6>
-                </div>
-            </footer>
+            <div class="upper-footer">
+                <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>
+                <a class="separator">|</a>
+                <a href="privacy-policy-ar.xhtml">سياسة الخصوصية</a>
+                <a class="separator">|</a>
+                <a href="help_ar.xhtml">المساعدة</a>
+            </div>
+            <div class="lower-footer">
+                <h2>موعد</h2>
+                <h6>جميع الحقوق محفوظة | حقوق الطبع 2018.</h6>
+            </div>
+        </footer>
     </h:body>
 </html>
 

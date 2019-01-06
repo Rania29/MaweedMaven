@@ -23,6 +23,12 @@ div.logo{
     margin: 0 auto;
     text-align: center;
     width: 450px;
+    line-height: 35px;
+}
+.head h2{
+    font-size:35px;
+    color: #013069;
+    line-height: 30px;
 }
 .heading{
     font-size: 22px;
@@ -31,26 +37,28 @@ div.logo{
 
 }
 .isDisabled {
-  color: currentColor;
-  cursor: not-allowed;
-  opacity: 0.5;
-  text-decoration: none;
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
 }
 
+/*------registraton form----------*/
 .reg_form {
     height: inherit;
     width: fit-content;
     display: inline-block;
     text-align: right;
-    /*border: 1px solid #013069;*/
+    border: 1px solid #013069;
     border-radius: 5px;
     padding: 5px;
-    line-height: 45px;
+    line-height: 40px;
 }
 
-.reg_form input[type=text], input[type="password"] {
-    width: 300px;
+.reg_form input[type=text], input[type=password] {
+
     padding: 8px;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -58,6 +66,9 @@ div.logo{
     resize: vertical;
     font-size: 14px;
     float: right;
+}
+.reg_form input:hover{
+    border: 1.5px solid #55A6D7;
 }
 .reg_form input:focus{
     box-shadow: 3px 3px 5px #55A6D7;
@@ -67,7 +78,7 @@ div.logo{
     overflow-wrap: break-word;
     font-size: 14px;
     font-weight: normal;
-    color: black;
+    color: #013069;
 }
 .lnk{
     font-size: 14px;
@@ -111,12 +122,15 @@ div.cntr_btn{
     margin: 0 auto;
     text-align: center;
     margin-bottom: 12px;
-    margin-top: 12px;
+    margin-top: 15px;
 }
+
+
 div.line{
     width: auto;
     line-height: 20px;
 }
+
 
 /**---------------------User Profile page style------------------*/
 .right-div h3{
@@ -160,7 +174,7 @@ div.line{
 }
 .contact_form input[type="radio"]{
     float: right;
-   margin: 0 5px 0 5px;
+    margin: 0 5px 0 5px;
 }
 .profile input:hover{
     border: 1.5px solid #55A6D7;
@@ -182,14 +196,21 @@ div.line{
         width: 100%;
     }
     .reg_form{
-        width: 95%;
+        width: inherit;
+        border: none;
     }
-
     .reg_form output{
         font-size: 14px;
     }
+
     .profile_div{
-        width: 98%;
+        width: 100%;
+    }
+    .profile{
+        border: none;
+    }
+    .profile h1{
+        border-radius: 3px;
     }
     .profile input[type=text], input[type=password] {
         width: 250px;

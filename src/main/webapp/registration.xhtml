@@ -54,15 +54,13 @@
             </header><!--Header End-->
 
             <div class="head">
+                <h2>Hello</h2>
                 <div class="reg_form">
-                    <f:view>
                         <h:form>
-
-                            <br />
                             <h:outputText class="heading" value="Create account"/>
                             <h:panelGrid columns="1" >
                                 <h:panelGroup>
-                                    <h:inputText  a:placeholder="*Full Name" a:escape="true" autocomplete="off" id="name" value="#{guestController.selected.name}" title="Name"
+                                    <h:inputText  a:placeholder="*First and Last Name" a:escape="true" autocomplete="off" id="name" value="#{guestController.selected.name}" title="Name"
                                                   required="true" accesskey="fname"  requiredMessage=" Please enter full name." />
                                     <h:message for="name" style="color: #cc0033; font-size: 12px;"/><br />
                                     <h:inputText a:placeholder="*Email" validatorMessage="Email format should be e.g. email@test.com" autocomplete="off"
@@ -72,17 +70,18 @@
                                     </h:inputText>
                                     <h:message for="email" style="color: #cc0033; font-size: 12px;"/><br />
                                     <h:inputSecret a:placeholder="*Password" id="password" value="#{guestController.selected.password}" title="Password" style="float: left; width: 100%;"
-                                                   required="true" requiredMessage="Password is required."/><br />
-                                    <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
+                                                   required="true" requiredMessage="Password is required."/>
+                                    <h:message for="password" style="color: #cc0033; font-size: 12px;"/><br />
                                     <h:inputText a:placeholder="Phone no" autocomplete="off" id="phone" value="#{guestController.selected.phone}" title="phone"
                                                  required="false" requiredMessage="Please enter phone number."/>
                                     <h:message for="phone" style="color: #cc0033; font-size: 12px;"/>
-                                    <br /><br />
+                                    <br />
                                     <div class="cntr_btn">
                                         <h:commandLink action="#{guestController.create()}" value="Register me" class="app_button">
                                             <!--<f:ajax execute="@form" render=":globalMessage" />-->
                                         </h:commandLink>
-                                        <h:link outcome="/index" value="Cancel" class="app_button cancle_button"/><br />
+                                        <h:link outcome="/index" value="Cancle" class="app_button cancle_button"/>
+                                        <br />
                                     </div>
                                     <div class="line">
                                         <h:outputText class="fix" value="By Registering, you agree to Maweed's "/>
@@ -99,7 +98,6 @@
                             <h:message for="phone" style="color: #cc0033;"/>
                             <h:messages id="globalMessage" style="color: #cc0033;"/>
                         </div>-->
-                    </f:view>
                 </div>
             </div>
             <br />

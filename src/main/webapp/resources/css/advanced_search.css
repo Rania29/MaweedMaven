@@ -7,16 +7,29 @@ and open the template in the editor.
     Created on : Jan 5, 2019, 6:27:48 PM
     Author     : Nooshi
 */
-.navbar{
-    clear: both;
+/**Body*/
+*, *::before, *::after{
+    box-sizing: border-box;;
 }
-.main_div{
-    clear: both;
+
+div.logo{
+    width: 100%;  
 }
+.logo img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
+
+
 h2{
     clear: both;
     margin: 0 auto;
     text-align: center;
+    color: #445268;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 /**------------------- search area------------------**/
@@ -52,7 +65,7 @@ div.center-search1{
 /*----------Select menu--------------*/
 .select-menu1{
     text-indent: 0.01px;
-    width: 100px;
+    width: 120px;
     height: 40px;
     font-size: 14px;
     outline: 0;
@@ -60,7 +73,7 @@ div.center-search1{
 }
 .select-menu2{
     text-indent: 0.01px;
-    width: 100px;
+    width: 120px;
     height: 40px;
     font-size: 14px;
     outline: 0;
@@ -82,4 +95,83 @@ div.center-search1{
 .hidden-link1:hover{
     color: #445268;
     text-decoration: underline;
+}
+
+/*--------main div----------*/
+div.main_div{
+    clear: both;
+    display: block;
+    width: 98%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+div.result{
+    display: inline-block;
+    width: 100%;
+}
+h3{
+    padding-left: 10px;
+    color: #445268;
+}
+.cat-name{
+    color: #55A6D7; 
+    text-align: center;
+}
+
+.clnk-name{
+    display: block;
+    text-decoration: none;
+    color: #55A6D7;
+    font-size: 14px;
+    overflow-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+.clnk-location{
+    display: block;
+    color: #013069;
+    font-size: 12px;
+}
+.clnk-star-rating{
+    display: block;
+    color: orange;
+    font-size: 12px;
+}
+.clnk-div{
+    display: inline-block;
+    border: 1px solid #cccccc;
+    background-color: #e8eaf2;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    line-height: 20px;
+    width: 150px;
+    height: auto;
+}
+.clnk-div a{
+    text-decoration: none;
+}
+
+.clnk-div img{
+    width: 130px;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    margin-bottom: 2px;
+}
+
+.clnk-div:hover .clnk-name{
+    text-decoration: underline;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+    div.logo{
+        width: 40%;
+    }
+    .main_div{
+        border-top: 1px solid #445268;
+    }
 }
