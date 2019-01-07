@@ -4,12 +4,13 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Jan 5, 2019, 6:27:48 PM
+    Created on : Jan 7, 2019, 6:48:36 PM
     Author     : Nooshi
 */
 *, *::before, *::after{
     box-sizing: border-box;;
 }
+
 
 
 .main_div h2{
@@ -98,7 +99,7 @@ div.result{
     display: inline-block;
     width: 100%;
 }
-.main_div h3{
+h3{
     padding-left: 10px;
     color: #445268;
 }

@@ -92,7 +92,9 @@ div.clnk-container{
     margin: 5px;
     padding: 15px;
     border-radius: 30px;
-
+}
+.appoinment-btn input[type='submit']:hover{
+    background-color: #00fb99;
 }
 /*-------Clinics Div------*/
 .clinic{
@@ -175,18 +177,26 @@ div.clnk-container{
     vertical-align: middle;
 }
 /*-----------------Our Advanteges-------------*/
-.advant-section ul li {
-    display: inline-block;
-
+div.advant-section{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 20px;
 }
+
 .advant-items {
     border: 1px solid #50A2C9;
     border-radius: 3px;
+    display: inline-block;
     text-align: center;
     color: #013069;
-    width: 360px;
+    width: 300px;
     height: auto;
-    margin-bottom: 5px;
+    margin: 2px;
+    overflow-wrap: break-word;
 }
 .advant-items:hover{
     box-shadow: 3px 3px 5px #50A2C9;
@@ -325,19 +335,8 @@ div.clnk-container{
         margin: 5px;
         padding: 15px;
         border-radius: 40px;
-
     }
-    .advant-section {
-        margin: 0 auto;
-        text-align: center;
-        width: 100%;
 
-    }
-    .advant-items{
-        max-width: 98%;
-        height: auto;
-
-    }
 
 }
 

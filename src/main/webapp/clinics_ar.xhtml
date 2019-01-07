@@ -39,7 +39,7 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="clinics_ar.xhtml">عربي</a>
+                    <a href="clinics_ar.xhtml" class="isDisabled">عربي</a>
                     <a id="separator">|</a>
                     <a href="clinics.xhtml">English</a>
                 </div>
@@ -84,20 +84,16 @@
                     <a href="help_ar.xhtml" class="item_menu">مساعدة</a>
                 </nav>
 
+                <!--Search area-->
                 <div class="search-box">
                     <div class="center-search">
                         <h:form id="search-form" class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="المنطقه" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
-                                               itemLabel="#{n}" 
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
                             <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
                             <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByInArabicName()}"/>
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}">
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                             </h:commandLink>
+                            <h:commandLink value="بحث متقدم" action="/advanced_search" class="advansed-link" style="white-space: normal;"/>
                         </h:form>
 
                     </div>
@@ -268,19 +264,27 @@
                 <h1>ما يميزنا</h1>
             </div>
             <div class="advant-section">
-                <ul>
-                    <li>
-                        <div class="advant-items">
-                            <p>طب الأطفال وعلم النفس التربوي</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="advant-items">
-                            <p>البرنامج اليومي لصعوبات التعلم</p>
-                        </div>
-
-                    </li>
-                </ul>
+                <div class="advant-items">
+                    <p>طب الأطفال وعلم النفس التربوي طب الأطفال وعلم النفس التربوي</p>
+                </div>
+                <div class="advant-items">
+                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                </div>
+                <div class="advant-items">
+                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                </div>
+                <div class="advant-items">
+                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                </div>
+                <div class="advant-items">
+                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                </div>
+                <div class="advant-items">
+                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                </div>
+                <div class="advant-items">
+                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                </div>
             </div>
             <br />
             <div>

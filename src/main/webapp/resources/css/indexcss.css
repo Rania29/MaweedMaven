@@ -238,7 +238,7 @@ div.center-search{
     position: relative;
     color: white;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     margin-left: 2px;
     background-color: #445268;
     border-radius: 0 5px 5px 0 ;
@@ -421,7 +421,8 @@ h1{
     color: #ffffff;
     background-color: #55A6D7;
     padding: 3px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .cat{
@@ -456,6 +457,7 @@ h1{
 }
 /**--------------------------footer-----------------------**/
 footer{
+    clear: both;
     width: 100%;
     height: 150px;
     background-color: #445268;
