@@ -111,11 +111,11 @@
                         <h:form id="search-form1" class="form-style">
                             <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="--المنطقة--" itemValue=""/>
-                                <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
+                                <f:selectItems value="#{areaController.itemsAvailableSelectManyAr}"/>
                             </h:selectOneMenu>
                             <h:selectOneMenu class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="--الأقسام--" itemValue=""/>
-                                <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
+                                <f:selectItems value="#{categoryController.itemsAvailableSelectManyAr}"/>
                             </h:selectOneMenu>
                             <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findSearchResults('english')}"/>
                             <h:commandLink class="hidden-link" action="#{appointmentController.findSearchResults('english')}" >
