@@ -42,7 +42,7 @@
                 <div class="left-div">
                     <a href="clinics_ar.xhtml">عربي</a>
                     <a id="separator">|</a>
-                    <a href="clinics.xhtml">English</a>
+                    <a href="clinics.xhtml" class="isDisabled">English</a>
                 </div>
                 <div class="right-div">
                     <c:if test="#{guestController.valid}">
@@ -89,17 +89,12 @@
                 <div class="search-box">
                     <div class="center-search">
                         <h:form id="search-form" class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                               itemLabel="#{n}" 
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name" id="search" value="#{appointmentController.hospital.name}"/>
+                            <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
                             <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
+                            <h:commandLink value="Advanced Search" action="/advanced_search" class="advansed-link"/>
                         </h:form>
                     </div>
                 </div>
@@ -267,19 +262,36 @@
             <h1>Our Advantages</h1>
         </div>
         <div class="advant-section">
-            <ul>
-                <li>
-                    <div class="advant-items">
-                        <p>Pediatrics and Educational Psychology</p>
-                    </div>
-                </li>
-                <li>
-                    <div class="advant-items">
-                        <p>Daily program for learning difficulties</p>
-                    </div>
-
-                </li>
-            </ul>
+            <div class="advant-items">
+                <p>Pediatrics and Educational Psychology Pediatrics and Educational Psychology</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
+            <div class="advant-items">
+                <p>Daily program for learning difficulties</p>
+            </div>
         </div>
         <br />
 
@@ -296,19 +308,11 @@
 
         <footer>
             <div class="upper-footer">
-                <ul class="footer-ul">
-                    <li>
-                        <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
-                        <a class="separator">|</a>
-                    </li>
-                    <li>
-                        <a href="privacy-policy.xhtml">Privacy Policy</a>
-                        <a class="separator">|</a>
-                    </li>
-                    <li>
-                        <a href="help.xhtml">Help</a>
-                    </li>
-                </ul>
+                <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                <a class="separator">|</a>
+                <a href="privacy-policy.xhtml">Privacy Policy</a>
+                <a class="separator">|</a>
+                <a href="help.xhtml">Help</a>
             </div>
             <div class="lower-footer">
                 <h2>Maweed</h2>

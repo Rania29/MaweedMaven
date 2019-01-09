@@ -48,7 +48,8 @@
                     <a href="index.xhtml" class="isDisabled">English</a>
                 </div>
                 <div class="right-div">
-                    <h3>#{guestController.selected.name}</h3>
+                    <h:link  value="#{guestController.selected.name}"
+                                         outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
                 </div>
             </div>
             <div class="logo">
@@ -62,7 +63,7 @@
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Id:" for="id" />
                         <h:inputText readonly="true" id="id" value="#{guestController.selected.id}" title="Id" />
-                        <h:outputLabel value="Name:" for="name" />
+                        <h:outputLabel value="First and Last Name" for="name" />
                         <h:inputText id="name" value="#{guestController.selected.name}" title="Name" />
                         <h:outputLabel value="Name(Arabic):" for="inArabic" />
                         <h:inputText id="inArabic" value="#{guestController.selected.inArabic}" title="InArabic" />
@@ -93,19 +94,11 @@
             <br />
             <footer>
                 <div class="upper-footer">
-                    <ul class="footer-ul">
-                        <li>
                             <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
                             <a class="separator">|</a>
-                        </li>
-                        <li>
                             <a href="privacy-policy.xhtml">Privacy Policy</a>
                             <a class="separator">|</a>
-                        </li>
-                        <li>
                             <a href="help.xhtml">Help</a>
-                        </li>
-                    </ul>
                 </div>
                 <div class="lower-footer">
                     <h2>Maweed</h2>
