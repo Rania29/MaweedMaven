@@ -206,6 +206,61 @@ div.advant-section{
     box-shadow: 3px 3px 5px #50A2C9;
 }
 
+/*******************Extra Details div *****************************/
+.detailed{
+    height: 250px;
+    width: 100%;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+.detailed-location h2, p{
+    color: #445268;
+}
+.detailed-location{
+    float: left;
+    width: 50%;
+    height: 250px;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+    border-right: 5px solid #bde0f5;
+}
+.detailed-working-days{
+    float: right;
+    width: 50%;
+    height: 250px;
+    padding: 10px;
+    margin: 0 auto;
+}
+.detailed-working-days table{
+    padding: 5px;
+    border-radius: 3px;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+.detailed-working-days table, th, td{
+    color: #445268;
+}
+.detailed-working-days th{
+    width: 100px;
+    text-align: left;
+}
+/*
+th, td {
+  border-bottom: 2px solid #ddd;
+}*/
+
+tr:nth-child(even){
+    background-color: #bde0f5;
+}
+
+.detailed-working-days td{
+    text-align: left;
+    width: 100px;
+}
+
+
+
 /*******************Star rating *****************************/
 
 
@@ -355,6 +410,29 @@ div.advant-section{
         max-width: 98%;
         height: auto;
 
+    }
+    .detailed{
+        clear: both;
+        height: 430px;
+
+    }
+    .detailed-location{
+        width: 100%;
+        height: 180px;
+        display: block;
+        border-bottom: 5px solid #bde0f5;
+        border-left: none;
+    }
+    .detailed-working-days table{
+        margin: 0 auto;
+        text-align: center;
+    }
+    .detailed-working-days{
+        width: 100%;
+        height: 230px;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
     }
 
 }
