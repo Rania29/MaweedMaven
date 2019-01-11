@@ -46,16 +46,16 @@
                 <div class="right-div">
                     <c:if test="#{guestController.valid}">
                         <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/clinics_ar', '/signin')}" value="دخول"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/clinics_ar', '/signin_ar')}" value="دخول"/>
                             <a class="separator">|</a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/clinics_ar', '/registration')}" value="تسجيل"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/clinics_ar', '/registration_ar')}" value="تسجيل"/>
                         </h:form>
                     </c:if>
                     <c:if test="#{!guestController.valid}">
                         <h:outputText title="مرحبا" style="color: white;"/>
                         <div class="tooltip">
                             <h:link  value="#{guestController.selected.name}"
-                                     outcome="#{guestController.saveCurrentPage('/clinics_ar', '/user_profile')}" />
+                                     outcome="#{guestController.saveCurrentPage('/clinics_ar', '/user_profile_ar')}" />
                             <span class="tooltiptext">ملف المستخدم</span>
                         </div>
                         <a class="separator">| </a>
@@ -93,7 +93,7 @@
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}">
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                             </h:commandLink>
-                            <h:commandLink value="بحث متقدم" action="/advanced_search" class="advansed-link" style="white-space: normal;"/>
+                            <h:commandLink value="بحث متقدم" action="/advanced_search_ar" class="advansed-link" style="white-space: normal;"/>
                         </h:form>
 
                     </div>
@@ -297,6 +297,30 @@
                     </c:forEach>
                 </ul>
             </div>
+            <!--Extra Details-->
+        <div>
+            <h1>تفاصيل إضافية</h1>
+        </div>
+        <div class="detailed">
+            <!--left div, detailed location-->
+            <div class="detailed-location">
+                <h2>عنواننا</h2>
+                <p>الريان القديم، شارع الشافي، مقابل سوبر ماركت السعودية، مبنى رقم 35.</p>
+            </div>
+            <!--right div, detailed working hours/days-->
+            <div class="detailed-working-days">
+                
+                <table>
+                    <tr><th>الأحد</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
+                    <tr><th>الإثنين</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
+                    <tr><th>الثلاثاء</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
+                    <tr><th>الأربعاء</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
+                    <tr><th>الخميس</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
+                    <tr><th>الجمعة</th><td>مقفل</td><td>مقفل</td></tr>
+                    <tr><th>السبت</th><td>مقفل</td><td>16:00 - 22:00</td></tr>
+                </table>
+            </div>
+        </div>
             <footer>
                 <div class="upper-footer">
                     <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>
