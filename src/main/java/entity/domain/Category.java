@@ -36,12 +36,34 @@ public class Category implements Serializable {
     private String inArabic;
 
     @Basic
+    private String description;
+
+    @Basic
+    private String arabicDescription;
+
+    @Basic
     private String image;
 
     @OneToMany(mappedBy = "category")
     private List<Clinic> clinics;
 
     public Category() {
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getArabicDescription() {
+        return arabicDescription;
+    }
+
+    public void setArabicDescription(String arabicDescription) {
+        this.arabicDescription = arabicDescription;
     }
 
     public String getInArabic() {
@@ -126,5 +148,4 @@ public class Category implements Serializable {
 //    public String toString() {
 //        return name;
 //    }
-
 }
