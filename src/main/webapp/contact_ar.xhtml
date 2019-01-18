@@ -27,7 +27,7 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="index_ar.xhtml">عربي</a>
+                    <a href="index_ar.xhtml" class="isDisabled">عربي</a>
                     <a id="separator">|</a>
                     <a href="index.xhtml">English</a>
                 </div>
@@ -56,17 +56,16 @@
                     <a href="help_ar.xhtml" class="item_menu">مساعدة</a>
                 </nav>
 
+                <!--Search area-->
                 <div class="search-box">
                     <div class="center-search">
-                        <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.areaId}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItems value="#{areaController.itemsAvailableSelectOne}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="اكتب إسم العيادة أو الخدمة" id="search"/>
-                            <h:commandLink value="بحث" class="hidden-link1"/>
-                            <h:commandLink class="hidden-link">
-                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                        <h:form id="search-form" class="form-style">
+                            <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
+                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByInArabicName()}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}">
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                             </h:commandLink>
+                            <h:commandLink value="بحث متقدم" action="/advanced_search?faces-redirect=true" class="advansed-link" style="white-space: normal;"/>
                         </h:form>
 
                     </div>
@@ -132,7 +131,7 @@
                     <a href="help_ar.xhtml">المساعدة</a>
                 </div>
                 <div class="lower-footer">
-                    <h2>موعد</h2>
+                    <h2 style="color: white;">موعد</h2>
                     <h6>جميع الحقوق محفوظة | حقوق الطبع 2018.</h6>
                 </div>
             </footer>

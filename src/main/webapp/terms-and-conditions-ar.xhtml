@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>الشروط والأحكام</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -28,9 +29,25 @@
                     <a href="privacy-policy.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <h:link outcome="/signin_ar" value="دخول"/>
-                    <a class="separator">| </a>
-                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل "/>
+                    <c:if test="#{guestController.valid}">
+                        <h:form>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
+                            <a class="separator"> | </a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{!guestController.valid}">
+                        <h:outputText value="مرحبا" style="color:#55A6D7 ;"/>
+                        <div class="tooltip">
+                            <h:link  value="#{guestController.selected.inArabic}"
+                                     outcome="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
+                            <span class="tooltiptext">بروفايل المستخدم</span>
+                        </div>
+                        <a class="separator">| </a>
+                        <h:form style="display: inline-block;">
+                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="خروج"/>
+                        </h:form>
+                    </c:if>
                 </div>
             </div>
             <div  class="logo-div">

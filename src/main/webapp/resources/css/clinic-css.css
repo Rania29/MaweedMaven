@@ -421,7 +421,7 @@ tr:nth-child(even){
         height: 180px;
         display: block;
         border-bottom: 5px solid #bde0f5;
-        border-left: none;
+        border-right: none;
     }
     .detailed-working-days table{
         margin: 0 auto;

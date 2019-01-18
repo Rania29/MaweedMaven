@@ -5,7 +5,7 @@
  */
 
 
-/* global self */
+/* global self, Notification, caches */
 
 self.addEventListener('install', function (event) {
 // Preloading a Cache
@@ -30,17 +30,6 @@ self.addEventListener('fetch', function(event) {
             .then(response => response || fetch(event.request))
             );
 });*/
-
-/*Receiving push Events*/
-self.addEventListener('push', function (event) {
-    event.waitUntil(
-            self.registration.showNotification('Maweed Website', {
-                body: 'Welcome Guest'
-            })
-            );
-});
-
-
 /*Gitting Permission*/
 function askPermission() {
   return new Promise(function(resolve, reject) {
@@ -58,6 +47,17 @@ function askPermission() {
     }
   });
 }
+/*Receiving push Events*/
+self.addEventListener('push', function (event) {
+    event.waitUntil(
+            self.registration.showNotification('Maweed Website', {
+                body: 'Welcome Guest'
+            })
+            );
+});
+
+
+
 /*Subscribe a User with PushManager*/
 function subscribeUserToPush() {
   return navigator.serviceWorker.register('service-worker.js')

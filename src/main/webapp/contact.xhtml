@@ -29,7 +29,7 @@
                 <div class="left-div">
                     <a href="contact_ar.xhtml">عربي</a>
                     <a class="separator">|</a>
-                    <a href="contact.xhtml">English</a>
+                    <a href="contact.xhtml" class="isDisabled">English</a>
                 </div>
                 <div class="right-div">
                     <a href="signin.xhtml">Signin</a>
@@ -57,22 +57,17 @@
                     <a href="help.xhtml" class="item_menu">Help</a>
                 </nav>
 
+                <!--Search section-->
                 <div class="search-box">
                     <div class="center-search">
-                        <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="Area" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                               itemLabel="#{n}" 
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name" id="search"/>
-                            <h:link value="Search" class="hidden-link1" outcome="search"/>
-                            <h:link class="hidden-link" outcome="search" >
+                        <h:form id="search-form" class="form-style">
+                            <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:link>
+                            </h:commandLink>
+                            <h:commandLink value="Advanced Search" action="/advanced_search?faces-redirect=true" class="advansed-link"/>
                         </h:form>
-
                     </div>
                 </div>
             </header><!--Header End-->
@@ -133,7 +128,7 @@
                             <a href="help.xhtml">Help</a>
                 </div>
                 <div class="lower-footer">
-                    <h2>Maweed</h2>
+                    <h2 style="color:white;">Maweed</h2>
                     <h6>Copyright 2018 | All rights reserved.</h6>
                 </div>
             </footer>

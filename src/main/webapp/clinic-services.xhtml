@@ -41,7 +41,7 @@
                 <div class="left-div">
                     <a href="clinic-services_ar.xhtml">عربي</a>
                     <a id="separator">|</a>
-                    <a href="clinic-services.xhtml">English</a>
+                    <a href="clinic-services.xhtml" class="isDisabled">English</a>
                 </div>
                 <div class="right-div">
                     <c:if test="#{guestController.valid}">
@@ -84,7 +84,7 @@
                     <a href="contact.xhtml" class="item_menu">Contact Us</a>
                     <a href="help.xhtml" class="item_menu">Help</a>
                 </nav>
-                <!--Search box section-->
+                <!--Search section-->
                 <div class="search-box">
                     <div class="center-search">
                         <h:form id="search-form" class="form-style">
@@ -93,7 +93,7 @@
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
-                            <h:commandLink value="Advanced Search" action="/advanced_search" class="advansed-link"/>
+                            <h:commandLink value="Advanced Search" action="/advanced_search?faces-redirect=true" class="advansed-link"/>
                         </h:form>
                     </div>
                 </div>
