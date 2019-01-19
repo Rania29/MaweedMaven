@@ -31,7 +31,7 @@
                     <a id="separator">|</a>
                     <a href="about.xhtml">English</a>
                 </div>
-                <div class="right-div">
+                <div class="top-right-div">
                     <c:if test="#{guestController.valid}">
                         <h:form>
                             <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
@@ -40,7 +40,7 @@
                         </h:form>
                     </c:if>
                     <c:if test="#{!guestController.valid}">
-                        <h:outputText value="مرحبا" style="color:#55A6D7 ;"/>
+                        <h:outputText value="مرحبا" style="color: #55A6D7 ;"/>
                         <div class="tooltip">
                             <h:link  value="#{guestController.selected.inArabic}"
                                      outcome="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
@@ -97,12 +97,12 @@
             </nav><!--Navigation bar End-->
             <main>
                 <div class="about-maweed">
-                    <div class="left-div">
+                    <div class="right-div">
                         <div class="center-text">
-                            <h1>جميع مستشفيات قطر بين يديك</h1>
+                            <h2>جميع مستشفيات قطر بين يديك</h2>
                         </div>
                     </div>
-                    <div class="right-div">
+                    <div class="left-div">
                         <div class="center-text">
                             <p>جاءت فكرة موقع موعد التي تعتمد في أساسها على تجميع المستشفيات والعيادات الصحية بأنواعها في موقع واحد، لأنه لايجب الإعتماد في اختيار مستشفى على قربها فقط من المنزل . أفضل شخصيا أن استطيع استعراض جميع الخيارات المتاحة من حيث (الموقع الجغرافي، الخدمات المقدمة، الأسعار، التخفيضات والعروض إن وجدت) وذلك قبل أن أقوم باختيار المستشفى التي تناسب احتياحاتي الشخصية ولديها الأفضل بناء على احتياجاتي.</p>
                         </div>
@@ -119,7 +119,7 @@
                             <h1>
                                 رانيا ربيع عبدالمجيد
                             </h1>
-                            <h2>مؤسس ومصمم موقع موعد</h2>
+                            <h2>مؤسس ومصمم واجهات موقع موعد</h2>
                             <p>
                                 ولدت وترعرعت في دولة قطر الحبيبة، تخرجت من كلية علوم الحاسوب وتقانة المعلومات من جامعة السودان للعلوم والتكنولوجيا قسم نظم الحاسوب والشبكات. أحب العمل على تصميم المواقع وتطويرها، أردت توظيف شغفي بهذا المجال لمساعدة الآخرين في توفير خيارات وحياة أفضل.
                             </p>

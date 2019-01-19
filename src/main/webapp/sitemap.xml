@@ -2,81 +2,69 @@
 <!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://maweed-qa.com/</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/terms_and_conditions.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/contact.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/index_ar.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/signin.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/signin.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/help.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/index.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/registration.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/privacy-policy.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/index.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/registration.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/index_ar.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/signin_ar.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/signin_ar.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/privacy-policy-ar.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/registration_ar.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/registration_ar.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/terms-and-conditions-ar.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/user_profile_ar.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/privacy-policy-ar.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/user_profile.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/user_profile_ar.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/help.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/user_profile.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/contact.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/privacy-policy.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/about.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/about.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/search.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/search_ar.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/category_ar.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/category.xhtml</loc>
-    <lastmod>2019-01-07</lastmod>
+    <loc>https://www.maweed-qa.com/terms_and_conditions.xhtml</loc>
+    <lastmod>2019-01-19</lastmod>
   </url>
 </urlset>
-<!--<guid value="cf63acd9-6c4b-4fc3-bd4e-19f8c42e6eb2" />-->
+<!--<guid value="659f92a4-d998-4b1f-adab-e3fdb379972c" />-->
 <!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->
