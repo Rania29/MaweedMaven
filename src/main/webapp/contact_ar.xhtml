@@ -27,20 +27,36 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="index_ar.xhtml" class="isDisabled">عربي</a>
+                    <a href="contact_ar.xhtml">عربي</a>
                     <a id="separator">|</a>
-                    <a href="index.xhtml">English</a>
+                    <a href="contact.xhtml">English</a>
                 </div>
                 <div class="right-div">
-                    <h:link outcome="/signin_ar" value="دخول"/>
-                    <a class="separator">|</a>
-                    <h:link outcome="#{userauthController.findCurrentPage('/registration_ar')}" value="تسجيل"/>
+                    <c:if test="#{guestController.valid}">
+                        <h:form>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/contact_ar?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
+                            <a class="separator"> | </a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/contact_ar?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{!guestController.valid}">
+                        <h:outputText value="مرحبا" style="color:#55A6D7 ;"/>
+                        <div class="tooltip">
+                            <h:link  value="#{guestController.selected.inArabic}"
+                                     outcome="#{guestController.saveCurrentPage('/contact_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
+                            <span class="tooltiptext">بروفايل المستخدم</span>
+                        </div>
+                        <a class="separator">| </a>
+                        <h:form style="display: inline-block;">
+                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="خروج"/>
+                        </h:form>
+                    </c:if>
                 </div>
             </div>
             <header class="header-top">
                 <div class="logo">
                     <a href="index_ar.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
-                </div> 
+                </div>
 
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
@@ -59,10 +75,16 @@
                 <!--Search area-->
                 <div class="search-box">
                     <div class="center-search">
-                        <h:form id="search-form" class="form-style">
-                            <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
-                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByInArabicName()}"/>
-                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}">
+                        <h:form class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="--المنطقه--" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
+                                               itemLabel="#{n}"
+                                               itemValue="#{n}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="اكتب إسم العيادة أو الخدمة" id="search"/>
+                            <h:commandLink value="بحث" class="hidden-link1"/>
+                            <h:commandLink class="hidden-link">
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                             </h:commandLink>
                             <h:commandLink value="بحث متقدم" action="/advanced_search?faces-redirect=true" class="advansed-link" style="white-space: normal;"/>
@@ -79,8 +101,8 @@
                             <c:forEach items="#{categoryController.findCategories()}" var="c">
                                 <li>
                                     <h:form>
-                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" 
-                                                       value="#{c.inArabic}"/> 
+                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}"
+                                                       value="#{c.inArabic}"/>
                                     </h:form>
                                 </li>
                             </c:forEach>
@@ -92,9 +114,9 @@
                     <li><a  href="help_ar.xhtml">مساعدة</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
-            
+
             <div class="head">
-                <div>                 
+                <div>
                     <div class="contact_form">
                         <div class="heading_div">
                             <h2>
@@ -112,7 +134,7 @@
                                 <f:selectItem itemValue="social media" itemLabel="وسائل التواصل الإجتماعي" />
                                 <f:selectItem itemValue="friend" itemLabel="عن طريق صديق" />
                                 <f:selectItem itemValue="other" itemLabel="مكان آخر" />
-                            </h:selectOneMenu> 
+                            </h:selectOneMenu>
                             <h:outputLabel >قل لي ماتحتاج ....؟</h:outputLabel>
                             <h:inputTextarea />
                             <h:commandLink value="إرسال" class="contact_button"/>
@@ -120,7 +142,7 @@
                         </h:form>
                     </div>
                 </div>
-            </div>  
+            </div>
 
             <footer>
                 <div class="upper-footer">
@@ -138,4 +160,3 @@
         </div>
     </h:body>
 </html>
-

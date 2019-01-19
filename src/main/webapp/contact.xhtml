@@ -32,16 +32,31 @@
                     <a href="contact.xhtml" class="isDisabled">English</a>
                 </div>
                 <div class="right-div">
-                    <a href="signin.xhtml">Signin</a>
-                    <a class="separator">|</a>
-                    <a href="registration.xhtml">Register</a>
+                    <c:if test="#{guestController.valid}">
+                        <h:form>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/contact?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
+                            <a class="separator"> | </a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/contact?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{!guestController.valid}">
+                        <h:outputText value="مرحبا" style="color:#55A6D7 ;"/>
+                        <div class="tooltip">
+                            <h:link  value="#{guestController.selected.name}"
+                                     outcome="#{guestController.saveCurrentPage('/contact?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
+                            <span class="tooltiptext">بروفايل المستخدم</span>
+                        </div>
+                        <a class="separator">| </a>
+                        <h:form style="display: inline-block;">
+                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="خروج"/>
+                        </h:form>
+                    </c:if>
                 </div>
-
             </div>
             <header class="header-top">
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
-                </div> 
+                </div>
 
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
@@ -60,10 +75,16 @@
                 <!--Search section-->
                 <div class="search-box">
                     <div class="center-search">
-                        <h:form id="search-form" class="form-style">
-                            <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
-                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
-                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
+                        <h:form class="form-style">
+                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="--Area--" itemValue=""/>
+                                <f:selectItems value="#{areaController.findAreas()}" var="n"
+                                               itemLabel="#{n}"
+                                               itemValue="#{n}"/>
+                            </h:selectOneMenu>
+                            <h:inputText a:placeholder="Search by name" id="search"/>
+                            <h:link value="Search" class="hidden-link1" outcome="search"/>
+                            <h:link class="hidden-link" outcome="search" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
                             <h:commandLink value="Advanced Search" action="/advanced_search?faces-redirect=true" class="advansed-link"/>
@@ -79,8 +100,8 @@
                             <c:forEach items="#{categoryController.findCategories()}" var="c">
                                 <li>
                                     <h:form>
-                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
-                                                       value="#{c.name}"/> 
+                                        <h:commandLink action="#{categoryController.toCategory(c)}"
+                                                       value="#{c.name}"/>
                                     </h:form>
                                 </li>
                             </c:forEach>
@@ -91,8 +112,8 @@
                     <li><a  href="help.xhtml">Help</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
-            
-            <div class="head">                 
+
+            <div class="head">
                     <div class="contact_form">
                         <div class="heading_div">
                             <h2>
@@ -110,14 +131,14 @@
                                 <f:selectItem itemValue="social media" itemLabel="Social Media" />
                                 <f:selectItem itemValue="friend" itemLabel="Friend" />
                                 <f:selectItem itemValue="other" itemLabel="Other" />
-                            </h:selectOneMenu> 
+                            </h:selectOneMenu>
                             <h:outputLabel >Tell Us .... ?</h:outputLabel>
                             <h:inputTextarea />
                             <h:commandLink value="Submit" class="contact_button"/>
                             <h:commandLink value="Cancle" class="contact_button cancle_button"/>
                         </h:form>
                     </div>
-            </div>  
+            </div>
 
             <footer>
                 <div class="upper-footer">
@@ -135,4 +156,3 @@
         </div>
     </h:body>
 </html>
-
