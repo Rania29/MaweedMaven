@@ -117,18 +117,18 @@
         </nav><!--Navigation bar End-->
 
         <div class="main_div">
-            <h5>Search Result for #{appointmentController.hospital}</h5>
+            <h5>Search Result for #{appointmentController.hospital.name}</h5>
             <div class="result">
                 <div class="result_items">
                     <h:form>
                         <c:forEach items="#{appointmentController.hospitals}" var="h">
                             <div class="clnk-div">
-                                <h:commandLink action="#{appointmentController.toClinic (h)}">
-                                    <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/>
-                                </h:commandLink >
-                                <h:commandLink action="#{appointmentController.toClinic (h)}">
+                                <h:commandLink action="#{appointmentController.toClinicHospital (h)}">
+                                    <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/>
+                                </h:commandLink>
+                                <h:commandLink action="#{appointmentController.toClinicHospital (h)}">
                                     <span class="clnk-name">#{h.name}</span>
-                                </h:commandLink >
+                                </h:commandLink>
                                 <span class="clnk-location">#{h.area.name}</span>
                             </div>
                         </c:forEach>
