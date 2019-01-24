@@ -6,9 +6,9 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
-        <title>Maweed</title>
+        <title>Maweed qatar</title>
         <meta name="description" content="Directory to Qatar Hospitals, it shows their location, doctors, services and if any offers, also you can request an appointment  so you can choose the best hospital and treatment that suits you. "/>
-        <meta name="keywords" content="Qatar, hospital, hospitals, clinic, clinics, doctor, doctors, offers, request, appointment"/>
+        <meta name="keywords" content="qatar, maweed, hospital, hospitals, clinic, clinics, doctor, doctors, offers, request, appointment"/>
         <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta name="mobile-web-app-capable" content="yes"/>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
@@ -21,7 +21,7 @@
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
         <script src="resources/javascript/hamburger_menu.js" type="text/javascript"></script>
-        <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
+        <!--<script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>-->
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -140,6 +140,7 @@
                 </ul>
             </nav>
             <!--Navigation bar End-->
+            
             <!--Slide show section-->
             <div class="slides_container" >
                 <c:set var = "t" scope = "session" value = "${0}"/>
@@ -154,14 +155,14 @@
                         </h:commandLink>
                     </h:form>
                 </c:forEach>
-                <div class="indecator_container" style="width:100%">
+                <!--<div class="indecator_container" style="width:100%">
                     <div class="fl-left" onclick="plusDivs(-1)">
                         <img src="resources/interface/left-arrow32white.png" alt=""/>
                     </div>
                     <div class="fl-right" onclick="plusDivs(-1)">
                         <img src="resources/interface/right-arrow32white.png" alt=""/>
                     </div>
-                </div>
+                </div>-->
             </div>
             <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
             <div>

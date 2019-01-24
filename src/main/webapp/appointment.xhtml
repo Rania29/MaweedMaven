@@ -46,9 +46,9 @@
                 <div class="left-div">
                     <a href="appointment_ar.xhtml">عربي</a>
                     <a class="separator">|</a>
-                    <a href="index.xhtml">English</a>
+                    <a href="index.xhtml" class="isDisabled">English</a>
                 </div>
-                <div class="right-div">
+                <div class="right-div" >
                     <c:if test="#{guestController.valid}">
                         <h:form>
                             <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
@@ -57,7 +57,7 @@
                         </h:form>
                     </c:if>
                     <c:if test="#{!guestController.valid}">
-                        <h:outputText title="Welcome" style="color: white;"/>
+                        <h:outputText value="Welcome" style="color: white; font-size: 15px;"/>
                         <div class="tooltip">
                             <h:link  value="#{guestController.selected.name}"
                                      outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />

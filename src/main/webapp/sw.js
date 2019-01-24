@@ -5,7 +5,7 @@
  */
 
 
-/* global self */
+/* global self, Notification, caches, btnAdd */
 
 self.addEventListener('install', function (event) {
 // Preloading a Cache
@@ -31,18 +31,51 @@ self.addEventListener('fetch', function(event) {
             );
 });*/
 
-/*Receiving push Events*/
-self.addEventListener('push', function (event) {
-    event.waitUntil(
-            self.registration.showNotification('Maweed Website', {
-                body: 'Welcome Guest'
-            })
-            );
+/*New part to try*/
+/*Listen for beforeinstallprompt*/
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+});
+
+/*Notify the user your app can be installed*/
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can add to home screen
+  btnAdd.style.display = 'block';
+});
+
+/*Show the prompt*/
+btnAdd.addEventListener('click', (e) => {
+  // hide our user interface that shows our A2HS button
+  btnAdd.style.display = 'none';
+  // Show the prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice
+    .then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      deferredPrompt = null;
+    });
 });
 
 
+
+
+
 /*Gitting Permission*/
-function askPermission() {
+/*function askPermission() {
   return new Promise(function(resolve, reject) {
     const permissionResult = Notification.requestPermission(function(result) {
       resolve(result);
@@ -58,6 +91,17 @@ function askPermission() {
     }
   });
 }
+/*Receiving push Events*/
+/*self.addEventListener('push', function (event) {
+    event.waitUntil(
+            self.registration.showNotification('Maweed Website', {
+                body: 'Welcome Guest'
+            })
+            );
+});*/
+
+
+
 /*Subscribe a User with PushManager*/
 function subscribeUserToPush() {
   return navigator.serviceWorker.register('service-worker.js')

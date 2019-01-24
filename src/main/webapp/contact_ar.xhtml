@@ -56,7 +56,7 @@
             <header class="header-top">
                 <div class="logo">
                     <a href="index_ar.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
-                </div> 
+                </div>
 
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
@@ -72,20 +72,16 @@
                     <a href="help_ar.xhtml" class="item_menu">مساعدة</a>
                 </nav>
 
+                <!--Search area-->
                 <div class="search-box">
                     <div class="center-search">
-                        <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="--المنطقه--" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreaNameArabic()}" var="n"
-                                               itemLabel="#{n}" 
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="اكتب إسم العيادة أو الخدمة" id="search"/>
-                            <h:commandLink value="بحث" class="hidden-link1"/>
-                            <h:commandLink class="hidden-link">
-                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
+                        <h:form id="search-form" class="form-style">
+                            <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
+                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByInArabicName()}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}">
+                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                             </h:commandLink>
+                            <h:commandLink value="بحث متقدم" action="/advanced_search_ar?faces-redirect=true" class="advansed-link" style="white-space: normal;"/>
                         </h:form>
 
                     </div>
@@ -99,8 +95,8 @@
                             <c:forEach items="#{categoryController.findCategories()}" var="c">
                                 <li>
                                     <h:form>
-                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}" 
-                                                       value="#{c.inArabic}"/> 
+                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}"
+                                                       value="#{c.inArabic}"/>
                                     </h:form>
                                 </li>
                             </c:forEach>
@@ -112,15 +108,15 @@
                     <li><a  href="help_ar.xhtml">مساعدة</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
-            
+
             <div class="head">
-                <div>                 
+                <div>
                     <div class="contact_form">
                         <div class="heading_div">
                             <h2>
                                 تواصل معنا ، وسوف نقوم بالرد في أقرب وقت
                             </h2>
-                            <h3>Contact Form</h3>
+                            <h3>نموذج الاتصال</h3>
                         </div>
                         <h:form>
                             <h:inputText a:placeholder="الإسم الأول" id="fName"/>
@@ -132,7 +128,7 @@
                                 <f:selectItem itemValue="social media" itemLabel="وسائل التواصل الإجتماعي" />
                                 <f:selectItem itemValue="friend" itemLabel="عن طريق صديق" />
                                 <f:selectItem itemValue="other" itemLabel="مكان آخر" />
-                            </h:selectOneMenu> 
+                            </h:selectOneMenu>
                             <h:outputLabel >قل لي ماتحتاج ....؟</h:outputLabel>
                             <h:inputTextarea />
                             <h:commandLink value="إرسال" class="contact_button"/>
@@ -140,7 +136,7 @@
                         </h:form>
                     </div>
                 </div>
-            </div>  
+            </div>
 
             <footer>
                 <div class="upper-footer">
@@ -151,11 +147,10 @@
                     <a href="help_ar.xhtml">المساعدة</a>
                 </div>
                 <div class="lower-footer">
-                    <h2>موعد</h2>
+                    <h2 style="color: white;">موعد</h2>
                     <h6>جميع الحقوق محفوظة | حقوق الطبع 2018.</h6>
                 </div>
             </footer>
         </div>
     </h:body>
 </html>
-

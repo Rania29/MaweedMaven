@@ -45,24 +45,24 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="index_ar.xhtml">عربي</a>
+                    <a href="index_ar.xhtml" class="isDisabled">عربي</a>
                     <a id="separator">|</a>
                     <a href="appointment.xhtml">English</a>
                 </div>
                 <div class="right-div">
                     <c:if test="#{guestController.valid}">
                         <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/appointment_ar', '/signin_ar')}" value="دخول"/>
-                            <a class="separator">|</a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/appointment_ar', '/registration_ar')}" value="تسجيل"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
+                            <a class="separator"> | </a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
                         </h:form>
                     </c:if>
                     <c:if test="#{!guestController.valid}">
-                        <h:outputText title="مرحيا" style="color: white;"/>
+                        <h:outputText value="مرحبا" style="color: white;"/>
                         <div class="tooltip">
-                            <h:link  value="#{guestController.selected.name}"
-                                     outcome="#{guestController.saveCurrentPage('/appointment_ar', '/user_profile_ar')}" />
-                            <span class="tooltiptext">User Profile</span>
+                            <h:link  value="#{guestController.selected.inArabic}"
+                                     outcome="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
+                            <span class="tooltiptext">بروفايل المستخدم</span>
                         </div>
                         <a class="separator">| </a>
                         <h:form style="display: inline-block;">

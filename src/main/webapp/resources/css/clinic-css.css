@@ -153,12 +153,6 @@ div.clnk-container{
     background-color: #bde0f5;
 }
 
-/**Map*/
-#map{
-    width:100%;
-    height:400px;
-    background:yellow;
-}
 
 /*-----------------Our Advanteges-------------*/
 div.advant-section{
@@ -421,7 +415,7 @@ tr:nth-child(even){
         height: 180px;
         display: block;
         border-bottom: 5px solid #bde0f5;
-        border-left: none;
+        border-right: none;
     }
     .detailed-working-days table{
         margin: 0 auto;
