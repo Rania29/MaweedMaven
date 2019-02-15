@@ -154,16 +154,6 @@
                             <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
-                    <div class="clnk-widget">
-                        <div class="icon">
-                            <img class="centered" src="resources/interface/hours.png" alt=""/>
-                        </div>
-                        <div class="clnk-info">
-                            <p>ساعات العمل</p>
-                            <span>#{appointmentController.hospital.workingDaysHoursArabic}</span>
-                        </div>
-                    </div>
-
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
@@ -209,7 +199,13 @@
                         </div>
                         <div class="clnk-info">
                             <p>ساعات العمل</p>
-                            <span>#{appointmentController.hospital.workingDaysHoursArabic}</span>
+                            <table width="500px">
+                                <c:forEach items="#{appointmentController.hospital.workingDaysHoursArabic.split('\\n', 10)}" var="i">
+                                    <tr>
+                                        <th>#{i.split('\\s+', 3)[0]}</th><td>#{i.split('\\s+', 3)[1]}</td><td>#{i.split('\\s+', 3)[2]}</td>
+                                    </tr>
+                                </c:forEach>
+                            </table>
                         </div>
                     </div>
                     <div>
@@ -282,15 +278,12 @@
                 </div>
                 <!--right div, detailed working hours/days-->
                 <div class="detailed-working-days">
-
-                    <table>
-                        <tr><th>الأحد</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
-                        <tr><th>الإثنين</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
-                        <tr><th>الثلاثاء</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
-                        <tr><th>الأربعاء</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
-                        <tr><th>الخميس</th><td>7:00 - 12:00</td><td>16:00 - 22:00</td></tr>
-                        <tr><th>الجمعة</th><td>مقفل</td><td>مقفل</td></tr>
-                        <tr><th>السبت</th><td>مقفل</td><td>16:00 - 22:00</td></tr>
+                    <table width="500px">
+                        <c:forEach items="#{appointmentController.hospital.workingDaysHoursArabic.split('\\n', 10)}" var="i">
+                            <tr>
+                                <th>#{i.split('\\s+', 3)[0]}</th><td>#{i.split('\\s+', 3)[1]}</td><td>#{i.split('\\s+', 3)[2]}</td>
+                            </tr>
+                        </c:forEach>
                     </table>
                 </div>
             </div>
