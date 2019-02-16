@@ -34,21 +34,21 @@
                 <div class="right-div">
                     <c:if test="#{guestController.valid}">
                         <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/contact?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
-                            <a class="separator"> | </a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/contact?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/contact', '/signin')}" value="Signin"/>
+                            <a class="separator">|</a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/contact', '/registration')}" value="Register"/>
                         </h:form>
                     </c:if>
                     <c:if test="#{!guestController.valid}">
-                        <h:outputText value="مرحبا" style="color:#55A6D7 ;"/>
+                        <h:outputText title="Welcome" style="color: white;"/>
                         <div class="tooltip">
                             <h:link  value="#{guestController.selected.name}"
-                                     outcome="#{guestController.saveCurrentPage('/contact?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
-                            <span class="tooltiptext">بروفايل المستخدم</span>
+                                     outcome="#{guestController.saveCurrentPage('/contact', '/user_profile')}" />
+                            <span class="tooltiptext">User Profile</span>
                         </div>
                         <a class="separator">| </a>
                         <h:form style="display: inline-block;">
-                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="خروج"/>
+                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
                         </h:form>
                     </c:if>
                 </div>
@@ -114,39 +114,38 @@
             </nav><!--Navigation bar End-->
 
             <div class="head">
-                    <div class="contact_form">
-                        <div class="heading_div">
-                            <h2>
-                                Contact Us Let's Have A DISCUSSION
-                            </h2>
-                            <h3>Contact Form</h3>
-                        </div>
-                        <h:form>
-                            <h:inputText a:placeholder="First Name" id="fName"/>
-                            <h:inputText a:placeholder="Last Name" id="lName"/>
-                            <h:inputText a:placeholder="Phone Number" id="phone"/>
-                            <h:inputText a:placeholder="Email" id="email"/>
-                            <h:outputLabel >How did you hear about Maweed ?</h:outputLabel>
-                            <h:selectOneMenu  value="" title="Select" >
-                                <f:selectItem itemValue="social media" itemLabel="Social Media" />
-                                <f:selectItem itemValue="friend" itemLabel="Friend" />
-                                <f:selectItem itemValue="other" itemLabel="Other" />
-                            </h:selectOneMenu>
-                            <h:outputLabel >Tell Us .... ?</h:outputLabel>
-                            <h:inputTextarea />
-                            <h:commandLink value="Submit" class="contact_button"/>
-                            <h:commandLink value="Cancle" class="contact_button cancle_button"/>
-                        </h:form>
+                <div class="contact_form">
+                    <div class="heading_div">
+                        <h2>
+                            Contact Us Let's Have A DISCUSSION
+                        </h2>
+                        <h3>Contact Form</h3>
                     </div>
+                    <h:form>
+                        <h:inputText a:placeholder="Full Name" value="#{guestController.selected.name}" id="fName"/>
+                        <h:inputText a:placeholder="Phone Number" value="#{guestController.selected.phone}" id="phone"/>
+                        <h:inputText a:placeholder="Email" value="#{guestController.selected.email}" id="email"/>
+                        <h:outputLabel value="How did you hear about Maweed?"/>
+                        <h:selectOneMenu  value="#{guestController.howYouKnow}" title="Select" >
+                            <f:selectItem itemValue="social media" itemLabel="Social Media" />
+                            <f:selectItem itemValue="friend" itemLabel="Friend" />
+                            <f:selectItem itemValue="other" itemLabel="Other" />
+                        </h:selectOneMenu>
+                        <h:outputLabel >Tell Us .... ?</h:outputLabel>
+                        <h:inputTextarea value="#{guestController.tellUs}" />
+                        <h:commandLink value="Submit" action="#{guestController.contactUs()}" class="contact_button"/>
+                        <h:commandLink value="Cancel" class="contact_button cancle_button"/>
+                    </h:form>
+                </div>
             </div>
 
             <footer>
                 <div class="upper-footer">
-                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
-                            <a class="separator">|</a>
-                            <a href="privacy-policy.xhtml">Privacy Policy</a>
-                            <a class="separator">|</a>
-                            <a href="help.xhtml">Help</a>
+                    <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                    <a class="separator">|</a>
+                    <a href="privacy-policy.xhtml">Privacy Policy</a>
+                    <a class="separator">|</a>
+                    <a href="help.xhtml">Help</a>
                 </div>
                 <div class="lower-footer">
                     <h2 style="color:white;">Maweed</h2>

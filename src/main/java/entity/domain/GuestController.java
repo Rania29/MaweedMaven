@@ -28,6 +28,8 @@ import javax.servlet.http.HttpSession;
 @SessionScoped
 public class GuestController implements Serializable {
 
+    private String howYouKnow;
+    private String tellUs;
     private HttpSession httpSession;
     private Guest current;
     private DataModel items = null;
@@ -38,6 +40,22 @@ public class GuestController implements Serializable {
     private String currentPage;
 
     public GuestController() {
+    }
+
+    public String getTellUs() {
+        return tellUs;
+    }
+
+    public void setTellUs(String tellUs) {
+        this.tellUs = tellUs;
+    }
+
+    public String getHowYouKnow() {
+        return howYouKnow;
+    }
+
+    public void setHowYouKnow(String howYouKnow) {
+        this.howYouKnow = howYouKnow;
     }
 
     public Guest getSelected() {
@@ -121,6 +139,29 @@ public class GuestController implements Serializable {
 
     public boolean isValid() {
         return (httpSession == null);
+    }
+
+    public void contactUs() {
+        String msg = "<table border='1'>"
+                + "<tr>"
+                + "<th>Name</th><td>" + current.getName() + "</td>"
+                + "</tr>"
+                + "<tr>"
+                + "<th>Email</th><td>" + current.getEmail() + "</td>"
+                + "</tr>"
+                + "<tr>"
+                + "<th>Phone</th><td>" + current.getPhone() + "</td>"
+                + "</tr>"
+                + "<tr>"
+                + "<th>How You Know</th><td>" + getHowYouKnow() + "</td>"
+                + "</tr>"
+                + "<tr>"
+                + "<th>Tell Us</th><td>" + getTellUs() + "</td>"
+                + "</tr>"
+                + "</table>";
+        SendMail.sendMail("maweed.noreply@gmail.com", "m@weed!29site", "Contact Us - " + current.getName(), msg, "rania.rabie29@gmail.com");
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Thank you for your feedback we will get back to you soon."));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("شكرا لك"));
     }
 
     public String create() {
