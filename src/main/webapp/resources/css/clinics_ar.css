@@ -402,6 +402,7 @@ tr:nth-child(even){
     .detailed-working-days table{
         margin: 0 auto;
         text-align: center;
+        width: 100%;
     }
     .detailed-working-days{
         width: 100%;
