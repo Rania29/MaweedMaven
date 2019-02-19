@@ -118,22 +118,21 @@
                             </h2>
                             <h3>نموذج الاتصال</h3>
                         </div>
-                        <h:form>
-                            <h:inputText a:placeholder="الإسم الأول" id="fName"/>
-                            <h:inputText a:placeholder="الإسم الأخير" id="lName"/>
-                            <h:inputText a:placeholder="رقم الهاتف" id="phone"/>
-                            <h:inputText a:placeholder="البريد الإلكتروني" id="email"/>
-                            <h:outputLabel >أين سمعت عن موقع موعد ؟</h:outputLabel>
-                            <h:selectOneMenu  value="" title="اختر" >
-                                <f:selectItem itemValue="social media" itemLabel="وسائل التواصل الإجتماعي" />
-                                <f:selectItem itemValue="friend" itemLabel="عن طريق صديق" />
-                                <f:selectItem itemValue="other" itemLabel="مكان آخر" />
-                            </h:selectOneMenu>
-                            <h:outputLabel >قل لي ماتحتاج ....؟</h:outputLabel>
-                            <h:inputTextarea />
-                            <h:commandLink value="إرسال" class="contact_button"/>
-                            <h:commandLink value="إلغاء" class="contact_button cancle_button"/>
-                        </h:form>
+                    <h:form>
+                        <h:inputText a:placeholder="الاسم بالكامل" value="#{guestController.selected.name}" id="fName"/>
+                        <h:inputText a:placeholder="رقم التلفون" value="#{guestController.selected.phone}" id="phone"/>
+                        <h:inputText a:placeholder="الايميل" value="#{guestController.selected.email}" id="email"/>
+                        <h:outputLabel value="كيف سمعت عن موعد?"/>
+                        <h:selectOneMenu  value="#{guestController.howYouKnow}" title="Select" >
+                            <f:selectItem itemValue="social media" itemLabel="وسائل التواصل الاجتماعيه" />
+                            <f:selectItem itemValue="friend" itemLabel="صديق" />
+                            <f:selectItem itemValue="other" itemLabel="اخرى" />
+                        </h:selectOneMenu>
+                        <h:outputLabel >ماذا تعتقد؟</h:outputLabel>
+                        <h:inputTextarea value="#{guestController.tellUs}" />
+                        <h:commandLink value="ارسل" action="#{guestController.contactUs()}" class="contact_button"/>
+                        <h:commandLink value="الغاء" class="contact_button cancle_button"/>
+                    </h:form>
                     </div>
                 </div>
             </div>
