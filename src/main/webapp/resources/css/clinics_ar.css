@@ -246,6 +246,7 @@ div.advant-section{
     padding: 10px;
 }
 .detailed-working-days table{
+    width: 100%;
     padding: 5px;
     border-radius: 3px;
     border-collapse: collapse;
@@ -574,6 +575,30 @@ tr:nth-child(even){
     div.clinic-pic{
         display: flex;
         justify-content: flex-start;
+    }
+    .detailed{
+        clear: both;
+        height: 430px;
+
+    }
+    .detailed-location{
+        width: 100%;
+        height: 180px;
+        display: block;
+        border-bottom: 5px solid #bde0f5;
+        border-left: none;
+    }
+    .detailed-working-days table{
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+    }
+    .detailed-working-days{
+        width: 100%;
+        height: 230px;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
     }
 
 }
