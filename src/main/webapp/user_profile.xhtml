@@ -18,7 +18,6 @@
                 dataLayer.push(arguments);
             }
             gtag('js', new Date());
-
             gtag('config', 'UA-129442662-1');
         </script>
         <!--Bootstrap javascripts-->
@@ -37,6 +36,9 @@
                     toggleActive: true
                 });
             });
+            function profileUpdated() {
+                alert("Profile updated!");
+            }
         </script>
     </h:head>
     <h:body>
@@ -49,7 +51,7 @@
                 </div>
                 <div class="right-div">
                     <h:link  value="#{guestController.selected.name}"
-                                         outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                             outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
                 </div>
             </div>
             <div class="logo">
@@ -84,7 +86,7 @@
                         </h:inputText>
                     </h:panelGrid>
                     <div class="cntr_btn">
-                        <h:commandLink class="app_button" value="Update" action="#{guestController.update()}"/>
+                        <h:commandLink class="app_button" value="Update" action="#{guestController.update()}" onclick="profileUpdated()"/>
                         <h:commandLink class="app_button cancle_button" value="Back" action="/index"/>
                         <h:commandLink class="app_button logout_button" value="Logout" action="#{guestController.logout()}" />
                     </div>
@@ -94,11 +96,11 @@
             <br />
             <footer>
                 <div class="upper-footer">
-                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
-                            <a class="separator">|</a>
-                            <a href="privacy-policy.xhtml">Privacy Policy</a>
-                            <a class="separator">|</a>
-                            <a href="help.xhtml">Help</a>
+                    <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                    <a class="separator">|</a>
+                    <a href="privacy-policy.xhtml">Privacy Policy</a>
+                    <a class="separator">|</a>
+                    <a href="help.xhtml">Help</a>
                 </div>
                 <div class="lower-footer">
                     <h2>Maweed</h2>
