@@ -274,19 +274,39 @@
                 </table>
             </div>
         </div>
+        <!--Star Rating and comments-->
         <div>
             <h1>Rating and Comments</h1>
         </div>
-        <div style="margin: 5px;">
-            <span onmouseover="starmark(this)" onclick="starmark(this)" id="1one" style="font-size:20px;cursor:pointer;"  class="fa fa-star checked"></span>
+        <div class="rating_div">
+            <span onmouseover="starmark(this)" onclick="starmark(this)" id="1one"  style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
             <span onmouseover="starmark(this)" onclick="starmark(this)" id="2one"  style="font-size:20px;cursor:pointer;" class="fa fa-star "></span>
             <span onmouseover="starmark(this)" onclick="starmark(this)" id="3one"  style="font-size:20px;cursor:pointer;" class="fa fa-star "></span>
             <span onmouseover="starmark(this)" onclick="starmark(this)" id="4one"  style="font-size:20px;cursor:pointer;" class="fa fa-star"></span>
             <span onmouseover="starmark(this)" onclick="starmark(this)" id="5one"  style="font-size:20px;cursor:pointer;" class="fa fa-star"></span>
             <br/>
-            <textarea  style="margin-top:5px; width: 400px;" class="form-control" rows="3" id="comment" placeholder="Enter your review"></textarea>
-
-            <button  onclick="result()" type="button" style="margin:10px;" class="btn btn-lg btn-success">Submit</button>
+            <input type="text" name="Name" placeholder="*First and last Name" />
+            <br />
+            <input type="text" name="email" placeholder="*Email address" />
+            <br />
+            <textarea  rows="3" id="comment" placeholder="Enter your review"></textarea>
+            <button  onclick="result()" type="button" class="rating_btn">Post</button>
+        </div>
+        <hr />
+        <!--User FeedBack area-->
+        <div class="feedback_div">
+            <div class="user_feedback">
+                <lable>Name</lable><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                <br />
+                <span style="color: #999999;">26-11-2019</span>
+                <p>User Rating goes here User Rating goes here User Rating goes here User Rating goes here User Rating goes here User Rating goes here</p>            
+            </div>
+            <div class="user_feedback">
+                <lable>Name2</lable><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
+                <br />
+                <span style="color: #999999;">26-11-2019</span>
+                <p>User Rating goes here User Rating goes here User Rating goes here User Rating goes here User Rating goes here User Rating goes here</p>            
+            </div>
         </div>
         <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
 
