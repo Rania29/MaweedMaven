@@ -18,6 +18,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -96,6 +97,11 @@ public class AppointmentController implements Serializable {
 
     public List<ClinicService> getClinicServices() {
         return clinicServices;
+    }
+
+    public Appointment fetchDetails() {
+        Map<String, String> id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        return ejbFacade.find(Long.valueOf(id.get("id")));
     }
 
     public void setClinicServices(List<ClinicService> clinicServices) {
