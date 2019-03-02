@@ -24,8 +24,8 @@ public class ServiceList implements Serializable {
     @Basic
     private String inArabic;
 
-    @Basic
-    private String image;
+//    @Basic
+//    private String image;
 
     @OneToMany(mappedBy = "serviceList")
     private List<ClinicService> clinicServices;
@@ -57,13 +57,13 @@ public class ServiceList implements Serializable {
         this.name = name;
     }
 
-    public String getImage() {
-        return this.image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
+//    public String getImage() {
+//        return this.image;
+//    }
+//
+//    public void setImage(String image) {
+//        this.image = image;
+//    }
 
     public List<ClinicService> getClinicServices() {
         if (clinicServices == null) {

@@ -86,9 +86,9 @@ public class HospitalimageController implements Serializable {
     public List<HospitalImage> getIndexImages() {
         List<Hospital> hospitals = hospitalFacade.findHospitalsByMembership("premium");
         List<HospitalImage> paid = new ArrayList<>();
-        for(Hospital hospital: hospitals) {
-            for (HospitalImage hospitalImage: hospital.getHospitalImages()) {
-                if(hospitalImage.getImageType().equals("paid")) {
+        for (Hospital hospital : hospitals) {
+            for (HospitalImage hospitalImage : hospital.getHospitalImages()) {
+                if (hospitalImage.getImageType().equals("paid")) {
                     paid.add(hospitalImage);
                 }
             }
@@ -97,15 +97,20 @@ public class HospitalimageController implements Serializable {
     }
 
     public List<HospitalImage> getImages(String hospital) {
-        Hospital h = (Hospital) hospitalFacade.findHospitalByName(hospital);
-        List<HospitalImage> hospitalImages = h.getHospitalImages();
-        List<HospitalImage> slideshow = new ArrayList<>();
-        for (HospitalImage hImage : hospitalImages) {
-            if (hImage.getImageType().equals("slideshow")) {
-                slideshow.add(hImage);
+        try {
+            Hospital h = (Hospital) hospitalFacade.findHospitalByName(hospital);
+            List<HospitalImage> hospitalImages = h.getHospitalImages();
+            List<HospitalImage> slideshow = new ArrayList<>();
+            for (HospitalImage hImage : hospitalImages) {
+                if (hImage.getImageType().equals("slideshow")) {
+                    slideshow.add(hImage);
+                }
             }
+            return slideshow;
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+            return null;
         }
-        return slideshow;
     }
 
     public String findFirstImage(Hospital hospital) {

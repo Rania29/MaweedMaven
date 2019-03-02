@@ -152,15 +152,6 @@
                             <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
-                    <!--<div class="clnk-widget">
-                        <div class="icon">
-                            <img class="centered" src="resources/interface/hours.png" alt=""/>
-                        </div>
-                        <div class="clnk-info">
-                            <p>Opening Hours</p>
-                            <span>#{appointmentController.hospital.workingDaysHours}</span>
-                        </div>
-                    </div>-->
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
@@ -200,15 +191,6 @@
                             <a href="mailto:#{appointmentController.hospital.email}">#{appointmentController.hospital.email}</a>
                         </div>
                     </div>
-                    <!--<div class="clnk-widget">
-                        <div class="icon">
-                            <img class="centered" src="resources/interface/hours.png" alt=""/>
-                        </div>
-                        <div class="clnk-info">
-                            <p>Opening Hours</p>
-                            <span>#{appointmentController.hospital.workingDaysHours}</span>
-                        </div>
-                    </div>-->
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
@@ -226,7 +208,7 @@
                 <ul>
                     <c:forEach items="#{appointmentController.clinicServices}" var="s">
                         <li>
-                            <span><br />#{s.serviceList}</span>
+                            <span><br />#{s.serviceList.name}</span>
                             <span><br />#{s.price}</span>
                             <span style="color: #00cc99;"><br />#{s.discount}</span>
                         </li>
