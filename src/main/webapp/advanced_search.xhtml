@@ -119,8 +119,8 @@
                                 <f:selectItem itemLabel="--Category--" itemValue=""/>
                                 <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
                             </h:selectOneMenu>
-                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findSearchResults('english')}"/>
-                            <h:commandLink class="hidden-link" action="#{appointmentController.findSearchResults('english')}" >
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategory('english')}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findByAreaAndCategory('english')}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
                         </h:form>
