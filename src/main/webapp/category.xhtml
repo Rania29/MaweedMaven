@@ -90,7 +90,7 @@
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
-                            <h:commandLink value="Advanced Search" action="/advanced_search" class="advansed-link"/>
+                            <h:commandLink value="Advanced" action="/advanced_search" class="advansed-link"/>
                         </h:form>
                     </div>
                 </div>
@@ -115,7 +115,8 @@
                 <li><a  href="help.xhtml">Help</a></li>
             </ul>
         </nav><!--Navigation bar End-->
-
+        
+        <!--Hospitals Search result-->
         <div class="main_div">
             <h2 class="cat-name">#{categoryController.current.name}</h2>
             <h4 class="cat-name">#{categoryController.current.description}</h4>
@@ -133,6 +134,7 @@
                 </div>
             </div>
         </div>
+        <!--Footer-->
         <footer>
                 <div class="upper-footer">
                             <a href="terms_and_conditions.xhtml">Terms and Conditions</a>

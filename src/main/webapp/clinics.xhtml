@@ -97,7 +97,7 @@
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
-                            <h:commandLink value="Advanced Search" action="/advanced_search" class="advansed-link"/>
+                            <h:commandLink value="Advanced" action="/advanced_search" class="advansed-link"/>
                         </h:form>
                     </div>
                 </div>
@@ -258,10 +258,16 @@
             <h1>Extra Details</h1>
         </div>
         <div class="detailed">
-            <!--left div, detailed location-->
-            <div class="detailed-location">
-                <h2>Our Address</h2>
-                <p>#{appointmentController.hospital.address}</p>
+            <div class="address_numbers">
+                <!--left div, detailed location-->
+                <div class="detailed-location">
+                    <h2>Our Address</h2>
+                    <p>#{appointmentController.hospital.address}</p>
+                </div>
+                <div class="extra_num">
+                    <h2 style="font-size: 24px; color: #445268;">Extra Numbers</h2>
+                    <a href="tel:#{appointmentController.hospital.phoneNo}">#{appointmentController.hospital.phoneNo}</a>
+                </div>
             </div>
             <!--right div, detailed working hours/days-->
             <div class="detailed-working-days">
@@ -278,7 +284,7 @@
         <div>
             <h1>Rating and Comments</h1>
         </div>
-        <!--<div class="rating_div">
+        <div class="rating_div">
             <span onmouseover="starmark(this)" onclick="starmark(this)" id="1one"  style="font-size:20px;cursor:pointer;" class="fa fa-star checked"></span>
             <span onmouseover="starmark(this)" onclick="starmark(this)" id="2one"  style="font-size:20px;cursor:pointer;" class="fa fa-star "></span>
             <span onmouseover="starmark(this)" onclick="starmark(this)" id="3one"  style="font-size:20px;cursor:pointer;" class="fa fa-star "></span>
@@ -292,9 +298,9 @@
             <textarea  rows="3" id="comment" placeholder="Enter your review"></textarea>
             <button  onclick="result()" type="button" class="rating_btn">Post</button>
         </div>
-        <hr />-->
+        <hr />
         <!--User FeedBack area-->
-        <div class="feedback_div">
+        <!--<div class="feedback_div">
             <div class="user_feedback">
                 <lable>Name</lable><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>
                 <br />
@@ -307,7 +313,7 @@
                 <span style="color: #999999;">26-11-2019</span>
                 <p>User Rating goes here User Rating goes here User Rating goes here User Rating goes here User Rating goes here User Rating goes here</p>            
             </div>
-        </div>
+        </div>-->
         <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
 
         <footer>
