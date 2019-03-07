@@ -231,7 +231,7 @@
                 <ul>
                     <c:forEach items="#{appointmentController.clinicServices}" var="s">
                         <li>
-                            <span><br />#{s.serviceList}</span>
+                            <span><br />#{s.serviceList.inArabic}</span>
                             <span><br />#{s.price}</span>
                             <span style="color: #00cc99;"><br />#{s.discount}</span>
                         </li>
