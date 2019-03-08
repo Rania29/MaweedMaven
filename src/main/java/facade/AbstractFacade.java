@@ -110,6 +110,12 @@ public abstract class AbstractFacade<T> {
                 .getSingleResult();
     }
 
+    public void findByAreaAndCategory(String area, String category) {
+        System.out.println(getEntityManager().createNamedQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                        + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                        + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area + "' AND cat.name = '" + category + "'").getResultList());
+    }
+    
     public List<Clinic> findClinicByCat(Category cat) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Clinic.findClinicByCat")
