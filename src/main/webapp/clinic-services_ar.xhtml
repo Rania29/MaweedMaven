@@ -94,7 +94,7 @@
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}">
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                             </h:commandLink>
-                            <h:commandLink value="بحث متقدم" action="/advanced_search?faces-redirect=true" class="advansed-link" style="white-space: normal;"/>
+                            <h:commandLink value="متقدم" action="/advanced_search?faces-redirect=true" class="advansed-link" style="white-space: normal;"/>
                         </h:form>
 
                     </div>
@@ -155,16 +155,6 @@
                             <span>#{appointmentController.hospital.email}</span>
                         </div>
                     </div>
-                    <!--<div class="clnk-widget">
-                        <div class="icon">
-                            <img class="centered" src="resources/interface/hours.png" alt=""/>
-                        </div>
-                        <div class="clnk-info">
-                            <p>ساعات العمل</p>
-                            <span>#{appointmentController.hospital.workingDaysHoursArabic}</span>
-                        </div>
-                    </div>-->
-
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
@@ -204,15 +194,6 @@
                             <a href="mailto:#{appointmentController.hospital.email}">#{appointmentController.hospital.email}</a>
                         </div>
                     </div>
-                    <!--<div class="clnk-widget">
-                        <div class="icon">
-                            <img class="centered" src="resources/interface/hours.png" alt=""/>
-                        </div>
-                        <div class="clnk-info">
-                            <p>ساعات العمل</p>
-                            <span>#{appointmentController.hospital.workingDaysHoursArabic}</span>
-                        </div>
-                    </div>-->
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
@@ -227,13 +208,13 @@
             <div>
                 <h1>خدماتنا</h1>
             </div>
-            <div class="service-pic">
+            <div class="service">
                 <ul>
                     <c:forEach items="#{appointmentController.clinicServices}" var="s">
                         <li>
-                            <span><br />#{s.serviceList.inArabic}</span>
-                            <span><br />#{s.price}</span>
-                            <span style="color: #00cc99;"><br />#{s.discount}</span>
+                            <span style="font-size: 18px; font-weight: bold;">#{s.serviceList.inArabic}</span>
+                            <span><br />#{s.price} ريال</span>
+                            <span style="color: #cc3300;"><br />#{s.discount} ريال</span>
                         </li>
                     </c:forEach>
                 </ul>
@@ -246,9 +227,10 @@
                     <c:forEach items="#{appointmentController.clinic.doctors}" var="d">
                         <li>
                             <div class="doctor-info">
-                                <span><img src="#{fn:substringAfter(d.image, '/')}" alt=""/></span><br />
+                                <span><img src="#{fn:substringAfter(d.image, '/')}" alt="صورة الدكتور"/></span><br />
                                 <span style="color: #55A6D7;">#{d.inArabic}</span><br />
-                                <span>#{d.specializationArabic}</span>
+                                <span>#{d.specializationArabic}</span><br />
+                                <span style="color: #999999;">الجنسية</span>
                             </div>
                         </li>
                     </c:forEach>
@@ -258,29 +240,27 @@
             <div>
                 <h1>ما يميزنا</h1>
             </div>
-            <!--<div class="advant-section">
+            <div class="advant-section">
                 <div class="advant-items">
-                    <p>طب الأطفال وعلم النفس التربوي طب الأطفال وعلم النفس التربوي</p>
+                    <p>سوف تحصل على تدريب شخصي خاص بك</p>
                 </div>
                 <div class="advant-items">
-                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                    <p>بيئة العيادة مريحة </p>
                 </div>
                 <div class="advant-items">
-                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                    <p>سيتم علاجك على أيادي متخصصين بالمجال</p>
                 </div>
                 <div class="advant-items">
-                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                    <p>خدمة الزيارة المنزليه لكبار السن</p>
                 </div>
                 <div class="advant-items">
-                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                    <p>برامج متكاملة لعلاج الحالات المستعصية</p>
                 </div>
                 <div class="advant-items">
-                    <p>البرنامج اليومي لصعوبات التعلم</p>
+                    <p>سوف نعمل معا لتحقيق اهدافك</p>
                 </div>
-                <div class="advant-items">
-                    <p>البرنامج اليومي لصعوبات التعلم</p>
-                </div>
-            </div>-->
+            </div>
+            
             <footer>
                 <div class="upper-footer">
                     <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>

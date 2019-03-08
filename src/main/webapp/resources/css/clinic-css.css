@@ -46,7 +46,7 @@ and open the template in the editor.
 .clinic-name{
     background-color: inherit;
     color: #00cc99;
-    margin:15px;
+    padding: 10px 15px;
 }
 div.item{
     margin-bottom: 15px;
@@ -109,7 +109,7 @@ div.clnk-container{
 }
 .appoinment-btn input[type='submit']{
     width: auto;
-    height: 60px;
+    height: 70px;
     background-color: #00cc99;
     border: none;
     color: #000000;
@@ -180,10 +180,17 @@ div.advant-section{
     margin: 2px;
     overflow-wrap: break-word;
 }
+.advant-items p{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    text-align: center;
+}
 .advant-items:hover{
     box-shadow: 3px 3px 5px #50A2C9;
 }
-
 
 /**Insurance div*/
 .insurance{
@@ -440,11 +447,12 @@ hr{
     .clnk-info {
         display: inline-block;
         float: left;
-        line-height: 10px;
+        line-height: 20px;
         padding: 12px;
+        vertical-align: middle;
         color: black;
         width: 80%;
-        height: 75px;
+        height: 70px;
         font-size: 17px;
         text-align: left;
     }
@@ -458,7 +466,9 @@ hr{
     }
     .appoinment-btn input[type='submit']{
         width: 300px;
-        height: 50px;
+        height: 70px;
+        border: none;
+        text-align: center;
         color: #000000;
     }
     div.clinic-pic{
@@ -476,8 +486,8 @@ hr{
         height: auto;
 
     }
-     /******************************Extra Details ************************/
-    
+    /******************************Extra Details ************************/
+
     .detailed{
         clear: both;
         height: 450px;
@@ -666,10 +676,11 @@ hr{
         display: inline-block;
         float: left;
         line-height: 10px;
-        padding-bottom: 12px;
+        vertical-align: middle;
+        padding: 12px;
         color: black;
         width: 80%;
-        height: 75px;
+        height: 70px;
         font-size: 17px;
         text-align: left;
 
@@ -810,16 +821,12 @@ hr{
     div.hidden-div{
         display: block;
     }
-    .clinic-name{
-        margin:15px;
-    }
+
 
     div.clnk-container{
         display: block;
         height: auto;
         border-top: 1px solid rgba(50, 50, 50, 0.1);
-
-        opacity: 1;
     }
 
     .clnk-widget{
@@ -869,8 +876,7 @@ hr{
     }
     .appoinment-btn input[type='submit']{
         width: 500px;
-        height: 50px;
-        border: 2px solid #00cc99;
+        font-size: 20px;
         color: #000000;
 
     }
