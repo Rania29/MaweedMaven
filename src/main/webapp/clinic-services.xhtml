@@ -93,7 +93,7 @@
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
-                            <h:commandLink value="Advanced Search" action="/advanced_search?faces-redirect=true" class="advansed-link"/>
+                            <h:commandLink value="Advanced" action="/advanced_search?faces-redirect=true" class="advansed-link"/>
                         </h:form>
                     </div>
                 </div>
@@ -204,13 +204,13 @@
             <div>
                 <h1>Our Services</h1>
             </div>
-            <div class="service-pic">
+            <div class="service">
                 <ul>
                     <c:forEach items="#{appointmentController.clinicServices}" var="s">
                         <li>
-                            <span><br />#{s.serviceList.name}</span>
-                            <span><br />#{s.price}</span>
-                            <span style="color: #00cc99;"><br />#{s.discount}</span>
+                            <span style="font-size: 18px; font-weight: bold;"><br />#{s.serviceList.name}</span>
+                            <span><br />#{s.price} QR</span>
+                            <span style="color: #cc3300;"><br />#{s.discount} QR</span>
                         </li>
                     </c:forEach>
                 </ul>
@@ -227,7 +227,7 @@
                                 <span><img src="#{fn:substringAfter(d.image, '/')}" alt=""/></span><br />
                                 <span style="color: #55A6D7;">#{d.name}</span><br />
                                 <span>#{d.qualifications}</span><br />
-                                <span>nationality</span>
+                                <span style="color: #999999;">nationality</span>
                             </div>
                         </li>
                     </c:forEach>
@@ -237,19 +237,39 @@
             <div>
                 <h1>Our Advantages</h1>
             </div>
-            <footer>
-                <div class="upper-footer">
-                    <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
-                    <a class="separator">|</a>
-                    <a href="privacy-policy.xhtml">Privacy Policy</a>
-                    <a class="separator">|</a>
-                    <a href="help.xhtml">Help</a>
+            <div class="advant-section">
+                <div class="advant-items">
+                    <p>Our therapists are trained and certified in therapy technique</p>
                 </div>
-                <div class="lower-footer">
-                    <h2>Maweed</h2>
-                    <h6>Copyright 2018 | All rights reserved.</h6>
+                <div class="advant-items">
+                    <p>You will receive a full individualized treatment</p>
                 </div>
-            </footer>
+                <div class="advant-items">
+                    <p>Our clinic feels like a comfortable health and fitness center</p>
+                </div>
+                <div class="advant-items">
+                    <p>Your treatment will be performed by only licensed therapists</p>
+                </div>
+                <div class="advant-items">
+                    <p>Setting goals is the best way to enjoy a successful outcome</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="upper-footer">
+                <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                <a class="separator">|</a>
+                <a href="privacy-policy.xhtml">Privacy Policy</a>
+                <a class="separator">|</a>
+                <a href="help.xhtml">Help</a>
+            </div>
+            <div class="lower-footer">
+                <h2>Maweed</h2>
+                <h6>Copyright 2018 | All rights reserved.</h6>
+            </div>
+        </footer>
+
         </div>
     </h:body>
 </html>
