@@ -7,7 +7,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
-        <title>Clinic Services</title>
+        <title>#{appointmentController.hospital.inArabic}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>زورو موقعنا</p>
-                            <span>#{appointmentController.hospital.area.inArabic}</span>
+                            <span>#{appointmentController.hospital.area.getInArabic()}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -158,7 +158,7 @@
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
-                                <h:commandButton action="#{appointmentController.toAppointment('arabic', guestController.selected.email)}" value="طلب موعد"/>
+                                <h:commandButton action="#{appointmentController.toAppointment('arabic', guestController.selected.email)}" value="اطلب موعد"/>
                             </h:form>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                         </div>
                         <div class="clnk-info">
                             <p>زورو موقعنا</p>
-                            <span>#{appointmentController.hospital.area.inArabic}</span>
+                            <span>#{appointmentController.hospital.area.getInArabic()}</span>
                         </div>
                     </div>
                     <div class="clnk-widget">
@@ -197,12 +197,11 @@
                     <div>
                         <div class="appoinment-btn">
                             <h:form>
-                                <h:commandButton action="#{appointmentController.toAppointment()}" value="طلب موعد"/>
+                                <h:commandButton action="#{appointmentController.toAppointment('arabic', guestController.selected.email)}" value="اطلب موعد"/>
                             </h:form>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <div>
@@ -260,7 +259,7 @@
                     <p>سوف نعمل معا لتحقيق اهدافك</p>
                 </div>
             </div>
-            
+
             <footer>
                 <div class="upper-footer">
                     <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>

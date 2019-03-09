@@ -137,10 +137,10 @@ div.clnk-container{
 .clinic-item {
     display: inline-block;
     box-sizing: border-box;
-    /*margin : 0 2px;*/
+    margin: 2px 0px;
     padding: 8px 0px;
     text-align: center;
-    width: 122px;
+    width: 125px;
     border: 2px solid #bde0f5;
     border-radius: 3px;
     line-height: normal;
