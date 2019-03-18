@@ -121,17 +121,24 @@ public class AppointmentController implements Serializable {
     }
 
     public void findByAreaAndCategory(String lang) {
-        hospitals = new ArrayList<>();
+        List<Object[]> ads;
+        System.out.println("hospitals: " + hospitals);
+        if (hospitals == null) {
+            hospitals = new ArrayList<>();
+        } else {
+            hospitals.clear();
+        }
         if (lang.equals("english")) {
-            System.out.println(hospital.getArea().getName());
-            System.out.println(clinic.getCategory().getName());
-            try {
-                ejbFacade.findByAreaAndCategory(hospital.getArea().getName(), clinic.getCategory().getName());
-            } catch (Exception e) {
-                System.out.println("ERROR: " + e.getMessage());
+            ads = advancedSearchFacade.findByAreaAndCategory(hospital.getArea(), clinic);
+            for (Object[] ad : ads) {
+                hospitals.add((Hospital) hospitalFacade.findHospitalByName(ad[0].toString()));
+            }
+        } else {
+            ads = advancedSearchFacade.findByAreaAndCategoryAr(hospital.getArea(), clinic);
+            for (Object[] ad : ads) {
+                hospitals.add((Hospital) hospitalFacade.findHospitalsByInArabic(ad[0].toString()));
             }
         }
-//        return findByAreaAndCategory(appo)
     }
 
 //    public void findSearchResults(String lang) {
@@ -161,7 +168,6 @@ public class AppointmentController implements Serializable {
 //            }
 //        }
 //    }
-
     public String findHospitalsByName() {
         hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
         return "search?faces-redirect=true";

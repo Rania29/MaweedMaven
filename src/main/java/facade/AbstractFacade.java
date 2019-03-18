@@ -1,10 +1,12 @@
 package facade;
 
+import entity.domain.Area;
 import entity.domain.Category;
 import entity.domain.Clinic;
 import entity.domain.Hospital;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 public abstract class AbstractFacade<T> {
 
@@ -110,12 +112,66 @@ public abstract class AbstractFacade<T> {
                 .getSingleResult();
     }
 
-    public void findByAreaAndCategory(String area, String category) {
-        System.out.println(getEntityManager().createNamedQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                        + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                        + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area + "' AND cat.name = '" + category + "'").getResultList());
+    public List<Object[]> findByAreaAndCategory(Area area, Clinic clinic) {
+
+        if (area != null && clinic != null) {
+            Query q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName() + "' AND cat.name = '" + clinic.getCategory().getName() + "'");
+            List<Object[]> ads = q.getResultList();
+            System.out.println("nothing null: ");
+            for (Object[] a : ads) {
+                System.out.println(a[0]);
+                System.out.println(a[1]);
+            }
+            return getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName() + "' AND cat.name = '" + clinic.getCategory().getName() + "'").getResultList();
+        }
+
+        if (clinic == null) {
+            System.out.println("area is null: " + getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName()).getResultList());
+            return getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName()).getResultList();
+        }
+
+        System.out.println("category is null: " + getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                + " JOIN category cat ON cat.id=c.category_id WHERE cat.name = '" + clinic.getCategory().getName() + "'").getResultList());
+        return getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                + " JOIN category cat ON cat.id=c.category_id WHERE cat.name = '" + clinic.getCategory().getName() + "'").getResultList();
     }
-    
+
+    public List<Object[]> findByAreaAndCategoryAr(Area area, Clinic clinic) {
+        List<Object[]> ads;
+        Query q;
+        if (area != null && clinic != null) {
+            q = getEntityManager().createNativeQuery("SELECT h.inarabic as hospital, a.inarabic as area, cat.name as clinic FROM hospital h"
+                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.inarabic = '" + area.getInArabic() + "' AND cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
+            ads = q.getResultList();
+            return ads;
+        }
+
+        if (clinic == null) {
+            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.inarabic = '" + area.getInArabic());
+            ads = q.getResultList();
+            return ads;
+        }
+
+        q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                + " JOIN category cat ON cat.id=c.category_id WHERE cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
+        ads = q.getResultList();
+        return ads;
+    }
+
     public List<Clinic> findClinicByCat(Category cat) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Clinic.findClinicByCat")
@@ -134,7 +190,7 @@ public abstract class AbstractFacade<T> {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Area.findNameSorted").getResultList();
     }
-    
+
     public Object findAreaByName(String area) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Area.findByName").getSingleResult();
@@ -156,7 +212,7 @@ public abstract class AbstractFacade<T> {
                 .setParameter("areaName", areaName)
                 .getResultList();
     }
-    
+
     public List<T> findResultsByCatAndAreaAr(String categName, String areaName) {
         return getEntityManager().createNamedQuery("AdvancedSearch.findByCategArAndAreaAr")
                 .setParameter("categArabic", categName)

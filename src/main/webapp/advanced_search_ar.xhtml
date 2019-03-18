@@ -117,8 +117,8 @@
                                 <f:selectItem itemLabel="--الأقسام--" itemValue=""/>
                                 <f:selectItems value="#{categoryController.itemsAvailableSelectManyAr}"/>
                             </h:selectOneMenu>
-                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findSearchResults('english')}"/>
-                            <h:commandLink class="hidden-link" action="#{appointmentController.findSearchResults('english')}" >
+                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findByAreaAndCategory('arabic')}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findByAreaAndCategory('arabic')}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                             </h:commandLink>
                         </h:form>
@@ -133,10 +133,10 @@
                         <h:form>
                             <c:forEach items="#{appointmentController.hospitals}" var="h">
                                 <div class="clnk-div">
-                                <h:commandLink action="#{appointmentController.toClinicArabic(h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="صورة المستشفى"/></h:commandLink>
-                                <h:commandLink action="#{appointmentController.toClinicArabic(h)}"><span class="clnk-name">#{h.inArabic}</span></h:commandLink>
-                                <span class="clnk-location">#{h.area.inArabic}</span>
-                            </div>
+                                    <h:commandLink action="#{appointmentController.toClinicArabic(h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="صورة المستشفى"/></h:commandLink>
+                                    <h:commandLink action="#{appointmentController.toClinicArabic(h)}"><span class="clnk-name">#{h.inArabic}</span></h:commandLink>
+                                    <span class="clnk-location">#{h.area.inArabic}</span>
+                                </div>
                             </c:forEach>
                         </h:form>
                     </div>
