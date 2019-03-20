@@ -113,7 +113,7 @@
                                 <f:selectItem itemLabel="--المنطقة--" itemValue=""/>
                                 <f:selectItems value="#{areaController.itemsAvailableSelectManyAr}"/>
                             </h:selectOneMenu>
-                            <h:selectOneMenu class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu requiredMessage="اختر قسم!!" required="true" class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="--الأقسام--" itemValue=""/>
                                 <f:selectItems value="#{categoryController.itemsAvailableSelectManyAr}"/>
                             </h:selectOneMenu>

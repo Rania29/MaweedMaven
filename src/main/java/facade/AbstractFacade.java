@@ -57,9 +57,21 @@ public abstract class AbstractFacade<T> {
                 .getResultList();
     }
 
+    public List<T> findHospitalsByInArabic(String name) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
+        return getEntityManager().createNamedQuery("Hospital.findByInArabicName")
+                .setParameter("inArabic", name)
+                .getResultList();
+    }
+
     public Object findHospitalByName(String name) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findByName").setParameter("name", name).getSingleResult();
+    }
+    
+    public Object findHospitalByNameAr(String name) {
+        getEntityManager().getEntityManagerFactory().getCache().evictAll();
+        return getEntityManager().createNamedQuery("Hospital.findByInArabicName").setParameter("inArabic", name).getSingleResult();
     }
 
     public List<T> findHospitalsByMembership(String membership) {
@@ -84,13 +96,6 @@ public abstract class AbstractFacade<T> {
 //    public List<T> findServicesByClinic(Clinic clinic) {
 //        return getEntityManager().createNamedQuery("ClinicService.findServicesByClinic").setParameter("clinic", clinic).getResultList();
 //    }
-    public List<T> findHospitalsByInArabic(String name) {
-        getEntityManager().getEntityManagerFactory().getCache().evictAll();
-        return getEntityManager().createNamedQuery("Hospital.findByInArabicName")
-                .setParameter("inArabic", name)
-                .getResultList();
-    }
-
     public Object findFirstImage(Hospital hospital) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         Object o;
@@ -114,63 +119,51 @@ public abstract class AbstractFacade<T> {
 
     public List<Object[]> findByAreaAndCategory(Area area, Clinic clinic) {
 
-        if (area != null && clinic != null) {
-            Query q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName() + "' AND cat.name = '" + clinic.getCategory().getName() + "'");
-            List<Object[]> ads = q.getResultList();
-            System.out.println("nothing null: ");
-            for (Object[] a : ads) {
-                System.out.println(a[0]);
-                System.out.println(a[1]);
-            }
-            return getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName() + "' AND cat.name = '" + clinic.getCategory().getName() + "'").getResultList();
-        }
-
-        if (clinic == null) {
-            System.out.println("area is null: " + getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName()).getResultList());
-            return getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName()).getResultList();
-        }
-
-        System.out.println("category is null: " + getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                + " JOIN category cat ON cat.id=c.category_id WHERE cat.name = '" + clinic.getCategory().getName() + "'").getResultList());
-        return getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                + " JOIN category cat ON cat.id=c.category_id WHERE cat.name = '" + clinic.getCategory().getName() + "'").getResultList();
-    }
-
-    public List<Object[]> findByAreaAndCategoryAr(Area area, Clinic clinic) {
-        List<Object[]> ads;
         Query q;
-        if (area != null && clinic != null) {
-            q = getEntityManager().createNativeQuery("SELECT h.inarabic as hospital, a.inarabic as area, cat.name as clinic FROM hospital h"
-                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.inarabic = '" + area.getInArabic() + "' AND cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
-            ads = q.getResultList();
-            return ads;
-        }
 
-        if (clinic == null) {
+        if (area != null && clinic != null) {
             q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
                     + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.inarabic = '" + area.getInArabic());
-            ads = q.getResultList();
-            return ads;
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName() + "' AND cat.name = '" + clinic.getCategory().getName() + "'");
+            return q.getResultList();
+        }
+
+        if (clinic == null && area != null) {
+            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName());
+            return q.getResultList();
         }
 
         q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
                 + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                + " JOIN category cat ON cat.id=c.category_id WHERE cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
-        ads = q.getResultList();
-        return ads;
+                + " JOIN category cat ON cat.id=c.category_id WHERE cat.name = '" + clinic.getCategory().getName() + "'");
+        return q.getResultList();
     }
+
+//    public List<Object[]> findByAreaAndCategoryAr(Area area, Clinic clinic) {
+//
+//        Query q;
+//
+//        if (area != null && clinic != null) {
+//            q = getEntityManager().createNativeQuery("SELECT h.inarabic as hospital, a.inarabic as area, cat.name as clinic FROM hospital h"
+//                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+//                    + " JOIN category cat ON cat.id=c.category_id WHERE a.inarabic = '" + area.getInArabic() + "' AND cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
+//            return q.getResultList();
+//        }
+//
+//        if (clinic == null && area != null) {
+//            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+//                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+//                    + " JOIN category cat ON cat.id=c.category_id WHERE a.inarabic = '" + area.getInArabic());
+//            return q.getResultList();
+//        }
+//
+//        q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+//                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+//                + " JOIN category cat ON cat.id=c.category_id WHERE cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
+//        return q.getResultList();
+//    }
 
     public List<Clinic> findClinicByCat(Category cat) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();

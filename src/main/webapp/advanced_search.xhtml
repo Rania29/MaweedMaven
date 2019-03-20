@@ -115,7 +115,7 @@
                                 <f:selectItem itemLabel="--Area--" itemValue=""/>
                                 <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
                             </h:selectOneMenu>
-                            <h:selectOneMenu class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu requiredMessage="Choose category!" required="true" class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="--Category--" itemValue=""/>
                                 <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
                             </h:selectOneMenu>
@@ -126,7 +126,6 @@
                         </h:form>
                     </div>
                 </div>
-
 
                 <!--Search Results section-->
                 <div class="result">

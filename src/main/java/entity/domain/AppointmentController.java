@@ -122,22 +122,14 @@ public class AppointmentController implements Serializable {
 
     public void findByAreaAndCategory(String lang) {
         List<Object[]> ads;
-        System.out.println("hospitals: " + hospitals);
         if (hospitals == null) {
             hospitals = new ArrayList<>();
         } else {
             hospitals.clear();
         }
-        if (lang.equals("english")) {
-            ads = advancedSearchFacade.findByAreaAndCategory(hospital.getArea(), clinic);
-            for (Object[] ad : ads) {
-                hospitals.add((Hospital) hospitalFacade.findHospitalByName(ad[0].toString()));
-            }
-        } else {
-            ads = advancedSearchFacade.findByAreaAndCategoryAr(hospital.getArea(), clinic);
-            for (Object[] ad : ads) {
-                hospitals.add((Hospital) hospitalFacade.findHospitalsByInArabic(ad[0].toString()));
-            }
+        ads = advancedSearchFacade.findByAreaAndCategory(hospital.getArea(), clinic);
+        for (Object[] ad : ads) {
+            hospitals.add((Hospital) hospitalFacade.findHospitalByName(ad[0].toString()));
         }
     }
 
