@@ -53,21 +53,27 @@ body, html{
 
 div.about-maweed{
     width: 90%;
-    height: 500px;
+    height: auto;
     margin: 0 auto;
     display: block;
     text-align: center;
+    margin-bottom: 15px;
+}
+   
+h3{
+    line-height: 40px;
 }
 div.left-div{
     width: 100%;
-    /*display: flex;*/
     height: 40%;
     font-size: 40px;
-    line-height: 100px;
+    line-height: 60px;
     margin: 0 auto;
     text-align: center;
-   
-    color: #013069;
+    color: #445268;
+}
+.left-div h3{
+    line-height: 40px;
 }
 div.right-div{
     width: 100%;
@@ -79,64 +85,17 @@ div.right-div{
     color: white;
     background-color: #55A6D7;
     border-radius: 10px;
+    margin-bottom: 15px;
 }
 div.center-text{
     justify-content: center;
     padding: 0 10px;
+    line-height: 30px;
 }
-div.about-me{
-    clear: both;
-    display: flex;
-    width: 100%;
-    height: 400px;
+.center-text h2{
+    font-size: 35px;
 }
-/**div.self-img{
-    width: 40%;
-    height: inherit;
-    float: left;
-    margin: auto;
-    display: flex;
-    background-color: gray;
 
-}**/
-/**div.center-img{
-    width: auto;
-    height: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center; 
-}**/
-/**.center-img img{
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain !important;
-}**/
-
-div.self-info{
-    width: 90%; 
-    align-items: center;
-    margin: 0 auto;
-    height: inherit;
-    line-height: 40px;
-    margin-top: 20px;
-}
-.self-info h1{
-    color: #013069;
-    font-size: 50px;
-    background-color: inherit;
-}
-.self-info h2{
-    font-size: 25px;
-    color: #00cc66;
-    text-align: center;
-}
-.self-info p{
-    color: white;
-    background-color: #55A6D7;
-    border-radius: 10px;
-    font-size: 25px;
-    padding: 10px;
-}
 
 /**Media Queries*/
 /* Smartphones (portrait and landscape) --------------------------------- */
@@ -156,73 +115,33 @@ div.self-info{
     div.about-maweed{
         clear: both;
         width: 100%;
-        height: 700px;
+        height: auto;
         text-align: center;
         border-top: 2px solid #445268;
+        margin-bottom: 15px;
     }
     div.left-div{
         width: 100%;
         height: 40%;
         font-size: 35px;
-        line-height: 60px;
         text-align: center;
     }
+    .left-div h3{
+        line-height: 40px;
+    }
+    
     div.right-div{
         width: 100%;
         height: 60%;
         font-size: 25px;
         padding:  0 10px;
         text-align: left;
-        line-height: 30px;
         border-radius: 0px;
     }
     div.center-text{
         justify-content: center;  
         width: 100%;
         height: 100%;
-    }
-    div.about-me{
-        clear: both;
-        width: 100%;
-        height: 450px;
-    }
-   /* div.self-img{
-        width: 100%;
-        height: 60%;
-        margin: auto;
-
-    }
-    div.center-img{
-        width: 100%;
-        height: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        justify-content: center;
-    }
-    .center-img img{
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain !important;
-    }*/
-
-    div.self-info{
-        width: 100%;
-        height: 40%;
-        background-color: inherit;
-        line-height: 30px;
-
-    }
-    .self-info h1{
-        color: #013069;
-        font-size: 35px;
-    }
-    .self-info h2{
-        font-size: 20px;
-    }
-    .self-info p{
-        font-size: 20px;
-        padding: 10px;
-        border-radius: 0px;
     }
 }
 
@@ -242,7 +161,7 @@ div.self-info{
     div.about-maweed{
         clear: both;
         width: 100%;
-        height: 600px;
+        height: auto;
         text-align: center;
         border-top: 2px solid #445268;
     }
@@ -266,60 +185,12 @@ div.self-info{
         width: 100%;
         height: 100%;
     }
-    div.about-me{
-        clear: both;
-        width: 100%;
-        height: 400px;
-    }
-   /** div.self-img{
-        width: 100%;
-        height: 60%;
-        margin: auto;
-        display: flex;
-
-    }
-    div.center-img{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
-        justify-content: center;
-    }
-    .center-img img{
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain !important;
-    }**/
-
-    div.self-info{
-        width: 100%;
-        height: 40%;
-        background-color: inherit;
-        line-height: 30px;
-
-    }
-    .self-info h1{
-        color: #013069;
-        font-size: 35px;
-    }
-    .self-info h2{
-        font-size: 20px;
-        color: #00cc66;
-    }
-    .self-info p{
-        font-size: 20px;
-        border-radius: 0px;
-        padding: 10px;
-    }
 }
-
-
 
 
 /**Tablet, Ipad (Landscape) and (portrait)**/
 
-@media screen and (min-width: 600px) and (max-width: 1200px){
+@media screen and (min-width: 600px) and (max-width: 900px){
 
     .header-top{
         width: 100%;
@@ -332,7 +203,6 @@ div.self-info{
         text-align: right;
     }
     .logo img{
-        /*margin: 0px 40px;*/
         width: 220px; 
         height: 69px;
         vertical-align: middle;
@@ -343,95 +213,33 @@ div.self-info{
     div.about-maweed{
         clear: both;
         width: 100%;
-        height: 450px;
-        /*display: inline-block;*/
+        height: auto;
         display: block;
         text-align: center;
         border-top: 2px solid #445268;
     }
     div.left-div{
-        /*display: inline-block;*/
         width: 100%;
         height: 40%;
         padding: 10px;
         color: #013069;
-        /*display: flex;*/
         font-size: 30px;
         line-height: 60px;
         text-align: center;
     }
     div.right-div{
-        /*display: inline-block;*/
         width: 100%;
         height: 60%;
         color: white;
         font-size: 25px;
         padding:  0 10px;
         text-align: left;
-        /*display: flex;*/
-        align-items: center;
         line-height: 30px;
-        background-color: #55A6D7;
-        border-radius: 0px;
+        align-items: center;
     }
     div.center-text{
         justify-content: center;
         width: 100%;
-        height: 100%;
-    }
-    div.about-me{
-        clear: both;
-        display: inline-block;
-        width: 100%;
-        height: 350px;
-        /*padding: 0 20px;*/
-    }
-    /**div.self-img{
-        width: 40%;
-        height: 100%;
-        margin: auto;
-        display: flex;
-    }
-    div.center-img{
-        width: 100%;
-        height: 100%;
-        display: flex;
-        margin-left: auto;
-        margin-right: auto;
-        justify-content: center;
-    }
-    .center-img img{
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain !important;
-    }**/
-
-    div.self-info{
-        width: 100%;
-        align-items: center;
-        height: 100%;
-        background-color: inherit;
-        line-height: 30px;
-
-    }
-    div.center-text{
         height: auto;
     }
-    .self-info h1{
-        color: #013069;
-        font-size: 35px;
-    }
-    .self-info h2{
-        font-size: 20px;
-        text-align: center;
-        color: #00cc66;
-    }
-    .self-info p{
-        color: white;
-        font-size: 20px;
-        background-color: #55A6D7;
-        border-radius: 0px;
-        padding: 10px;
-    }
 }
-

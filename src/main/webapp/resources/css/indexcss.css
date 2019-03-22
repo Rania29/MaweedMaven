@@ -355,8 +355,17 @@ div.center-search{
 }
 
 /*************************************Slide Show***************************************/
+#ads_main{
+    width: 100%; 
+    height: 500px;
+    background-color: pink;
+    display: inline-block; 
+    margin: 0 auto;
+    text-align: center;
+}
+
 .slides_container{
-    max-width: 900px;
+    max-width: 800px;
     height: 500px !important;
     border: 1px solid #cccccc;
     background-color: inherit;
@@ -373,7 +382,7 @@ div.center-search{
     min-height: 500px !important;
     max-height: 100%;
     max-width: 100%;
-    background-color: inherit; 
+    background-color: inherit;
 }
 
 .indecator_container{
@@ -409,7 +418,6 @@ div.center-search{
     background-color: white;
 }
 
-/************************************Slide show ends************************************/
 
 
 /**-------------------Headers Catigories----------------------------**/

@@ -75,19 +75,13 @@
                 <!--Search section-->
                 <div class="search-box">
                     <div class="center-search">
-                        <h:form class="form-style">
-                            <h:selectOneMenu class="select-style" value="#{hospitalController.selected.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="--Area--" itemValue=""/>
-                                <f:selectItems value="#{areaController.findAreas()}" var="n"
-                                               itemLabel="#{n}"
-                                               itemValue="#{n}"/>
-                            </h:selectOneMenu>
-                            <h:inputText a:placeholder="Search by name" id="search"/>
-                            <h:link value="Search" class="hidden-link1" outcome="search"/>
-                            <h:commandLink class="hidden-link" action="search" >
+                        <h:form id="search-form" class="form-style">
+                            <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
+                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
-                            <h:commandLink value="Advanced Search" action="/advanced_search?faces-redirect=true" class="advansed-link"/>
+                            <h:commandLink value="Advanced" action="/advanced_search?faces-redirect=true" class="advansed-link"/>
                         </h:form>
                     </div>
                 </div>
@@ -113,29 +107,50 @@
                 </ul>
             </nav><!--Navigation bar End-->
 
-            <div class="head">
-                <div class="contact_form">
-                    <div class="heading_div">
-                        <h2>
-                            Contact Us Let's Have A DISCUSSION
-                        </h2>
-                        <h3>Contact Form</h3>
+            <div class="contact_main">
+                <div class="head">
+                    <div class="contact_form">
+                        <div class="heading_div">
+                            <h2>
+                                Contact Us Let's Have A DISCUSSION
+                            </h2>
+                            <h3>CONTACT FORM</h3>
+                        </div>
+                        <h:form>
+                            <h:inputText a:placeholder="Full Name" value="#{guestController.selected.name}" id="fName"/>
+                            <h:inputText a:placeholder="Phone Number" value="#{guestController.selected.phone}" id="phone"/>
+                            <h:inputText a:placeholder="Email" value="#{guestController.selected.email}" id="email"/>
+                            <h:outputLabel value="How did you hear about Maweed?"/>
+                            <h:selectOneMenu  value="#{guestController.howYouKnow}" title="Select" >
+                                <f:selectItem itemValue="facebook" itemLabel="Facebook" />
+                                <f:selectItem itemValue="instgram" itemLabel="Instagram" />
+                                <f:selectItem itemValue="google" itemLabel="Google" />
+                                <f:selectItem itemValue="freind" itemLabel="Friend" />
+                                <f:selectItem itemValue="other" itemLabel="Other" />
+                            </h:selectOneMenu>
+                            <h:outputLabel >Tell Us .... ?</h:outputLabel>
+                            <h:inputTextarea value="#{guestController.tellUs}" />
+                            <h:commandLink value="Submit" action="#{guestController.contactUs()}" class="contact_button"/>
+                            <h:commandLink value="Cancel" class="contact_button cancle_button"/>
+                        </h:form>
                     </div>
-                    <h:form>
-                        <h:inputText a:placeholder="Full Name" value="#{guestController.selected.name}" id="fName"/>
-                        <h:inputText a:placeholder="Phone Number" value="#{guestController.selected.phone}" id="phone"/>
-                        <h:inputText a:placeholder="Email" value="#{guestController.selected.email}" id="email"/>
-                        <h:outputLabel value="How did you hear about Maweed?"/>
-                        <h:selectOneMenu  value="#{guestController.howYouKnow}" title="Select" >
-                            <f:selectItem itemValue="social media" itemLabel="Social Media" />
-                            <f:selectItem itemValue="friend" itemLabel="Friend" />
-                            <f:selectItem itemValue="other" itemLabel="Other" />
-                        </h:selectOneMenu>
-                        <h:outputLabel >Tell Us .... ?</h:outputLabel>
-                        <h:inputTextarea value="#{guestController.tellUs}" />
-                        <h:commandLink value="Submit" action="#{guestController.contactUs()}" class="contact_button"/>
-                        <h:commandLink value="Cancel" class="contact_button cancle_button"/>
-                    </h:form>
+                </div>
+                <div class="head2">
+                    <h3>CONTACT INFO</h3>
+                    <ul>
+                        <li>
+                            <h4>Mobile</h4>
+                            <p>+974-70905011</p>
+                        </li>
+                        <li>
+                            <h4>Email</h4>
+                            <p>maweedqa@gmail.com</p>
+                        </li>
+                        <li>
+                            <h4>Working Hours</h4>
+                            <p>Saturday-to-Thursday : 9AM - 9PM</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
 

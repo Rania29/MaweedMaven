@@ -12,12 +12,38 @@ html, body{
     direction: rtl;
 }
 
+.contact_main{
+    width: 95%;
+    height: 570px;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 10px;
+}
 .head{
-    clear: both;
-    display: block ;
+    display: inline-block ;
     margin: 0 auto;
     text-align: center;
     width: 50%;
+    margin-left: 10px;
+}
+.head2{
+    width: 30%;
+    height: 570px;
+    display: inline-block ;
+    line-height: 25px;
+    vertical-align: top;
+    text-align: right;
+    padding: 10px;
+    border-right: 2px solid #ccc; 
+}
+.head2 *{
+    color: #445268;
+}
+
+.head2 p{
+    border-bottom: 1px solid #ccc;
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 
 .heading_div{ 
@@ -27,13 +53,19 @@ html, body{
     line-height: 30px;
 }
 h2{
-    font-size: 30px;
-    color: #55A6D7;
+    font-size: 35px;
+    color: #445268;
 }
 
 h3{
+    font-size: 28px;
+    color: #445268;
+}
+h4{
     font-size: 20px;
-    color: #013069;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
 .contact_form {
     height: inherit;
@@ -54,7 +86,8 @@ h3{
 }
 
 .contact_form label{
-    color: #013069;
+    color: #445268;
+    font-size: 18px;
 }
 
 .contact_button{
@@ -75,18 +108,28 @@ h3{
 /* Smartphones (portrait and landscape) --------------------------------- */
 @media screen and (min-width: 320px) and (max-width: 480px){
 
+    .contact_main{
+        height: 950px;
+    }
     .head{
         clear: both;
         width: 90%;
+        margin-bottom: 20px;
+    }
+    .head2{
+        width: 95%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-right: none;
+        border-top: 2px solid #ccc;
     }
     h2{
-        font-size: 20px;
-        color: #55A6D7;
+        font-size: 25px;
     }
 
     h3{
         font-size: 18px;
-        color: #013069;
     }
 }
 @media screen and (min-width: 481px) and (max-width: 599px) {
@@ -101,8 +144,22 @@ h3{
 
 @media screen and (min-width: 600px) and (max-width: 1000px){
     
+    .contact_main{
+        height: 950px;
+        margin-bottom: 15px;
+    }
     .head{
         clear: both;
         width: 60%;
+        display: block;
+        margin-bottom: 20px;
+    }
+    .head2{
+        width: 95%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-right: none;
+        border-top: 2px solid #ccc;
     }
 }

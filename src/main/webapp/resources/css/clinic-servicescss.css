@@ -8,6 +8,7 @@ and open the template in the editor.
     Author     : Nooshi
 */
 div.service{
+    clear: both;
     width: 100%;
     height: auto;
 }
@@ -22,7 +23,7 @@ div.service{
     margin-left: 5px;
     margin-bottom: 5px;
     font-size: 14px;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
     line-height: 22px;
     border: 1px solid #50A2C9;
