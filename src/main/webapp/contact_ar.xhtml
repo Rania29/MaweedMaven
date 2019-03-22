@@ -27,7 +27,7 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="contact_ar.xhtml">عربي</a>
+                    <a href="contact_ar.xhtml" class="isDisabled">عربي</a>
                     <a id="separator">|</a>
                     <a href="contact.xhtml">English</a>
                 </div>
@@ -81,7 +81,7 @@
                             <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}">
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
                             </h:commandLink>
-                            <h:commandLink value="بحث متقدم" action="/advanced_search_ar?faces-redirect=true" class="advansed-link" style="white-space: normal;"/>
+                            <h:commandLink value="متقدم" action="/advanced_search_ar?faces-redirect=true" class="advansed-link" style="white-space: normal;"/>
                         </h:form>
 
                     </div>
@@ -109,31 +109,52 @@
                 </ul>
             </nav><!--Navigation bar End-->
 
-            <div class="head">
-                <div>
-                    <div class="contact_form">
-                        <div class="heading_div">
-                            <h2>
-                                تواصل معنا ، وسوف نقوم بالرد في أقرب وقت
-                            </h2>
-                            <h3>نموذج الاتصال</h3>
+            <div class="contact_main">
+                <div class="head">
+                    <div>
+                        <div class="contact_form">
+                            <div class="heading_div">
+                                <h2>
+                                    تواصل معنا ، وسوف نقوم بالرد في أقرب وقت
+                                </h2>
+                                <h3>نموذج الاتصال</h3>
+                            </div>
+                            <h:form>
+                                <h:inputText a:placeholder="الاسم بالكامل" value="#{guestController.selected.name}" id="fName"/>
+                                <h:inputText a:placeholder="رقم الجوال" value="#{guestController.selected.phone}" id="phone"/>
+                                <h:inputText a:placeholder="الايميل" value="#{guestController.selected.email}" id="email"/>
+                                <h:outputLabel value="كيف سمعت عن موعد؟"/>
+                                <h:selectOneMenu  value="#{guestController.howYouKnow}" title="Select" >
+                                    <f:selectItem itemValue="facebook" itemLabel="الفيس بوك" />
+                                    <f:selectItem itemValue="instagram" itemLabel="الإنستجرام" />
+                                    <f:selectItem itemValue="google" itemLabel="جوجل" />
+                                    <f:selectItem itemValue="freind" itemLabel="صديق" />
+                                    <f:selectItem itemValue="other" itemLabel="اخرى" />
+                                </h:selectOneMenu>
+                                <h:outputLabel >ماذا تعتقد؟</h:outputLabel>
+                                <h:inputTextarea value="#{guestController.tellUs}" />
+                                <h:commandLink value="ارسل" action="#{guestController.contactUs()}" class="contact_button"/>
+                                <h:commandLink value="الغاء" class="contact_button cancle_button"/>
+                            </h:form>
                         </div>
-                    <h:form>
-                        <h:inputText a:placeholder="الاسم بالكامل" value="#{guestController.selected.name}" id="fName"/>
-                        <h:inputText a:placeholder="رقم التلفون" value="#{guestController.selected.phone}" id="phone"/>
-                        <h:inputText a:placeholder="الايميل" value="#{guestController.selected.email}" id="email"/>
-                        <h:outputLabel value="كيف سمعت عن موعد?"/>
-                        <h:selectOneMenu  value="#{guestController.howYouKnow}" title="Select" >
-                            <f:selectItem itemValue="social media" itemLabel="وسائل التواصل الاجتماعيه" />
-                            <f:selectItem itemValue="friend" itemLabel="صديق" />
-                            <f:selectItem itemValue="other" itemLabel="اخرى" />
-                        </h:selectOneMenu>
-                        <h:outputLabel >ماذا تعتقد؟</h:outputLabel>
-                        <h:inputTextarea value="#{guestController.tellUs}" />
-                        <h:commandLink value="ارسل" action="#{guestController.contactUs()}" class="contact_button"/>
-                        <h:commandLink value="الغاء" class="contact_button cancle_button"/>
-                    </h:form>
                     </div>
+                </div>
+                <div class="head2">
+                    <h3>بيانات الإتصال</h3>
+                    <ul>
+                        <li>
+                            <h4>الجوال</h4>
+                            <p>70905011 - 974+</p>
+                        </li>
+                        <li>
+                            <h4>البريد الإلكتروني</h4>
+                            <p>maweedqa@gmail.com</p>
+                        </li>
+                        <li>
+                            <h4>ساعات العمل</h4>
+                            <p>السبت - الخميس : 9 صباحا - 9 مساء</p>
+                        </li>
+                    </ul>
                 </div>
             </div>
 

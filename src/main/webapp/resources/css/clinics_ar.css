@@ -22,9 +22,14 @@ html, body{
 }
 
 .clinic-name{
-    background-color: red;
+    background-color: inherit;
     color: #00cc99;
     padding: 10px 15px;
+}
+div.item{
+    margin-bottom: 15px;
+    color: #64d86b;
+    font-size: 28px;
 }
 
 div.hidden-div{
@@ -37,7 +42,7 @@ div.clnk-container{
     height: 100px;
     background-color: #FCFCFC;
     padding: 10px;
-    
+
 }
 
 .clnk-widget{
@@ -59,7 +64,7 @@ div.clnk-container{
     padding-right: 20px;
     text-decoration: none;
     display: inline-block;
-    
+
 }
 .icon{
     height: 100%;
@@ -78,9 +83,7 @@ div.clnk-container{
     text-align: right;
     padding: 8px;
 }
-.clnk-info span{
-    color: #999999;
-}
+
 .appoinment-btn{
     height: 120px;
 }
@@ -114,8 +117,9 @@ div.clnk-container{
     display: inline-block;
     box-sizing: border-box;
     padding: 8px 0px;
+    margin: 2px 0px;
     text-align: center;
-    width: 122px;
+    width: 125px;
     border: 2px solid #bde0f5;
     border-radius: 3px;
     line-height: normal;
@@ -412,9 +416,7 @@ hr{
         display: block;
         justify-content: center;
         text-align: center;
-        background-color: red;
     }
-
 
     div.clnk-container{
         display: block;
@@ -520,7 +522,7 @@ hr{
         border-bottom: 5px solid #bde0f5;
         border-left: none;
     }
-    
+
     /*******************Star rating *****************************/
     .rating_div{
         width: 95%;
@@ -881,7 +883,7 @@ hr{
     }
 
     /*****************Extra Details**********************/
-    
+
 
     /*******************Star rating *****************************/
     .rating_div{

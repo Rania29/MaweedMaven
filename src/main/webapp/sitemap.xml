@@ -2,56 +2,53 @@
 <!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://maweed-qa.com/</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/terms_and_conditions.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/help.xhtml</loc>
+    <loc>https://maweed-qa.com/index.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
   </url>
   <url>
     <loc>https://maweed-qa.com/privacy-policy.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/about.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/contact.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/help_ar.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/index_ar.xhtml</loc>
+    <loc>https://maweed-qa.com/help.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
   </url>
   <url>
     <loc>https://maweed-qa.com/privacy-policy-ar.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/about_ar.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/search.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/contact_ar.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/search_ar.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/category_ar.xhtml</loc>
-  </url>
-  <url>
-    <loc>https://maweed-qa.com/category.xhtml</loc>
+    <loc>https://maweed-qa.com/about.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
   </url>
   <url>
     <loc>https://maweed-qa.com/terms-and-conditions-ar.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
   </url>
   <url>
-    <loc>https://maweed-qa.com/index.xhtml</loc>
+    <loc>https://maweed-qa.com/about_ar.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
+  </url>
+  <url>
+    <loc>https://maweed-qa.com/help_ar.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
+  </url>
+  <url>
+    <loc>https://maweed-qa.com/contact_ar.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
+  </url>
+  <url>
+    <loc>https://maweed-qa.com/terms_and_conditions.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
+  </url>
+  <url>
+    <loc>https://maweed-qa.com/index_ar.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
+  </url>
+  <url>
+    <loc>https://maweed-qa.com/contact.xhtml</loc>
+    <lastmod>2019-03-18</lastmod>
   </url>
 </urlset>
-<!--<guid value="12af37c2-6712-43d9-9af2-6d5cf3fefeee" />-->
+<!--<guid value="930aecc3-3df6-489e-bbb0-9a972f839148" />-->
 <!--Created using XmlSitemapGenerator.org - Free HTML, RSS and XML sitemap generator-->

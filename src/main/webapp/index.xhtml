@@ -65,25 +65,25 @@
                     <a href="index.xhtml" class="isDisabled">English</a>
                 </div>
                 <div class="right-div" >
-                    <c:if test="#{guestController.valid}">
-                        <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
-                            <a class="separator">|</a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
-                        </h:form>
-                    </c:if>
-                    <c:if test="#{!guestController.valid}">
-                        <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
-                        <div class="tooltip">
-                            <h:link  value="#{guestController.selected.name}"
-                                     outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
-                            <span class="tooltiptext">User Profile</span>
-                        </div>
-                        <a class="separator">| </a>
-                        <h:form style="display: inline-block;">
-                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
-                        </h:form>
-                    </c:if>
+                        <c:if test="#{guestController.valid}">
+                            <h:form>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
+                                <a class="separator">|</a>
+                                <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                            </h:form>
+                        </c:if>
+                        <c:if test="#{!guestController.valid}">
+                            <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
+                            <div class="tooltip">
+                                <h:link  value="#{guestController.selected.name}"
+                                         outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                                <span class="tooltiptext">User Profile</span>
+                            </div>
+                            <a class="separator">| </a>
+                            <h:form style="display: inline-block;">
+                                <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
+                            </h:form>
+                        </c:if>
                 </div>
             </div>
             <header class="header-top" >
@@ -140,7 +140,7 @@
                 </ul>
             </nav>
             <!--Navigation bar End-->
-            
+
             <!--Slide show section-->
             <div class="slides_container" >
                 <c:set var = "t" scope = "session" value = "${0}"/>
@@ -155,16 +155,23 @@
                         </h:commandLink>
                     </h:form>
                 </c:forEach>
-<!--                <div class="indecator_container" style="width:100%">
+                <div class="indecator_container" style="width:100%">
+                    <span class="indecator demo" onclick="currentDiv(1)"></span>
+                    <span class="indecator demo" onclick="currentDiv(2)"></span>
+                    <span class="indecator demo" onclick="currentDiv(3)"></span>
+                    <span class="indecator demo" onclick="currentDiv(4)"></span>
+                </div>
+                <!--<div class="indecator_container" style="width:100%">
                     <div class="fl-left" onclick="plusDivs(-1)">
                         <img src="resources/interface/left-arrow32white.png" alt=""/>
                     </div>
                     <div class="fl-right" onclick="plusDivs(-1)">
-                        <img src="resources/interface/right-arrow32white.png" alt=""/>
+                    <img src="resources/interface/right-arrow32white.png" alt=""/>
                     </div>
                 </div>-->
             </div>
             <script src="resources/javascript/slideshowscript.js" type="text/javascript"></script>
+
             <div>
                 <h1>Categories</h1>
             </div>
