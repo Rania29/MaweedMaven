@@ -84,7 +84,7 @@
                         <h:outputLabel value="تاريخ الميلاد" for="DOB" />
                     </h:panelGrid>
                     <div class="cntr_btn">
-                        <h:commandLink class="app_button" value="تعديل" action="#{guestController.update()}"/>
+                        <h:commandLink class="app_button" onclick="alert('تم تعديل البيانات!')" value="تعديل" action="#{guestController.update()}"/>
                         <h:commandLink class="app_button cancle_button" value="العودة" action="/index"/>
                         <h:commandLink class="app_button logout_button" value="خروج" action="#{guestController.logout()}" />
                     </div>

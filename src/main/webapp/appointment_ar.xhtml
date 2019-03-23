@@ -140,7 +140,7 @@
                             <h:inputTextarea rows="3" id="description" value="#{appointmentController.selected.description}" title="Description" />
                         </h:panelGrid>
                         <div class="cntr_btn">
-                            <h:commandLink action="#{appointmentController.create}" value="اطلب موعد" class="app_button"/>
+                            <h:commandLink action="#{appointmentController.create}" onclick="alert('شكرا، سنتصل بك فى اسرع وقت!')" value="اطلب موعد" class="app_button"/>
                             <h:link outcome="clinics_ar" value="عوده" class="app_button cancle_button"/>
                         </div>
                     </h:form>

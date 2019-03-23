@@ -141,7 +141,7 @@
                             <h:inputTextarea rows="3" id="description" value="#{appointmentController.selected.description}" title="Description" />
                         </h:panelGrid>
                         <div class="cntr_btn">
-                            <h:commandLink action="#{appointmentController.create}" value="Request Appointment" class="app_button"/>
+                            <h:commandLink action="#{appointmentController.create}" onclick="alert('Thank you, we will get back to you at the soonest!')" value="Request Appointment" class="app_button"/>
                             <h:link outcome="clinic-services" value="Back" class="app_button cancle_button"/>
                         </div>
                     </h:form>
