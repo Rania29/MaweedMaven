@@ -1,0 +1,97 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 25, 2019, 5:16:30 PM
+    Author     : Nooshi
+*/
+.header_div{
+    clear: both;
+    line-height: 10px;
+    padding: 10px;
+    margin:5px;
+    color: #445268;
+}
+.header_div h5{
+    font-weight: normal;
+}
+.ar h5{
+    font-weight: bold;
+}
+div.main_div{
+    clear: both;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+div.result{
+    display: inline-block;
+    width: 100%;
+    padding:  0px 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.offer-div{
+    width: 300px;
+    height: auto;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    background-color: #e8eaf2;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 5px;
+    line-height: 25px;
+}
+.offer-div a{
+    text-decoration: none;
+}
+.img-div{
+    width: 290px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+.img-div img{
+    width: 280px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    margin-bottom: 5px;
+}
+
+.offer-div:hover #service{
+    text-decoration: underline;
+}
+
+.hospital-name{
+    display: block;
+    color: #013069;
+    font-size: 16px;
+    
+}
+.clnk-name{
+    display: block;
+    text-decoration: none;
+    color: #55A6D7;
+    font-size: 18px;
+    overflow-wrap: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+.offer-price{
+    display: block;
+    color: #884400;
+}
+.offer-countdown{
+    font-size: 12px;
+    color: #000000;
+}
