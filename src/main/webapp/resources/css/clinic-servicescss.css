@@ -96,22 +96,5 @@ div.advant-section{
     box-shadow: 3px 3px 5px #50A2C9;
 }
 
-/**Insurance div*/
-.insurance{
-    margin-bottom: 15px;
-    height: auto;
-}
-.insurance ul li{
-    display: inline-block;
-    padding-left: 2px ;
-    padding-right: 2px;
-}
-/**Insurance Images*/
-.insurance ul li img{
-    max-width: 120px ;
-    height: 60px ;
-}
-.insurance ul li img:hover{
-    box-shadow: 3px 3px 5px #50A2C9;
-}
+
 
