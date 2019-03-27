@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
-        <title>Help</title>
+        <title>صفحة المساعدة</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
@@ -26,9 +26,9 @@
         <div class="wrap">
             <div class="top-div">
                 <div class="left-div">
-                    <a href="index_ar.xhtml">عربي</a>
+                    <a href="help_ar.xhtml" class="isDisabled">عربي</a>
                     <a id="separator">|</a>
-                    <a href="index.xhtml">English</a>
+                    <a href="help.xhtml">English</a>
                 </div>
                 <div class="right-div">
                     <c:if test="#{guestController.valid}">
@@ -79,8 +79,8 @@
                         </ul>
                         <a href="#U2">2- كيفية البحث باستخدام الأقسام؟</a>
                         <a href="#U3">3- كيفية طلب موعد؟</a>
-                        <a href="#U4">4- كيفية تقييم مستشفى؟</a>
-                        <a href="#U5">5- كيفية الإبلاغ عن مشكلة مع مستشفى؟</a>
+                        <!--<a href="#U4">4- كيفية تقييم مستشفى؟</a>-->
+                        <a href="#U5">4- كيفية الإبلاغ عن مشكلة مع مستشفى؟</a>
                         <a href="#U6"></a>
                         <!--<a href="#U7">7- How to create personal account?</a>-->
 
@@ -113,9 +113,9 @@
                     </ol>
                     <li id="U1-b" style="color: #013069; text-decoration: underline;">عن عيادات (الأطفال) الموجودة في منطقة معينة (المطار القديم)؟</li>
                     <ol class="list_style">
-                        <li>إذهب إلى قائمة المناطق أعلى الصفحة الرئيسية بجانب مربع البحث.</li>
-                        <li>	قم بإختيار المنطقة المراد البحث بها (المطار القديم).</li>
-                        <li>	قم بكتابة نوع العيادة (أطفال) في مربع البحث.</li>
+                        <li>إضغط كلمة متقدم بجانب مربع البحث.</li>
+                        <li>	قم بإختيار المنطقة المراد البحث بها (المطار القديم) من القائمة.</li>
+                        <li>	قم باختيار نوع العيادة (أطفال) في القائمة.</li>
                         <li>	إضغط زر بحث، سوف تظهر نتائج البحث لجميع المستشفيات		التي تمتلك عيادات (أطفال) في منطقة (المطار القديم).</li>
 
                     </ol>
@@ -130,8 +130,8 @@
                     <li>سوف يتم إرسال بريد إلكتروني لتأكيد طلبك للموعد.</li>
                     <li>سوق تقوم بتلقي اتصال من المستشفى لتأكيد موعدك خلال ساعات وأيام الدوام .</li>
                 </ol>
-                <h3 id="U4">4- كيفية تقييم مستشفى؟</h3>
-                <ol class="list_style">
+                <!--<h3 id="U4">4- كيفية تقييم مستشفى؟</h3>-->
+                <!--<ol class="list_style">
                     <li>قم بالبحث عن المستشفى باستخدام مربع البحث أعلى الصفحة.</li>
                     <li>اذهب آخر صفحة المستشفى، سوف تجد قسم التقييم والنجوم.</li>
                     <li>قم بإختيار عدد النجوم واكتب تعليقك.</li>
@@ -140,8 +140,8 @@
                     <li>تمنع الإعلانات من أي نوع.</li>
                     <li>إذا قمت بمخالفة الشروط، سوف يتم إلغاء حسابك من الموقع.</li>
                     <li>سوف يظهر التقييم في صفحة المستشفى بعد موافقة مدير موقع موعد.</li>
-                </ol>
-                <h3 id="U5">5- كيفية الإبلاغ عن مشكلة مع مستشفى؟</h3>
+                </ol>-->
+                <h3 id="U5">4- كيفية الإبلاغ عن مشكلة مع مستشفى؟</h3>
                 <ol class="list_style">
                     <li>اذهب إلى صفحة تواصل معنا.</li>
                     <li>قم بتعبئة النموذج الموجود بكتابة ماهية المشكلة التي تواجهها مع المستشفى أو أي مشاكل آخرى، قم بإرساله. </li>
