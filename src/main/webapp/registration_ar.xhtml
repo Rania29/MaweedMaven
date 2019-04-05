@@ -62,7 +62,7 @@
                                                  required="false" requiredMessage="يجب تعبئة هذا الحقل"/>
                                     <h:message for="phone" style="color: #cc0033; font-size: 12px;"/><br />
                                     <div class="cntr_btn">
-                                        <h:commandLink action="#{guestController.create()}" value="تسجيل" class="app_button"/>
+                                        <h:commandLink onclick="alert('تم اضافة ملفك، الرجاء مراجعة ايميلك!')" action="#{guestController.create()}" value="تسجيل" class="app_button"/>
                                         <h:link outcome="/index_ar" value="إلغاء" class="app_button cancle_button"/><br />
                                     </div>
                                     <div class="line">
