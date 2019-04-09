@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>Maweed Offers</title>
         <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -39,16 +40,16 @@
                 <div class="right-div" >
                     <c:if test="#{guestController.valid}">
                         <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/offers', '/signin')}" value="Signin"/>
                             <a class="separator">|</a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/offers', '/registration')}" value="Register"/>
                         </h:form>
                     </c:if>
                     <c:if test="#{!guestController.valid}">
                         <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
                         <div class="tooltip">
                             <h:link  value="#{guestController.selected.name}"
-                                     outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                                     outcome="#{guestController.saveCurrentPage('/offers', '/user_profile')}" />
                             <span class="tooltiptext">User Profile</span>
                         </div>
                         <a class="separator">| </a>
@@ -129,80 +130,38 @@
                 <h:form>
                     <div class="result">
                         <div>
-                            <div class="offer-div">
-                                <div class="ribbon ribbon-top-left">
-                                    <span >OFFER</span>
-                                </div>
-                                <div class="img-div">
+                            <c:forEach items="#{offerController.offers}" var="o">
+                                <div class="offer-div">
+                                    <div class="ribbon ribbon-top-left">
+                                        <span >OFFER</span>
+                                    </div>
+                                    <div class="img-div">
+                                        <h:commandLink action="#">
+                                            <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(o.hospital), '/')}" alt="hospital img"/>
+                                        </h:commandLink>
+                                    </div>
+                                    <div class="center-div">
+                                        <span class="offer-price">#{o.discountPrice}</span>
+                                        <span class="offer-price">#{o.price} (#{o.discountPrice}/#{o.price}% off)</span>
+                                        <span class="offer-price"></span>
+                                        <span class="clnk-name" id="service">#{o.clinicService.serviceList.name}</span>
+                                        <span class="clnk-name">#{o.details}</span>
+                                        <h:commandLink action="#">
+                                            <span class="hospital-name">#{o.hospital.name}</span>
+                                        </h:commandLink>
+                                        <span class="hospital-name">#{o.hospital.name}</span>
+                                        <span class="offer-countdown">#{o.end_date}</span>
+                                    </div>
                                     <h:commandLink action="#">
-                                        <img src="resources/images/gulf.jpg" alt="hospital img"/>
+                                        <span class="hospital-name">#{o.clinic.category.name}</span>
                                     </h:commandLink>
-                                </div>
-                                <div>
-                                    <span class="offer-price">new Price</span>
-                                    <span class="offer-price">old price (% off)</span>
-                                    <span>Discount %</span>
-                                    <span class="clnk-name" id="service">service name</span>
-                                    <span class="clnk-name">extra note</span>
-                                    <h:commandLink action="#">
-                                        <span class="hospital-name">Clinic name</span>
-                                    </h:commandLink>
-                                    <span class="hospital-name">Hospital Name</span>
-                                    <span class="offer-countdown">Start-to-end dates</span>
+                                    <span class="hospital-name">#{o.hospital.name}</span>
+                                    <span class="clnk-name" id="service">#{o.clinicService.serviceList.name}</span>
+                                    <span class="offer-price">#{o.price} #{o.discountPrice} (50%)</span>
+                                    <span class="offer-countdown">Ends in 15:40:33</span>
                                 </div>
 
-                            </div>
-                            <div class="offer-div">
-                                <div class="ribbon ribbon-top-left">
-                                    <span >OFFER</span>
-                                </div>
-                                <div class="img-div">
-                                    <h:commandLink action="#">
-                                        <img src="resources/images/gulf.jpg" alt="hospital img"/>
-                                    </h:commandLink>
-                                </div>
-                                <div class="center-div">
-                                    <span class="offer-price">1800</span>
-                                    <span class="offer-price">2000 (10% off)</span>
-                                    <span class="offer-price"></span>
-                                    <span class="clnk-name" id="service">Full Body Laiser</span>
-                                    <span class="clnk-name">with face peeling session free</span>
-                                    <h:commandLink action="#">
-                                        <span class="hospital-name">Dermatology</span>
-                                    </h:commandLink>
-                                    <span class="hospital-name">Al Shami Hospital</span>
-                                    <span class="offer-countdown">Start-to-end dates</span>
-                                </div>
-                                <h:commandLink action="#">
-                                    <span class="hospital-name">Dermatology</span>
-                                </h:commandLink>
-                                <span class="hospital-name">Alshami Medical Center</span>
-                                <span class="clnk-name" id="service">Full Body laiser</span>
-                                <span class="offer-price">1500 750 (50%)</span>
-                                <span class="offer-countdown">Ends in 15:40:33</span>
-                            </div>
-                            <div class="offer-div">
-                                <div class="ribbon ribbon-top-left">
-                                    <span >OFFER</span>
-                                </div>
-                                <div class="img-div">
-                                    <h:commandLink action="#">
-                                        <img src="resources/images/gulf.jpg" alt="hospital img"/>
-                                    </h:commandLink>
-                                </div>
-                                <div>
-                                    <span class="offer-price"></span>
-                                    <span class="offer-price"></span>
-                                    <span class="offer-price">30% OFF</span>
-                                    <span class="clnk-name" id="service"></span>
-                                    <span class="clnk-name">all services in dental clinic</span>
-                                    <h:commandLink action="#">
-                                        <span class="hospital-name">Dentist</span>
-                                    </h:commandLink>
-                                    <span class="hospital-name">Al Gulf Dental center</span>
-                                    <span class="offer-countdown">Start-to-end dates</span>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </h:form>

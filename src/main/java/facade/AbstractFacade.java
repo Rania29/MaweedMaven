@@ -50,6 +50,19 @@ public abstract class AbstractFacade<T> {
                 .getResultList();
     }
 
+    public List<Object[]> findServicesByHospitalAndClinic(String hospital, String clinic) {
+
+        Query q;
+        q = getEntityManager().createNativeQuery("SELECT cs.id, sl.name as clinic FROM clinic c "
+                + "join category cat on cat.id=c.category_id "
+                + "join hospital h on h.id=c.hospital_id "
+                + "join clinicservice cs on cs.clinic_id=c.id "
+                + "join servicelist sl on sl.id=cs.servicelist_id "
+                + "WHERE h.name='" + hospital + "' "
+                + "AND cat.name='" + clinic + "'");
+        return q.getResultList();
+    }
+
     public List<T> findHospitalsByName(String name) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findByName")
@@ -68,7 +81,7 @@ public abstract class AbstractFacade<T> {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findByName").setParameter("name", name).getSingleResult();
     }
-    
+
     public Object findHospitalByNameAr(String name) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Hospital.findByInArabicName").setParameter("inArabic", name).getSingleResult();
@@ -164,7 +177,6 @@ public abstract class AbstractFacade<T> {
 //                + " JOIN category cat ON cat.id=c.category_id WHERE cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
 //        return q.getResultList();
 //    }
-
     public List<Clinic> findClinicByCat(Category cat) {
         getEntityManager().getEntityManagerFactory().getCache().evictAll();
         return getEntityManager().createNamedQuery("Clinic.findClinicByCat")
