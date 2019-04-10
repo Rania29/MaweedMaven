@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
     <h:head>
         <title>موعد - العروض</title>
         <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -117,63 +118,47 @@
             </nav><!--Navigation bar End-->
             <h2 style="text-align: center;">ترقبونا قريبا</h2>
             <h2 style="text-align: center;">سوف يتم اظهار عروض وتخفيضات العيادات في هذه الصفحة</h2>
-            <!--<div class="header_div ar">
-                <h2>العروض والتخفيضات</h2>
-                <h5>تفقد صفقات اليوم، العروض و التخفيضات لفترة محدودة</h5>
-                <br /><br />
-                <h5 style="padding-right: 20px;">عرض النتائج 1-40 من 1000</h5>
-            </div>-->
-            <!--Offers Container section-->
-            <!--<div class="main_div">
-                <div class="result">
-                    <div>
-                        <h:form>
-                            <div class="offer-div">
-                                <div class="img-div">
+            <div class="main_div">
+                <h:form>
+                    <div class="result">
+                        <div>
+                            <c:forEach items="#{offerController.offers}" var="o">
+                                <div class="offer-div">
+                                    <div class="ribbon ribbon-top-left">
+                                        <span >OFFER</span>
+                                    </div>
+                                    <div class="img-div">
+                                        <h:commandLink action="#">
+                                            <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(o.hospital), '/')}" alt="hospital img"/>
+                                        </h:commandLink>
+                                    </div>
+                                    <div class="center-div">
+                                        <span class="offer-price">#{o.discountPrice}</span>
+                                        <span class="offer-price">#{o.price} (#{o.discountPrice}/#{o.price}% off)</span>
+                                        <span class="offer-price"></span>
+                                        <span class="clnk-name" id="service">#{o.clinicService.serviceList.inArabic}</span>
+                                        <span class="clnk-name">#{o.detailsInArabic}</span>
+                                        <h:commandLink action="#">
+                                            <span class="hospital-name">#{o.hospital.inArabic}</span>
+                                        </h:commandLink>
+                                        <span class="hospital-name">#{o.hospital.inArabic}</span>
+                                        <span class="offer-countdown">#{o.end_date}</span>
+                                    </div>
                                     <h:commandLink action="#">
-                                        <img src="resources/images/gulf.jpg" alt="صورة المستشفى"/>
+                                        <span class="hospital-name">#{o.clinic.category.inArabic}</span>
                                     </h:commandLink>
+                                    <span class="hospital-name">#{o.hospital.name}</span>
+                                    <span class="clnk-name" id="service">#{o.clinicService.serviceList.inArabic}</span>
+                                    <span class="offer-price">#{o.price} #{o.discountPrice} (50%)</span>
+                                    <span class="offer-countdown">Ends in 15:40:33</span>
                                 </div>
-                                <h:commandLink action="#">
-                                    <span class="hospital-name">إسم العيادة</span>
-                                </h:commandLink>
-                                <span class="hospital-name">إسم المستشفى</span>
-                                <span class="clnk-name" id="service">نوع الخدمة</span>
-                                <span class="offer-price">السعر أو التخفيض ريال</span>
-                                <span class="offer-countdown">ينتهي خلال 15:40:33 </span>
-                            </div>
-                            <div class="offer-div">
-                                <div class="img-div">
-                                    <h:commandLink action="#">
-                                        <img src="resources/images/gulf.jpg" alt="صورة المستشفى"/>
-                                    </h:commandLink>
-                                </div>
-                                <h:commandLink action="#">
-                                    <span class="hospital-name">الجلدية</span>
-                                </h:commandLink>
-                                <span class="hospital-name">المركز الشامي الطبي</span>
-                                <span class="clnk-name" id="service">ليزر كامل الجسم</span>
-                                <span class="offer-price">1500 ريال</span>
-                                <span class="offer-countdown">ينتهي خلال 15:40:33</span>
-                            </div>
-                            <div class="offer-div">
-                                <div class="img-div">
-                                    <h:commandLink action="#">
-                                        <img src="resources/images/gulf.jpg" alt="صورة المستشفى"/>
-                                    </h:commandLink>
-                                </div>
-                                <h:commandLink action="#">
-                                    <span class="hospital-name">إسم العيادة</span>
-                                </h:commandLink>
-                                <span class="hospital-name">إسم المستشفى</span>
-                                <span class="clnk-name" id="service">نوع الخدمة</span>
-                                <span class="offer-price">السعر أو التخفيض ريال</span>
-                                <span class="offer-countdown">ينتهي خلال 15:40:33 </span>
-                            </div>
-                        </h:form>
+
+                            </c:forEach>
+                        </div>
                     </div>
-                </div>
-            </div>-->
+                </h:form>
+            </div>
+
             <footer>
                 <div class="upper-footer">
                     <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>

@@ -22,12 +22,17 @@
             gtag('js', new Date());
 
             gtag('config', 'UA-129442662-1');
-            var availableTags = #{hospitalController.autocomplete("english")};
-            $(function () {
-                $("#search-form\\:search").autocomplete({
-                    source: availableTags
-                });
-            });
+//            var availableTags = #{hospitalController.autocomplete("english")};
+//            $(function () {
+//                $("#search-form\\:search").autocomplete({
+//                    source: availableTags
+//                });
+//            });
+            function categoryIsRequired() {
+                console.log("value is ..");
+                console.log(document.getElementById("search-form1\\:cat_id"));
+//                alert('Choose a category!');
+            }
         </script>
     </h:head>
     <h:body>
@@ -115,11 +120,12 @@
                                 <f:selectItem itemLabel="--Area--" itemValue=""/>
                                 <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
                             </h:selectOneMenu>
-                            <h:selectOneMenu requiredMessage="Choose category!" required="true" class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu id="cat_id" required="true" requiredMessage="You must choose a category!!" class="select-menu2" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="--Category--" itemValue=""/>
                                 <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
                             </h:selectOneMenu>
-                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategory('english')}"/>
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategory('english')}">
+                            </h:commandLink>
                             <h:commandLink class="hidden-link" action="#{appointmentController.findByAreaAndCategory('english')}" >
                                 <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
                             </h:commandLink>
@@ -131,7 +137,7 @@
                 <div class="result">
                     <h3>Your Search Results....</h3>
                     <div class="result_items">
-                        <h:form>
+                        <h:form id="result">
                             <c:forEach items="#{appointmentController.hospitals}" var="h">
                                 <div class="clnk-div">
                                     <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/></h:commandLink>

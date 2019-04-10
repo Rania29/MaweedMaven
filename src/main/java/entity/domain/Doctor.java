@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -34,9 +35,22 @@ public class Doctor implements Serializable {
     @ManyToOne
     private Clinic clinic;
 
+    @ManyToOne
+    @JoinColumn(name = "nationalities_fk")
+    private Nationalities nationalities;
+
     public Doctor() {
     }
 
+    public Nationalities getNationalities() {
+        return nationalities;
+    }
+
+    public void setNationalities(Nationalities nationalities) {
+        this.nationalities = nationalities;
+    }
+
+    
     public String getSpecializationArabic() {
         return specializationArabic;
     }

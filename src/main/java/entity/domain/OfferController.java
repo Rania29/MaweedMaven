@@ -2,9 +2,13 @@ package entity.domain;
 
 import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
-import facade.ServiceListFacade;
+import facade.OfferFacade;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -12,33 +16,71 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.event.ValueChangeEvent;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@Named("serviceListController")
+@Named("offerController")
 @SessionScoped
-public class ServicesListController implements Serializable {
+public class OfferController implements Serializable {
 
-    private ServiceList current;
+    private Offer current;
     private DataModel items = null;
     @EJB
-    private facade.ServiceListFacade ejbFacade;
+    private facade.OfferFacade ejbFacade;
+    @EJB
+    private facade.HospitalFacade hospitalFacade;
+    @EJB
+    private facade.ClinicFacade clinicFacade;
+    @EJB
+    private facade.ClinicServiceFacade clinicServiceFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
-
-    public ServicesListController() {
+    private List<Clinic> clinics;
+    private List<ClinicService> clinicServices;
+    private Hospital hospital;
+    private Clinic clinic;
+    private ClinicService clinicService;
+    private List<Offer> offers;
+    
+    @PostConstruct
+    public void init() {
     }
 
-    public ServiceList getSelected() {
+    public OfferController() {
+    }
+
+    public Offer getSelected() {
         if (current == null) {
-            current = new ServiceList();
+            current = new Offer();
             selectedItemIndex = -1;
         }
         return current;
     }
 
-    private ServiceListFacade getFacade() {
+    public List<Offer> getOffers() {
+        offers = ejbFacade.findAll();
+        return offers;
+    }
+
+    public List<Clinic> getClinics() {
+        return clinics;
+    }
+
+    public void setClinics(List<Clinic> clinics) {
+        this.clinics = clinics;
+    }
+
+    public List<ClinicService> getClinicServices() {
+        return clinicServices;
+    }
+
+    public void setClinicServices(List<ClinicService> clinicServices) {
+        this.clinicServices = clinicServices;
+    }
+
+    private OfferFacade getFacade() {
         return ejbFacade;
     }
 
@@ -66,30 +108,78 @@ public class ServicesListController implements Serializable {
     }
 
     public String prepareView() {
-        current = (ServiceList) getItems().getRowData();
+        current = (Offer) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new ServiceList();
+        if (clinics != null) {
+            clinics.clear();
+        }
+        if (clinicServices != null) {
+            clinicServices.clear();
+        }
+        current = new Offer();
         selectedItemIndex = -1;
         return "Create";
+    }
+
+    public void clinicChange(ValueChangeEvent e) {
+                
+        if (clinicServices == null) {
+            clinicServices = new ArrayList<>();
+        } else {
+            clinicServices.clear();
+        }
+        
+        if (!ejbFacade.findServicesByHospitalAndClinic(hospital.getName(), e.getNewValue().toString().split(",")[0]).isEmpty()) {
+            for (Object[] s : ejbFacade.findServicesByHospitalAndClinic(hospital.getName(), e.getNewValue().toString().split(",")[0])) {
+                clinicServices.add(clinicServiceFacade.find(s[0]));
+            }
+        }
+    }
+
+    public void hospitalChange(ValueChangeEvent e) {
+
+        if (clinics != null) {
+            clinics.clear();
+        }
+        if (clinicServices != null) {
+            clinicServices.clear();
+        }
+        hospital = (Hospital) hospitalFacade.findHospitalByName(e.getNewValue().toString());
+        if (!hospital.getClinics().isEmpty()) {
+            clinics = hospital.getClinics();
+            current.setClinic(clinics.get(0));
+            if (!current.getClinic().getClinicServices().isEmpty()) {
+                clinicService = current.getClinic().getClinicServices().get(0);
+                clinicServices = current.getClinic().getClinicServices();
+            }
+        }
     }
 
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ServicelistCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundles").getString("OfferCreated"));
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundles").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
     public String prepareEdit() {
-        current = (ServiceList) getItems().getRowData();
+        current = (Offer) getItems().getRowData();
+        if (!current.getHospital().getClinics().isEmpty()) {
+            clinics = current.getHospital().getClinics();
+            current.setClinic(current.getClinic());
+            if (!current.getClinic().getClinicServices().isEmpty()) {
+                clinicService = current.getClinicService();
+                clinicServices = current.getClinic().getClinicServices();
+            }
+        }
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -97,16 +187,16 @@ public class ServicesListController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ServicelistUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundles").getString("OfferUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundles").getString("PersistenceErrorOccured"));
             return null;
         }
     }
 
     public String destroy() {
-        current = (ServiceList) getItems().getRowData();
+        current = (Offer) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -130,9 +220,9 @@ public class ServicesListController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("ServicelistDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundles").getString("OfferDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundles").getString("PersistenceErrorOccured"));
         }
     }
 
@@ -186,21 +276,21 @@ public class ServicesListController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    public ServiceList getServiceList(java.lang.Long id) {
+    public Offer getOffer(java.lang.Long id) {
         return ejbFacade.find(id);
     }
 
-    @FacesConverter(forClass = ServiceList.class)
-    public static class ServicelistControllerConverter implements Converter {
+    @FacesConverter(forClass = Offer.class)
+    public static class OfferControllerConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext facesContext, UIComponent component, String value) {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ServicesListController controller = (ServicesListController) facesContext.getApplication().getELResolver().
-                    getValue(facesContext.getELContext(), null, "servicelistController");
-            return controller.getServiceList(getKey(value));
+            OfferController controller = (OfferController) facesContext.getApplication().getELResolver().
+                    getValue(facesContext.getELContext(), null, "offerController");
+            return controller.getOffer(getKey(value));
         }
 
         java.lang.Long getKey(String value) {
@@ -220,11 +310,11 @@ public class ServicesListController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof ServiceList) {
-                ServiceList o = (ServiceList) object;
+            if (object instanceof Offer) {
+                Offer o = (Offer) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + ServiceList.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Offer.class.getName());
             }
         }
 
