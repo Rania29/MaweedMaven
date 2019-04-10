@@ -116,8 +116,10 @@
                     <li><a  href="help_ar.xhtml">مساعدة</a></li>
                 </ul>
             </nav><!--Navigation bar End-->
-            <h2 style="text-align: center;">ترقبونا قريبا</h2>
-            <h2 style="text-align: center;">سوف يتم اظهار عروض وتخفيضات العيادات في هذه الصفحة</h2>
+            <div style="clear: both;">
+                <h2 style="text-align: center;">ترقبونا قريبا</h2>
+                <h2 style="text-align: center;">سوف يتم اظهار عروض وتخفيضات العيادات في هذه الصفحة</h2>
+            </div>
             <div class="main_div">
                 <h:form>
                     <div class="result">
@@ -125,32 +127,24 @@
                             <c:forEach items="#{offerController.offers}" var="o">
                                 <div class="offer-div">
                                     <div class="ribbon ribbon-top-left">
-                                        <span >OFFER</span>
+                                        <span >عرض</span>
                                     </div>
                                     <div class="img-div">
                                         <h:commandLink action="#">
-                                            <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(o.hospital), '/')}" alt="hospital img"/>
+                                            <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(o.hospital), '/')}" alt="صورة المستشفى"/>
                                         </h:commandLink>
                                     </div>
                                     <div class="center-div">
                                         <span class="offer-price">#{o.discountPrice}</span>
-                                        <span class="offer-price">#{o.price} (#{o.discountPrice}/#{o.price}% off)</span>
-                                        <span class="offer-price"></span>
+                                        <span class="offer-price"><strike>#{o.price}</strike> (#{o.discountPrice}/#{o.price}% off)</span>
                                         <span class="clnk-name" id="service">#{o.clinicService.serviceList.inArabic}</span>
                                         <span class="clnk-name">#{o.detailsInArabic}</span>
-                                        <h:commandLink action="#">
-                                            <span class="hospital-name">#{o.hospital.inArabic}</span>
-                                        </h:commandLink>
                                         <span class="hospital-name">#{o.hospital.inArabic}</span>
-                                        <span class="offer-countdown">#{o.end_date}</span>
+                                        <h:commandLink action="#">
+                                            <span class="hospital-name">#{o.clinic.category.inArabic}</span>
+                                        </h:commandLink>
+                                        <span class="offer-countdown">ينتهي بتاريخ .....</span>
                                     </div>
-                                    <h:commandLink action="#">
-                                        <span class="hospital-name">#{o.clinic.category.inArabic}</span>
-                                    </h:commandLink>
-                                    <span class="hospital-name">#{o.hospital.name}</span>
-                                    <span class="clnk-name" id="service">#{o.clinicService.serviceList.inArabic}</span>
-                                    <span class="offer-price">#{o.price} #{o.discountPrice} (50%)</span>
-                                    <span class="offer-countdown">Ends in 15:40:33</span>
                                 </div>
 
                             </c:forEach>
