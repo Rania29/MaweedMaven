@@ -37,7 +37,7 @@
     <h:body>
         <div class="top-div">
             <div class="left-div">
-                <a href="search_ar.xhtml">عربي</a>
+                <a href="search_ar.xhtml" class="isDisabled">عربي</a>
                 <a class="separator">|</a>
                 <a href="search.xhtml">English</a>
             </div>
@@ -130,10 +130,10 @@
                             <div class="clnk-div">
                                 <h:commandLink action="#{appointmentController.toClinicArabic(h)}">
                                     <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt=""/>
-                                </h:commandLink ><br />
+                                </h:commandLink >
                                 <h:commandLink action="#{appointmentController.toClinicArabic(h)}">
                                     <span class="clnk-name">#{h.inArabic}</span>
-                                </h:commandLink ><br />
+                                </h:commandLink >
                                 <span class="clnk-location">#{h.area.inArabic}</span>
                             </div>
                         </c:forEach>

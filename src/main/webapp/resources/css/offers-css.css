@@ -46,24 +46,27 @@ div.result{
     border-radius: 5px;
     padding: 5px;
     margin: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     line-height: 25px;
     position: relative;
 }
+
 
 .offer-div a{
     text-decoration: none;
 }
 .ribbon {
-  width: 130px;
+  width: 150px;
   height: 150px;
   overflow: hidden;
   position: absolute;
+  opacity: 0.7;
+  filter: alpha(opacity=70); /* For IE8 and earlier */
 }
 .ribbon::before,
 .ribbon::after {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   content: '';
   display: block;
   border: 5px solid #2980b9;
@@ -72,7 +75,7 @@ div.result{
   position: absolute;
   display: block;
   width: 225px;
-  padding: 8px 0;   /*ribbon width*/
+  padding: 15px 0;   /*ribbon width*/
   background-color: #3498db; /*ribbon background color*/
   box-shadow: 0 5px 10px rgba(0,0,0,.1);
   color: #fff;
@@ -126,18 +129,21 @@ div.result{
 .offer-div:hover #service{
     text-decoration: underline;
 }
+#service{
+    font-size: 17px;
+}
 
 .hospital-name{
     display: block;
     color: #013069;
-    font-size: 16px;
+    font-size: 15px;
     
 }
 .clnk-name{
     display: block;
     text-decoration: none;
     color: #55A6D7;
-    font-size: 18px;
+    font-size: 15px;
     overflow-wrap: break-word;
     -ms-hyphens: auto;
     -moz-hyphens: auto;
@@ -147,6 +153,7 @@ div.result{
 .offer-price{
     display: block;
     color: #884400;
+    font-weight: bold;
 }
 .offer-countdown{
     font-size: 12px;
