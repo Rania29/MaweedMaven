@@ -113,12 +113,12 @@
                     <li><a  href="contact.xhtml">Contact</a></li>
                     <li><a  href="help.xhtml">Help</a></li>
                 </ul>
-            </nav>
-            <h2 style="text-align: center;">Coming Soon...</h2>
-            <h2 style="text-align: center;">Offers and Discounts will be shown in this page.</h2>
-            <h2 style="text-align: center; color: #445268;">Coming Soon...</h2>
-            <h2 style="text-align: center; color: #445268;">Offers and Discounts will be shown in this page.</h2>
-            <!--Navigation bar End-->
+            </nav><!--Navigation bar End-->
+
+            <div style="clear: both;">
+                <h2 style="text-align: center; color: #445268;">Coming Soon...</h2>
+                <h2 style="text-align: center; color: #445268;">Offers and Discounts will be shown in this page.</h2>
+            </div>
             <!--<div class="header_div">
                 <h2>Deals and Promotions</h2>
                 <h5>Check Today’s Deals, Offers, and limited-time discounts</h5>
@@ -144,23 +144,15 @@
                                     </div>
                                     <div class="center-div">
                                         <span class="offer-price">#{o.discountPrice}</span>
-                                        <span class="offer-price">#{o.price} (#{o.discountPrice}/#{o.price}% off)</span>
-                                        <span class="offer-price"></span>
+                                        <span class="offer-price" id="discount"><strike>#{o.price}</strike> (#{o.discountPrice}/#{o.price}% off)</span>
                                         <span class="clnk-name" id="service">#{o.clinicService.serviceList.name}</span>
                                         <span class="clnk-name">#{o.details}</span>
-                                        <h:commandLink action="#">
-                                            <span class="hospital-name">#{o.hospital.name}</span>
-                                        </h:commandLink>
                                         <span class="hospital-name">#{o.hospital.name}</span>
-                                        <span class="offer-countdown">#{o.end_date}</span>
+                                        <h:commandLink action="#">
+                                            <span class="hospital-name">#{o.clinic.category.name}</span>
+                                        </h:commandLink>
+                                        <span class="offer-countdown">Ends in (date)</span>
                                     </div>
-                                    <h:commandLink action="#">
-                                        <span class="hospital-name">#{o.clinic.category.name}</span>
-                                    </h:commandLink>
-                                    <span class="hospital-name">#{o.hospital.name}</span>
-                                    <span class="clnk-name" id="service">#{o.clinicService.serviceList.name}</span>
-                                    <span class="offer-price">#{o.price} #{o.discountPrice} (50%)</span>
-                                    <span class="offer-countdown">Ends in 15:40:33</span>
                                 </div>
 
                             </c:forEach>
