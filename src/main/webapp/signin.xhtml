@@ -25,13 +25,6 @@
     <h:body>
         <div>
             <header>
-                <div class="top-div">
-                    <div class="left-div">
-                        <a href="signin_ar.xhtml">عربي</a>
-                        <a class="separator">|</a>
-                        <a href="index.xhtml" class="isDisabled" >English</a>
-                    </div>
-                </div>
                 <div class="logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div>
@@ -49,17 +42,19 @@
                                                  required="true" requiredMessage="Email is required."/>
                                     <h:message for="email" style="color: #cc0033; font-size: 12px;"/>
                                     <h:inputSecret a:placeholder="*Password" id="password" value="#{guestController.selected.password}"
-                                                   required="true" requiredMessage="Password is required."  style="float: left; width: 100%;"/>
+                                                   required="true" requiredMessage="Password is required."  style="float: left; width: 100%; height: 50px; margin-bottom: 10px;"/>
                                     <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
-                                    
+                                    <br />
                                     <div class="cntr_btn">
                                         <h:commandLink value="Login" action="#{guestController.authenticate()}" class="app_button"/>
                                         <h:link value="Cancel" outcome="/index"  class="app_button cancle_button"/>
                                     </div>
                                     <div class="line" >
-                                        
                                         <h:outputText class="fix" value="Don't have an account? "/>
                                         <h:link class="lnk" outcome="/registration" value="Register"/>
+                                        <br />
+                                        <h:outputText class="fix" value="Language:  "/>
+                                        <a href="signin_ar.xhtml">عربي</a>
                                     </div>
                                 </h:panelGroup>
                             </h:panelGrid>

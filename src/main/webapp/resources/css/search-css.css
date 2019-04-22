@@ -13,6 +13,7 @@ div.main_div{
     display: block;
     width: 100%;
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 div.result{
     display: inline-block;
@@ -79,4 +80,5 @@ h5{
 .clnk-div:hover .clnk-name{
     text-decoration: underline;
 }
+
 

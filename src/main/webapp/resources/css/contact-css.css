@@ -8,8 +8,16 @@ and open the template in the editor.
     Author     : Nooshi
 */
 /**Body*/
-
+div.logo{
+    width: 100%;
+}
+.center-logo{
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+}
 .contact_main{
+    clear: both;
     width: 95%;
     height: 570px;
     margin: 0 auto;
@@ -20,8 +28,12 @@ and open the template in the editor.
     display: inline-block ;
     margin: 0 auto;
     text-align: center;
-    width: 50%;
+    width: 100%;
     margin-right: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    vertical-align: middle;
+    width: 50%;
 }
 .head2{
     width: 30%;
@@ -68,6 +80,8 @@ h4{
     height: inherit;
     display: inline-block;
     text-align: left;
+    padding: 10px;
+    
 }
 
 .contact_form input[type=text], select, textarea {

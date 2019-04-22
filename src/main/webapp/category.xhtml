@@ -35,24 +35,26 @@
     </h:head>
     <h:body>
         <div class="top-div">
-            <div class="left-div">
-                <a href="category_ar.xhtml">عربي</a>
-                <a class="separator">|</a>
-                <a href="index.xhtml" class="isDisabled">English</a>
+            <div class="left-div" >
+                <a href="category_ar.xhtml" class="lang">عربي</a>
+                <a href="offers.xhtml" class="offers">OFFERS</a>
+                <a href="help.xhtml">Help</a>
+                <a class="separator"> | </a>
+                <a href="contact.xhtml">Contact</a>
             </div>
-            <div class="right-div">
+            <div class="right-div" >
                 <c:if test="#{guestController.valid}">
                     <h:form>
-                        <h:commandLink action="#{guestController.saveCurrentPage('/category', '/signin')}" value="Signin"/>
-                        <a class="separator">|</a>
-                        <h:commandLink action="#{guestController.saveCurrentPage('/category', '/registration')}" value="Register"/>
+                        <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Log in"/>
+                        <a class="separator"> | </a>
+                        <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Sign up"/>
                     </h:form>
                 </c:if>
                 <c:if test="#{!guestController.valid}">
-                    <h:outputText title="Welcome" style="color: white;"/>
+                    <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
                     <div class="tooltip">
                         <h:link  value="#{guestController.selected.name}"
-                                 outcome="#{guestController.saveCurrentPage('/category', '/user_profile')}" />
+                                 outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
                         <span class="tooltiptext">User Profile</span>
                     </div>
                     <a class="separator">| </a>
@@ -61,11 +63,39 @@
                     </h:form>
                 </c:if>
             </div>
-
-        </div>
+        </div><!-- main top div -->
+        <div class="top-div2" id="myHeader">
+            <div class="left-div" >
+                <a href="category_ar.xhtml" class="lang">عربي</a>
+                <a href="offers.xhtml" class="offers">OFFERS</a>
+            </div>
+            <div class="right-div" >
+                <c:if test="#{guestController.valid}">
+                    <h:form>
+                        <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Log in"/>
+                        <a class="separator"> | </a>
+                        <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Sign up"/>
+                    </h:form>
+                </c:if>
+                <c:if test="#{!guestController.valid}">
+                    <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
+                    <div class="tooltip">
+                        <h:link  value="#{guestController.selected.name}"
+                                 outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                        <span class="tooltiptext">User Profile</span>
+                    </div>
+                    <a class="separator">| </a>
+                    <h:form style="display: inline-block;">
+                        <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
+                    </h:form>
+                </c:if>
+            </div>  
+        </div><!-- smart phones div -->
         <header class="header-top">
             <div class="logo">
-                <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+                <div class="center-logo">
+                    <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                </div>
             </div> 
 
             <div class="container" onclick="myFunction(this)">
@@ -83,41 +113,25 @@
             </nav>
 
             <!--Search box section-->
-            <div class="search-box">
-                    <div class="center-search">
-                        <h:form id="search-form" class="form-style">
-                            <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
-                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
-                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
-                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:commandLink>
-                            <h:commandLink value="Advanced" action="/advanced_search" class="advansed-link"/>
-                        </h:form>
-                    </div>
-                </div>
-        </header><!--Header End-->
+            <div class="search-area">
+                <div class="center-search">
+                    <h:form id="search-form" class="form-style">
+                        <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
 
-        <nav class="navbar">
-            <ul>
-                <li><a  href="index.xhtml">Home</a></li>
-                <li><a href="#" class="dropcat">Categories</a>
-                    <ul class="drop_menu">
-                        <c:forEach items="#{categoryController.findCategories()}" var="c">
-                            <li>
-                                <h:form>
-                                    <h:commandLink action="#{categoryController.toCategory(c)}" value="#{c.name}"/> 
-                                </h:form>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </li>
-                <li><a href="offers.xhtml">Offers</a></li>
-                <li><a  href="about.xhtml">About Us</a></li>
-                <li><a  href="contact.xhtml">Contact</a></li>
-                <li><a  href="help.xhtml">Help</a></li>
-            </ul>
-        </nav><!--Navigation bar End-->
-        
+                        <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="Area(optional)" itemValue=""/>
+                            <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
+                        </h:selectOneMenu>
+                        <h:selectOneMenu id="cat_id" class="select-menu1" required="true" requiredMessage="You must choose a category!!" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="Category(optional)" itemValue=""/>
+                            <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
+                        </h:selectOneMenu>
+                        <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategory('english')}">
+                        </h:commandLink>
+                    </h:form>
+                </div>
+            </div>
+        </header><!--Header End-->     
         <!--Hospitals Search result-->
         <div class="main_div">
             <h2 class="cat-name">#{categoryController.current.name}</h2>
@@ -135,21 +149,31 @@
                     </h:form>
                 </div>
             </div>
+            <div class="pagination">
+                <a href="#">❮</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">❯</a>
+            </div>
         </div>
         <!--Footer-->
         <footer>
-                <div class="upper-footer">
-                            <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
-                            <a class="separator">|</a>
-                            <a href="privacy-policy.xhtml">Privacy Policy</a>
-                            <a class="separator">|</a>
-                            <a href="help.xhtml">Help</a>
-                </div>
-                <div class="lower-footer">
-                    <h2>Maweed</h2>
-                    <h6>Copyright 2018 | All rights reserved.</h6>
-                </div>
-            </footer>
+            <div class="upper-footer">
+                <a href="terms_and_conditions.xhtml">Terms and Conditions</a>
+                <a class="separator">|</a>
+                <a href="privacy-policy.xhtml">Privacy Policy</a>
+                <a class="separator">|</a>
+                <a href="help.xhtml">Help</a>
+            </div>
+            <div class="lower-footer">
+                <h2>Maweed</h2>
+                <h6>Copyright 2018 | All rights reserved.</h6>
+            </div>
+        </footer>
     </h:body>
 </html>
 

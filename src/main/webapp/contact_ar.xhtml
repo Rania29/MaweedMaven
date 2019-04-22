@@ -27,23 +27,25 @@
         <div>
             <div class="top-div">
                 <div class="left-div">
-                    <a href="contact_ar.xhtml" class="isDisabled">عربي</a>
-                    <a id="separator">|</a>
-                    <a href="contact.xhtml">English</a>
+                    <a href="contact.xhtml" class="lang">English</a>
+                    <a href="offers_ar.xhtml" class="offers">العروض</a>
+                    <a href="help_ar.xhtml">مساعدة</a>
+                    <a class="separator"> | </a>
+                    <a href="contact_ar.xhtml">التواصل</a>
                 </div>
                 <div class="right-div">
                     <c:if test="#{guestController.valid}">
                         <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/contact_ar?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
                             <a class="separator"> | </a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/contact_ar?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
                         </h:form>
                     </c:if>
                     <c:if test="#{!guestController.valid}">
                         <h:outputText value="مرحبا" style="color:#55A6D7 ;"/>
                         <div class="tooltip">
                             <h:link  value="#{guestController.selected.inArabic}"
-                                     outcome="#{guestController.saveCurrentPage('/contact_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
+                                     outcome="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
                             <span class="tooltiptext">بروفايل المستخدم</span>
                         </div>
                         <a class="separator">| </a>
@@ -52,65 +54,45 @@
                         </h:form>
                     </c:if>
                 </div>
-            </div>
-            <header class="header-top">
-                <div class="logo">
-                    <a href="index_ar.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+            </div> <!--main top div-->
+
+            <div class="top-div2" id="myHeader">
+                <div class="left-div" >
+                    <a href="index.xhtml" class="lang">English</a>
+                    <a href="offers_ar.xhtml" class="offers">العروض</a>
                 </div>
-
-                <!--Hamburger button and menu-->
-                <div class="container" onclick="myFunction(this)">
-                    <div class="bar1"></div>
-                    <div class="bar2"></div>
-                    <div class="bar3"></div>
-                </div>
-
-                <nav id="myDropdown" class="menu">
-                    <a href="index_ar.xhtml" class="item_menu">الرئيسية</a>
-                    <a href="offers_ar.xhtml" class="item_menu">العروض</a>
-                    <a href="about_ar.xhtml" class="item_menu">عن موعد</a>
-                    <a href="contact_ar.xhtml" class="item_menu">التواصل</a>
-                    <a href="help_ar.xhtml" class="item_menu">مساعدة</a>
-                </nav>
-
-                <!--Search area-->
-                <div class="search-box">
-                    <div class="center-search">
-                        <h:form id="search-form" class="form-style">
-                            <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
-                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByInArabicName()}"/>
-                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByInArabicName()}">
-                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="بحث"/>
-                            </h:commandLink>
-                            <h:commandLink value="متقدم" action="/advanced_search_ar?faces-redirect=true" class="advansed-link" style="white-space: normal;"/>
+                <div class="right-div" >
+                    <c:if test="#{guestController.valid}">
+                        <h:form>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/signin_ar?faces-redirect=true')}" value="دخول"/>
+                            <a class="separator"> | </a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/registration_ar?faces-redirect=true')}" value="تسجيل"/>
                         </h:form>
+                    </c:if>
+                    <c:if test="#{!guestController.valid}">
+                        <h:outputText value="مرحبا" style="color:#55A6D7 ;"/>
+                        <div class="tooltip">
+                            <h:link  value="#{guestController.selected.inArabic}"
+                                     outcome="#{guestController.saveCurrentPage('/index_ar?faces-redirect=true', '/user_profile_ar?faces-redirect=true')}" />
+                            <span class="tooltiptext">بروفايل المستخدم</span>
+                        </div>
+                        <a class="separator">| </a>
+                        <h:form style="display: inline-block;">
+                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="خروج"/>
+                        </h:form>
+                    </c:if>
+                </div>  
+            </div><!-- Smart phones div -->
 
+            <header class="header-top">
+
+                <div class="logo">
+                    <div class="center-logo">
+                        <a href="index_ar.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
                     </div>
                 </div>
+
             </header><!--Header End-->
-            <nav class="navbar">
-                <ul>
-                    <li><a  href="index.xhtml">الرئيسية</a></li>
-                    <li><a href="#" style="color: #445268" class="dropcat">الأقسام</a>
-                        <ul>
-                            <c:forEach items="#{categoryController.findCategories()}" var="c">
-                                <li>
-                                    <h:form>
-                                        <h:commandLink action="#{categoryController.toCategoryArabic(c)}"
-                                                       value="#{c.inArabic}"/>
-                                    </h:form>
-                                </li>
-                            </c:forEach>
-
-                        </ul>
-                    </li>
-                    <li><a href="offers_ar.xhtml">العروض</a></li>
-                    <li><a  href="about_ar.xhtml">عن الموقع</a></li>
-                    <li><a  href="contact_ar.xhtml">التواصل</a></li>
-                    <li><a  href="help_ar.xhtml">مساعدة</a></li>
-                </ul>
-            </nav><!--Navigation bar End-->
-
             <div class="contact_main">
                 <div class="head">
                     <div>

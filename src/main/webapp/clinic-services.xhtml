@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>#{appointmentController.hospital.name}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -41,21 +42,23 @@
     <h:body>
         <div>
             <div class="top-div">
-                <div class="left-div">
-                    <a href="clinic-services_ar.xhtml">عربي</a>
-                    <a id="separator">|</a>
-                    <a href="clinic-services.xhtml" class="isDisabled">English</a>
+                <div class="left-div" >
+                    <a href="clinic-services_ar.xhtml" class="lang">عربي</a>
+                    <a href="offers.xhtml" class="offers">OFFERS</a>
+                    <a href="help.xhtml">Help</a>
+                    <a class="separator"> | </a>
+                    <a href="contact.xhtml">Contact</a>
                 </div>
-                <div class="right-div">
+                <div class="right-div" >
                     <c:if test="#{guestController.valid}">
                         <h:form>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Signin"/>
-                            <a class="separator">|</a>
-                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Register"/>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Log in"/>
+                            <a class="separator"> | </a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Sign up"/>
                         </h:form>
                     </c:if>
                     <c:if test="#{!guestController.valid}">
-                        <h:outputText title="Welcome" style="color: white;"/>
+                        <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
                         <div class="tooltip">
                             <h:link  value="#{guestController.selected.name}"
                                      outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
@@ -67,11 +70,40 @@
                         </h:form>
                     </c:if>
                 </div>
+            </div><!-- main top div -->
+            <div class="top-div2" id="myHeader">
+                <div class="left-div" >
+                    <a href="clinic-services_ar.xhtml" class="lang">عربي</a>
+                    <a href="offers.xhtml" class="offers">OFFERS</a>
+                </div>
+                <div class="right-div" >
+                    <c:if test="#{guestController.valid}">
+                        <h:form>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/signin')}" value="Log in"/>
+                            <a class="separator"> | </a>
+                            <h:commandLink action="#{guestController.saveCurrentPage('/index', '/registration')}" value="Sign up"/>
+                        </h:form>
+                    </c:if>
+                    <c:if test="#{!guestController.valid}">
+                        <h:outputText value="Welcome" style="color: #55A6D7; font-size: 15px;"/>
+                        <div class="tooltip">
+                            <h:link  value="#{guestController.selected.name}"
+                                     outcome="#{guestController.saveCurrentPage('/index', '/user_profile')}" />
+                            <span class="tooltiptext">User Profile</span>
+                        </div>
+                        <a class="separator">| </a>
+                        <h:form style="display: inline-block;">
+                            <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
+                        </h:form>
+                    </c:if>
+                </div>  
+            </div><!-- smart phones div -->
 
-            </div>
             <header class="header-top">
                 <div class="logo">
-                    <a href="index.xhtml"><img src="resources/interface/logo.png" alt="Logo image"/></a>
+                    <div class="center-logo">
+                        <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
+                    </div>
                 </div> 
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
@@ -89,41 +121,24 @@
                 </nav>
 
                 <!--Search box section-->
-                <div class="search-box">
-                    <div class="center-search">
-                        <h:form id="search-form" class="form-style">
-                            <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
-                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findHospitalsByName()}"/>
-                            <h:commandLink class="hidden-link" action="#{appointmentController.findHospitalsByName()}" >
-                                <img src="resources/interface/magnifying-glass.png" class="search-icon" alt="search"/>
-                            </h:commandLink>
-                            <h:commandLink value="Advanced" action="/advanced_search" class="advansed-link"/>
-                        </h:form>
-                    </div>
+                <div class="center-search">
+                    <h:form id="search-form" class="form-style">
+                        <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
+
+                        <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="Area(optional)" itemValue=""/>
+                            <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
+                        </h:selectOneMenu>
+                        <h:selectOneMenu id="cat_id" class="select-menu1" required="true" requiredMessage="You must choose a category!!" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="Category(optional)" itemValue=""/>
+                            <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
+                        </h:selectOneMenu>
+                        <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategory('english')}">
+                        </h:commandLink>
+                    </h:form>
                 </div>
             </header><!--Header End-->
 
-            <nav class="navbar">
-                <ul>
-                    <li><a  href="index.xhtml">Home</a></li>
-                    <li><a href="#" style="color: #445268">Categories</a>
-                        <ul>
-                            <c:forEach items="#{categoryController.findCategories()}" var="c">
-                                <li>
-                                    <h:form>
-                                        <h:commandLink action="#{categoryController.toCategory(c)}" 
-                                                       value="#{c.name}"/> 
-                                    </h:form>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                    </li>
-                    <li><a href="offers.xhtml">Offers</a></li>
-                    <li><a  href="About.xhtml">About Us</a></li>
-                    <li><a  href="contact.xhtml">Contact</a></li>
-                    <li><a  href="help.xhtml">Help</a></li>
-                </ul>
-            </nav><!--Navigation bar End-->
             <div>
                 <h1 class="clinic-name">
                     #{appointmentController.hospital.name}
@@ -151,7 +166,7 @@
                     </div>
                     <div class="clnk-widget">
                         <div class="icon">
-                            <img class="centered" src="resources/interface/phone.png" alt=""/>
+                            <img  src="resources/interface/phone.png" alt=""/>
                         </div>
                         <div class="clnk-info">
                             <p>Send Us a Message</p>

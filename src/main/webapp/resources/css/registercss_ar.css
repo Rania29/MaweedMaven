@@ -23,7 +23,8 @@ div.logo{
     margin: 0 auto;
     text-align: center;
     width: 450px;
-    line-height: 35px;
+    line-height: 40px;
+    margin-bottom: 70px;
 }
 .head h2{
     font-size:35px;
@@ -51,18 +52,18 @@ div.logo{
     text-align: right;
     border: 1px solid #013069;
     border-radius: 5px;
-    padding: 5px;
+    padding: 10px;
     line-height: 40px;
 }
 
 .reg_form input[type=text], input[type=password] {
-
-    padding: 8px;
+    height: 50px;
+    padding: 10px;
     width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     resize: vertical;
     font-size: 14px;
     float: right;
@@ -91,7 +92,7 @@ div.logo{
 }
 .app_button{
     height: inherit;
-    padding: 12px 30px;
+    padding: 12px 60px;
     text-decoration: none;
     background-color: #55A6D7;
     border-radius: 5px;
@@ -116,19 +117,26 @@ div.logo{
     background-color: #f53300;
     color: white;
 }
-div.cntr_btn{
+.cntr_btn{
     width: 100%;
     height: auto;
     margin: 0 auto;
     text-align: center;
-    margin-bottom: 12px;
-    margin-top: 15px;
+    padding: 20px;
 }
-
 
 div.line{
     width: auto;
     line-height: 20px;
+}
+.line a{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #55A6D7;
+}
+.line a:hover{
+    text-decoration: underline;
 }
 
 
