@@ -12,7 +12,8 @@ and open the template in the editor.
     box-sizing: border-box;;
 }
 body, html{
-    background-color: #F2F3F7;
+    /**background-color: #F2F3F7;**/
+    background-color: #f2f3f7;
     min-width: 320px;
     width: auto !important;
     width: 100%;
@@ -58,22 +59,28 @@ body, html{
 
 
 /**----------------Hamburger menu and button end-------------------**/
-
+.top-div2{
+    display: none;
+}
+#hide2{
+    display: none;
+}
 .top-div{
-    height: 45px;
+    height: 50px;
     width: 100%;
-    background-color: #445268;
+    background-color: #F2F3F7;
     font-size: 15px;
+    padding: 5px 0px;
 }
 
 .left-div{
     float: left;
-    width: 28%;
+    width: 70%;
     padding-left: 50px;
     text-align: left;
 }
 .separator{
-    color: #F2F3F7;
+    color: #445268;
 }
 .isDisabled {
     color: currentColor;
@@ -84,17 +91,34 @@ body, html{
 
 .right-div{
     float: right;
-    width: 72%;
+    width: 30%;
+    height: 50px;
     padding-right: 50px;
     text-align: right;
 }
 .top-div a{
     text-decoration: none;
-    color: #F2F3F7;
+    color: #000000;
+    font-size: 16px;
+    vertical-align: middle;
+    opacity: 0.8;
 }
 .top-div a:hover{
-    text-decoration: underline;
+    opacity: 1;
 }
+.offers{ 
+    background-color: #00cc66;
+    color: #fafafa;
+    padding: 10px;
+}
+
+.lang{
+    padding: 10px;
+}
+.lang:hover{
+    background-color: #bde0f5;
+}
+
 
 /*---------Tool Tip--------------------*/
 .tooltip a:hover{
@@ -147,32 +171,45 @@ body, html{
     background-color: #cc0033;
 }
 
-/**header div**/
+/******************header div***************************/
 .header-top{
     width: 100%;
-    height: 100px;
+    height: 150px;
+    background-color: #fff;
     clear: both;
+    box-shadow: 0 0 10px 2px #55A6D7;
 }
 
 /**logo image**/
 div.logo{
     float: left;
-    width: 40%;
+    width: 30%;
     height: inherit;
-
+    padding: 20px;
+    display: block;
+}
+.center-logo{
+    padding: 20px;
+    display: block;
+    vertical-align: middle;
 }
 .logo img{
     width: 220px; 
     height: 69px;
+    display: block;
     vertical-align: middle;
-    margin: 12px 40px;
+    margin: 0 auto;
 }
 
+
 /**------------------- search area------------------**/
-.search-box{
+.search-area{
     float: right;
-    width: 60%;
+    width: 70%;
     height: inherit;
+    text-align: center;
+    padding: 20px;
+    display: block;
 }
 .hidden-link{
     display: none;
@@ -182,36 +219,37 @@ div.logo{
     float: right;
 }
 div.center-search{
-    height: available;
+    height: 110px;
     display: inline-block; 
-    padding-top: 30px;
-    padding-bottom: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-right: 25px;
-    float: right;
+    vertical-align: middle;
+    text-align: center;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .form-style input{
-    border: 1px solid #445268;
+    border: 1px solid #55A6D7;
     outline: 0;
     box-shadow: none;
-    font-size: 15px;
+    font-size: 17px;
+    color: #445268;
+    height: 70px;
+    width: 230px;
+    margin-right: 0px;
     padding-left: 5px;
-    border-radius: 5px 0 0 5px  ;
-    color: #666666;
-    height: 40px;
-    width: 320px;
 }
-/*
-.select-style{
+
+
+.select-menu1{
     text-indent: 0.01px;
-    width: 100px;
-    height: 40px;
-    font-size: 14px;
+    border: 1px solid #55A6D7;
+    width: 200px;
+    height: 70px;
+    font-size: 17px;
     outline: 0;
-    border: 1px solid #445268;
-    border-radius: 5px 0 0 5px ;
-}*/
+    color: #445268;
+}
+
 
 .form-style > input, command, select, link, button, .hidden-link1{
     display: inline-block;
@@ -222,149 +260,57 @@ div.center-search{
     display: inline-block;
     margin:  auto;
     position: relative;
-    padding: 0px 4px;
     margin-left: 2px;
-    height: inherit;
-    font-size: 16px;
+    line-height: 70px;
+    width: 100px;
+    font-size: 17px;
+    text-align: center;
     text-decoration: none;
     background-color: #55A6D7;
     color: white;
+    border-radius: 0 5px 5px 0 ;
+    opacity: 1;
 }
 .hidden-link1:hover{
-    color: #445268;
-    text-decoration: underline;
-}
-.advansed-link{
-    position: relative;
-    color: white;
     text-decoration: none;
-    font-size: 12px;
-    margin-left: 2px;
-    background-color: #445268;
-    border-radius: 0 5px 5px 0 ;
-    height: inherit;
-    padding: 11px 2px;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    -ms-word-break: break-all;
-    word-break: break-all;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    hyphens: auto;
-}
-.advansed-link:hover{
-    text-decoration: underline;
+    opacity: 0.8;
 }
 
-/**---------------------------------nav bar style----------------------------**/
-.navbar{
+/********** motivation div ***********/
+.motivation{
     clear: both;
     width: 100%;
-    height: 50px;
-    background-color: white;
-    border-top: 1px solid #D7D0CC;
-    border-bottom: 1px solid #D7D0CC;
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 15px;
-    line-height: 30px;
-}
-/**Un ordered list in the navbar*/
-.navbar ul{
-    text-align: center;
-    margin: 0 auto;
-    padding: 5px ;
-}
-/**list items in navbar*/
-.navbar ul li{
-    display: inline-block;
-    list-style: none;
-    position: relative;
-}
-
-/**anchor in navbar*/
-.navbar ul li a{
-    text-decoration: none;
-    font-size: 16px;
     height: auto;
     margin: 0 auto;
-    vertical-align: middle;
-    padding:  14px 16px;
     text-align: center;
-    color: #013069;
+    padding: 10px;
 }
-/**hover over menu items in navbar*/
-.navbar ul li a:hover {
-    color: #55A6D7;
-    cursor: pointer;
-    border-bottom: 5px solid #55A6D7;
-}
-
-/**drop down un ordered list*/
-.navbar ul li ul {
-    display: none;
-    position: absolute;
-    background-color: #55A6D7;
-    border-top: none;
-    text-align: left;
-    margin-top: 8px;
-    border-radius: 0px 0px 5px 5px;
-    line-height: 18px;
-    z-index: 1;
-}
-
-/**when hover over menu item ,show the list*/
-.navbar ul li:hover ul {
-    display: block;
-}
-/**style drop down list elemnts*/
-.navbar ul li ul li {
-    width: 180px;
-    height: auto;
-    padding: 3px 0px;
-}
-
-.dropcat{
+.motivation h1{
     color: #445268;
+    font-size: 48px;
+    font-family: sans-serif;
+    font-weight: 600;
+    background-color: inherit;
 }
-/**style anchor inside drop down list*/
-.navbar ul li ul li a{
-    font-size: 16px; 
-    color: white;
-}
-
-.navbar ul li ul li:hover{
-    /*background-color: #5796c8;*/
-    background-color: #445268;
-
+.motivation span{
+    color: #999999;
+    font-size: 18px;
+    font-weight: 400;
 }
 
-.navbar ul li ul li:hover a{
-    border-bottom: none;
-}
-
-/* unvisited link */
-.navbar ul li ul li a:link {
-    color: #ffffff;
-}
-
-/**change color for visited links**/
-.navbar ul li ul li a:visited { 
-    color: #ffffff;
-}
 
 /*************************************Slide Show***************************************/
 #ads_main{
+    clear: both;
     width: 100%; 
     height: 500px;
-    background-color: pink;
     display: inline-block; 
     margin: 0 auto;
     text-align: center;
 }
 
 .slides_container{
+    clear: both;
     max-width: 800px;
     height: 500px !important;
     border: 1px solid #cccccc;
@@ -463,6 +409,29 @@ h1{
 .cat-item:hover {
     background-color: #bde0f5;
 }
+/*------------------ pagination ------------------------------*/
+.pagination {
+    width: 100%;
+  display: inline-block;
+}
+
+.pagination a {
+  color: #445268;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.pagination a.active {
+  background-color: #bde0f5;
+  color: white;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a:hover{
+    color: #55A6D7;
+    text-decoration: underline;
+}
+
+
 /**--------------------------footer-----------------------**/
 footer{
     clear: both;
@@ -506,20 +475,57 @@ div.lower-footer h2{
 /**Media Queries*/
 /* Smartphones (portrait and landscape) --------------------------------- */
 @media screen and (min-width: 320px) and (max-width: 480px){
-    .header-top{
-        width: 100%;
-        height: 85px;
-        margin-bottom: 1px;
+    #hide{
+        display: none;
     }
+    #hide2{
+        display: block;
+    }
+    .top-div{
+        display: none;
+    }
+
+    .top-div2{
+        display: block;
+        height: 50px;
+        width: 100%;
+        background-color: inherit;
+        font-size: 15px;
+        padding: 5px 0px;
+        z-index: 99;
+    }
+    .top-div2 a{
+        text-decoration: none;
+        color: #000000;
+        font-size: 16px;
+        vertical-align: middle;
+        opacity: 0.8;
+    }
+
+    .top-div2 a:hover{
+        opacity: 1;
+    }
+    .offers a{
+        color: #ffffff;
+    }
+
+    .header-top{
+        clear: both;
+        width: 100%;
+        height: 90px;
+        margin-bottom: 8px;
+        box-shadow: 0 0 10px 2px #55A6D7;
+    }
+
     .left-div{
         padding-left: 5px;
     }
 
     .right-div{
         padding-right: 5px;
+        height: inherit;
     }
-
-    div.container {
+    div.container {  
         background-color: inherit;
         width: 20%;
         float: left;
@@ -533,12 +539,13 @@ div.lower-footer h2{
     }
     .item_menu {
         clear: both;
-        background-color: #F2F3F7;
+        background-color: #fff;
         text-align: center;
+        font-size: 18px;
         width:100%;
         height: auto;
         text-decoration: none;
-        color: #013069;
+        color: #445268;
         padding: 2px;
         display: block;
         border-bottom: 1px solid gray;
@@ -551,11 +558,15 @@ div.lower-footer h2{
     /**div of Logo*/
     div.logo{
         float: right;
-        display: flex;
-        justify-content: flex-end;
+        display: block;
+        padding: 10px;
         width: 80%;
         height: inherit;
-        text-align: center;    
+        text-align: center; 
+        vertical-align: middle;
+    }
+    .center-logo{
+        padding: 0px;
     }
     /**Logo image*/
     .logo img{
@@ -564,61 +575,55 @@ div.lower-footer h2{
         width: 220px;
         height: 69px;
     }
+    div.search-area{
+        width: 100%;
+        height: auto;
+        padding: 3px;
+        margin-bottom: 10px;
+    }
+
     div.search-box{
         clear: both;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 100%;
-        height: 65px;
+        height: inherit;
         margin: auto;
-        background-color: #445268;
     }
     div.center-search{
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60px;
-        padding: 10px;
+        height: 300px;
         margin-left: auto;
         margin-right:  auto;
         text-align: center;
-
+        padding: 3px;
     }
 
     .form-style{
         margin: 0 auto;
-        display: inline-block;
+        display: block;
         overflow: hidden;
         width: 100%;
-        margin-right: 3px;
     }
     .form-style input[type='text']{
-        width: 180px;
-        border: 1px solid gray;
-        font-size: 14px;
+        width: 95%;
+        border: 1px solid #55A6D7;
+        font-size: 18px;
+        margin-bottom: 5px;
+        padding-left: 8px;
     }
-    .select-style{
-        width: 80px;   
-    }
-    .form-style > input, command, link, .hidden-link{
-        display: inline-block;
-        vertical-align: middle;
+
+    .select-menu1{
+        width: 95%;
+        margin-bottom: 5px;
     }
     .hidden-link1{
-        display: none;
+        width: 95%;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 600;
     }
-    .hidden-link{
-        display: inline-block;
-        margin:  auto;
-        text-align: center;
-        vertical-align: middle;
-        position: relative;
-        cursor: pointer;
-        background-color: #55A6D7;
-        border-radius: 0 5px 5px 0;
-        height: 40px;
+    .motivation h1{
+        font-size: 30px;
+        font-weight: normal;
     }
     .search-icon{
         padding: 3px;
@@ -628,6 +633,9 @@ div.lower-footer h2{
     }
     .navbar{
         display: none;
+    }
+    .motivation{
+        margin-bottom: 10px;
     }
     /*******************slide show*****************************/
 
@@ -652,15 +660,65 @@ div.lower-footer h2{
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
   ##Screen = B/w 481px to 767px
 */
-@media screen and (min-width: 481px) and (max-width: 599px) {
+@media screen and (min-width: 481px) and (max-width: 699px) {
 
-    .header-top{
-        margin-top: 3px;
+    .top-div{
+        display: none;
+    }
+    #hide{
+        display: none;
+    }
+    #hide2{
+        display: block;
+    }
+    .sticky {
+        position: fixed;
+        top: 0;
+    } 
+
+    .top-div2{
+        display: block;
+        height: 50px;
         width: 100%;
-        height: 100px;
+        background-color: #ffffff;
+        font-size: 15px;
+        /*box-shadow: 0 0 5px 5px #ccc;*/
+        padding: 5px 0px;
+        z-index: 99;
+    }
+    .top-div2 a{
+        text-decoration: none;
+        color: #000000;
+        font-size: 16px;
+        vertical-align: middle;
+        opacity: 0.8;
     }
 
-    div.container {
+    .top-div2 a:hover{
+        opacity: 1;
+    }
+    .offers a{
+        color: #ffffff;
+    }
+
+    .header-top{
+        clear: both;
+        width: 100%;
+        height: 90px;
+        margin-bottom: 1px;
+        margin-top: 50px;
+        box-shadow: 0 0 10px 2px #55A6D7;
+    }
+
+    .left-div{
+        padding-left: 5px;
+    }
+
+    .right-div{
+        padding-right: 5px;
+        height: inherit;
+    }
+    div.container {  
         background-color: inherit;
         width: 20%;
         float: left;
@@ -668,13 +726,15 @@ div.lower-footer h2{
         display:block;
         cursor: pointer;
     }
+
     nav.menu{
         width: 50%;
     }
     .item_menu {
         clear: both;
-        background-color: #F2F3F7;
+        background-color: #FaFaFa;
         text-align: center;
+        font-size: 18px;
         width:100%;
         height: auto;
         text-decoration: none;
@@ -687,14 +747,16 @@ div.lower-footer h2{
         background-color: #55A6D7;
         color: white;
     }
+
     /**div of Logo*/
     div.logo{
         float: right;
-        display: flex;
+        display: block;
+        padding: 10px;
         width: 80%;
         height: inherit;
-        text-align: center;
-
+        text-align: center; 
+        vertical-align: middle;
     }
     /**Logo image*/
     .logo img{
@@ -703,65 +765,97 @@ div.lower-footer h2{
         width: 220px;
         height: 69px;
     }
+    div.search-area{
+        width: 100%;
+        height: 320px;
+        padding: 3px;
+    }
 
     div.search-box{
         clear: both;
-        display: flex;
+        /*display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center;*/
         width: 100%;
-        height: 65px;
+        height: inherit;
         margin: auto;
-        background-color:#445268;
     }
     div.center-search{
-        display: flex;
+        width: 100%;
+        /*display: flex;
         justify-content: center;
-        align-items: center;
-        height: 60px;
-        padding: 10px;
+        align-items: center;*/
+        height: 300px;
+        /*padding: 10px;*/
         margin-left: auto;
         margin-right:  auto;
         text-align: center;
+        padding: 3px;
     }
+
     .form-style{
         margin: 0 auto;
-        display: inline-block;
+        display: block;
         overflow: hidden;
-        /**padding: 10px 20px;**/
+        width: 100%;
+        /*margin-right: 3px;*/
     }
     .form-style input[type='text']{
-        width: 280px;
+        width: 95%;
         border: 1px solid gray;
-        font-size: 16px;
+        font-size: 18px;
+        margin-bottom: 5px;
+        padding-left: 8px;
     }
-    .form-style input[type='submit']{
-        width: 70px;
-        border: 2px solid #55A6D7;
+    .select-style{
+        width: 95%;   
+    }
+    .form-style > input, command, select, link, button, .hidden-link1{
+    display: inline-block;
+    vertical-align: middle;
+}
+    .select-menu1{
+        width: 95%;
+        margin-bottom: 5px;
+    }
+    .hidden-link1{
+        width: 95%;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .motivation h1{
+        font-size: 30px;
+        font-weight: normal;
+    }
+    .search-icon{
+        padding: 3px;
     }
     .dropbtn{
         border: 1px solid #cccccc;
     }
-
-    input, command{
-        display: inline-block;
-        vertical-align: middle;
-    }
     .navbar{
         display: none;
+    }
+    .motivation{
+        margin-bottom: 10px;
     }
     /*******************slide show*****************************/
 
     .slides_container{
         clear: both;
         max-width:100%;
-        height: 250px !important;
+        height: 220px !important;
         border: 1px solid #cccccc;
         background-color: inherit;
         margin: 0 auto;
         text-align: center;
         margin-bottom: 5px;
         position: relative;
+
+    }
+    .mySlides {
+        min-height: 220px !important;
     }
 }
 
@@ -770,113 +864,191 @@ div.lower-footer h2{
 
 /**Tablet, Ipad (Landscape) and (portrait)**/
 
-@media screen and (min-width: 600px) and (max-width: 1000px){
-
-    div.logo-header{
-        height: 90px;
+@media screen and (min-width: 700px) and (max-width: 1200px){
+    #hide{
+        display: none;
+    }
+    #hide2{
+        display: block;
+    }
+    .top-div{
+        display: none;
     }
 
-    div.container {
+    .top-div2{
+        display: block;
+        height: 50px;
+        width: 100%;
+        background-color: inherit;
+        font-size: 15px;
+        padding: 5px 0px;
+        z-index: 99;
+    }
+    .top-div2 a{
+        text-decoration: none;
+        color: #000000;
+        font-size: 16px;
+        vertical-align: middle;
+        opacity: 0.8;
+    }
+
+    .top-div2 a:hover{
+        opacity: 1;
+    }
+    .offers a{
+        color: #ffffff;
+    }
+
+    .header-top{
+        clear: both;
+        width: 100%;
+        height: 90px;
+        margin-bottom: 15px;
+        box-shadow: 0 0 10px 2px #55A6D7;
+    }
+
+    .left-div{
+        padding-left: 5px;
+    }
+
+    .right-div{
+        padding-right: 5px;
+        height: inherit;
+    }
+    div.container {  
         background-color: inherit;
         width: 20%;
         float: left;
         height: 100%;
         display:block;
         cursor: pointer;
-        padding: 25px 40px;
     }
+
     nav.menu{
         width: 50%;
     }
     .item_menu {
         clear: both;
-        background-color: #F2F3F7;
         text-align: center;
+        background-color: #ffffff;
+        font-size: 18px;
         width:100%;
         height: auto;
         text-decoration: none;
         color: #013069;
         padding: 2px;
         display: block;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid #445268;
     }
     .item_menu:hover{
         background-color: #55A6D7;
         color: white;
     }
+
     /**div of Logo*/
     div.logo{
         float: right;
-        width: 40%;
+        display: block;
+        padding: 10px;
+        width: 80%;
         height: inherit;
-
-    }
-    .logo img{
-        /*margin: 0px 40px;*/
-        width: 220px; 
-        height: 69px;
+        text-align: center; 
         vertical-align: middle;
-        margin-top: 15px;
-        margin-left: 45px;
+    }
+    .center-logo{
+        padding: 0px;
+    }
+    /**Logo image*/
+    .logo img{
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 69px;
+    }
+    div.search-area{
+        width: 100%;
+        height: auto;
+        padding: 3px;
     }
 
     div.search-box{
         clear: both;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         width: 100%;
-        height: 65px;
+        height: inherit;
         margin: auto;
-        background-color: #445268;
     }
     div.center-search{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 60px;
-        padding: 10px;
+        width: 100%;
+        height: 130px;
         margin-left: auto;
         margin-right:  auto;
         text-align: center;
+        padding: 3px;
     }
+
     .form-style{
         margin: 0 auto;
         display: inline-block;
         overflow: hidden;
+        width: 100%;
+        /*margin-right: 3px;*/
     }
     .form-style input[type='text']{
-        width: 280px;
-        border: 1px solid gray;
+        width: 230px;
         font-size: 16px;
+        margin-bottom: 5px;
+        padding-left: 8px;
     }
-    .form-style input[type='submit']{
-        width: 70px;
-        border: 2px solid #55A6D7;
+    .select-style{
+        width: 180px;   
+    }
+    .form-style > input, command, select, link, button, .hidden-link1{
+    display: inline-block;
+    vertical-align: middle;
+}
+    .select-menu1{
+        width: 180px;
+        margin-bottom: 5px;
+    }
+    .hidden-link{
+        display: none;
+    }
+    .hidden-link1{
+        border-radius: 5px;
+        width: 80px;
+    }
+    .motivation h1{
+        font-size: 30px;
+        font-weight: normal;
+    }
+    .search-icon{
+        padding: 3px;
     }
     .dropbtn{
         border: 1px solid #cccccc;
     }
-
-    input, command{
-        display: inline-block;
-        vertical-align: middle;
-    }
     .navbar{
         display: none;
+    }
+    .motivation{
+        margin-bottom: 10px;
     }
     /*******************slide show*****************************/
 
     .slides_container{
         clear: both;
         max-width:100%;
-        height: 350px !important;
+        height: 400px !important;
         border: 1px solid #cccccc;
         background-color: inherit;
         margin: 0 auto;
         text-align: center;
         margin-bottom: 5px;
         position: relative;
+
+    }
+    .mySlides {
+        min-height: 220px !important;
     }
 }
 

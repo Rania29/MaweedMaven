@@ -24,13 +24,6 @@
     <h:body>
         <div>
             <header>
-                <div class="top-div">
-                    <div class="left-div">
-                        <a href="signin_ar.xhtml" class="isDisabled">عربي</a>
-                        <a class="separator">|</a>
-                        <a href="signin.xhtml" >English</a>
-                    </div>
-                </div>
                 <div class="logo">
                     <a href="index_ar.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div> 
@@ -47,7 +40,7 @@
                                                  required="true" requiredMessage="يجب إدخال البريد الإلكتروني"/>
                                     <h:message for="email" style="color: #cc0033; font-size: 12px;"/>
                                     <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{guestController.selected.password}"
-                                                   required="true" requiredMessage="يجب كتابة كلمة السر"  style="float: left; width: 100%;"/>
+                                                   required="true" requiredMessage="يجب كتابة كلمة السر"  style="float: left; width: 100%; height: 50px; margin-bottom: 10px;"/>
                                     <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
                                     <br />
                                     <div class="cntr_btn">
@@ -58,6 +51,9 @@
                                     <div class="line">
                                         <h:outputText class="fix" value="لاتمتلك حساب؟  "/>
                                         <h:link class="lnk" outcome="/registration_ar" value="إنشاء حساب جديد"/>
+                                        <br />
+                                        <h:outputText class="fix" value="اللغة: "/>
+                                        <a href="signin.xhtml" >English</a>
                                     </div>
                                 </h:panelGroup>
                             </h:panelGrid>

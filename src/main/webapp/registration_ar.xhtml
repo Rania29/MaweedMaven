@@ -28,7 +28,7 @@
                     <div class="left-div">
                         <a href="index_ar.xhtml" class="isDisabled">عربي</a>
                         <a id="separator">|</a>
-                        <a href="registration.xhtml">English</a>
+                        
                     </div>
                     <div class="right-div">
                         <h:link outcome="/signin_ar" value="دخول "/>
@@ -55,12 +55,13 @@
                                         <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
                                     </h:inputText>
                                     <h:message for="email" style="color: #cc0033; font-size: 12px;"/><br />
-                                    <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{guestController.selected.password}" title="Password" style="float: right; width: 100%;"
+                                    <h:inputSecret a:placeholder="*كلمة السر" id="password" value="#{guestController.selected.password}" title="Password" style="float: right; width: 100%; height: 50px; margin-bottom: 5px;"
                                                    required="true" requiredMessage="كلمة السر مطلوبة"/>
                                     <h:message for="password" style="color: #cc0033; font-size: 12px;"/><br />
                                     <h:inputText a:placeholder="*رقم الهاتف" autocomplete="off" id="phone" value="#{guestController.selected.phone}" title="phone" 
                                                  required="false" requiredMessage="يجب تعبئة هذا الحقل"/>
                                     <h:message for="phone" style="color: #cc0033; font-size: 12px;"/><br />
+                                    <br />
                                     <div class="cntr_btn">
                                         <h:commandLink onclick="alert('تم اضافة ملفك، الرجاء مراجعة ايميلك!')" action="#{guestController.create()}" value="تسجيل" class="app_button"/>
                                         <h:link outcome="/index_ar" value="إلغاء" class="app_button cancle_button"/><br />
@@ -70,9 +71,13 @@
                                         <h:link class='lnk' outcome="/terms-and-conditions-ar" value="الشروط والأحكام "/>
                                         <h:outputText class='fix' value=" الخاصة بموقع موعد، وكذلك "/>
                                         <h:link class='lnk' outcome="/privacy-policy-ar" value="سياسة الخصوصية."/>
-                                    </div>
+                                    <br />
                                     <h:outputText class="fix" value="تمتلك حساب ؟ "/>
                                     <h:link class='lnk' outcome="/signin_ar" value="تسجيل دخول"/>
+                                    <br />
+                                    <h:outputText class="fix" value=" اللغة : "/>
+                                    <a href="registration.xhtml">English</a>
+                                    </div>
                                 </h:panelGroup>
                             </h:panelGrid>
                         </h:form>

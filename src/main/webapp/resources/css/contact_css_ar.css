@@ -11,8 +11,17 @@ and open the template in the editor.
 html, body{
     direction: rtl;
 }
+div.logo{
+    width: 100%;
+}
+.center-logo{
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+}
 
 .contact_main{
+    clear: both;
     width: 95%;
     height: 570px;
     margin: 0 auto;
@@ -23,8 +32,12 @@ html, body{
     display: inline-block ;
     margin: 0 auto;
     text-align: center;
+    width: 100%;
+    margin-right: 10px;
+    padding: 10px;
+    margin: 0 auto;
+    vertical-align: middle;
     width: 50%;
-    margin-left: 10px;
 }
 .head2{
     width: 30%;
@@ -71,6 +84,7 @@ h4{
     height: inherit;
     display: inline-block;
     text-align: right;
+    padding: 10px;
 }
 
 .contact_form input[type=text], select, textarea {
