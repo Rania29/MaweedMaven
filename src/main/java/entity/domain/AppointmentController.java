@@ -120,17 +120,21 @@ public class AppointmentController implements Serializable {
         this.clinic = clinic;
     }
 
-    public void findByAreaAndCategory(String lang) {
+    public String findByAreaAndCategoryHospital(String lang) {
         List<Object[]> ads;
         if (hospitals == null) {
             hospitals = new ArrayList<>();
         } else {
             hospitals.clear();
         }
-        ads = advancedSearchFacade.findByAreaAndCategory(hospital.getArea(), clinic);
-        for (Object[] ad : ads) {
-            hospitals.add((Hospital) hospitalFacade.findHospitalByName(ad[0].toString()));
+        ads = advancedSearchFacade.findByAreaAndCategoryHospital(hospital, clinic);
+        if(ads == null) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Enter hospital name, clinic or area!"));
         }
+        for (Object[] ad : ads) {
+            hospitals.add((Hospital) hospitalFacade.findHospitalByName(ad[1].toString()));
+        }
+        return "search?faces-redirect=true";
     }
 
 //    public void findSearchResults(String lang) {

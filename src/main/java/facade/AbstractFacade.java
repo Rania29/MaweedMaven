@@ -130,27 +130,46 @@ public abstract class AbstractFacade<T> {
                 .getSingleResult();
     }
 
-    public List<Object[]> findByAreaAndCategory(Area area, Clinic clinic) {
+    public List<Object[]> findByAreaAndCategoryHospital(Hospital hospital, Clinic clinic) {
 
-        Query q;
+        Query q = null;
+        System.out.println("findByAreaAndCategory hospital........................... " + hospital.getName().equals(""));
+        System.out.println("findByAreaAndCategory clinic........................... " + (clinic.getCategory() == null));
+        System.out.println("findByAreaAndCategory area........................... " + (hospital.getArea() == null));
 
-        if (area != null && clinic != null) {
-            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName() + "' AND cat.name = '" + clinic.getCategory().getName() + "'");
+        if ((hospital.getName().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() == null)) {
+            return null;
+        }
+
+        if ((!hospital.getName().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() == null)) {
+            q = getEntityManager().createNativeQuery("select h.id, h.name from hospital h WHERE h.name = '" + hospital.getName() + "'");
+            return q.getResultList();
+        }
+        
+        if ((!hospital.getName().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() != null)) {
+            q = getEntityManager().createNativeQuery("select h.id,h.name,a.name from hospital h"
+                    + " inner join area a on a.id=h.area_id WHERE h.name = '" + hospital.getName() + "' "
+                    + " AND a.name = '" + hospital.getArea().getName() + "'");
             return q.getResultList();
         }
 
-        if (clinic == null && area != null) {
-            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area.getName());
-            return q.getResultList();
-        }
-
-        q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
-                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
-                + " JOIN category cat ON cat.id=c.category_id WHERE cat.name = '" + clinic.getCategory().getName() + "'");
+//        if (area != null && clinic != null) {
+//            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+//                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+//                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area + "' AND cat.name = '" + clinic + "'");
+//            return q.getResultList();
+//        }
+//
+//        if (clinic == null && area != null) {
+//            q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+//                    + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+//                    + " JOIN category cat ON cat.id=c.category_id WHERE a.name = '" + area);
+//            return q.getResultList();
+//        }
+//
+//        q = getEntityManager().createNativeQuery("SELECT h.name as hospital, a.name as area, cat.name as clinic FROM hospital h"
+//                + " JOIN area a ON a.id=h.area_id JOIN clinic c ON c.hospital_id=h.id"
+//                + " JOIN category cat ON cat.id=c.category_id WHERE cat.name = '" + clinic + "'");
         return q.getResultList();
     }
 
