@@ -135,9 +135,8 @@
                                 <f:selectItem itemLabel="الأقسام (اختياري)" itemValue=""/>
                                 <f:selectItems value="#{categoryController.itemsAvailableSelectManyAr}"/>
                             </h:selectOneMenu>
-                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findHospitalsByInArabicName()}"/>
+                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findByAreaAndCategoryHospital('arabic')}"/>
                         </h:form>
-
                     </div>
                 </div>
             </header><!--Header End-->

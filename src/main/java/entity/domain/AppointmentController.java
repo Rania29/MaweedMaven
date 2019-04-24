@@ -127,53 +127,38 @@ public class AppointmentController implements Serializable {
         } else {
             hospitals.clear();
         }
-        ads = advancedSearchFacade.findByAreaAndCategoryHospital(hospital, clinic);
-        if(ads == null) {
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Enter hospital name, clinic or area!"));
+        System.out.println("findByAreaAndCategoryHospital...................... " + lang);
+        if (lang.equals("english")) {
+            System.out.println("in the english part");
+            ads = advancedSearchFacade.findByAreaAndCategoryHospital(hospital, clinic);
+            if (ads == null) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Enter hospital name, clinic or area!"));
+            }
+            for (Object[] ad : ads) {
+                hospitals.add((Hospital) hospitalFacade.findHospitalByName(ad[1].toString()));
+            }
+            return "search?faces-redirect=true";
+        } else {
+            System.out.println("in the arabic part");
+            ads = advancedSearchFacade.findByAreaAndCategoryHospitalAr(hospital, clinic);
+            if (ads == null) {
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("ادخل اسم المستشفى، العياده و/او المنطقه!"));
+            }
+            for (Object[] ad : ads) {
+                hospitals.add((Hospital) hospitalFacade.findHospitalByName(ad[1].toString()));
+            }
+            return "search_ar?faces-redirect=true";
         }
-        for (Object[] ad : ads) {
-            hospitals.add((Hospital) hospitalFacade.findHospitalByName(ad[1].toString()));
-        }
-        return "search?faces-redirect=true";
     }
 
-//    public void findSearchResults(String lang) {
-//        if (hospitals == null) {
-//            hospitals = new ArrayList<>();
-//        }
-//        hospitals.clear();
-//        if (lang.equals("english")) {
-//            System.out.println("findSearchResults clinic.............. " + clinic);
-//            if (clinic == null) {
-//                clinics = clinicFacade.findAll();
-//            } else {
-//                clinics = clinicFacade.findClinicByCat(clinic.getCategory());
-//            }
-//            System.out.println("clinics........... " + clinics);
-//            for (Clinic c : clinics) {
-//                if (c.getHospital().getArea().getName().equals(hospital.getArea().getName())) {
-//                    hospitals.add(c.getHospital());
-//                }
-//            }
-//        } else {
-//            clinics = clinicFacade.findClinicByCat(clinic.getCategory());
-//            for (Clinic c : clinics) {
-//                if (c.getHospital().getArea().getInArabic().equals(hospital.getArea().getInArabic())) {
-//                    hospitals.add(c.getHospital());
-//                }
-//            }
-//        }
+//    public String findHospitalsByName() {
+//        hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
+//        return "search?faces-redirect=true";
 //    }
-    public String findHospitalsByName() {
-        hospitals = hospitalFacade.findHospitalsByName(hospital.getName());
-        return "search?faces-redirect=true";
-    }
-
-    public String findHospitalsByInArabicName() {
-        hospitals = hospitalFacade.findHospitalsByInArabic(hospital.getInArabic());
-        return "search_ar?faces-redirect=true";
-    }
-
+//    public String findHospitalsByInArabicName() {
+//        hospitals = hospitalFacade.findHospitalsByInArabic(hospital.getInArabic());
+//        return "search_ar?faces-redirect=true";
+//    }
     public String toClinicHospital(Hospital hospital) {
         this.hospital = hospital;
         if (current == null) {
