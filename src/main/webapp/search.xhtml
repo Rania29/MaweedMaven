@@ -94,9 +94,7 @@
         <header class="header-top">
             <div class="logo">
                 <div class="center-logo">
-                    <div class="center-logo">
-                        <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
-                    </div>
+                    <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div>
             </div> 
             <!--Hamburger button and menu-->
@@ -133,7 +131,7 @@
             </div>
         </header><!--Header End-->
         <div class="main_div">
-            <h5>Search Result for #{appointmentController.hospital.name}</h5>
+            <h5>Search Result for #{appointmentController.hospital.name},#{appointmentController.hospital.area},#{appointmentController.clinic.category}  </h5>
             <div class="result">
                 <div>
                     <h:form>
