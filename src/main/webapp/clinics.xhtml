@@ -104,7 +104,8 @@
                     <div class="center-logo">
                         <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                     </div>
-                </div> 
+                </div>
+                
                 <!--Hamburger button and menu-->
                 <div class="container" onclick="myFunction(this)">
                     <div class="bar1"></div>
@@ -121,20 +122,22 @@
                 </nav>
 
                 <!--Search box section-->
-                <div class="center-search">
-                    <h:form id="search-form" class="form-style">
-                        <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
-                        <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="Area(optional)" itemValue=""/>
-                            <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
-                        </h:selectOneMenu>
-                        <h:selectOneMenu id="cat_id" class="select-menu1" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                            <f:selectItem itemLabel="Category(optional)" itemValue=""/>
-                            <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
-                        </h:selectOneMenu>
-                        <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategoryHospital('english')}">
-                        </h:commandLink>
-                    </h:form>
+                <div class="search-area">
+                    <div class="center-search">
+                        <h:form id="search-form" class="form-style">
+                            <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
+                            <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="Area(optional)" itemValue=""/>
+                                <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
+                            </h:selectOneMenu>
+                            <h:selectOneMenu id="cat_id" class="select-menu1" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                                <f:selectItem itemLabel="Category(optional)" itemValue=""/>
+                                <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
+                            </h:selectOneMenu>
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategoryHospital('english')}">
+                            </h:commandLink>
+                        </h:form>
+                    </div>
                 </div>
             </header><!--Header End-->
 
@@ -255,7 +258,7 @@
             <h1>Here We Are</h1>
         </div>
         <div id="map">
-            <iframe src="#{appointmentController.hospital.locationMap}" width="600" height="450" frameborder="0" style="width:100%;height:450px;background: #93C5DD;" ></iframe>
+            <iframe src="#{appointmentController.hospital.locationMap}" width="600" height="400" frameborder="0" style="width:100%;height:400px; background-color: #93C5DD;" ></iframe>
         </div>
 
         <div>

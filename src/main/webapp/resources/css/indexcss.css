@@ -244,7 +244,7 @@ div.center-search{
     text-indent: 0.01px;
     border: 1px solid #55A6D7;
     width: 200px;
-    height: 70px;
+    height: 70px !important;
     font-size: 17px;
     outline: 0;
     color: #445268;
@@ -732,7 +732,7 @@ div.lower-footer h2{
     }
     .item_menu {
         clear: both;
-        background-color: #FaFaFa;
+        background-color: #ffffff;
         text-align: center;
         font-size: 18px;
         width:100%;
@@ -758,6 +758,9 @@ div.lower-footer h2{
         text-align: center; 
         vertical-align: middle;
     }
+    .center-logo{
+        padding: 0px;
+    }
     /**Logo image*/
     .logo img{
         justify-content: center;
@@ -773,20 +776,13 @@ div.lower-footer h2{
 
     div.search-box{
         clear: both;
-        /*display: flex;
-        justify-content: center;
-        align-items: center;*/
         width: 100%;
         height: inherit;
         margin: auto;
     }
     div.center-search{
         width: 100%;
-        /*display: flex;
-        justify-content: center;
-        align-items: center;*/
         height: 300px;
-        /*padding: 10px;*/
         margin-left: auto;
         margin-right:  auto;
         text-align: center;
@@ -798,11 +794,9 @@ div.lower-footer h2{
         display: block;
         overflow: hidden;
         width: 100%;
-        /*margin-right: 3px;*/
     }
     .form-style input[type='text']{
-        width: 95%;
-        border: 1px solid gray;
+        width: 95%; 
         font-size: 18px;
         margin-bottom: 5px;
         padding-left: 8px;
@@ -810,10 +804,10 @@ div.lower-footer h2{
     .select-style{
         width: 95%;   
     }
-    .form-style > input, command, select, link, button, .hidden-link1{
+    /*.form-style > input, command, select, link, button, .hidden-link1{
     display: inline-block;
     vertical-align: middle;
-}
+}*/
     .select-menu1{
         width: 95%;
         margin-bottom: 5px;
@@ -833,9 +827,6 @@ div.lower-footer h2{
     }
     .dropbtn{
         border: 1px solid #cccccc;
-    }
-    .navbar{
-        display: none;
     }
     .motivation{
         margin-bottom: 10px;
