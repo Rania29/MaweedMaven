@@ -133,7 +133,7 @@ public abstract class AbstractFacade<T> {
     public List<Object[]> findByAreaAndCategoryHospital(Hospital hospital, Clinic clinic) {
 
         Query q = null;
-        
+
         if ((hospital.getName().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() == null)) { //nothing selected
             return null;
         }
@@ -142,14 +142,14 @@ public abstract class AbstractFacade<T> {
             q = getEntityManager().createNativeQuery("select h.id, h.name from hospital h WHERE h.name = '" + hospital.getName() + "'");
             return q.getResultList();
         }
-        
+
         if ((!hospital.getName().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() != null)) { //hospital + area selected
             q = getEntityManager().createNativeQuery("select h.id,h.name,a.name from hospital h"
                     + " inner join area a on a.id=h.area_id WHERE h.name = '" + hospital.getName() + "' "
                     + " AND a.name = '" + hospital.getArea().getName() + "'");
             return q.getResultList();
         }
-        
+
         if ((hospital.getName().equals("")) && (clinic.getCategory() != null) && (hospital.getArea() != null)) { //clinic selected + area selected
             q = getEntityManager().createNativeQuery("select h.id, h.name as hospital_name, a.name as area, cat.name as clinic_name from clinic c"
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
@@ -159,7 +159,7 @@ public abstract class AbstractFacade<T> {
                     + " AND cat.name = '" + clinic.getCategory().getName() + "'");
             return q.getResultList();
         }
-        
+
         if ((!hospital.getName().equals("")) && (clinic.getCategory() != null) && (hospital.getArea() != null)) { //hospital + clinic selected + area selected
             q = getEntityManager().createNativeQuery("select h.id, h.name as hospital_name, a.name as area, cat.name as clinic_name from clinic c"
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
@@ -170,7 +170,7 @@ public abstract class AbstractFacade<T> {
                     + " AND h.name = '" + hospital.getName() + "'");
             return q.getResultList();
         }
-        
+
         if ((!hospital.getName().equals("")) && (clinic.getCategory() != null) && (hospital.getArea() == null)) { //hospital + clinic selected
             q = getEntityManager().createNativeQuery("select h.id, h.name as hospital_name, cat.name as clinic_name from clinic c"
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
@@ -179,7 +179,7 @@ public abstract class AbstractFacade<T> {
                     + " AND cat.name = '" + clinic.getCategory().getName() + "'");
             return q.getResultList();
         }
-        
+
         if ((hospital.getName().equals("")) && (clinic.getCategory() != null) && (hospital.getArea() == null)) { //clinic selected
             q = getEntityManager().createNativeQuery("select h.id, h.name as hospital_name, cat.name as clinic_name from clinic c"
                     + " inner join hospital h on h.id=c.hospital_id"
@@ -190,37 +190,39 @@ public abstract class AbstractFacade<T> {
 
         return q.getResultList();
     }
-    
+
     public List<Object[]> findByAreaAndCategoryHospitalAr(Hospital hospital, Clinic clinic) {
 
         Query q = null;
-        
+
         if ((hospital.getInArabic().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() == null)) { //nothing selected
+            System.out.println("inside all null");
             return null;
         }
 
         if ((!hospital.getInArabic().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() == null)) { //hospital typed
+            System.out.println("clinic null and hosptial area null");
             q = getEntityManager().createNativeQuery("select h.id, h.inarabic from hospital h WHERE h.inarabic = '" + hospital.getInArabic() + "'");
             return q.getResultList();
         }
-        
+
         if ((!hospital.getInArabic().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() != null)) { //hospital + area selected
             q = getEntityManager().createNativeQuery("select h.id, h.inarabic, a.inarabic from hospital h"
                     + " inner join area a on a.id=h.area_id WHERE h.inarabic = '" + hospital.getInArabic() + "' "
                     + " AND a.inarabic = '" + hospital.getArea().getInArabic() + "'");
             return q.getResultList();
         }
-        
+
         if ((hospital.getInArabic().equals("")) && (clinic.getCategory() != null) && (hospital.getArea() != null)) { //clinic selected + area selected
-            q = getEntityManager().createNativeQuery("select h.id, h.inarabic as hospital_name, a.inarabic as area, cat.inarabic as clinic_name from clinic c"
+            q = getEntityManager().createNativeQuery("SELECT h.id, h.inarabic as hospital_name, a.inarabic as area, cat.inarabic as clinic_name FROM clinic c"
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
                     + " INNER JOIN category cat on cat.id=c.category_id"
                     + " INNER JOIN area a on a.id=h.area_id"
-                    + " WHERE a.inarabic = '" + hospital.getArea().getInArabic() + "'"
+                    + " WHERE a.inarabic =  '" + hospital.getArea().getInArabic() + "'"
                     + " AND cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
             return q.getResultList();
         }
-        
+
         if ((!hospital.getInArabic().equals("")) && (clinic.getCategory() != null) && (hospital.getArea() != null)) { //hospital + clinic selected + area selected
             q = getEntityManager().createNativeQuery("select h.id, h.inarabic as hospital_name, a.inarabic as area, cat.inarabic as clinic_name from clinic c"
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
@@ -231,8 +233,9 @@ public abstract class AbstractFacade<T> {
                     + " AND h.inarabic = '" + hospital.getInArabic() + "'");
             return q.getResultList();
         }
-        
+
         if ((!hospital.getInArabic().equals("")) && (clinic.getCategory() != null) && (hospital.getArea() == null)) { //hospital + clinic selected
+            System.out.println("area only null");
             q = getEntityManager().createNativeQuery("select h.id, h.inarabic as hospital_name, cat.inarabic as clinic_name from clinic c"
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
                     + " INNER JOIN category cat on cat.id=c.category_id"
@@ -240,12 +243,15 @@ public abstract class AbstractFacade<T> {
                     + " AND cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
             return q.getResultList();
         }
-        
+
         if ((hospital.getInArabic().equals("")) && (clinic.getCategory() != null) && (hospital.getArea() == null)) { //clinic selected
-            q = getEntityManager().createNativeQuery("select h.id, h.inarabic as hospital_name, cat.inarabic as clinic_name from clinic c"
-                    + " inner join hospital h on h.id=c.hospital_id"
-                    + " inner join category cat on cat.id=c.category_id"
-                    + " where cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
+            System.out.println("hospital null and area null");
+            q = getEntityManager().createNativeQuery("select h.id, h.inarabic as hospital_name, a.inarabic as area, cat.inarabic as clinic_name FROM clinic c"
+                    + " INNER JOIN hospital h on h.id=c.hospital_id"
+                    + " INNER JOIN category cat on cat.id=c.category_id"
+                    + " INNER JOIN area a on a.id=h.area_id"
+                    + " WHERE a.inarabic =  'الهلال'"
+                    + " AND cat.inarabic = 'الأسنان'");
             return q.getResultList();
         }
 
