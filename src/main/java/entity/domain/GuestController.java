@@ -121,7 +121,7 @@ public class GuestController implements Serializable {
                 httpSession.setAttribute("email", g.getEmail());
                 return currentPage;
             } else {
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Failed to log in!"));
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Incorrect email or password!"));
             }
         }
         return null;

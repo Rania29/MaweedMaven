@@ -20,6 +20,7 @@
             gtag('js', new Date());
 
             gtag('config', 'UA-129442662-1');
+
         </script>
     </h:head>
     <h:body>
@@ -46,7 +47,8 @@
                                     <h:message for="password" style="color: #cc0033; font-size: 12px;"/>
                                     <br />
                                     <div class="cntr_btn">
-                                        <h:commandLink value="Login" action="#{guestController.authenticate()}" class="app_button"/>
+                                        <h:commandLink value="Login" action="#{guestController.authenticate()}" class="app_button">
+                                        </h:commandLink>
                                         <h:link value="Cancel" outcome="/index"  class="app_button cancle_button"/>
                                     </div>
                                     <div class="line" >
@@ -67,7 +69,6 @@
                         <h:commandLink action="#{guestController.logout()}" value="Log out"/>
                     </h:form>
                 </c:if>
-
             </div>
             <br />
             <footer>

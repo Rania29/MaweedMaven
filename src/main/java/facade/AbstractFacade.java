@@ -188,6 +188,13 @@ public abstract class AbstractFacade<T> {
             return q.getResultList();
         }
 
+        if ((hospital.getName().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() != null)) { //area selected
+            q = getEntityManager().createNativeQuery("select h.id,h.name,a.name from hospital h"
+                    + " inner join area a on a.id=h.area_id"
+                    + " WHERE a.name = '" + hospital.getArea().getName() + "'");
+            return q.getResultList();
+        }
+
         return q.getResultList();
     }
 
@@ -202,7 +209,8 @@ public abstract class AbstractFacade<T> {
 
         if ((!hospital.getInArabic().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() == null)) { //hospital typed
             System.out.println("clinic null and hosptial area null");
-            q = getEntityManager().createNativeQuery("select h.id, h.inarabic from hospital h WHERE h.inarabic = '" + hospital.getInArabic() + "'");
+            q = getEntityManager().createNativeQuery("select h.id, h.inarabic from hospital h"
+                    + " WHERE h.inarabic = '" + hospital.getInArabic() + "'");
             return q.getResultList();
         }
 
@@ -250,8 +258,15 @@ public abstract class AbstractFacade<T> {
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
                     + " INNER JOIN category cat on cat.id=c.category_id"
                     + " INNER JOIN area a on a.id=h.area_id"
-                    + " WHERE a.inarabic =  'الهلال'"
-                    + " AND cat.inarabic = 'الأسنان'");
+                    + " WHERE a.inarabic =  '" + hospital.getArea().getInArabic() + "'"
+                    + " AND cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
+            return q.getResultList();
+        }
+
+        if ((hospital.getInArabic().equals("")) && (clinic.getCategory() == null) && (hospital.getArea() != null)) { //area selected
+            q = getEntityManager().createNativeQuery("select h.id,h.inarabic,a.inarabic from hospital h"
+                    + " inner join area a on a.id=h.area_id"
+                    + " WHERE a.inarabic = '" + hospital.getArea().getInArabic() + "'");
             return q.getResultList();
         }
 
