@@ -115,25 +115,25 @@
 
             <!--Search area-->
             <div class="search-area">
-                    <div class="center-search">
-                        <h:form id="search-form" class="form-style">
-                            <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
-                            <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="المنطقة (اختياري)" itemValue=""/>
-                                <f:selectItems value="#{areaController.itemsAvailableSelectManyAr}"/>
-                            </h:selectOneMenu>
-                            <h:selectOneMenu class="select-menu1" id="cat_id" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="الأقسام (اختياري)" itemValue=""/>
-                                <f:selectItems value="#{categoryController.itemsAvailableSelectManyAr}"/>
-                            </h:selectOneMenu>
-                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findByAreaAndCategoryHospital('arabic')}"/>
-                        </h:form>
-                    </div>
+                <div class="center-search">
+                    <h:form id="search-form" class="form-style">
+                        <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
+                        <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="المنطقة (اختياري)" itemValue=""/>
+                            <f:selectItems value="#{areaController.itemsAvailableSelectManyAr}"/>
+                        </h:selectOneMenu>
+                        <h:selectOneMenu class="select-menu1" id="cat_id" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="الأقسام (اختياري)" itemValue=""/>
+                            <f:selectItems value="#{categoryController.itemsAvailableSelectManyAr}"/>
+                        </h:selectOneMenu>
+                        <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findByAreaAndCategoryHospital('arabic')}"/>
+                    </h:form>
+                </div>
             </div>
         </header><!--Header End-->      
 
         <div class="main_div">
-            <h5>عرض نتائج بحث #{appointmentController.hospital.inArabic}</h5>
+            <h5>عرض نتائج بحث #{appointmentController.hospital.inArabic} </h5>
             <div class="result">
                 <div class="result_items">
                     <h:form>
@@ -150,7 +150,7 @@
                         </c:forEach>
                     </h:form>
                 </div>
-                <div class="pagination">
+                <!--<div class="pagination">
                     <a href="#">❮</a>
                     <a href="#">1</a>
                     <a href="#" class="active">2</a>
@@ -159,7 +159,7 @@
                     <a href="#">5</a>
                     <a href="#">6</a>
                     <a href="#">❯</a>
-                </div>
+                </div>-->
             </div>
         </div>
         <footer>
