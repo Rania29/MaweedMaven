@@ -247,7 +247,7 @@ public abstract class AbstractFacade<T> {
             q = getEntityManager().createNativeQuery("select h.id, h.inarabic as hospital_name, cat.inarabic as clinic_name from clinic c"
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
                     + " INNER JOIN category cat on cat.id=c.category_id"
-                    + " WHERE h.name = '" + hospital.getInArabic() + "'"
+                    + " WHERE h.inarabic = '" + hospital.getInArabic() + "'"
                     + " AND cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
             return q.getResultList();
         }
@@ -258,8 +258,7 @@ public abstract class AbstractFacade<T> {
                     + " INNER JOIN hospital h on h.id=c.hospital_id"
                     + " INNER JOIN category cat on cat.id=c.category_id"
                     + " INNER JOIN area a on a.id=h.area_id"
-                    + " WHERE a.inarabic =  '" + hospital.getArea().getInArabic() + "'"
-                    + " AND cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
+                    + " WHERE cat.inarabic = '" + clinic.getCategory().getInArabic() + "'");
             return q.getResultList();
         }
 
