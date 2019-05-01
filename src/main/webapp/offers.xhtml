@@ -114,16 +114,15 @@
                     <div class="center-search">
                         <h:form id="search-form" class="form-style">
                             <h:inputText a:placeholder="Write Hospital name" id="search" value="#{appointmentController.hospital.name}"/>
-
                             <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="Area(optional)" itemValue=""/>
                                 <f:selectItems value="#{areaController.itemsAvailableSelectMany}"/>
                             </h:selectOneMenu>
-                            <h:selectOneMenu id="cat_id" class="select-menu1" required="true" requiredMessage="You must choose a category!!" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <h:selectOneMenu id="cat_id" class="select-menu1" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
                                 <f:selectItem itemLabel="Category(optional)" itemValue=""/>
                                 <f:selectItems value="#{categoryController.itemsAvailableSelectMany}"/>
                             </h:selectOneMenu>
-                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategory('english')}">
+                            <h:commandLink value="Search" class="hidden-link1" action="#{appointmentController.findByAreaAndCategoryHospital('english')}">
                             </h:commandLink>
                         </h:form>
                     </div>
@@ -142,7 +141,7 @@
 
             <!--Offers Container section-->
 
-            <!--<div class="main_div">
+            <div class="main_div">
                 <h:form>
                     <div class="result">
                         <div>
@@ -173,7 +172,8 @@
                         </div>
                     </div>
                 </h:form>
-            <div class="pagination">
+            </div>
+            <!--<div class="pagination">
                 <a href="#">❮</a>
                 <a href="#">1</a>
                 <a href="#">2</a>
@@ -182,9 +182,7 @@
                 <a href="#">5</a>
                 <a href="#">6</a>
                 <a href="#">❯</a>
-            </div>
             </div>-->
-
 
             <!--Footer section-->
             <footer>
