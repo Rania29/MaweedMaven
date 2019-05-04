@@ -7,7 +7,7 @@
       xmlns:fn="http://java.sun.com/jsp/jstl/functions"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>موعد - العروض</title>
+        <title>موعد | العروض</title>
         <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcssAR.css" rel="stylesheet" type="text/css"/>
@@ -132,10 +132,6 @@
                 </div>
             </header><!--Header End-->
 
-            <div style="clear: both;">
-                <h2 style="text-align: center;">ترقبونا قريبا</h2>
-                <h2 style="text-align: center;">سوف يتم اظهار عروض وتخفيضات العيادات في هذه الصفحة</h2>
-            </div>
             <div class="main_div">
                 <h:form>
                     <div class="result">
@@ -159,7 +155,7 @@
                                         <h:commandLink action="#">
                                             <span class="hospital-name">#{o.clinic.category.inArabic}</span>
                                         </h:commandLink>
-                                        <span class="offer-countdown">ينتهي بتاريخ .....</span>
+                                        <span class="offer-countdown"></span>
                                     </div>
                                 </div>
 
@@ -167,18 +163,19 @@
                         </div>
                     </div>
                 </h:form>
+                <div class="pagination">
+                    <a href="#">❮</a>
+                    <a href="#">1</a>
+                    <a href="#" class="active">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">❯</a>
+                </div>
             </div>
-            <!--<div class="pagination">
-                <a href="#">❮</a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">❯</a>
-            </div>-->
-            
+
+
             <footer>
                 <div class="upper-footer">
                     <a href="terms-and-conditions-ar.xhtml">الشروط والأحكام</a>

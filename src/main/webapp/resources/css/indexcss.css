@@ -412,13 +412,16 @@ h1{
 /*------------------ pagination ------------------------------*/
 .pagination {
     width: 100%;
+    margin-top: 15px;
   display: inline-block;
+  background-color: pink;
 }
 
 .pagination a {
   color: #445268;
   padding: 8px 16px;
   text-decoration: none;
+  text-align: center;
 }
 .pagination a.active {
   background-color: #bde0f5;
