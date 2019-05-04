@@ -5,9 +5,10 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Maweed Offers</title>
+        <title>Maweed | Offers</title>
         <meta name="viewport"  content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link href="resources/css/Normalize.css" rel="stylesheet" type="text/css"/>
         <link href="resources/css/indexcss.css" rel="stylesheet" type="text/css"/>
@@ -127,62 +128,66 @@
                         </h:form>
                     </div>
                 </div>
-            </header><!--Header End-->
-            <div style="clear: both;">
-                <h2 style="text-align: center; color: #445268;">Coming Soon...</h2>
-                <h2 style="text-align: center; color: #445268;">Offers and Discounts will be shown in this page.</h2>
-            </div>
-            <!--<div class="header_div">
+            </header>
+            <div class="header_div">
                 <h2>Deals and Promotions</h2>
                 <h5>Check Today’s Deals, Offers, and limited-time discounts</h5>
                 <br /><br />
-                <h5 style="padding-left: 20px;">Showing 1-40 of 1000 results</h5>
-            </div>-->
+                
+            </div>
 
             <!--Offers Container section-->
 
             <div class="main_div">
+                <h5 style="padding-left: 20px;">Showing 1-40 of 1000 results</h5>
+                <h:outputText escape="false" value="#{bundles.ListOfferEmpty}" rendered="#{offerController.items.rowCount == 0}">Showing  of 1000 results</h:outputText>
                 <h:form>
+                    <h:outputText value="Showing #{offerController.pagination.pageFirstItem + 1}-#{offerController.pagination.pageLastItem + 1} of #{offerController.pagination.itemsCount}"/>&nbsp;
+
                     <div class="result">
                         <div>
-                            <c:forEach items="#{offerController.offers}" var="o">
+                            <ui:repeat value="#{offerController.items}" var="o">
                                 <div class="offer-div">
                                     <div class="ribbon ribbon-top-left">
                                         <span >OFFER</span>
                                     </div>
                                     <div class="img-div">
-                                        <h:commandLink action="#">
+                                        <h:commandLink action="#{appointmentController.toClinicHospital (o.hospital)}">
                                             <img src="#{fn:substringAfter(hospitalimageController.findFirstImage(o.hospital), '/')}" alt="hospital img"/>
                                         </h:commandLink>
                                     </div>
                                     <div class="center-div">
                                         <span class="offer-price">#{o.discountPrice}</span>
-                                        <span class="offer-price" id="discount"><strike>#{o.price}</strike> (#{o.discountPrice}/#{o.price}% off)</span>
+                                        <span class="offer-price" id="discount"><strike>#{o.price}</strike> </span>
                                         <span class="clnk-name" id="service">#{o.clinicService.serviceList.name}</span>
                                         <span class="clnk-name">#{o.details}</span>
-                                        <span class="hospital-name">#{o.hospital.name}</span>
+                                        <h:commandLink action="#{appointmentController.toClinicHospital (o.hospital)}">
+                                            <span class="hospital-name">#{o.hospital.name}</span>
+                                        </h:commandLink>
                                         <h:commandLink action="#">
                                             <span class="hospital-name">#{o.clinic.category.name}</span>
                                         </h:commandLink>
-                                        <span class="offer-countdown">Ends in (date)</span>
+                                        <span class="offer-countdown"></span>
                                     </div>
                                 </div>
-
-                            </c:forEach>
+                            </ui:repeat>
                         </div>
                     </div>
+                    <h:commandLink action="#{offerController.previous}" value="Previous #{offerController.pagination.pageSize}" rendered="#{offerController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{offerController.next}" value="Next #{offerController.pagination.pageSize}" rendered="#{offerController.pagination.hasNextPage}"/>&nbsp;
                 </h:form>
+                <div class="pagination">
+                    <a href="#">❮</a>
+                    <a href="#">1</a>
+                    <a href="#" class="active">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">❯</a>
+                </div>
             </div>
-            <!--<div class="pagination">
-                <a href="#">❮</a>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">❯</a>
-            </div>-->
+
 
             <!--Footer section-->
             <footer>
