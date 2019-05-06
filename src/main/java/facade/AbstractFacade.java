@@ -4,6 +4,7 @@ import entity.domain.Area;
 import entity.domain.Category;
 import entity.domain.Clinic;
 import entity.domain.Hospital;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -329,6 +330,32 @@ public abstract class AbstractFacade<T> {
         return q.getResultList();
     }
 
+    public List<Hospital> findHospitalRange(String lang, Category category, int[] range) {
+        Query q;
+
+        if (lang.equals("english")) {
+//            System.out.println("findHospitalRange arabic........................ " + category.getName());
+            q = getEntityManager().createNativeQuery("select h.id, h.name as hospital_name, cat.name as clinic_name from clinic c"
+                    + " inner join hospital h on h.id=c.hospital_id"
+                    + " inner join category cat on cat.id=c.category_id where cat.name = '" + category.getName() + "'");
+
+        } else {
+//            System.out.println("findHospitalRange arabic........................ " + category.getInArabic());
+            q = getEntityManager().createNativeQuery("select h.id, h.name as hospital_name, cat.inarabic as clinic_name from clinic c"
+                    + " inner join hospital h on h.id=c.hospital_id"
+                    + " inner join category cat on cat.id=c.category_id where cat.inarabic = '" + category.getInArabic() + "'");
+        }
+
+        q.setMaxResults(range[1] - range[0] + 1);
+        q.setFirstResult(range[0]);
+        List<Hospital> hospitals = new ArrayList<>();
+        List<Object[]> ids = q.getResultList();
+        for (Object[] id : ids) {
+            hospitals.add((Hospital) find((Long) id[0]));
+        }
+        return hospitals;
+    }
+
     public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
@@ -337,4 +364,17 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
 
+    public int hospitalCount(String lang, String category) {
+        int count;
+        if (lang.equals("english")) {
+            count = Integer.parseInt(getEntityManager().createNativeQuery("select count(cat.name) from clinic c"
+                    + " inner join hospital h on h.id=c.hospital_id"
+                    + " inner join category cat on cat.id=c.category_id where cat.name = '" + category + "'").getSingleResult().toString());
+        } else {
+            count = Integer.parseInt(getEntityManager().createNativeQuery("select count(cat.name) from clinic c"
+                    + " inner join hospital h on h.id=c.hospital_id"
+                    + " inner join category cat on cat.id=c.category_id where cat.inarabic = '" + category + "'").getSingleResult().toString());
+        }
+        return count;
+    }
 }

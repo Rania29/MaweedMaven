@@ -4,6 +4,7 @@ import entity.domain.util.JsfUtil;
 import entity.domain.util.PaginationHelper;
 import facade.CategoryFacade;
 import facade.ClinicFacade;
+import facade.HospitalFacade;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,15 +24,20 @@ import javax.faces.model.SelectItem;
 @SessionScoped
 public class CategoryController implements Serializable {
 
-    private List<Hospital> hospitals;
+    private DataModel hospitals;
     private Category current;
+    private Category category;
     private DataModel items = null;
     @EJB
     private facade.CategoryFacade ejbFacade;
     @EJB
     private ClinicFacade clinicFacade;
+    @EJB
+    private HospitalFacade hospitalFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private String name;
+    private String lang;
 
     public CategoryController() {
     }
@@ -40,7 +46,7 @@ public class CategoryController implements Serializable {
         return current;
     }
 
-    public List<Hospital> getHospitals() {
+    public DataModel getHospitals() {
         return hospitals;
     }
 
@@ -71,28 +77,22 @@ public class CategoryController implements Serializable {
     }
 
     public String toCategory(Category category) {
-        String name = category.getName();
-        List<Clinic> clinics = clinicFacade.findClinicByCat(category);
-        hospitals = new ArrayList<>();
-        if (!clinics.isEmpty()) {
-            for (Clinic o : clinics) {
-                hospitals.add(o.getHospital());
-            }
-        }
-        current = (Category) ejbFacade.findCatByName(name);
+        lang = "english";
+        name = category.getName();
+//        System.out.println("toCategory............................... " + name);
+        this.category = category;
+//        List<Clinic> clinics = clinicFacade.findClinicByCat(category);
+        hospitals = getPagination().createPageDataModel();
         return "category?faces-redirect=true";
     }
 
     public String toCategoryArabic(Category category) {
-        String name = category.getName();
-        List<Clinic> clinics = clinicFacade.findClinicByCat(category);
-        hospitals = new ArrayList<>();
-        if (!clinics.isEmpty()) {
-            for (Clinic o : clinics) {
-                hospitals.add(o.getHospital());
-            }
-        }
-        current = (Category) ejbFacade.findCatByName(name);
+        lang = "arabic";
+        name = category.getInArabic();
+        this.category = category;
+//        List<Clinic> clinics = clinicFacade.findClinicByCat(category);
+        hospitals = getPagination().createPageDataModel();
+//        current = (Category) ejbFacade.findCatByName(name);
         return "category_ar";
     }
 
@@ -102,12 +102,12 @@ public class CategoryController implements Serializable {
 
                 @Override
                 public int getItemsCount() {
-                    return getFacade().count();
+                    return hospitalFacade.hospitalCount(lang, name);
                 }
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(hospitalFacade.findHospitalRange(lang, category, new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
