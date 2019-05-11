@@ -136,10 +136,12 @@
         <div class="main_div">
             <h2 class="cat-name">#{categoryController.current.name}</h2>
             <h4 class="cat-name">#{categoryController.current.description}</h4>
-            <h:form>
-                <div class="result">
-                    <div class="result_items">
-                        <h:outputText value="Showing #{appointmentController.pagination.pageFirstItem + 1}-#{appointmentController.pagination.pageLastItem + 1} of #{appointmentController.pagination.itemsCount}"/>&nbsp;
+            <div class="result">
+                <div class="result_items">
+                    <h:form>
+                        <div>
+                            <h:outputText value="Showing #{appointmentController.pagination.pageFirstItem + 1}-#{appointmentController.pagination.pageLastItem + 1} of #{appointmentController.pagination.itemsCount}"/>&nbsp;
+                        </div>
                         <ui:repeat value="#{categoryController.hospitals}" var="h">
                             <div class="clnk-div">
                                 <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/></h:commandLink>
@@ -147,19 +149,19 @@
                                 <span class="clnk-location">#{h.area.name}</span>
                             </div>
                         </ui:repeat>
-                    </div>
-            </h:form>
-        </div>
-        <div class="pagination">
-            <a href="#">❮</a>
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">6</a>
-            <a href="#">❯</a>
-        </div>
+                    </h:form>
+                </div>
+            </div>
+            <div class="pagination">
+                <a href="#">❮</a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                <a href="#">6</a>
+                <a href="#">❯</a>
+            </div>
         </div>
         <!--Footer-->
         <footer>
