@@ -139,7 +139,7 @@
             <!--Offers Container section-->
 
             <div class="main_div">
-                <h5 style="padding-left: 20px;">Showing 1-40 of 1000 results</h5>
+                <!--<h5 style="padding-left: 20px;">Showing 1-40 of 1000 results</h5>-->
                 <h:outputText escape="false" value="#{bundles.ListOfferEmpty}" rendered="#{offerController.items.rowCount == 0}">Showing  of 1000 results</h:outputText>
                 <h:form>
                     <h:outputText value="Showing #{offerController.pagination.pageFirstItem + 1}-#{offerController.pagination.pageLastItem + 1} of #{offerController.pagination.itemsCount}"/>&nbsp;
@@ -176,7 +176,7 @@
                     <h:commandLink action="#{offerController.previous}" value="Previous #{offerController.pagination.pageSize}" rendered="#{offerController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{offerController.next}" value="Next #{offerController.pagination.pageSize}" rendered="#{offerController.pagination.hasNextPage}"/>&nbsp;
                 </h:form>
-                <div class="pagination">
+                <!--<div class="pagination">
                     <a href="#">❮</a>
                     <a href="#">1</a>
                     <a href="#" class="active">2</a>
@@ -185,7 +185,7 @@
                     <a href="#">5</a>
                     <a href="#">6</a>
                     <a href="#">❯</a>
-                </div>
+                </div>-->
             </div>
 
 

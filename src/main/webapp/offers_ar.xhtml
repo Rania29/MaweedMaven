@@ -131,8 +131,18 @@
                     </div>
                 </div>
             </header><!--Header End-->
+            
+            <div class="header_div">
+                <h2>العروض والتخفيضات</h2>
+                <h5>تحقق من عروض اليوم  والخصومات المحدودة</h5>
+                <br /><br />
+
+            </div>
+
+            <!--Offers Container section-->
 
             <div class="main_div">
+                <h:outputText escape="false" value="#{bundles.ListOfferEmpty}" rendered="#{offerController.items.rowCount == 0}">Showing  of 1000 results</h:outputText>
                 <h:form>
                     <div class="result">
                         <div>
@@ -163,7 +173,7 @@
                         </div>
                     </div>
                 </h:form>
-                <div class="pagination">
+                <!--<div class="pagination">
                     <a href="#">❮</a>
                     <a href="#">1</a>
                     <a href="#" class="active">2</a>
@@ -172,7 +182,7 @@
                     <a href="#">5</a>
                     <a href="#">6</a>
                     <a href="#">❯</a>
-                </div>
+                </div>-->
             </div>
 
 
