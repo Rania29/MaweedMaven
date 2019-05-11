@@ -5,7 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Category</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -115,21 +116,21 @@
 
             <!--Search area-->
             <div class="search-area">
-                    <div class="center-search">
-                        <h:form id="search-form" class="form-style">
-                            <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
-                            <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="المنطقة (اختياري)" itemValue=""/>
-                                <f:selectItems value="#{areaController.itemsAvailableSelectManyAr}"/>
-                            </h:selectOneMenu>
-                            <h:selectOneMenu class="select-menu1" id="cat_id" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
-                                <f:selectItem itemLabel="الأقسام (اختياري)" itemValue=""/>
-                                <f:selectItems value="#{categoryController.itemsAvailableSelectManyAr}"/>
-                            </h:selectOneMenu>
-                            <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findByAreaAndCategoryHospital('arabic')}"/>
-                        </h:form>
-                    </div>
+                <div class="center-search">
+                    <h:form id="search-form" class="form-style">
+                        <h:inputText a:placeholder="ابحث باسم المستشفى" id="search" value="#{appointmentController.hospital.inArabic}"/>
+                        <h:selectOneMenu class="select-menu1" value="#{appointmentController.hospital.area}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="المنطقة (اختياري)" itemValue=""/>
+                            <f:selectItems value="#{areaController.itemsAvailableSelectManyAr}"/>
+                        </h:selectOneMenu>
+                        <h:selectOneMenu class="select-menu1" id="cat_id" value="#{appointmentController.clinic.category}" title="#{bundle.CreateHospitalTitle_areaId}" >
+                            <f:selectItem itemLabel="الأقسام (اختياري)" itemValue=""/>
+                            <f:selectItems value="#{categoryController.itemsAvailableSelectManyAr}"/>
+                        </h:selectOneMenu>
+                        <h:commandLink value="بحث" class="hidden-link1" action="#{appointmentController.findByAreaAndCategoryHospital('arabic')}"/>
+                    </h:form>
                 </div>
+            </div>
         </header><!--Header End-->
 
 
@@ -137,17 +138,20 @@
             <h2 class="cat-name">#{categoryController.current.inArabic}</h2>
             <h4 class="cat-name">#{categoryController.current.arabicDescription}</h4>
             <div class="result">
-                <div class="result_items">
-                    <h:form>
-                        <c:forEach items="#{categoryController.hospitals}" var="h">
+                <h:form>
+                    <h:outputText value="#{categoryController.pagination.pageFirstItem + 1}..#{categoryController.pagination.pageLastItem + 1}/#{categoryController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{categoryController.previous}" value="السابق #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{categoryController.next}" value="التالى #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasNextPage}"/>&nbsp;
+                    <div class="result_items">
+                        <ui:repeat value="#{categoryController.items}" var="h">
                             <div class="clnk-div">
                                 <h:commandLink action="#{appointmentController.toClinicArabic(h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="صورة المستشفى"/></h:commandLink>
                                 <h:commandLink action="#{appointmentController.toClinicArabic(h)}"><span class="clnk-name">#{h.inArabic}</span></h:commandLink>
                                 <span class="clnk-location">#{h.area.inArabic}</span>
                             </div>
-                        </c:forEach>
-                    </h:form>
-                </div>
+                        </ui:repeat>
+                    </div>
+                </h:form>
             </div>
             <div class="pagination">
                 <a href="#">&laquo;</a>

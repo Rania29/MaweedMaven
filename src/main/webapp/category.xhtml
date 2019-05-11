@@ -90,14 +90,14 @@
                         <h:commandButton class="log_out" action="#{guestController.logout()}" value="Logout"/>
                     </h:form>
                 </c:if>
-            </div>  
+            </div>
         </div><!-- smart phones div -->
         <header class="header-top">
             <div class="logo">
                 <div class="center-logo">
                     <a href="index.xhtml"><img src="resources/images/logo.png" alt="Logo image"/></a>
                 </div>
-            </div> 
+            </div>
 
             <div class="container" onclick="myFunction(this)">
                 <div class="bar1"></div>
@@ -131,26 +131,27 @@
                     </h:form>
                 </div>
             </div>
-        </header><!--Header End-->     
+        </header><!--Header End-->
         <!--Hospitals Search result-->
         <div class="main_div">
             <h2 class="cat-name">#{categoryController.current.name}</h2>
             <h4 class="cat-name">#{categoryController.current.description}</h4>
+
             <div class="result">
-                <div class="result_items">
-                    <h:form>
-                        <div>
-                            <h:outputText value="Showing #{appointmentController.pagination.pageFirstItem + 1}-#{appointmentController.pagination.pageLastItem + 1} of #{appointmentController.pagination.itemsCount}"/>&nbsp;
-                        </div>
-                        <ui:repeat value="#{categoryController.hospitals}" var="h">
+                <h:form>
+                    <h:outputText value="#{categoryController.pagination.pageFirstItem + 1}..#{categoryController.pagination.pageLastItem + 1}/#{categoryController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{categoryController.previous}" value="Previous #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{categoryController.next}" value="Next #{categoryController.pagination.pageSize}" rendered="#{categoryController.pagination.hasNextPage}"/>&nbsp;
+                    <div class="result_items">
+                        <ui:repeat value="#{categoryController.items}" var="h">
                             <div class="clnk-div">
-                                <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/></h:commandLink>
-                                <h:commandLink action="#{appointmentController.toClinicHospital (h)}"><span class="clnk-name">#{h.name}</span></h:commandLink>
+                                <h:commandLink action="#{appointmentController.toClinicHospital(h)}"><img src="#{fn:substringAfter(hospitalimageController.findFirstImage(h) , '/')}" alt="Hospital img"/></h:commandLink>
+                                <h:commandLink action="#{appointmentController.toClinicHospital(h)}"><span class="clnk-name">#{h.name}</span></h:commandLink>
                                 <span class="clnk-location">#{h.area.name}</span>
                             </div>
                         </ui:repeat>
-                    </h:form>
-                </div>
+                    </div>
+                </h:form>
             </div>
             <div class="pagination">
                 <a href="#">❮</a>
@@ -179,4 +180,3 @@
         </footer>
     </h:body>
 </html>
-
