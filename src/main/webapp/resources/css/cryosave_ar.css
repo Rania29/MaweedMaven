@@ -260,44 +260,107 @@ h4{
 /**Media Queries*/
 /* Smartphones (portrait and landscape) --------------------------------- */
 @media screen and (min-width: 320px) and (max-width: 480px){
-    html, body{
-        margin: 0px;
-    }
     div.logo{
         width: 100%;
         height: inherit;
-        padding: 20px;
+        padding: 10px;
         display: block;
     }
     .center-logo{
-        padding: 5px;
+        padding: 10px;
     }
     .logo img{
         width: auto; 
-        height: 200px;
+        height: 120px;
         display: block;
         vertical-align: middle;
         margin: 0 auto;
-    }
-    .poster{
-        width: 100%;
-        height: auto;
-        margin-bottom: 10px;
     }
     .poster img{
-        width : 300px;
+        width : inherit;
+    }
+    .intro{
+        line-height: initial;
+    }
+    .chart{
+        display: block;
+        height: auto;
+    }
+    .chart_text{
+        display: block;
+        width: 100%;
+    }
+    .chart_img{
+        display: block;
+        width: 100%;
+    }
+    .chart_img img{
+        width: 100%;
+        height: auto;
+    }
+    .four_sections{
+        width: 100% !important;
         height: auto;
         display: block;
-        vertical-align: middle;
         margin: 0 auto;
+        text-align: center;
+        margin-bottom: 10px;
     }
-    .body_content{
-        clear: both;
+    .section_part{
+        width: 95%;
+        height: 260px;
+        display: block;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    .section_img img{
+        width: 30px;
+    }
+    .section_info ul li{
+        overflow-wrap: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+        font-size: 15px;
+    }
+    .five-img{
         width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        background-color: pink;
+        height: auto;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 10px;
+
     }
+    .who_img img{
+        width: 100%;
+        height: auto;
+    }
+    .packages{
+        display: block;
+    }
+    .packages_text{
+        display: block;
+        width: 100%;
+    }
+    .packages_table{
+        width: 100%;
+        display: block;
+    }
+    .packages_table img{
+        width: 100%;
+        height: auto;
+    }
+    .footer{
+        height: 400px;
+        width: 100% !important;
+        display: block;
+        padding: 10px;
+    }
+    .footer div{
+        width: 100%;
+    }
+
 
 }
 

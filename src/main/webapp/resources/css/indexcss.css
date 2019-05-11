@@ -672,6 +672,10 @@ div.lower-footer h2{
     .mySlides {
         min-height: 220px !important;
     }
+    .right_top_adv{
+        width: 180px;
+        height: auto;
+    }
 }
 
 /* 

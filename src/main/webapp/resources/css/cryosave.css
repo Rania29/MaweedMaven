@@ -24,7 +24,8 @@ html, page{
 .top-div{
     width: 100%;
     height: 30px;
-    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     background-color: #009999;
     margin-bottom: 15px;
 }
@@ -33,6 +34,7 @@ html, page{
     font-weight: 600;
     text-decoration: none;
     margin-left: 20px;
+    padding: 10px;
     color: #FFFFFF;
     vertical-align: middle;
 }
@@ -42,20 +44,24 @@ html, page{
 
 /**logo image**/
 div.logo{
-    float: left;
     width: 100%;
     height: inherit;
-    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
     display: block;
+    margin-bottom: 15px;
 }
 .center-logo{
-    padding: 20px;
+    padding: 5px;
+    margin: 0 auto;
+    width: auto;
     display: block;
     vertical-align: middle;
 }
 .logo img{
     width: auto; 
     height: 150px;
+    padding: 5px;
     display: block;
     vertical-align: middle;
     margin: 0 auto;
@@ -73,17 +79,16 @@ div.logo{
     margin: 0 auto;
 }
 .body_content{
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
-    padding-left: 10px;
-    padding-right: 10px;
     height: auto;
     background-color: #FFFFFF;
     margin-bottom: 25px;
-    padding-bottom: 20px;
+    padding: 10px;
+
 }
 .intro{
-    width: 100%;
+    width: available;
     height: auto;
     background-color: #009999;
     text-align: center;
@@ -171,10 +176,12 @@ h4{
 }
 .section_info ul li{
     overflow-wrap: break-word;
+    word-break: break-all;
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     hyphens: auto;
+    list-style-position: outside; 
 }
 .five-img{
     width: 100%;
@@ -232,11 +239,13 @@ h4{
     background-color: #009999;
     color: #FFFFFF;
     line-height: 22px;
-    display: inline-block;
+    display: block;
 }
 .footer div{
     width: 45%;
+    margin: 0 auto;
     padding-left: 10px;
+    padding-right: 10px;
     float: left;
 }
 .footer h4{
@@ -263,43 +272,110 @@ h4{
 /**Media Queries*/
 /* Smartphones (portrait and landscape) --------------------------------- */
 @media screen and (min-width: 320px) and (max-width: 480px){
-    html, body{
-        margin: 0px;
-    }
     div.logo{
         width: 100%;
         height: inherit;
-        padding: 20px;
+        padding: 10px;
         display: block;
     }
     .center-logo{
-        padding: 5px;
+        padding: 10px;
     }
     .logo img{
         width: auto; 
-        height: 200px;
+        height: 120px;
         display: block;
         vertical-align: middle;
         margin: 0 auto;
-    }
-    .poster{
-        width: 100%;
-        height: auto;
-        margin-bottom: 10px;
     }
     .poster img{
-        width : 300px;
+        width : inherit;
+    }
+    .intro{
+        line-height: initial;
+    }
+    .intro h1{
+        font-size: 22px;
+    }
+    .chart{
+        display: block;
+        height: auto;
+    }
+    .chart_text{
+        display: block;
+        width: 100%;
+    }
+    .chart_img{
+        display: block;
+        width: 100%;
+    }
+    .chart_img img{
+        width: 100%;
+        height: auto;
+    }
+    .four_sections{
+        width: 100% !important;
         height: auto;
         display: block;
-        vertical-align: middle;
         margin: 0 auto;
+        text-align: center;
+        margin-bottom: 10px;
     }
-    .body_content{
-        clear: both;
+    .section_part{
         width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        background-color: pink;
+        height: 260px;
+        margin: 0 auto;
+        display: block;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+    .section_img img{
+        width: 30px;
+    }
+
+    .section_info ul{
+
+        padding-left: -40px;
+    }
+    .section_info ul li{
+
+        font-size: 15px;
+
+    }
+    .five-img{
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 10px;
+
+    }
+    .who_img img{
+        width: 100%;
+        height: auto;
+    }
+    .packages{
+        display: block;
+    }
+    .packages_text{
+        display: block;
+        width: 100%;
+    }
+    .packages_table{
+        width: 100%;
+        display: block;
+    }
+    .packages_table img{
+        width: 100%;
+        height: auto;
+    }
+    .footer{
+        height: 400px;
+        width: 100% !important;
+        display: block;
+    }
+    .footer div{
+        width: 100%;
     }
 
 }
@@ -365,13 +441,18 @@ h4{
     .section_img img{
         width: 30px;
     }
+    .section_info ul{
+        padding-left: -40px;
+    }
     .section_info ul li{
-        overflow-wrap: break-word;
-        -ms-hyphens: auto;
-        -moz-hyphens: auto;
-        -webkit-hyphens: auto;
-        hyphens: auto;
         font-size: 15px;
+        overflow-wrap: break-word;
+    word-break: break-all;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    list-style-position: outside; 
     }
     .five-img{
         width: 100%;
@@ -404,7 +485,6 @@ h4{
         height: 400px;
         width: 100% !important;
         display: block;
-        padding: 10px;
     }
     .footer div{
         width: 100%;
